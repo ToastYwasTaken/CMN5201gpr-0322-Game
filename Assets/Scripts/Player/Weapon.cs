@@ -10,6 +10,11 @@ namespace Assets.Scripts.Player
 
         [SerializeField] bool canShoot = false;
         [SerializeField] float resetTime;
+
+        [SerializeField] GameObject mProjectilePfab;
+
+        [SerializeField] Transform Muzzle;
+
         bool doesReset = false;
 
         public void Fire()
@@ -24,7 +29,9 @@ namespace Assets.Scripts.Player
             lightGO.SetActive(true);
             Invoke("turnOff", 0.2f);
             canShoot = false;
+            Instantiate(mProjectilePfab, Muzzle);
         }
+        public void StopFire() { }
         void turnOff() => lightGO.SetActive(false);
         void DoReset()
         {

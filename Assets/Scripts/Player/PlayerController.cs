@@ -118,11 +118,15 @@ namespace Assets.Scripts.Player
             if (Input.GetButton("Fire1"))
                 foreach (IShoot gun in mGuns)
                     gun.Fire();
+            //if(Input.GetButtonUp("Fire1"))
+            //    foreach (IShoot gun in mGuns)
+            //        gun.StopFire();
         }
     }
 
     interface IShoot
     {
         public void Fire();
+        public void StopFire();
     }
 }
