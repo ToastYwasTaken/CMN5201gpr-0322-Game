@@ -1,19 +1,21 @@
 
 //TODO: Steuerung nach Richtung. usw
 
+using Assets.Scripts.Player.Relay;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, PlayerProps
     {
         [SerializeField] float mTurnSpeed = .5f;
         [SerializeField] float mMoveSpeedMax = 5f;
         [SerializeField] float mMoveAccel = 10f;
         [SerializeField] float mMoveDrag = 3f;
         [SerializeField] bool isCamFollow = true;
+        [SerializeField] Transform mAngleHlp;
 
         //CharacterController cControl;
 
@@ -25,12 +27,14 @@ namespace Assets.Scripts.Player
         IShoot[] mGuns;
 
         float deltaT;
+        float lastDir = 0f;
 
         Rigidbody2D rBody;
         Transform cam;
 
         private void Awake()
         {
+            ReferenceLib.sPlayerCtrl = this;
             //cControl = GetComponent<CharacterController>();
             rBody = GetComponent<Rigidbody2D>();
             mGuns = GetComponentsInChildren<IShoot>();
@@ -92,7 +96,7 @@ namespace Assets.Scripts.Player
             currMove = currMove - currMove * mMoveDrag * deltaT;
         }
 
-        float lastDir = 0f;
+        
         void UpdateRotation()
         {
             Vector2 lookDir = mousPos - rBody.position;
@@ -106,7 +110,25 @@ namespace Assets.Scripts.Player
         }
         float AngleWrap(float _angle)
         {
-            return _angle < 0 ? 360 + _angle : _angle;
+            return _angle < 0 ? 360 + _angle : _angle; // > 360 ? 0 : _angle;
+        }
+
+        Vector2 TransformToV2(Transform _transform)
+        {
+            return new Vector2(_transform.position.x, _transform.transform.position.y);
+        }
+        float GetAngleToVector2(Vector2 _position)
+        {
+            return Mathf.Atan2(_position.x, _position.y) * Mathf.Rad2Deg - 90f;
+        }
+        public float AngleDifferenceToTarget(Transform _target, bool _isAbsolut)
+        {
+            Vector2 target = TransformToV2(_target);
+            float ownAngle = GetAngleToVector2(TransformToV2(mAngleHlp)-TransformToV2(transform)) -180;
+            float angleToTarget = GetAngleToVector2(target - TransformToV2(transform)) -180;
+            float AngleDiff = ownAngle - angleToTarget;
+
+            return _isAbsolut ? Mathf.Abs(AngleDiff) : AngleDiff;
         }
         void CameraZoom()
         {
