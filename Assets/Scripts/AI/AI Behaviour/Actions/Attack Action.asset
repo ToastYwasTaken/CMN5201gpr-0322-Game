@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiConfiguration: {fileID: 11400000, guid: 578084f441367a04db396f85b4c06f74, type: 2}
   aiConfigFoldout: 1
+  attackDistance: 10
+  OnStateEntered: {fileID: 0}
+  OnPlayerIsInReach: {fileID: 0}
+  OnPlayerAttack: {fileID: 0}

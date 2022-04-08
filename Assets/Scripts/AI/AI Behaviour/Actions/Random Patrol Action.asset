@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiConfiguration: {fileID: 11400000, guid: 578084f441367a04db396f85b4c06f74, type: 2}
   aiConfigFoldout: 1
-  range: 10
+  _range: 50
+  _velocityOffset: 0.2
   OnStateEntered: {fileID: 11400000, guid: d5e446abba257a3479f7b461fa6566ce, type: 2}
   OnHasReachedWaypoint: {fileID: 11400000, guid: bbf75fc314c23ec4cbde066a47c425d4, type: 2}
   OnAgentMoveForward: {fileID: 11400000, guid: 58e6db01f88b7ab44ae1cdc01cbdc361, type: 2}

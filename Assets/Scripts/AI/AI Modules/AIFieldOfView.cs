@@ -36,8 +36,8 @@ namespace AISystem
             {
                 if (hit.collider.CompareTag(tag))
                 {
-                    Vector3 rayDirection = hit.transform.position - origin.position;
-                    float angle = Vector3.Angle(rayDirection, origin.forward);
+                    var rayDirection = hit.transform.position - origin.position;
+                    var angle = Vector3.Angle(rayDirection, origin.forward);
 
                     if (angle < viewAngle * 0.5f)
                     {
