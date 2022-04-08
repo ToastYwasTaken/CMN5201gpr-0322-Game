@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f6e8a619320d64db9cee46fc3d22e3, type: 3}
+  m_Name: Random Patrol Action
+  m_EditorClassIdentifier: 
+  aiConfiguration: {fileID: 11400000, guid: 578084f441367a04db396f85b4c06f74, type: 2}
+  aiConfigFoldout: 1
+  range: 10
+  OnStateEntered: {fileID: 11400000, guid: d5e446abba257a3479f7b461fa6566ce, type: 2}
+  OnHasReachedWaypoint: {fileID: 11400000, guid: bbf75fc314c23ec4cbde066a47c425d4, type: 2}
+  OnAgentMoveForward: {fileID: 11400000, guid: 58e6db01f88b7ab44ae1cdc01cbdc361, type: 2}
+  OnAgentMoveBack: {fileID: 0}
+  OnAgentTurnLeft: {fileID: 0}
+  OnAgentTurnRight: {fileID: 0}
+  OnAgentStopped: {fileID: 11400000, guid: bf1882d58b48a4a45a72b288d79b5bf3, type: 2}
