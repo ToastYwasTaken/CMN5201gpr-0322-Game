@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using AISystem;
 using UnityEditor;
-using UnityEngine;
 
 namespace AISystem
 {
