@@ -1,26 +1,32 @@
 
-//TODO: Steuerung nach Richtung. usw
+//TODO:
+//Steuerung nach Richtung.
+//Rotation inerta ;_;
 
-using Assets.Scripts.Player.Relay;
+using AngleExtension;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    public class PlayerController : MonoBehaviour, PlayerProps
+    public class PlayerController : MonoBehaviour
     {
-        [SerializeField] float mTurnSpeed = .5f;
-        [SerializeField] float mMoveSpeedMax = 5f;
-        [SerializeField] float mMoveAccel = 10f;
-        [SerializeField] float mMoveDrag = 3f;
+        [SerializeField][Range(0, 50)] float mTurnSpeed = 20f;
+        [SerializeField][Range(0, 50)] float mMoveSpeedMax = 15f;
+        [SerializeField][Range(0, 50)] float mMoveAccel = 10f;
+        [SerializeField][Range(0, 50)] float mMoveDrag = 15f;
         [SerializeField] bool isCamFollow = true;
-        [SerializeField] Transform mAngleHlp;
+        [SerializeField] AnimationCurve mRotationCurve;
 
+        float pTurnSpeed { get { return mTurnSpeed * 10; } set{ value = mTurnSpeed; } } 
+        float pMoveSpeedMax { get { return mMoveSpeedMax; } set { value = mMoveSpeedMax; } }
+        float pMoveAccel { get { return mMoveAccel; } set { value = mMoveAccel; } }
+        float pMoveDrag { get { return mMoveDrag /5; } set { value = mMoveDrag; } }  
         //CharacterController cControl;
 
         Vector2 moveInput;
-        Vector2 currMove = Vector2.zero;
+        [SerializeField] Vector2 mVelocity = Vector2.zero;
 
         Vector2 mousPos;
 
@@ -28,6 +34,7 @@ namespace Assets.Scripts.Player
 
         float deltaT;
         float lastDir = 0f;
+        float targetAngle;
 
         Rigidbody2D rBody;
         Transform cam;
@@ -39,20 +46,24 @@ namespace Assets.Scripts.Player
             rBody = GetComponent<Rigidbody2D>();
             mGuns = GetComponentsInChildren<IShoot>();
             cam = Camera.main.transform;
+            //currTarget = transform.up.ToVector2().GetAngle();
+
         }
         private void Update()
         {
             CameraZoom();
             DoWeapons();
+
+
         }
         private void FixedUpdate()
         {
-            deltaT = Time.fixedDeltaTime;
             mousPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+            deltaT = Time.fixedDeltaTime;
             DoMovement();
 
-            if(isCamFollow)
+            if (isCamFollow)
                 cam.position = new Vector3(transform.position.x, transform.position.y, -10);
         }
 
@@ -73,60 +84,66 @@ namespace Assets.Scripts.Player
         {
             if (moveInput == Vector2.zero)
                 ApplyDrag();
-            else
+            else 
+                mVelocity += moveInput * pMoveAccel * deltaT;
+
+            float sqrMag = mVelocity.sqrMagnitude;
+            if (sqrMag >= pMoveSpeedMax)
             {
-                currMove += moveInput * mMoveAccel * deltaT;
+                mVelocity = mVelocity * (pMoveSpeedMax/ sqrMag);
             }
 
-            if (currMove == Vector2.zero) return;
+            if (mVelocity == Vector2.zero) return;
 
-            rBody.MovePosition(rBody.position + currMove * deltaT);
+            rBody.MovePosition(rBody.position + mVelocity * deltaT);
         }
         void ApplyDrag()
         {
-            if (currMove == Vector2.zero)
+            if (mVelocity == Vector2.zero)
                 return;
 
-            if (currMove.sqrMagnitude <= mMoveSpeedMax/10)
-            {
-                currMove = Vector2.zero;
-                return;
-            }
-
-            currMove = currMove - currMove * mMoveDrag * deltaT;
+            mVelocity = mVelocity - mVelocity * pMoveDrag/5 * deltaT;
         }
-
         
+
         void UpdateRotation()
         {
             Vector2 lookDir = mousPos - rBody.position;
-            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
-            //+anglediff speed
+            if(lookAngle != targetAngle)
+                targetAngle = LerpAngle(targetAngle, lookAngle);
 
-            angle = AngleWrap(Mathf.LerpAngle(lastDir, angle, deltaT / mTurnSpeed));
-            lastDir = angle;
-            rBody.rotation = angle;
+            float angleDiff = Mathf.DeltaAngle(targetAngle, lastDir);
+            if (angleDiff == 0) return;
+
+            float currAngle = AngleWrap(Mathf.LerpAngle(lastDir, targetAngle, LerpDist(angleDiff)));
+            rBody.rotation = currAngle;
+            lastDir = currAngle;
+        }
+        float LerpAngle(float currTarget, float newTarget)
+        {
+            float angleDiff = Mathf.Abs(Mathf.DeltaAngle(currTarget, newTarget));
+
+            return Mathf.LerpAngle(currTarget, newTarget, LerpDist(angleDiff)); /////
+        }
+        float LerpDist(float _angleDiff)
+        {
+            _angleDiff = Mathf.Abs(_angleDiff);
+            float distUnified = (180 / _angleDiff) /180;
+            return Mathf.Clamp01(mRotationCurve.Evaluate(_angleDiff / 180) * distUnified * deltaT * pTurnSpeed);
         }
         float AngleWrap(float _angle)
         {
-            return _angle < 0 ? 360 + _angle : _angle; // > 360 ? 0 : _angle;
+            return _angle < 0 ? 360 + _angle : _angle > 360 ? 0 : _angle;
         }
 
-        Vector2 TransformToV2(Transform _transform)
-        {
-            return new Vector2(_transform.position.x, _transform.transform.position.y);
-        }
-        float GetAngleToVector2(Vector2 _position)
-        {
-            return Mathf.Atan2(_position.x, _position.y) * Mathf.Rad2Deg - 90f;
-        }
         public float AngleDifferenceToTarget(Transform _target, bool _isAbsolut)
         {
-            Vector2 target = TransformToV2(_target);
-            float ownAngle = GetAngleToVector2(TransformToV2(mAngleHlp)-TransformToV2(transform)) -180;
-            float angleToTarget = GetAngleToVector2(target - TransformToV2(transform)) -180;
+            float ownAngle = transform.up.ToVector2().GetAngle();
+            float angleToTarget = (_target.ToVector2() - rBody.position).GetAngle();
             float AngleDiff = ownAngle - angleToTarget;
+            if (AngleDiff > 180) AngleDiff = -180 + AngleDiff % 180;
 
             return _isAbsolut ? Mathf.Abs(AngleDiff) : AngleDiff;
         }
