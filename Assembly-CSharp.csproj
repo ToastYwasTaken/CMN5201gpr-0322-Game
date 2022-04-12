@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\RandomWalk.cs" />
     <Compile Include="Assets\Scripts\AI\AI Modules\AISwarm.cs" />
+    <Compile Include="Assets\Scripts\Player\TurretAI.cs" />
     <Compile Include="Assets\Scripts\AI\AI Actions\IdleAction.cs" />
     <Compile Include="Assets\Scripts\AI\AI Decisions\AIInFieldOfViewDecision.cs" />
     <Compile Include="Assets\Scripts\AI\AIEventListener.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\RandomInstancing.cs" />
     <Compile Include="Assets\Scripts\AI\AI Actions\PatrolAction.cs" />
+    <Compile Include="Assets\Scripts\Player\Rotateable.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\Scripts\AI\AI Modules\AIPatrolPoints.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DungeonManager.cs" />
@@ -95,7 +97,9 @@
     <Compile Include="Assets\Scripts\AI\AIConfiguration.cs" />
     <Compile Include="Assets\Scripts\Player\DirLightDimmer.cs" />
     <Compile Include="Assets\Scripts\AI\AIEvent.cs" />
+    <Compile Include="Assets\Scripts\Player\WeaponComp.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\MeshTool.cs" />
+    <Compile Include="Assets\Scripts\Player\General\ExtensionMethods.cs" />
     <Compile Include="Assets\Scripts\Player\ExplosiveBarrel.cs" />
     <Compile Include="Assets\Scripts\Player\WeaponNew.cs" />
     <Compile Include="Assets\Scripts\AI\AI Modules\AIRandomPatrol.cs" />
@@ -108,10 +112,6 @@
     <Compile Include="Assets\Scripts\AI\AI States\AIStateAction.cs" />
     <Compile Include="Assets\Scripts\Player\Relay\PlayerProps.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
-    <Compile Include="Assets\Scripts\Player\TurretAI.cs" />
-    <Compile Include="Assets\Scripts\Player\Rotateable.cs" />
-    <Compile Include="Assets\Scripts\Player\WeaponComp.cs" />
-    <Compile Include="Assets\Scripts\Player\General\ExtensionMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

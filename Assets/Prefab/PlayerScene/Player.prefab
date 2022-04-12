@@ -190,46 +190,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489bda3bf2b488e4c91d1e80f6696e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTurnSpeed: 1.5
-  mMoveSpeedMax: 30
-  mMoveAccel: 10
-  mMoveDrag: 3
+  mTurnSpeed: 5
+  mMoveSpeedMax: 41.5
+  mMoveAccel: 17.9
+  mMoveDrag: 1.7
   isCamFollow: 1
   mRotationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.000030472409
-      value: 0.7508242
-      inSlope: 0.18593314
-      outSlope: 0.18593314
+      time: -0.0059814453
+      value: 0.002166748
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.22601798
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.29659218
-      value: 0.8288457
-      inSlope: 0.40237597
-      outSlope: 0.40237597
+      time: 1.0101929
+      value: 0.7894211
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.06952526
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  mDragCurve:
+    serializedVersion: 2
+    m_Curve:
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.040515117
-      outSlope: 0.040515117
+      time: -0.0013656616
+      value: -0.0021168524
+      inSlope: 3.1218698
+      outSlope: 3.1218698
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.15115584
+      inWeight: 0
+      outWeight: 0.024531024
+    - serializedVersion: 3
+      time: 1.01287
+      value: 0.8561986
+      inSlope: 1.2767727
+      outSlope: 1.2767727
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06204906
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   mVelocity: {x: 0, y: 0}
-  test: 0.0853975
+  targetAngle: 0
+  currAngle: 0
 --- !u!50 &7576545269406560642
 Rigidbody2D:
   serializedVersion: 4

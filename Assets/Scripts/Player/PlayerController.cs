@@ -18,8 +18,9 @@ namespace Assets.Scripts.Player
         [SerializeField][Range(0, 50)] float mMoveDrag = 15f;
         [SerializeField] bool isCamFollow = true;
         [SerializeField] AnimationCurve mRotationCurve;
+        [SerializeField] AnimationCurve mDragCurve;
 
-        float pTurnSpeed { get { return mTurnSpeed * 10; } set{ value = mTurnSpeed; } } 
+        float pTurnSpeed { get { return mTurnSpeed * 2000; } set{ value = mTurnSpeed; } } 
         float pMoveSpeedMax { get { return mMoveSpeedMax; } set { value = mMoveSpeedMax; } }
         float pMoveAccel { get { return mMoveAccel; } set { value = mMoveAccel; } }
         float pMoveDrag { get { return mMoveDrag /5; } set { value = mMoveDrag; } }  
@@ -34,7 +35,7 @@ namespace Assets.Scripts.Player
 
         float deltaT;
         float lastDir = 0f;
-        float targetAngle;
+        [SerializeField]float targetAngle;
 
         Rigidbody2D rBody;
         Transform cam;
@@ -82,60 +83,67 @@ namespace Assets.Scripts.Player
 
         void UpdateMovement()
         {
+            float sqrMag = mVelocity.sqrMagnitude;
             if (moveInput == Vector2.zero)
-                ApplyDrag();
+                ApplyDrag(sqrMag);
             else 
                 mVelocity += moveInput * pMoveAccel * deltaT;
 
-            float sqrMag = mVelocity.sqrMagnitude;
+            if (mVelocity == Vector2.zero) return;
+
+            //if (sqrMag < 0.1f)
+            //{
+            //    mVelocity = Vector2.zero;
+            //    return;
+            //}
             if (sqrMag >= pMoveSpeedMax)
             {
                 mVelocity = mVelocity * (pMoveSpeedMax/ sqrMag);
             }
 
-            if (mVelocity == Vector2.zero) return;
 
             rBody.MovePosition(rBody.position + mVelocity * deltaT);
         }
-        void ApplyDrag()
+        void ApplyDrag(float sqrMag)
         {
             if (mVelocity == Vector2.zero)
                 return;
-
-            mVelocity = mVelocity - mVelocity * pMoveDrag/5 * deltaT;
+            mVelocity = Vector2.Lerp(mVelocity, Vector2.zero, LerpDist(sqrMag, mMoveSpeedMax, mMoveDrag, mDragCurve));  //speedRatio * deltaT * mMoveDrag); //  mVelocity - mVelocity * pMoveDrag/5 * deltaT;
         }
-        
 
+        [SerializeField]
+        float currAngle;
         void UpdateRotation()
         {
             Vector2 lookDir = mousPos - rBody.position;
             float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
             if(lookAngle != targetAngle)
-                targetAngle = LerpAngle(targetAngle, lookAngle);
+                targetAngle = AngleWrap(LerpAngle(targetAngle, lookAngle));
 
             float angleDiff = Mathf.DeltaAngle(targetAngle, lastDir);
             if (angleDiff == 0) return;
 
-            float currAngle = AngleWrap(Mathf.LerpAngle(lastDir, targetAngle, LerpDist(angleDiff)));
-            rBody.rotation = currAngle;
-            lastDir = currAngle;
+            currAngle = AngleWrap(Mathf.LerpAngle(lastDir, targetAngle, LerpDist(angleDiff, 180, mTurnSpeed, mRotationCurve)));
+
+            rBody.rotation = currAngle; //NaN ?
+            lastDir = rBody.rotation;
         }
         float LerpAngle(float currTarget, float newTarget)
         {
             float angleDiff = Mathf.Abs(Mathf.DeltaAngle(currTarget, newTarget));
 
-            return Mathf.LerpAngle(currTarget, newTarget, LerpDist(angleDiff)); /////
+            return Mathf.LerpAngle(currTarget, newTarget, LerpDist(angleDiff, 180, mTurnSpeed, mRotationCurve)); /////
         }
-        float LerpDist(float _angleDiff)
+        float LerpDist(float _diff, float _ratio, float _speed, AnimationCurve _curve)
         {
-            _angleDiff = Mathf.Abs(_angleDiff);
-            float distUnified = (180 / _angleDiff) /180;
-            return Mathf.Clamp01(mRotationCurve.Evaluate(_angleDiff / 180) * distUnified * deltaT * pTurnSpeed);
+            _diff = Mathf.Abs(_diff);
+            float distUnified = (_ratio / _diff) / _ratio;
+            return Mathf.Clamp01(_curve.Evaluate(_diff / _ratio) * distUnified * _speed);
         }
         float AngleWrap(float _angle)
         {
-            return _angle < 0 ? 360 + _angle : _angle > 360 ? 0 : _angle;
+            return _angle < 0 ? 360 + _angle : _angle > 360 ? _angle - 360 : _angle;
         }
 
         public float AngleDifferenceToTarget(Transform _target, bool _isAbsolut)
