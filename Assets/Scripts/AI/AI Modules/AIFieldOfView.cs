@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AISystem
@@ -15,7 +13,7 @@ namespace AISystem
 
         public GameObject LookForGameObject(Collider[] colliders, string objectTag)
         {
-            foreach (var collider in colliders)
+            foreach (Collider collider in colliders)
             {
                 if (collider.CompareTag(objectTag))
                     return collider.gameObject;
@@ -23,21 +21,21 @@ namespace AISystem
             return null;
         }
 
-        public bool InFieldOfView(Transform origin, Transform destination, 
+        public bool InFieldOfView(Transform origin, Transform destination,
             string tag, float viewDistance, float viewAngle, LayerMask ignoreLayer,
-            QueryTriggerInteraction queryTrigger = QueryTriggerInteraction.Ignore, 
+            QueryTriggerInteraction queryTrigger = QueryTriggerInteraction.Ignore,
             float auraDistance = 5f, bool useAura = false)
         {
             Vector3 dir = destination.position - origin.position;
             _ray = new Ray(origin.position, dir.normalized);
             bool isVisible = false;
 
-            if (Physics.Raycast(_ray, out var hit, viewDistance, ~ignoreLayer, queryTrigger))
+            if (Physics.Raycast(_ray, out RaycastHit hit, viewDistance, ~ignoreLayer, queryTrigger))
             {
                 if (hit.collider.CompareTag(tag))
                 {
-                    var rayDirection = hit.transform.position - origin.position;
-                    var angle = Vector3.Angle(rayDirection, origin.forward);
+                    Vector3 rayDirection = hit.transform.position - origin.position;
+                    float angle = Vector3.Angle(rayDirection, origin.forward);
 
                     if (angle < viewAngle * 0.5f)
                     {

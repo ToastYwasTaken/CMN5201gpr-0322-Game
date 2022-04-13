@@ -6,8 +6,13 @@ namespace AISystem
     [CreateAssetMenu(menuName = "AI FSM/Actions/Chase")]
     public class ChaseAction : AIStateAction
     {
+        public Transform Owner { get; set; }
+        public Transform Target { get; set; }
+
         [Header("Settings")]
         [SerializeField] private float _velocityOffset = 0f;
+        [SerializeField] private float _maxVelocity = 3f;
+        [SerializeField] private float _seekForce = 0.005f;
 
         [Header("AI Events")]
         [SerializeField] private AIEvent OnStateEntered;
@@ -18,19 +23,21 @@ namespace AISystem
         [SerializeField] private AIEvent OnAgentTurnRight;
         [SerializeField] private AIEvent OnAgentStopped;
 
-        private NavMeshAgent navMeshAgent;
+        private Vector3 _velocity = Vector3.zero;
+
+        private NavMeshAgent _navMeshAgent;
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
             if (OnStateEntered != null) OnStateEntered.Raise();
-            navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
+            _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
         }
 
         public override void Execute(AIFSMAgent stateMachine)
         {
             OnUpdateSettings();
 
-            if (navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
+            if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
             {
                 OnAgentMoveForward.Raise();
             }
@@ -42,16 +49,24 @@ namespace AISystem
 
             var enemySightSensor = stateMachine.GetComponent<AIInLineOfSight>();
 
-            navMeshAgent.SetDestination(enemySightSensor.Player.position);
+            _navMeshAgent.SetDestination(enemySightSensor.Player.position);
+        }
+
+        private Vector3 CalculateSeekBehaviour()
+        {
+            Vector3 desiredVelocity = (Target.position - Owner.position).normalized * _maxVelocity;
+            Vector3 steering = desiredVelocity - _velocity;
+            return steering * _seekForce;
+
         }
 
         public override void OnUpdateSettings()
         {
-            navMeshAgent.speed = AIConifg.speed;
-            navMeshAgent.angularSpeed = AIConifg.angularSpeed;
-            navMeshAgent.acceleration = AIConifg.acceleration;
-            navMeshAgent.stoppingDistance = AIConifg.stoppingDistance;
-            navMeshAgent.autoBraking = AIConifg.autoBraking;
+            _navMeshAgent.speed = AIConifg.speed;
+            _navMeshAgent.angularSpeed = AIConifg.angularSpeed;
+            _navMeshAgent.acceleration = AIConifg.acceleration;
+            _navMeshAgent.stoppingDistance = AIConifg.stoppingDistance;
+            _navMeshAgent.autoBraking = AIConifg.autoBraking;
 
         }
     }

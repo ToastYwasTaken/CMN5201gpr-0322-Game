@@ -3,12 +3,12 @@ using UnityEngine.AI;
 
 namespace AISystem
 {
-    public class AIRandomPatrol : MonoBehaviour
+    public class AIRandomPatrol 
     {
         public bool GetRandomWaypoint(Vector3 center, float range, out Vector3 result)
         {
-            Vector3 rndPoint = center + Random.insideUnitSphere * range;
-            if (NavMesh.SamplePosition(rndPoint, out var hit, 
+            Vector3 rndPoint = center + (Random.insideUnitSphere * range);
+            if (NavMesh.SamplePosition(rndPoint, out NavMeshHit hit, 
                 1.0f, NavMesh.AllAreas))
             {
                 result = hit.position;

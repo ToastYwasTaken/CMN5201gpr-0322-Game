@@ -12,7 +12,7 @@ namespace AISystem
 
         private Dictionary<Type, Component> _cachedComponents;
 
-        public string _playerTag = "Player";
+        public string PlayerTag = "Player";
 
         #region Propertys
 
@@ -50,7 +50,7 @@ namespace AISystem
                 return _cachedComponents[typeof(T)] as T;
             }
 
-            var component = base.GetComponent<T>();
+            T component = base.GetComponent<T>();
             if (component != null)
             {
                 _cachedComponents.Add(typeof(T), component);

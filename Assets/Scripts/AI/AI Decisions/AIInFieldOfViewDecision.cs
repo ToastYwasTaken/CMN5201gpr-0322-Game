@@ -1,16 +1,14 @@
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 namespace AISystem
 {
-    
+
     [CreateAssetMenu(menuName = "AI FSM/Decisions/In Field of View")]
     public class AIInFieldOfViewDecision : AIDecision
     {
         private Collider[] _colliders;
         private GameObject _gameObject;
-        
+
         [Header("Scan Settings")]
         [SerializeField] private float _lookRadius = 5f;
         [SerializeField] private LayerMask _ignoreLayerForScan = 0;
@@ -29,22 +27,22 @@ namespace AISystem
         public override bool Decide(AIFSMAgent stateMachine)
         {
             Debug.Log($"AI Decision: {this.name}");
-            var fov = ((Component)stateMachine).GetComponent<AIFieldOfView>();
+            AIFieldOfView fov = ((Component)stateMachine).GetComponent<AIFieldOfView>();
 
             _colliders = fov.LookAroundForColliders(stateMachine.transform.position, _lookRadius, _ignoreLayerForScan, _queryTriggerForScan);
 
             Debug.Log($"Detected Colliders: {_colliders.Length}");
 
-            _gameObject = fov.LookForGameObject(_colliders, stateMachine._playerTag);
+            _gameObject = fov.LookForGameObject(_colliders, stateMachine.PlayerTag);
 
             if (_gameObject == null) return false;
 
-            return fov.InFieldOfView(stateMachine.transform, _gameObject.transform, stateMachine._playerTag,
+            return fov.InFieldOfView(stateMachine.transform, _gameObject.transform, stateMachine.PlayerTag,
                 _viewDistance, _viewAngle, _ignoreLayerForView, _queryTriggerForView, _auraRadius, _useAura);
         }
 
-        
-       
+
+
     }
 }
 
