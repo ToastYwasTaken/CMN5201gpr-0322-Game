@@ -7,17 +7,18 @@ namespace AISystem
     [CreateAssetMenu(menuName = "AI FSM/Actions/Patrol")]
     public class PatrolAction : AIStateAction
     {
-        [Header("Settings")]
+        [Header("Settings")] 
+        [SerializeField] private Transform[] _patrolPoints = default;
         [SerializeField] private float _velocityOffset = 0f;
 
-        [Header("AI Events")]
-        [SerializeField] private AIEvent OnStateEntered;
-        [SerializeField] private AIEvent OnHasReachedWaypoint;
-        [SerializeField] private AIEvent OnAgentMoveForward;
-        [SerializeField] private AIEvent OnAgentMoveBack;
-        [SerializeField] private AIEvent OnAgentTurnLeft;
-        [SerializeField] private AIEvent OnAgentTurnRight;
-        [SerializeField] private AIEvent OnAgentStopped;
+        // [Header("AI Events")]
+        // [SerializeField] private AIEvent OnStateEntered;
+        // [SerializeField] private AIEvent OnHasReachedWaypoint;
+        // [SerializeField] private AIEvent OnAgentMoveForward;
+        // [SerializeField] private AIEvent OnAgentMoveBack;
+        // [SerializeField] private AIEvent OnAgentTurnLeft;
+        // [SerializeField] private AIEvent OnAgentTurnRight;
+        // [SerializeField] private AIEvent OnAgentStopped;
 
         private NavMeshAgent navMeshAgent;
 
@@ -41,12 +42,15 @@ namespace AISystem
                 OnAgentStopped.Raise();
             }
             //var navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
-            var patrolPoints = stateMachine.GetComponent<AIPatrolPoints>();
+            var patrol = new AIPatrolPoints
+            {
+                PatrolPoints = _patrolPoints
+            };
 
-            if (!patrolPoints.HasReached(navMeshAgent)) return;
+            if (!patrol.HasReached(navMeshAgent)) return;
             if (OnHasReachedWaypoint != null) OnHasReachedWaypoint.Raise();
 
-            navMeshAgent.SetDestination(patrolPoints.GetNext().position);
+            navMeshAgent.SetDestination(patrol.GetNext().position);
 
 
         }

@@ -1,8 +1,9 @@
+using System.Linq;
 using UnityEngine;
 
 namespace AISystem
 {
-    public class AIFieldOfView : MonoBehaviour
+    public class AIFieldOfView 
     {
         private Ray _ray;
 
@@ -13,12 +14,7 @@ namespace AISystem
 
         public GameObject LookForGameObject(Collider[] colliders, string objectTag)
         {
-            foreach (Collider collider in colliders)
-            {
-                if (collider.CompareTag(objectTag))
-                    return collider.gameObject;
-            }
-            return null;
+            return (from collider in colliders where collider.CompareTag(objectTag) select collider.gameObject).FirstOrDefault();
         }
 
         public bool InFieldOfView(Transform origin, Transform destination,
@@ -30,41 +26,26 @@ namespace AISystem
             _ray = new Ray(origin.position, dir.normalized);
             bool isVisible = false;
 
-            if (Physics.Raycast(_ray, out RaycastHit hit, viewDistance, ~ignoreLayer, queryTrigger))
+            if (!Physics.Raycast(_ray, out RaycastHit hit, viewDistance, ~ignoreLayer, queryTrigger)) return isVisible;
+            if (!hit.collider.CompareTag(tag)) return isVisible;
+            Vector3 rayDirection = hit.transform.position - origin.position;
+            float angle = Vector3.Angle(rayDirection, origin.forward);
+
+            if (angle < viewAngle * 0.5f)
             {
-                if (hit.collider.CompareTag(tag))
-                {
-                    Vector3 rayDirection = hit.transform.position - origin.position;
-                    float angle = Vector3.Angle(rayDirection, origin.forward);
-
-                    if (angle < viewAngle * 0.5f)
-                    {
-                        isVisible = true;
-                        Debug.DrawRay(origin.position, dir, Color.green);
-                    }
-                    else
-                    {
-                        isVisible = false;
-                    }
-
-                    if (hit.distance <= auraDistance && useAura)
-                    {
-                        isVisible = true;
-                        Debug.DrawRay(origin.position, dir, Color.red);
-                    }
-                }
+                isVisible = true;
+                Debug.DrawRay(origin.position, dir, Color.green);
             }
+            else
+            {
+                isVisible = false;
+            }
+
+            if (!(hit.distance <= auraDistance) || !useAura) return isVisible;
+            isVisible = true;
+            
+            Debug.DrawRay(origin.position, dir, Color.red);
             return isVisible;
         }
-
-        private void OnDrawGizmos()
-        {
-            //Gizmos.color = Color.red;
-            //Gizmos.DrawSphere(_ray.origin, 5f);
-
-            //Gizmos.color = Color.blue;
-            //Gizmos.DrawLine(transform.position, transform.position + transform.forward * 100);
-        }
-
     }
 }

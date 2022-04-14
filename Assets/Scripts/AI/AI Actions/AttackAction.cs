@@ -10,11 +10,11 @@ namespace AISystem
         [Header("Settings")]
         [SerializeField] private float attackDistance = 10.0f;
 
-        [Header("AI Events")]
-        [SerializeField] private AIEvent OnStateEntered;
-        [SerializeField] private AIEvent OnPlayerIsInReach;
-        [SerializeField] private AIEvent OnPlayerAttack;
- 
+        // [Header("AI Events")]
+        // [SerializeField] private AIEvent OnStateEntered;
+        // [SerializeField] private AIEvent OnPlayerIsInReach;
+        // [SerializeField] private AIEvent OnPlayerAttack;
+        
 
 
         public override void Initialize(AIFSMAgent stateMachine)

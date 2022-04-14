@@ -27,11 +27,11 @@ namespace AISystem
         public override bool Decide(AIFSMAgent stateMachine)
         {
             Debug.Log($"AI Decision: {this.name}");
-            AIFieldOfView fov = ((Component)stateMachine).GetComponent<AIFieldOfView>();
+            var fov = new AIFieldOfView();
 
             _colliders = fov.LookAroundForColliders(stateMachine.transform.position, _lookRadius, _ignoreLayerForScan, _queryTriggerForScan);
 
-            Debug.Log($"Detected Colliders: {_colliders.Length}");
+            // Debug.Log($"Detected Colliders: {_colliders.Length}");
 
             _gameObject = fov.LookForGameObject(_colliders, stateMachine.PlayerTag);
 

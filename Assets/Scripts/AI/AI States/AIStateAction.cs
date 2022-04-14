@@ -10,6 +10,15 @@ namespace AISystem
       [SerializeField] private AIConfiguration aiConfiguration;
       [HideInInspector] public bool aiConfigFoldout = true;
        
+      [Header("AI Events")]
+      public AIEvent OnStateEntered;
+      public AIEvent OnHasReachedWaypoint;
+      public AIEvent OnAgentMoveForward;
+      public AIEvent OnAgentMoveBack;
+      public AIEvent OnAgentTurnLeft;
+      public AIEvent OnAgentTurnRight;
+      public AIEvent OnAgentStopped;
+      
       public abstract void Initialize(AIFSMAgent stateMachine);
       public abstract void Execute(AIFSMAgent stateMachine);
 

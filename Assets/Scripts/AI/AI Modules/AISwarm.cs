@@ -5,22 +5,22 @@ namespace AISystem
 {
     public class AISwarm
     {
-        public GameObject Owner { get; set; }
         public GameObject Target { get; set; }
         public float StopDistanceToPlayer { get; set; } = 2f;
         public Vector3 Velocity { get; set; } = Vector3.zero;
         public float MaxVelocity { get; set; } = 3f;
         public float MaxSeparation { get; set; } = 2f;
         public float SeparationDistance { get; set; } = 2f;
-
+  
+        private GameObject _owner;
         private readonly List<GameObject> _neighbors = new();
         private Vector3 _targetVelocity = Vector3.zero;
         private Vector3 _targetPrevPos;
 
         private Vector3 OwnerPosition
         {
-            get  => Owner.transform.position;
-            set => Owner.transform.position = value;
+            get  => _owner.transform.position;
+            set => _owner.transform.position = value;
         }
       
         private Vector3 TargetPosition => Target.transform.position;
@@ -33,11 +33,12 @@ namespace AISystem
                 return _targetVelocity;
             }
         }
-    
 
+        public AISwarm(GameObject owner) => _owner = owner;
+        
         public void SetNeighbors(GameObject neighbor)
         {
-            if (neighbor == Owner) return;
+            if (neighbor == _owner) return;
 
             if (!_neighbors.Contains(neighbor))
                 _neighbors.Add(neighbor);
@@ -56,13 +57,13 @@ namespace AISystem
 
         public void InitSwarmBehaviour(GameObject owner, GameObject target)
         {
-            Owner = owner;
+            _owner = owner;
             Target = target;
         }
 
         public Vector3 GetSwarmPosition()
         {
-            if (Owner == null || Target == null) return Vector3.zero;
+            if (_owner == null || Target == null) return Vector3.zero;
 
             Velocity += CalculateFollowTargetBehaviour();
             return OwnerPosition += Velocity * Time.deltaTime;

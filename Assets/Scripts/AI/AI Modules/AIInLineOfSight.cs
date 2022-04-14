@@ -5,51 +5,38 @@ using UnityEngine;
 
 namespace AISystem
 {
-    public class AIInLineOfSight : MonoBehaviour
+    public class AIInLineOfSight 
     {
-        public Transform Player { get; private set; }
+        public Transform Target { get; set; }
+        public Transform Owner { get; set; }
 
-        [SerializeField] private LayerMask _ignoreLayer;
+        public LayerMask IgnoreLayer { get; set; }
 
         private Ray _ray;
 
-        private void Awake()
+        public bool Ping(string targetTag)
         {
-            Player = GameObject.Find("Player").transform;
-        }
+            if (Target == null || Owner == null) return false;
 
-        public bool Ping()
-        {
-            if (Player == null) return false;
-
-            var position = this.transform.position;
-            _ray = new Ray(transform.position, Player.position - transform.position);
+            var transform = Owner.transform;
+            var position = transform.position;
+            _ray = new Ray(position, Target.position - position);
 
             var dir = new Vector3(_ray.direction.x, 0, _ray.direction.z);
             var angle = Vector3.Angle(dir, transform.forward);
 
             if (angle > 60) return false;
 
-            if (!Physics.Raycast(_ray, out var hit, 100, ~_ignoreLayer))
-            {
-                return false;
-            }
-
-            if (hit.collider.tag == "Player")
-            {
-                return true;
-            }
-
-            return false;
+            return Physics.Raycast(_ray, out var hit, 100, ~IgnoreLayer) && hit.collider.CompareTag(targetTag);
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(_ray.origin, _ray.origin + _ray.direction * 100);
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, transform.position + transform.forward * 100 );
-        }
+        // private void OnDrawGizmos()
+        // {
+        //     Gizmos.color = Color.red;
+        //     Gizmos.DrawLine(_ray.origin, _ray.origin + _ray.direction * 100);
+        //     Gizmos.color = Color.blue;
+        //     Gizmos.DrawLine(transform.position, transform.position + transform.forward * 100 );
+        // }
     }
 }
 

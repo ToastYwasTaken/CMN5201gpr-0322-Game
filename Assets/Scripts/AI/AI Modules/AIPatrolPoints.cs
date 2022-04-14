@@ -5,17 +5,17 @@ using UnityEngine.AI;
 
 namespace AISystem
 {
-    public class AIPatrolPoints : MonoBehaviour
+    public class AIPatrolPoints 
     {
-        [SerializeField] private Transform[] _patrolPoints;
+        public Transform[] PatrolPoints {get; set;}
 
         private int _currentPoint = 0;
-        public Transform CurrentPoint => _patrolPoints[_currentPoint];
+        public Transform CurrentPoint => PatrolPoints[_currentPoint];
 
         public Transform GetNext()
         {
-            var point = _patrolPoints[_currentPoint];
-            _currentPoint = (_currentPoint + 1) % _patrolPoints.Length;
+            var point = PatrolPoints[_currentPoint];
+            _currentPoint = (_currentPoint + 1) % PatrolPoints.Length;
             return point;
         }
         

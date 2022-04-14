@@ -5,8 +5,8 @@ namespace AISystem
     [CreateAssetMenu(menuName = "AI FSM/Actions/Idle")]
     public class IdleAction : AIStateAction
     {
-        [Header("AI Events")]
-        [SerializeField] private AIEvent OnStateEntered;
+       // [Header("AI Events")]
+       // [SerializeField] private AIEvent OnStateEntered;
 
         public override void Initialize(AIFSMAgent stateMachine)
         {

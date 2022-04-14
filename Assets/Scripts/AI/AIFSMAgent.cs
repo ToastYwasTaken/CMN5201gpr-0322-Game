@@ -13,6 +13,7 @@ namespace AISystem
         private Dictionary<Type, Component> _cachedComponents;
 
         public string PlayerTag = "Player";
+        public GameObject Owner => this.gameObject;
 
         #region Propertys
 

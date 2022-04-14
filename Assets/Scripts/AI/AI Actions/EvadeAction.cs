@@ -7,8 +7,8 @@ namespace AISystem
     [CreateAssetMenu(menuName = "AI FSM/Actions/Evade")]
     public class EvadeAction : AIStateAction
     {
-        [Header("AI Events")]
-        [SerializeField] private AIEvent OnStateEntered;
+        // [Header("AI Events")]
+        // [SerializeField] private AIEvent OnStateEntered;
 
         public override void Initialize(AIFSMAgent stateMachine)
         {

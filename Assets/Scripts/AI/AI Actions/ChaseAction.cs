@@ -14,15 +14,6 @@ namespace AISystem
         [SerializeField] private float _maxVelocity = 3f;
         [SerializeField] private float _seekForce = 0.005f;
 
-        [Header("AI Events")]
-        [SerializeField] private AIEvent OnStateEntered;
-        [SerializeField] private AIEvent OnHasReachedWaypoint;
-        [SerializeField] private AIEvent OnAgentMoveForward;
-        [SerializeField] private AIEvent OnAgentMoveBack;
-        [SerializeField] private AIEvent OnAgentTurnLeft;
-        [SerializeField] private AIEvent OnAgentTurnRight;
-        [SerializeField] private AIEvent OnAgentStopped;
-
         private Vector3 _velocity = Vector3.zero;
 
         private NavMeshAgent _navMeshAgent;
@@ -47,9 +38,13 @@ namespace AISystem
             }
 
 
-            var enemySightSensor = stateMachine.GetComponent<AIInLineOfSight>();
+            var enemySightSensor = new AIInLineOfSight();
+            {
+                Owner = stateMachine.Owner.transform;
+                
+            };
 
-            _navMeshAgent.SetDestination(enemySightSensor.Player.position);
+            _navMeshAgent.SetDestination(enemySightSensor.Target.position);
         }
 
         private Vector3 CalculateSeekBehaviour()
