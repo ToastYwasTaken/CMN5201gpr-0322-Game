@@ -36,7 +36,7 @@ namespace Assets.Scripts.Player
             {
                 while(!isOnTarget)
                 {
-                    _Rotateable.RotateToTarget(target);
+                    _Rotateable.RotateTowardsTarget(target);
                     yield return Time.fixedDeltaTime;
                 }
                 while(isOnTarget)

@@ -4,20 +4,25 @@ using UnityEngine;
 
 namespace MapGeneration
 {
+    public enum ERoomSize
+    {
+        Random = -1,
+        Normal = 0,
+    }
     public class MapGenerator : MonoBehaviour
     {
-        [SerializedField]
+        [SerializeField]
         GameObject _roomPrefab;
-        [SerializedField]
+        [SerializeField]
         GameObject _wallPrefab;
-        [SerializedField]
-        GameObject _roomCount;
+        [SerializeField]
+        int _roomCount;
 
-        public enum ERoomSize
-        {
-            Random = -1,
-            Normal = 0,
-        }
+        //public enum ERoomSize
+        //{
+        //    Random = -1,
+        //    Normal = 0,
+        //}
 
         void Awake()
         {
