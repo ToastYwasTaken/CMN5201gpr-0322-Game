@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalRoom : MonoBehaviour
+namespace MapGeneration
 {
-    // Start is called before the first frame update
-    void Start()
+    public class NormalRoom : Room
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public NormalRoom(GameObject ground, GameObject wall, ERoomSize roomSize)
+        {
+            _ground = ground;
+            _wall = wall;
+            _roomSize = roomSize;
+            AssignRoomSize(roomSize);
+            InitRoom();
+        }
+
+        protected override void AssignRoomSize(ERoomSize roomSize)
+        {
+
+        }
+        protected override void InitRoom()
+        {
+            throw new System.NotImplementedException();
+        }
+
+
     }
 }
