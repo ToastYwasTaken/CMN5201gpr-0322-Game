@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,15 +6,16 @@ namespace AISystem
 {
     public class AISwarm
     {
-        public GameObject Target { get; set; }
+        public GameObject Leader { get; set; }
         public float StopDistanceToPlayer { get; set; } = 2f;
-        public Vector3 Velocity { get; set; } = Vector3.zero;
         public float MaxVelocity { get; set; } = 3f;
         public float MaxSeparation { get; set; } = 2f;
         public float SeparationDistance { get; set; } = 2f;
   
         private GameObject _owner;
         private readonly List<GameObject> _neighbors = new();
+        
+        private Vector3 _leaderVelocity  = Vector3.zero;
         private Vector3 _targetVelocity = Vector3.zero;
         private Vector3 _targetPrevPos;
 
@@ -23,7 +25,7 @@ namespace AISystem
             set => _owner.transform.position = value;
         }
       
-        private Vector3 TargetPosition => Target.transform.position;
+        private Vector3 TargetPosition => Leader.transform.position;
         public Vector3 TargetVelocity
         {
             get
@@ -34,9 +36,29 @@ namespace AISystem
             }
         }
 
-        public AISwarm(GameObject owner) => _owner = owner;
+        public AISwarm(GameObject owner, string leaderTag)
+        {
+            _owner = owner;
+            Leader = GameObject.FindWithTag(leaderTag);
+        }
+        public AISwarm(GameObject owner, GameObject leader)
+        {
+            _owner = owner;
+            Leader = leader;
+        }
+
+        public void SetAllNeighborsWithTag(string neighborTag)
+        {
+            GameObject[] neighbors = GameObject.FindGameObjectsWithTag(neighborTag);
+
+            foreach (GameObject neighbor in neighbors)
+            {
+                if (!_neighbors.Contains(neighbor))
+                    _neighbors.Add(neighbor);
+            }
+        }
         
-        public void SetNeighbors(GameObject neighbor)
+        public void SetNeighbor(GameObject neighbor)
         {
             if (neighbor == _owner) return;
 
@@ -49,28 +71,14 @@ namespace AISystem
             _neighbors.Clear();
         }
 
-        public Vector3 GetPosition()
+        public Vector3 GetPositionInSwarm()
         {
-            return Vector3.zero;
+            if (_owner == null || Leader == null) return Vector3.zero;
 
+            _leaderVelocity += CalculateFollowTargetBehaviour();
+            return OwnerPosition += _leaderVelocity * Time.deltaTime;
         }
-
-        public void InitSwarmBehaviour(GameObject owner, GameObject target)
-        {
-            _owner = owner;
-            Target = target;
-        }
-
-        public Vector3 GetSwarmPosition()
-        {
-            if (_owner == null || Target == null) return Vector3.zero;
-
-            Velocity += CalculateFollowTargetBehaviour();
-            return OwnerPosition += Velocity * Time.deltaTime;
-        }
-
-
-
+        
         private Vector3 CalculateFollowTargetBehaviour()
         {
             Vector3 steering = Vector3.zero;
@@ -127,14 +135,14 @@ namespace AISystem
                 desiredVelocity *= (distance / slowingRadius);
             }
 
-            Vector3 steering = desiredVelocity - Velocity;
+            Vector3 steering = desiredVelocity - _leaderVelocity;
             return steering;
         }
 
         private Vector3 CalculateFleeBehaviour(Vector3 target)
         {
             Vector3 desiredVelocity = (OwnerPosition - target).normalized * MaxVelocity;
-            Vector3 steering = desiredVelocity - Velocity;
+            Vector3 steering = desiredVelocity - _leaderVelocity;
             return steering;
         }
 

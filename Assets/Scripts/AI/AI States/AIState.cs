@@ -28,6 +28,11 @@ namespace AISystem
                 transition.Execute(stateMachine);
             }
         }
+
+        public override void Exit(AIFSMAgent stateMachine)
+        {
+            AIActions[0].Exit(stateMachine);
+        }
     }
 }
 

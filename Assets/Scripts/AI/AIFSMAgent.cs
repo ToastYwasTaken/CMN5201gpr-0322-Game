@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Object = UnityEngine.Object;
 
 namespace AISystem
 {
@@ -9,23 +10,23 @@ namespace AISystem
     public class AIFSMAgent : MonoBehaviour
     {
         [SerializeField] private AIBaseState _initialState;
-
+        public string PlayerTag = "Player";
+        
         private Dictionary<Type, Component> _cachedComponents;
 
-        public string PlayerTag = "Player";
-        public GameObject Owner => this.gameObject;
-
         #region Propertys
-
+        public GameObject Owner => this.gameObject;
+        
         private AIBaseState _currentState;
         public AIBaseState CurrentState
         {
             get => _currentState;
             set
             {
+                ExitState(value);
                 _currentState = value;
-                if (_currentState != null)
-                    _currentState.Initialize(this);
+                if (_currentState == null) return;
+                InitializeState();
             }
         }
 
@@ -44,6 +45,19 @@ namespace AISystem
             Debug.Log($"AI: {gameObject.name} | Current State: {CurrentState.name}");
         }
 
+        private void InitializeState()
+        {
+            Debug.Log($"AI: {gameObject.name} | Initialize State: {CurrentState.name}");
+            _currentState.Initialize(this);
+        }
+
+        private void ExitState(AIBaseState initialState)
+        {
+            if (initialState == _currentState || _currentState == null) return;
+            Debug.Log($"AI: {gameObject.name} | Exit State: {CurrentState.name}");
+            _currentState.Exit(this);
+        }
+        
         public new T GetComponent<T>() where T : Component
         {
             if (_cachedComponents.ContainsKey(typeof(T)))

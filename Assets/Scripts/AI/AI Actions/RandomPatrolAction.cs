@@ -11,15 +11,6 @@ namespace AISystem
         [SerializeField] private float _range = 10.0f;
         [SerializeField] private float _velocityOffset = 0.2f;
 
-        // [Header("AI Events")]
-        // [SerializeField] private AIEvent OnStateEntered;
-        // [SerializeField] private AIEvent OnHasReachedWaypoint;
-        // [SerializeField] private AIEvent OnAgentMoveForward;
-        // [SerializeField] private AIEvent OnAgentMoveBack;
-        // [SerializeField] private AIEvent OnAgentTurnLeft;
-        // [SerializeField] private AIEvent OnAgentTurnRight;
-        // [SerializeField] private AIEvent OnAgentStopped;
-
         private NavMeshAgent _navMeshAgent = default;
         private GameObject _owner;
         private Vector3 _ownerPosition;
@@ -39,11 +30,13 @@ namespace AISystem
             // Debug.Log(navMeshAgent.velocity.sqrMagnitude);
             if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
             {
-                OnAgentMoveForward.Raise();
+                if (OnAgentMoveForward != null)
+                    OnAgentMoveForward.Raise();
             }
             else 
             {
-                OnAgentStopped.Raise();
+                if (OnAgentStopped != null)
+                    OnAgentStopped.Raise();
             }
 
             var patrolPoints = new AIRandomPatrol();
@@ -53,7 +46,7 @@ namespace AISystem
             if (OnHasReachedWaypoint != null) OnHasReachedWaypoint.Raise();
 
             if (!patrolPoints.GetRandomWaypoint(_navMeshAgent.transform.position, _range, out Vector3 point)) return;
-            Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+            Debug.DrawRay(point, Vector3.up, Color.magenta, 1.0f);
                 
                 // TODO line of Sight check
                 

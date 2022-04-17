@@ -22,7 +22,7 @@ namespace AISystem
       public abstract void Initialize(AIFSMAgent stateMachine);
       public abstract void Execute(AIFSMAgent stateMachine);
 
-      public virtual void Exit() {}
+      public virtual void Exit(AIFSMAgent stateMachine) {}
       
       public virtual void OnUpdateSettings() {}
       

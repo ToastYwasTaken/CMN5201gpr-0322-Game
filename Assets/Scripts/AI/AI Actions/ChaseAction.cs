@@ -9,7 +9,9 @@ namespace AISystem
         public Transform Owner { get; set; }
         public Transform Target { get; set; }
 
-        [Header("Settings")]
+        [Header("Settings")] 
+        [SerializeField] private string _targetTag = "Player";
+        [SerializeField] private LayerMask _ignoreLayer = 0;
         [SerializeField] private float _velocityOffset = 0f;
         [SerializeField] private float _maxVelocity = 3f;
         [SerializeField] private float _seekForce = 0.005f;
@@ -30,19 +32,16 @@ namespace AISystem
 
             if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
             {
-                OnAgentMoveForward.Raise();
+                if (OnAgentMoveForward != null)
+                    OnAgentMoveForward.Raise();
             }
-            else
+            else 
             {
-                OnAgentStopped.Raise();
+                if (OnAgentStopped != null)
+                    OnAgentStopped.Raise();
             }
 
-
-            var enemySightSensor = new AIInLineOfSight();
-            {
-                Owner = stateMachine.Owner.transform;
-                
-            };
+            var enemySightSensor = new AIInLineOfSight(stateMachine.Owner, _targetTag, _ignoreLayer);
 
             _navMeshAgent.SetDestination(enemySightSensor.Target.position);
         }

@@ -11,17 +11,14 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/IdleAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/IdleAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/PatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/PatrolAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/RandomPatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/RandomPatrolAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInFieldOfViewDecision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInFieldOfViewDecision.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInLineOfSightDecision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInLineOfSightDecision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIFieldOfView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIFieldOfView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIInLineOfSight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIInLineOfSight.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIPatrolPoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIPatrolPoints.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AISwarm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AISwarm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIBaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIBaseState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIStateAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIStateAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AIFSMAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AIFSMAgent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,9 +26,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://E:/GitHub/CMN5201gpr-0322-Game/Assets/Scripts/AI/AIFSMAgent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/GitHub/CMN5201gpr-0322-Game/Assets/Scenes/AI Dev Scene.unity" root0="SKIP_HIGHLIGHTING" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,10 +71,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16228">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="16228" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -93,6 +94,8 @@
       <workItem from="1649418871975" duration="2920000" />
       <workItem from="1649676780723" duration="96000" />
       <workItem from="1649926987252" duration="10252000" />
+      <workItem from="1650188468643" duration="4442000" />
+      <workItem from="1650202387630" duration="5136000" />
     </task>
     <servers />
   </component>
@@ -104,37 +107,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIInLineOfSight.cs</url>
-          <line>38</line>
-          <properties documentPath="E:\GitHub\CMN5201gpr-0322-Game\Assets\Scripts\AI\AI Modules\AIInLineOfSight.cs" initialLine="46" containingFunctionPresentation="method 'OnDrawGizmos'">
-            <startOffsets>
-              <option value="1232" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1233" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIInLineOfSight.cs</url>
-          <line>22</line>
-          <properties documentPath="E:\GitHub\CMN5201gpr-0322-Game\Assets\Scripts\AI\AI Modules\AIInLineOfSight.cs" initialLine="24" containingFunctionPresentation="method 'Ping'">
-            <startOffsets>
-              <option value="547" />
-            </startOffsets>
-            <endOffsets>
-              <option value="600" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -7,20 +7,37 @@ namespace AISystem
 {
     public class AIInLineOfSight 
     {
-        public Transform Target { get; set; }
-        public Transform Owner { get; set; }
+        public Transform Target { get; private set; }
+        public Transform Owner { get; private set; }
 
-        public LayerMask IgnoreLayer { get; set; }
+        public LayerMask IgnoreLayer {  get; private set; }
 
-        private Ray _ray;
+        public AIInLineOfSight(GameObject owner, string targetTag, LayerMask ignoreLayer)
+        {
+            Owner = owner.transform;
 
+            IgnoreLayer = ignoreLayer;
+
+            Target = GameObject.FindWithTag(targetTag).transform;
+        }
+        
+        public AIInLineOfSight(GameObject owner, GameObject target, LayerMask ignoreLayer)
+        {
+            Owner = owner.transform;
+
+            IgnoreLayer = ignoreLayer;
+
+            Target = target.transform;
+        }
+        
+        
         public bool Ping(string targetTag)
         {
             if (Target == null || Owner == null) return false;
 
             var transform = Owner.transform;
             var position = transform.position;
-            _ray = new Ray(position, Target.position - position);
+            Ray _ray = new Ray(position, Target.position - position);
 
             var dir = new Vector3(_ray.direction.x, 0, _ray.direction.z);
             var angle = Vector3.Angle(dir, transform.forward);
@@ -30,13 +47,7 @@ namespace AISystem
             return Physics.Raycast(_ray, out var hit, 100, ~IgnoreLayer) && hit.collider.CompareTag(targetTag);
         }
 
-        // private void OnDrawGizmos()
-        // {
-        //     Gizmos.color = Color.red;
-        //     Gizmos.DrawLine(_ray.origin, _ray.origin + _ray.direction * 100);
-        //     Gizmos.color = Color.blue;
-        //     Gizmos.DrawLine(transform.position, transform.position + transform.forward * 100 );
-        // }
+       
     }
 }
 

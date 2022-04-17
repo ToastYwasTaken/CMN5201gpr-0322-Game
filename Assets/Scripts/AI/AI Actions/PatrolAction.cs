@@ -20,26 +20,28 @@ namespace AISystem
         // [SerializeField] private AIEvent OnAgentTurnRight;
         // [SerializeField] private AIEvent OnAgentStopped;
 
-        private NavMeshAgent navMeshAgent;
+        private NavMeshAgent _navMeshAgent;
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
             if (OnStateEntered != null) OnStateEntered.Raise();
 
-            navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
+            _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
         }
 
         public override void Execute(AIFSMAgent stateMachine)
         {
             OnUpdateSettings();
 
-            if (navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
+            if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
             {
-                OnAgentMoveForward.Raise();
+                if (OnAgentMoveForward != null)
+                    OnAgentMoveForward.Raise();
             }
-            else
+            else 
             {
-                OnAgentStopped.Raise();
+                if (OnAgentStopped != null)
+                    OnAgentStopped.Raise();
             }
             //var navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
             var patrol = new AIPatrolPoints
@@ -47,21 +49,21 @@ namespace AISystem
                 PatrolPoints = _patrolPoints
             };
 
-            if (!patrol.HasReached(navMeshAgent)) return;
+            if (!patrol.HasReached(_navMeshAgent)) return;
             if (OnHasReachedWaypoint != null) OnHasReachedWaypoint.Raise();
 
-            navMeshAgent.SetDestination(patrol.GetNext().position);
+            _navMeshAgent.SetDestination(patrol.GetNext().position);
 
 
         }
 
         public override void OnUpdateSettings()
         {
-            navMeshAgent.speed = AIConifg.speed;
-            navMeshAgent.angularSpeed = AIConifg.angularSpeed;
-            navMeshAgent.acceleration = AIConifg.acceleration;
-            navMeshAgent.stoppingDistance = AIConifg.stoppingDistance;
-            navMeshAgent.autoBraking = AIConifg.autoBraking;
+            _navMeshAgent.speed = AIConifg.speed;
+            _navMeshAgent.angularSpeed = AIConifg.angularSpeed;
+            _navMeshAgent.acceleration = AIConifg.acceleration;
+            _navMeshAgent.stoppingDistance = AIConifg.stoppingDistance;
+            _navMeshAgent.autoBraking = AIConifg.autoBraking;
 
         }
     }
