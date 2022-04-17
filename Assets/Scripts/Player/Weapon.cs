@@ -1,21 +1,19 @@
 ﻿//Temporär
-using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    class Weapon : MonoBehaviour, IShoot
+    internal class Weapon : MonoBehaviour, IShoot
     {
-        [SerializeField] GameObject lightGO;
+        [SerializeField] private GameObject lightGO;
 
-        [SerializeField] bool canShoot = false;
-        [SerializeField] float resetTime;
+        [SerializeField] private bool canShoot = false;
+        [SerializeField] private float resetTime;
 
-        [SerializeField] GameObject mProjectilePfab;
+        [SerializeField] private GameObject mProjectilePfab;
 
-        [SerializeField] Transform Muzzle;
-
-        bool doesReset = false;
+        [SerializeField] private Transform Muzzle;
+        private bool doesReset = false;
 
         public void Fire()
         {
@@ -32,14 +30,16 @@ namespace Assets.Scripts.Player
             Instantiate(mProjectilePfab, Muzzle);
         }
         public void StopFire() { }
-        void turnOff() => lightGO.SetActive(false);
-        void DoReset()
+
+        private void turnOff() => lightGO.SetActive(false);
+
+        private void DoReset()
         {
             canShoot = true;
             doesReset = false;
         }
 
-        void LightBurst()
+        private void LightBurst()
         {
             //coroutine .....................
         }

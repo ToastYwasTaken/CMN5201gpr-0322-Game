@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    class WeaponComp : MonoBehaviour
+    internal class WeaponComp : MonoBehaviour
     {
-        [SerializeField] GameObject _ProjectilePfab;
-        [SerializeField] Transform _Muzzle;
-        [SerializeField] float _ResetTime;
-
-        bool canShoot = true;
+        [SerializeField] private GameObject _ProjectilePfab;
+        [SerializeField] private Transform _Muzzle;
+        [SerializeField] private float _ResetTime;
+        private bool canShoot = true;
 
         public void Fire()
         {
@@ -23,7 +17,7 @@ namespace Assets.Scripts.Player
             StartCoroutine(ShootTimer());
         }
 
-        IEnumerator ShootTimer()
+        private IEnumerator ShootTimer()
         {
             canShoot = false;
             yield return new WaitForSeconds(_ResetTime * Time.deltaTime * 20);

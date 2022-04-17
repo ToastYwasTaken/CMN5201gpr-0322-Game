@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class DirLightDimmer : MonoBehaviour
 {
-    Light2D mLight;
+    private Light2D mLight;
 
     private void Awake()
     {

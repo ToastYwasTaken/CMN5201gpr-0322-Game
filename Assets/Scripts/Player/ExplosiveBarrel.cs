@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-
-namespace Assets.Scripts.Player
+﻿namespace Assets.Scripts.Player
 {
-    class ExplosiveBarrel : Damagable
+    internal class ExplosiveBarrel : Damagable
     {
         protected override void OnDeath()
         {

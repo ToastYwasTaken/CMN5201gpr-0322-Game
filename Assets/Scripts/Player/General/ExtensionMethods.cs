@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AngleExtension
@@ -19,12 +17,16 @@ namespace AngleExtension
         /// </summary>
         public static Vector2 ToVector2(this Transform _transform)
         {
-            return new Vector2(_transform.position.x, _transform.transform.position.y);
+            return new Vector2(_transform.position.x, _transform.position.y);
         }
 
         public static Vector2 ToVector2(this Vector3 _vector3)
         {
             return new Vector2(_vector3.x, _vector3.y);
+        }
+        public static Vector3 ToVector3(this Vector2 _vector2)
+        {
+            return new Vector3(_vector2.x, _vector2.y, 0);
         }
 
         public static float AngleWrap(this float _angle)

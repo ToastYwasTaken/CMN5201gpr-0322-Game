@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    class Damagable : MonoBehaviour, IHealth
+    internal class Damagable : MonoBehaviour, IHealth
     {
-        [SerializeField] float mHealth;
-        float mCurrentHealth;
+        [SerializeField] private float mHealth;
+        private float mCurrentHealth;
 
         private void Awake()
         {
@@ -19,7 +14,7 @@ namespace Assets.Scripts.Player
         public void ChangeHealth(float _amount)
         {
             mCurrentHealth += _amount;
-            if(mCurrentHealth < 0)
+            if (mCurrentHealth < 0)
             {
                 mCurrentHealth = 0;
                 OnDeath();
@@ -31,11 +26,11 @@ namespace Assets.Scripts.Player
             return mCurrentHealth / mHealth;
         }
         protected virtual void OnDeath()
-        { 
+        {
         }
     }
 
-    interface IHealth
+    internal interface IHealth
     {
         public void ChangeHealth(float _amount);
     }

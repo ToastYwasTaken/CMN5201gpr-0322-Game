@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
     [RequireComponent(typeof(WeaponComp))]
     [RequireComponent(typeof(Rotateable))]
-    class TurretAI : MonoBehaviour
+    internal class TurretAI : MonoBehaviour
     {
-        [SerializeField]Transform target;
-        Rotateable _Rotateable;
-        WeaponComp _Weapon;
+        [SerializeField] private Transform target;
+        private Rotateable _Rotateable;
+        private WeaponComp _Weapon;
 
-        [SerializeField] bool isActive;
-        bool isOnTarget = false;
+        [SerializeField] private bool isActive;
+        [SerializeField] private bool isShoot;
+        private bool isOnTarget = false;
 
         private void Awake()
         {
@@ -30,16 +26,16 @@ namespace Assets.Scripts.Player
             StartCoroutine(OnTargetLoop());
         }
 
-        IEnumerator AILoop()
+        private IEnumerator AILoop()
         {
-            while(isActive)
+            while (isActive)
             {
-                while(!isOnTarget)
+                while (!isOnTarget)
                 {
                     _Rotateable.RotateTowardsTarget(target);
                     yield return Time.fixedDeltaTime;
                 }
-                while(isOnTarget)
+                while (isOnTarget && isShoot)
                 {
                     _Weapon.Fire();
                     yield return Time.fixedDeltaTime;
@@ -47,9 +43,10 @@ namespace Assets.Scripts.Player
                 yield return Time.fixedDeltaTime;
             }
         }
-        IEnumerator OnTargetLoop()
+
+        private IEnumerator OnTargetLoop()
         {
-            while(isActive)
+            while (isActive)
             {
                 float targetAngleDiff = _Rotateable.AngleDifferenceToTarget(target, true);
                 isOnTarget = targetAngleDiff < 2;

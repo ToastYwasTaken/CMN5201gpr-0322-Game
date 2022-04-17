@@ -1,177 +1,189 @@
-﻿using AngleExtension;
+﻿/*****************************************************************************
+* Project: CMN5201gpr-0322-Game
+* File   : Rotateable.cs
+* Date   : 17.04.22
+* Author : Jan Apsel (JA)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+*
+* History:
+*   17.04.22    JA	Created
+******************************************************************************/
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AngleExtension;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    class Rotateable : MonoBehaviour
+    [CustomEditor(typeof(Rotateable))]
+    public class RotateableEditor : Editor
     {
-        [SerializeField] Transform _parent;
-        [SerializeField] float _turnSpeed;
-        float _constrainL 
-        { 
-            get { return _constrainL; } 
-            set { _constrainL = value; _isWideConstrain = IsWideConstrain(); } 
+        private Rotateable _rotateable; 
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            _rotateable = (Rotateable)target;
+
+            _rotateable.RotationCurve = EditorGUILayout.CurveField("Rotation/ x:Dis y:Spd", _rotateable.RotationCurve, Color.red, new Rect(0, 0.05f, 1, 1));
+            EditorGUILayout.MinMaxSlider("Constrain: " + ((int)_rotateable.ConstrStart).ToString() + "/" + ((int)_rotateable.ConstrEnd).ToString(), ref _rotateable.ConstrStart, ref _rotateable.ConstrEnd, 0, 360);
+
+            if (GUI.changed)
+                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+            if (GUILayout.Button("Center"))
+            {
+                _rotateable.CenterConstrains();
+                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+            }
         }
-        float _constrainR
-        { 
-            get { return _constrainR; } 
-            set { _constrainR = value; _isWideConstrain = IsWideConstrain(); } 
+    }
+    [RequireComponent(typeof(Rigidbody2D))]
+    internal class Rotateable : MonoBehaviour
+    {
+        [SerializeField] private Transform _parentT;
+        [SerializeField] private float _turnSpeed;
+        [SerializeField] private bool _isConstrained;
+
+        [HideInInspector] public float ConstrStart;
+        [HideInInspector] public float ConstrEnd;
+        [HideInInspector] public AnimationCurve RotationCurve;
+        private Rigidbody2D _rBody;
+
+        [SerializeField][Range(0, 360)] private float _parentOffset;
+        private float _constrS, _constrE, _ownAngle, _parentAngle;
+        private bool _isWideConstrain;
+
+
+        private void OnValidate()
+        {
+            UpdateAngles();
         }
-        [SerializeField] AnimationCurve mRotationCurve;
-
-        Rigidbody2D _rBody;
-
-        float lastDir, constrL, constrR, ownAngle, parentAngle, targetLerp;
-        [SerializeField] bool isConstrain; 
-        bool _isWideConstrain;
-
         private void Awake()
         {
             _rBody = GetComponent<Rigidbody2D>();
+
+            UpdateAngles();
+            //ownAngle = constrE;
+            //_rBody.rotation = constrE;
         }
 
-        public void RotateToTarget2(Transform target)
+        public void UpdateAngles()
         {
-            Vector2 targetV2 = target.ToVector2() - _rBody.position;
-            float targetAngle = Mathf.Atan2(targetV2.y, targetV2.x) * Mathf.Rad2Deg - 90f;
-            if(targetAngle != targetLerp)
-                targetLerp = LerpAngle(targetLerp, targetAngle);
-
-            float angleDiff = Mathf.DeltaAngle(targetLerp, lastDir);
-            if (angleDiff == 0) return;
-
-            //float currAngle = AngleWrap(Mathf.LerpAngle(lastDir, targetLerp, LerpDist(angleDiff)));
-
-            //_rBody.rotation = currAngle;
-            //lastDir = currAngle;
+            UpdateOwnAngle();
+            UpdateParentAngle();
+            UpdateConstrains();
+        }
+        public void CenterConstrains()
+        {
+            float range = Mathf.Abs(ConstrStart - ConstrEnd) / 2;
+            ConstrStart = AngleWrap(180 - range);
+            ConstrEnd = AngleWrap(180 + range);
         }
 
-        public void RotateToTarget()
+        private void UpdateOwnAngle()
         {
-            Transform target = null;
-            Vector2 targetV2 = target.ToVector2() - _rBody.position;
-
-            float targetAngle = Mathf.Atan2(targetV2.y, targetV2.x) * Mathf.Rad2Deg - 90f;
-
-
+            _ownAngle = transform.localEulerAngles.z;
         }
 
-        // wideconstrain? -> -+ Angle -> lerp ->AngleWrap
-
-        //constrain >180 / lerp to <180 ? / ..
-
-
-        void UpdateOwnAngle()
+        private void UpdateParentAngle()
         {
-            ownAngle = transform.rotation.z;
-            if (ownAngle < 0) ownAngle = ownAngle + 360f;
-        }
-        void UpdateParentAngle()
-        {
-            parentAngle = _parent.ToVector2().GetAngle();
+            _parentAngle = AngleWrap(_parentT.localEulerAngles.z + 180 + _parentOffset);
         }
 
-        void UpdateConstrains(float forwardAngle)
+        private void UpdateConstrains()
         {
-            constrL = _constrainL + forwardAngle;
-            constrR = _constrainR + forwardAngle;
-        }
-        //bool IsInsideConstrain(float targetAngle)
-        //{
+            _constrS = AngleWrap(ConstrStart + _parentAngle);
+            _constrE = AngleWrap(ConstrEnd + _parentAngle);
 
-        //    return targetAngle < _constrainL || targetAngle > _constrainR;
-        //}
-        bool isIncludeZero, isStartClosest;
-        float ConstrainAngle(float cStart, float cEnd, float angle)
+            _isWideConstrain = IsWideConstrain();
+        }
+
+        private bool isIncludeZero;
+
+        private float ConstrainAngle(float cStart, float cEnd, float angle)
         {
-            if(cStart < cEnd) // no 0
+            if (cStart < cEnd) // no 0
             {
                 isIncludeZero = false;
                 if (angle > cStart && angle < cEnd)
                     return angle;
                 return ClosestAngle(angle, cStart, cEnd);
             }
-            if(angle < cStart && angle > cEnd) //include 0
+            if (angle < cStart && angle > cEnd) //include 0
             {
                 isIncludeZero = true;
                 return ClosestAngle(angle, cStart, cEnd);
             }
             return angle;
         }
-        float currTargetAngle;
+
+        private float _currTargetAngle;
         public void RotateTowardsTarget(Transform target)
         {
             UpdateOwnAngle();
-            if(isConstrain)
+            if (_isConstrained)
             {
                 UpdateParentAngle();
-                UpdateConstrains(parentAngle);
+                UpdateConstrains();
             }
 
             Vector2 targetDir = target.ToVector2() - transform.position.ToVector2();
-            float targetAngle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
-
-            if(isConstrain)
-                targetAngle = ConstrainAngle(constrL, constrR, targetAngle);
+            float targetAngle = AngleWrap(Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f);
+            if (_isConstrained)
+                targetAngle = ConstrainAngle(_constrS, _constrE, targetAngle);
             float currAngle = 0;
 
-            if (targetAngle != currTargetAngle)
-                currTargetAngle = AngleWrap(LerpAngle(currTargetAngle, targetAngle));
-            else return;
+            _currTargetAngle = targetAngle;
+            //if (targetAngle != currTargetAngle)
+            //    currTargetAngle = AngleWrap(LerpAngle(currTargetAngle, targetAngle));
 
-            float angleDiff = Mathf.DeltaAngle(currTargetAngle, ownAngle);
+            float angleDiff = Mathf.Abs(Mathf.DeltaAngle(_currTargetAngle, _ownAngle));
 
-            if (!_isWideConstrain || !isConstrain)
+            if (!_isWideConstrain || !_isConstrained)
             {
-                currAngle = Mathf.LerpAngle(ownAngle, currTargetAngle, LerpDist(angleDiff, 180, _turnSpeed, mRotationCurve));
+                currAngle = Mathf.LerpAngle(_ownAngle, _currTargetAngle, LerpDist(angleDiff, 180, _turnSpeed, RotationCurve));
             }
             else
             {
-                if(isIncludeZero)
+                float tempTargetAngle = _currTargetAngle;
+                //float tempOwnAngle = _ownAngle;
+                if (isIncludeZero)
                 {
-                    if (ownAngle < currTargetAngle) ownAngle += 360;
-                    else targetAngle += 360;
+                    if (_ownAngle <= ConstrEnd) _ownAngle += 360;
+                    if (tempTargetAngle <= ConstrEnd) tempTargetAngle += 360;
                 }
-                currAngle = AngleWrap(Mathf.Lerp(ownAngle, currTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0, 180), 180, _turnSpeed, mRotationCurve)));
+                currAngle = AngleWrap(Mathf.Lerp(_ownAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0, 180), 180, _turnSpeed, RotationCurve)));
             }
             _rBody.rotation = currAngle;
         }
 
-        //constr < 180 = lerpangle
-        //constr > 180 
-        //if not include 0 lerp float
-        //if include 0 lerp distance raw + Wrapangle after
-        //lerpdist > 180 constant
-        float LerpAngle(float currTarget, float newTarget)
+        private float LerpAngle(float currTarget, float newTarget)
         {
             float angleDiff = Mathf.Abs(Mathf.DeltaAngle(currTarget, newTarget));
 
-            return Mathf.LerpAngle(currTarget, newTarget, LerpDist(angleDiff, 180, _turnSpeed, mRotationCurve)); /////
+            return Mathf.LerpAngle(currTarget, newTarget, LerpDist(angleDiff, 180, _turnSpeed, RotationCurve)); /////
         }
 
-        float LerpDist(float _diff, float _ratio, float _speed, AnimationCurve _curve)
+        private float LerpDist(float diff, float ratio, float speed, AnimationCurve curve)
         {
-            _diff = Mathf.Abs(_diff);
-            float distUnified = (_ratio / _diff) / _ratio;
-            return Mathf.Clamp01(_curve.Evaluate(_diff / _ratio) * distUnified * _speed);
+            diff = Mathf.Clamp(Mathf.Abs(diff), 0.01f, ratio); ////---
+            float distUnified = (ratio / diff) / ratio;
+            return Mathf.Clamp01(curve.Evaluate(diff / ratio) * distUnified * speed);
         }
 
-        
-
-        float ClosestAngle(float angle, float targetA, float targetB)
+        private float ClosestAngle(float angle, float targetA, float targetB)
         {
-            return Mathf.DeltaAngle(targetA, angle) < Mathf.DeltaAngle(targetB, angle) ? targetA : targetB;
+            return Mathf.Abs(Mathf.DeltaAngle(targetA, angle)) < Mathf.Abs(Mathf.DeltaAngle(targetB, angle)) ? targetA : targetB;
         }
 
-        bool IsWideConstrain()
+        private bool IsWideConstrain()
         {
-            if (Mathf.Abs(_constrainL) + Mathf.Abs(_constrainL) >= 180f)
+            if (Mathf.Abs(ConstrStart - ConstrEnd) >= 180f)
                 return true;
             return false;
         }
@@ -185,15 +197,41 @@ namespace Assets.Scripts.Player
 
             return isAbsolut ? Mathf.Abs(angleDiff) : angleDiff;
         }
-        float HalfAngle(float angle)
+
+        private float HalfAngle(float angle)
         {
-            if (angle > 180) return angle -360;
+            if (angle > 180) return angle - 360;
             return angle;
         }
 
-        float AngleWrap(float _angle)
+        private float AngleWrap(float _angle)
         {
-            return _angle < 0 ? 360 + _angle : _angle > 360 ? 0 : _angle;
+            return _angle < 0 ? 360 + _angle : _angle > 360 ? _angle - 360 : _angle;
+        }
+        private void OnDrawGizmosSelected()
+        {
+            if (_isConstrained)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawLine(transform.position, DegreeToV3Relative(ConstrStart + _parentAngle));
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(transform.position, DegreeToV3Relative(ConstrEnd + _parentAngle));
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawLine(transform.position, DegreeToV3Relative(_parentAngle));
+
+                Handles.color = Color.Lerp(Color.red, Color.clear, 0.7f);
+                Handles.DrawSolidArc(transform.position, Vector3.forward, DegreeToV3Relative(ConstrStart + _parentAngle) - transform.position, Mathf.Abs(ConstrStart - ConstrEnd), 2.5f);
+            }
+        }
+
+        private Vector3 DegreeToV3Relative(float degree)
+        {
+            return transform.position + degToV2(degree + 90f).ToVector3().normalized * 2.5f;
+        }
+
+        private Vector2 degToV2(float degree)
+        {
+            return new Vector2(Mathf.Cos(degree * Mathf.Deg2Rad), Mathf.Sin(degree * Mathf.Deg2Rad));
         }
     }
 }
