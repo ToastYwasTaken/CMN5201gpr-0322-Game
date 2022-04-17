@@ -3,23 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f3bae0b7-d229-45ef-a601-042806e41f23" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AI Dev Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AI Dev Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AI Dev Scene/NavMesh-NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AI Dev Scene/NavMesh-NavMesh.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/ChaseAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/ChaseAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/EvadeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/EvadeAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/IdleAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/IdleAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/PatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/PatrolAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/RandomPatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/RandomPatrolAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Actions/Attack Action.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Actions/Attack Action.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInLineOfSightDecision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInLineOfSightDecision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIInLineOfSight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIInLineOfSight.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AISwarm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AISwarm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIBaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIBaseState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIStateAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI States/AIStateAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AITargetInRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AITargetInRange.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AIFSMAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AIFSMAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.2575" />
     <property name="rider.run.widget.enabled.cache" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -71,10 +62,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16228">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21716">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="16228" />
+      <option name="pid" value="21716" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -96,6 +87,7 @@
       <workItem from="1649926987252" duration="10252000" />
       <workItem from="1650188468643" duration="4442000" />
       <workItem from="1650202387630" duration="5136000" />
+      <workItem from="1650211032318" duration="6898000" />
     </task>
     <servers />
   </component>
@@ -107,5 +99,50 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs</url>
+          <line>56</line>
+          <properties documentPath="E:\GitHub\CMN5201gpr-0322-Game\Assets\Scripts\AI\AI Actions\AttackAction.cs" initialLine="56" containingFunctionPresentation="method 'FightDistanceCheck'">
+            <startOffsets>
+              <option value="1894" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1974" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs</url>
+          <line>62</line>
+          <properties documentPath="E:\GitHub\CMN5201gpr-0322-Game\Assets\Scripts\AI\AI Actions\AttackAction.cs" initialLine="62" containingFunctionPresentation="method 'Attack'">
+            <startOffsets>
+              <option value="2065" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2136" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs</url>
+          <line>64</line>
+          <properties documentPath="E:\GitHub\CMN5201gpr-0322-Game\Assets\Scripts\AI\AI Actions\AttackAction.cs" initialLine="64" containingFunctionPresentation="method 'Attack'">
+            <startOffsets>
+              <option value="2167" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2191" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

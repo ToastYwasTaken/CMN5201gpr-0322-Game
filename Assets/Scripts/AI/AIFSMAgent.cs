@@ -42,20 +42,20 @@ namespace AISystem
         private void Update()
         {
             CurrentState.Execute(this);
-            Debug.Log($"AI: {gameObject.name} | Current State: {CurrentState.name}");
+           // Debug.Log($"AI: {gameObject.name} | Current State: {CurrentState.name}");
         }
 
         private void InitializeState()
         {
             Debug.Log($"AI: {gameObject.name} | Initialize State: {CurrentState.name}");
-            _currentState.Initialize(this);
+            CurrentState.Initialize(this);
         }
 
         private void ExitState(AIBaseState initialState)
         {
-            if (initialState == _currentState || _currentState == null) return;
+            if (initialState == CurrentState || CurrentState == null) return;
             Debug.Log($"AI: {gameObject.name} | Exit State: {CurrentState.name}");
-            _currentState.Exit(this);
+            CurrentState.Exit(this);
         }
         
         public new T GetComponent<T>() where T : Component

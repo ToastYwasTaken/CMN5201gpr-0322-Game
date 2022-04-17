@@ -12,6 +12,8 @@ namespace AISystem
         [Header("Settings")] 
         [SerializeField] private string _targetTag = "Player";
         [SerializeField] private LayerMask _ignoreLayer = 0;
+        [SerializeField] private float _fightDistanceToTarget = 7f;
+        
         [SerializeField] private float _velocityOffset = 0f;
         [SerializeField] private float _maxVelocity = 3f;
         [SerializeField] private float _seekForce = 0.005f;
@@ -42,7 +44,7 @@ namespace AISystem
             }
 
             var enemySightSensor = new AIInLineOfSight(stateMachine.Owner, _targetTag, _ignoreLayer);
-
+           // FightDistanceCheck();
             _navMeshAgent.SetDestination(enemySightSensor.Target.position);
         }
 
@@ -52,6 +54,16 @@ namespace AISystem
             Vector3 steering = desiredVelocity - _velocity;
             return steering * _seekForce;
 
+        }
+        
+        private void FightDistanceCheck()
+        {
+            _navMeshAgent.isStopped = _navMeshAgent.remainingDistance <= _fightDistanceToTarget;
+
+            if (_navMeshAgent.isStopped)
+            {
+                //_navMeshAgent.transform.forward = Target.position;
+            }
         }
 
         public override void OnUpdateSettings()

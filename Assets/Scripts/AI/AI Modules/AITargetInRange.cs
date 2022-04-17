@@ -23,8 +23,10 @@ namespace AISystem
 
         public bool TargetInRange(float range)
         {
-            if (Target == null || Owner == null) return false;
-            return Vector3.Distance(Target.position, Owner.position) <= range;
+            if (Target == null || Owner == null) return false; 
+            float distance = Vector3.Distance(Target.position, Owner.position);
+             Debug.Log($"Distance: {distance}");
+            return distance <= range;
         }
 
     }
