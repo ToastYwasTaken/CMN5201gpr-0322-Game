@@ -9,6 +9,11 @@ namespace MapGeneration
         private int _roomCount;
         private Room[] _rooms;
 
+        public Room[] Rooms
+        {
+            get => _rooms;
+        }
+
         public Level(int roomCount, GameObject wallPrefab, GameObject groundPrefab, ERoomSize roomSize)
         {
             _roomCount = roomCount;
@@ -24,7 +29,7 @@ namespace MapGeneration
                 _rooms[i] = new NormalRoom(groundPrefab, wallPrefab, roomSize);
             }
             //Init 1 boss room
-
+            _rooms[roomCount] = new BossRoom(groundPrefab, wallPrefab, roomSize);
         }
     }
 }

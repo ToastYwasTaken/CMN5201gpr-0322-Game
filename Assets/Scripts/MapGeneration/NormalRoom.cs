@@ -16,10 +16,9 @@ namespace MapGeneration
             InitRoom();
         }
 
-        protected override void AssignRoomSize(ERoomSize roomSize)
-        {
-
-        }
+        // <summary>
+        /// Assigns the tiles of the room
+        /// </summary>
         protected override void InitRoom()
         {
             throw new System.NotImplementedException();

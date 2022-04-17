@@ -18,15 +18,18 @@ namespace MapGeneration
         [SerializeField]
         int _roomCount;
 
-        //public enum ERoomSize
-        //{
-        //    Random = -1,
-        //    Normal = 0,
-        //}
-
+        private Level _level;
         void Awake()
         {
-            new Level(_roomCount, _wallPrefab, _roomPrefab, ERoomSize.Random);
+            _level = new Level(_roomCount, _wallPrefab, _roomPrefab, ERoomSize.Random);
+        }
+        
+        private void CreateLevel()
+        {
+            foreach (var room in _level.Rooms)
+            {
+                throw new System.NotImplementedException();
+            }
         }
     }
 }

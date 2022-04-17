@@ -15,27 +15,12 @@ namespace MapGeneration
             InitRoom();
         }
 
-        protected override void AssignRoomSize(ERoomSize roomSize)
-        {
-            switch (roomSize)
-            {
-                case ERoomSize.Random:
-                    _width = 0;
-                    _height = 0;
-                    break;
-                case ERoomSize.Normal:
-                    _width = 0;
-                    _height = 0;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-
+        /// <summary>
+        /// Assigns the tiles of the room
+        /// </summary>
         protected override void InitRoom()
         {
-            
+            throw new System.NotImplementedException();
         }
     }
 }
