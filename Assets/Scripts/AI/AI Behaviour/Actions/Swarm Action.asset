@@ -21,7 +21,7 @@ MonoBehaviour:
   OnAgentTurnLeft: {fileID: 0}
   OnAgentTurnRight: {fileID: 0}
   OnAgentStopped: {fileID: 0}
-  _swarmleader: {fileID: 7315260404001948518, guid: 00e0b8c2232302d4ebdc16a8857ef31a, type: 3}
+  _swarmleader: {fileID: 7576545269406560640, guid: 1a247bb5a62d8f546877930cb718182d, type: 3}
   _neighborTag: Enemy A
   _distanceToLeader: 11.86
   _maxVelocity: 3

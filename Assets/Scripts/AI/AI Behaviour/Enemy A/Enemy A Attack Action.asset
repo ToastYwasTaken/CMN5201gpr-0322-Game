@@ -26,6 +26,6 @@ MonoBehaviour:
   _targetTag: Player
   _fightDistanceToTarget: 29
   _closeAttackDistance: 10
-  _useFarAttack: 1
+  _useFarAttack: 0
   _farAttackDistance: 30
   _velocityOffset: 0.2
