@@ -151,6 +151,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7576545269406560644}
   - component: {fileID: 7576545269406560645}
+  - component: {fileID: 1291949801297351517}
+  - component: {fileID: 3665615872649959662}
   - component: {fileID: 7576545269406560642}
   - component: {fileID: 7576545269406560643}
   m_Layer: 0
@@ -195,6 +197,12 @@ MonoBehaviour:
   mMoveAccel: 17.9
   mMoveDrag: 1.7
   isCamFollow: 1
+  mAccelCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   mRotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -252,9 +260,50 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  mCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   mVelocity: {x: 0, y: 0}
   targetAngle: 0
   currAngle: 0
+--- !u!114 &1291949801297351517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39257df1db9ee6441a8930dcb9783716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maximumHeatlevel: 200
+  CooldownMultiplier: 1
+  _overheatPenalty: 1.8
+  CooldownAmountMultipier: 1
+--- !u!114 &3665615872649959662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d8233670181714a9134fe465a0a4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 7576545269406560645}
+  _heatmeter: {fileID: 1291949801297351517}
+  _weaponItems: []
+  _defaultWeapon: {fileID: 11400000, guid: 1231d008f58ba7f45abe29e05ae6f2ad, type: 2}
+  _firePoints:
+  - {fileID: 2649768078200201302}
+  - {fileID: 9088219006787790356}
 --- !u!50 &7576545269406560642
 Rigidbody2D:
   serializedVersion: 4
@@ -411,7 +460,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7576545270023373699}
-  - component: {fileID: 7576545270023373698}
   m_Layer: 0
   m_Name: Weapon (1)
   m_TagString: Untagged
@@ -436,23 +484,6 @@ Transform:
   m_Father: {fileID: 7576545269406560644}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7576545270023373698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576545270023373696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcebabddddcda04458ba267142042723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightGO: {fileID: 7576545269323916518}
-  canShoot: 0
-  resetTime: 1
-  mProjectilePfab: {fileID: 2912425703784977495, guid: 7aefbb8125f14e04088525dd7d35f533, type: 3}
-  Muzzle: {fileID: 40639736723355326}
 --- !u!1 &7576545270106876275
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +601,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 74026
+  m_InstanceId: 49694
 --- !u!1 &7576545270325181344
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +611,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7576545270325181347}
-  - component: {fileID: 7576545270325181346}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -605,23 +635,6 @@ Transform:
   m_Father: {fileID: 7576545269406560644}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7576545270325181346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576545270325181344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcebabddddcda04458ba267142042723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightGO: {fileID: 7576545269882444202}
-  canShoot: 0
-  resetTime: 0.26
-  mProjectilePfab: {fileID: 2912425703784977495, guid: 303990cf9fd802b43a112b63b205ee5d, type: 3}
-  Muzzle: {fileID: 9213206328065713466}
 --- !u!1 &9088219006787790356
 GameObject:
   m_ObjectHideFlags: 0

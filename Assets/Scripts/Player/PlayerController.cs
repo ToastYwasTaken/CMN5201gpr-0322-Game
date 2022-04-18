@@ -32,6 +32,11 @@ namespace Assets.Scripts.Player
         [SerializeField] private AnimationCurve mDragCurve;
         public AnimationCurve mCurve;
 
+        private PlayerStats _playerStats;
+        public PlayerStats PlayerStats { get => _playerStats; }
+
+        private WeaponManager _weaponManager;
+
         private float pTurnSpeed { get { return mTurnSpeed /3; } set { value = mTurnSpeed; } }
 
         private float pMoveSpeedMax { get { return mMoveSpeedMax * 2; } set { value = mMoveSpeedMax; } }
@@ -59,6 +64,12 @@ namespace Assets.Scripts.Player
             mGuns = GetComponentsInChildren<IShoot>();
             cam = Camera.main.transform;
             //currTarget = transform.up.ToVector2().GetAngle();
+
+            //toDo: not hardcodes values
+            _playerStats = new PlayerStats(500, 100, 10, 50, 200);
+
+            _weaponManager = GetComponent<WeaponManager>();
+
 
         }
         private void Update()
@@ -176,12 +187,12 @@ namespace Assets.Scripts.Player
 
         private void DoWeapons()
         {
+            if (_weaponManager == null) return;
+
             if (Input.GetButton("Fire1"))
-                foreach (IShoot gun in mGuns)
-                    gun.Fire();
-            //if(Input.GetButtonUp("Fire1"))
-            //    foreach (IShoot gun in mGuns)
-            //        gun.StopFire();
+            {
+                _weaponManager.FireWeapons();
+            }
         }
     }
 

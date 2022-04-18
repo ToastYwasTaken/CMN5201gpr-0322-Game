@@ -1,54 +1,54 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    internal class Projectile : MonoBehaviour
+
+    public struct ProjectileStats
     {
-        [SerializeField] private float mLifeTime;
-        [SerializeField] private float mSpeed = 5f;
-        [SerializeField] private float damage = -5f;
-        //[SerializeField] private float health = 5f;
 
-        //[SerializeField] private GameObject mExplosionPrefab;
-        [SerializeField] private Rigidbody2D mRigidbody;
+        public float AttackPower;
+        public float ArmorPenetration;
+        public float ProjectileSpeed;
 
-        //private void Awake()
-        //{
-        //    mRigidbody = GetComponent<Rigidbody>();
-        //}
+        public float ProjectileLifeTime;
+    }
+
+    class Projectile : MonoBehaviour
+    {
+        private ProjectileStats _projectileStats;
+        public ProjectileStats ProjectileStats { get => _projectileStats;
+                                                 set { _projectileStats = value; }
+        }
+
+        [SerializeField] private Rigidbody2D _rb;
+
 
         private void Start()
         {
-            mRigidbody.velocity = Vector2.zero;
+            if (_rb == null) _rb = GetComponent<Rigidbody2D>();   
 
-            mRigidbody.AddForce(transform.up * mSpeed, ForceMode2D.Impulse);
+            _rb.velocity = Vector2.zero;
 
-            Destroy(gameObject, mLifeTime);
-        }
+            _rb.AddForce(transform.up * _projectileStats.ProjectileSpeed, ForceMode2D.Impulse);
 
-        public float Damage()
-        {
-            return damage;
+            Destroy(gameObject, _projectileStats.ProjectileLifeTime);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             DamageTarget(collision.gameObject);
-
-            //ContactPoint2D contact = collision.GetContact(0); //collision.contacts[0];
-
-            //Quaternion rotation =
-            //    Quaternion.FromToRotation(Vector3.up, contact.normal);
-
-            //Vector2 position = contact.point;
-
-            //Instantiate(mExplosionPrefab, new Vector3(position.x, position.y, 0), rotation);
             Destroy(gameObject);
         }
+
         private void DamageTarget(GameObject target)
         {
             IHealth targetIHealth = target.GetComponent<IHealth>();
-            targetIHealth?.ChangeHealth(damage);
+            targetIHealth?.ChangeHealth(_projectileStats.AttackPower);
         }
     }
 }
