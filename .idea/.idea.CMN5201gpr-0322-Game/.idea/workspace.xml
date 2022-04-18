@@ -4,12 +4,6 @@
     <list default="true" id="f3bae0b7-d229-45ef-a601-042806e41f23" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy Alpha.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy Alpha.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AI Dev Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AI Dev Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Actions/Swarm Action.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Actions/Swarm Action.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Attack Action.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Attack Action.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodingConventions.editorconfig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +85,7 @@
       <workItem from="1650211032318" duration="6898000" />
       <workItem from="1650305823448" duration="1931000" />
       <workItem from="1650308722510" duration="1000" />
+      <workItem from="1650312119847" duration="3102000" />
     </task>
     <servers />
   </component>
