@@ -433,7 +433,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: -39036
+  m_InstanceId: -196386
 --- !u!1 &6568968334343606663
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,9 +513,9 @@ GameObject:
   - component: {fileID: 7315260404001948514}
   - component: {fileID: 5800965784403032866}
   - component: {fileID: 8799174242214925448}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy A
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -546,7 +546,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.5
-  m_Speed: 25
+  m_Speed: 20
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 200
@@ -554,7 +554,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -599,5 +599,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0.32}
+  m_Size: {x: 2, y: 1, z: 3}
+  m_Center: {x: 0, y: -0.5, z: 0.32}
