@@ -12,16 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbd07cf7446e5943a2ca8f3d7ff5de6, type: 3}
   m_Name: Swarm Action
   m_EditorClassIdentifier: 
-  aiConfiguration: {fileID: 11400000, guid: 578084f441367a04db396f85b4c06f74, type: 2}
-  aiConfigFoldout: 1
+  _aiConfiguration: {fileID: 11400000, guid: 578084f441367a04db396f85b4c06f74, type: 2}
+  AiConfigFoldout: 1
   OnStateEntered: {fileID: 11400000, guid: 8e56ba47790e3fa4a94af8d7d6ba4ccf, type: 2}
-  OnHasReachedWaypoint: {fileID: 0}
   OnAgentMoveForward: {fileID: 0}
   OnAgentMoveBack: {fileID: 0}
   OnAgentTurnLeft: {fileID: 0}
   OnAgentTurnRight: {fileID: 0}
   OnAgentStopped: {fileID: 0}
-  _swarmleader: {fileID: 7576545269406560640, guid: 1a247bb5a62d8f546877930cb718182d, type: 3}
+  _swarmleader: {fileID: 7472622530595944529, guid: e09bf4c92ec3b1d47890346f6e94f587, type: 3}
   _neighborTag: Enemy A
   _distanceToLeader: 11.86
   _maxVelocity: 3

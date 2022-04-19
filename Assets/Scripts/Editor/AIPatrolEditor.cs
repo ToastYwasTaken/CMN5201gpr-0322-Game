@@ -14,7 +14,7 @@ namespace AISystem
             
             DrawSettings(_aiStateAction.AIConifg, 
                 _aiStateAction.OnUpdateSettings, 
-                ref _aiStateAction.aiConfigFoldout, 
+                ref _aiStateAction.AiConfigFoldout, 
                 ref _aiConfigurationEditor);
 
             base.OnInspectorGUI();

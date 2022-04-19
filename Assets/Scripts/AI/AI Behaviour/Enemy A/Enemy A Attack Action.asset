@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf82727e4d5e91d41aaf7f353c7a2b42, type: 3}
   m_Name: Enemy A Attack Action
   m_EditorClassIdentifier: 
-  aiConfiguration: {fileID: 11400000, guid: 2cc9d32714c25db43b0f60452cc4321c, type: 2}
-  aiConfigFoldout: 1
+  _aiConfiguration: {fileID: 11400000, guid: 2cc9d32714c25db43b0f60452cc4321c, type: 2}
+  AiConfigFoldout: 1
   OnStateEntered: {fileID: 0}
-  OnHasReachedWaypoint: {fileID: 0}
   OnAgentMoveForward: {fileID: 0}
   OnAgentMoveBack: {fileID: 0}
   OnAgentTurnLeft: {fileID: 0}

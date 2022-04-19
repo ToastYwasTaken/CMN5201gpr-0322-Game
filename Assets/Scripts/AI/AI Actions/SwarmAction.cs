@@ -35,8 +35,7 @@ namespace  AISystem
 
       public override void Execute(AIFSMAgent stateMachine)
       {
-         OnUpdateSettings();
-         
+         OnUpdateSettings();  
          if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
          {
             if (OnAgentMoveForward != null)

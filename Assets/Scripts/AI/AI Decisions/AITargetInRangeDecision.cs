@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AISystem
@@ -21,6 +22,12 @@ namespace AISystem
            var inRange = new AITargetInRange(_owner, _targetTag);
            return inRange.TargetInRange(_range);
        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(_owner.transform.position, _range);   
+        }
    } 
 }
 

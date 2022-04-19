@@ -20,6 +20,7 @@ namespace AISystem
 
         public override void Execute(AIFSMAgent stateMachine)
         {
+            OnUpdateSettings();
             if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
             {
                 if (OnAgentMoveForward != null)
@@ -37,6 +38,16 @@ namespace AISystem
         public override void Exit(AIFSMAgent stateMachine)
         {
             _navMeshAgent.isStopped = false;
+        }
+
+        public override void OnUpdateSettings()
+        {
+            _navMeshAgent.speed = AIConifg.speed;
+            _navMeshAgent.angularSpeed = AIConifg.angularSpeed;
+            _navMeshAgent.acceleration = AIConifg.acceleration;
+            _navMeshAgent.stoppingDistance = AIConifg.stoppingDistance;
+            _navMeshAgent.autoBraking = AIConifg.autoBraking;
+
         }
     }
 }
