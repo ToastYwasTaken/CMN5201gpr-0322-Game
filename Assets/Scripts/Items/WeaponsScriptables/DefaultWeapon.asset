@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 1
   _bulletPrefab: {fileID: 2912425703784977495, guid: 303990cf9fd802b43a112b63b205ee5d, type: 3}
-  _weaponPower: 5
+  _weaponPower: -0.2
   _armorPenetration: 5
-  _bulletSpeed: 7
+  _bulletSpeed: 10
   _heatmeterUsage: 10

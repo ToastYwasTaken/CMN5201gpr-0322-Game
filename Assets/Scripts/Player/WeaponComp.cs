@@ -14,13 +14,13 @@ namespace Assets.Scripts.Player
         {
             if (!canShoot) return;
             Instantiate(_ProjectilePfab, _Muzzle);
+            canShoot = false;
             StartCoroutine(ShootTimer());
         }
 
         private IEnumerator ShootTimer()
         {
-            canShoot = false;
-            yield return new WaitForSeconds(_ResetTime * Time.deltaTime * 20);
+            yield return new WaitForSeconds(_ResetTime);
             canShoot = true;
         }
     }
