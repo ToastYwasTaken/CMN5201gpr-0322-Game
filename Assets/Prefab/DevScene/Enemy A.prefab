@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5477e95af8c004db5e5d615b60244a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialState: {fileID: 11400000, guid: f161d900b479c6c4fa35b256289da702, type: 2}
+  _initialState: {fileID: 11400000, guid: f1451cbe43e86ea4cb3f3f10a48ee787, type: 2}
   PlayerTag: Player
 --- !u!54 &5800965784403032866
 Rigidbody:

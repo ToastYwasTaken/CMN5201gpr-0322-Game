@@ -10,8 +10,8 @@ public class AIFlocking
     private NavMeshAgent _navMeshAgent;
     
     public List<NavMeshAgent> Neighbors = new();
-    
-    public Vector3 OwnerPosition { get => _navMeshAgent.transform.position; }
+
+    public Vector3 OwnerPosition => _navMeshAgent.transform.position;
     public Vector3 Velocity { get => _navMeshAgent.velocity; set => _navMeshAgent.velocity = value; }
 
     public AIFlocking(GameObject owner)
@@ -20,6 +20,20 @@ public class AIFlocking
         
         if (_navMeshAgent == null)
             Debug.LogError("AI Flocking: no NavMeshAgent found!");
+    }
+
+    public void SetAllNeighborsWithTag(string neighborTag)
+    {
+        GameObject[] neighbors = GameObject.FindGameObjectsWithTag(neighborTag);
+
+        foreach (GameObject neighbor in neighbors)
+        {
+            NavMeshAgent agent = neighbor.GetComponent<NavMeshAgent>();
+            if (Neighbors.Contains(agent)) continue;
+            Neighbors.Add(agent);
+        }
+
+        Debug.Log($"Flocking neighbors: {Neighbors.Count}");
     }
 
     public void AddNeighbor(NavMeshAgent navMeshAgent)
@@ -34,6 +48,10 @@ public class AIFlocking
         Neighbors.Remove(navMeshAgent);
     }
 
+    public void ResetNeighbors()
+    {
+        Neighbors.Clear();
+    }
 
     public Vector3 CalculateAlignment(float distance, float weight, float maxVelocity, float speed)
     {

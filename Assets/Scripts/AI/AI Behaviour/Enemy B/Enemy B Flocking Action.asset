@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff44f7019ad05d409d0fdc59d985f9f, type: 3}
-  m_Name: Idle Action
+  m_Script: {fileID: 11500000, guid: d9fbf3c545832724b9af0a2d4938cd48, type: 3}
+  m_Name: Enemy B Flocking Action
   m_EditorClassIdentifier: 
-  _aiConfiguration: {fileID: 11400000, guid: 578084f441367a04db396f85b4c06f74, type: 2}
+  _aiConfiguration: {fileID: 11400000, guid: 289cdd8b5b3294340a73b2e3bbc7ac87, type: 2}
   AiConfigFoldout: 1
   OnStateEntered: {fileID: 0}
   OnAgentMoveForward: {fileID: 0}
@@ -20,4 +20,13 @@ MonoBehaviour:
   OnAgentTurnLeft: {fileID: 0}
   OnAgentTurnRight: {fileID: 0}
   OnAgentStopped: {fileID: 0}
+  _destinationObject: {fileID: 7472622530595944529, guid: e09bf4c92ec3b1d47890346f6e94f587, type: 3}
+  _neigbhorTag: Enemy
+  _maxVelocity: 7
+  _alignmentWeight: 1
+  _cohesionWeight: 1
+  _separationWeight: 1
+  _alignmentDistance: 2
+  _cohesionDistance: 2
+  _separationDistance: 3
   _velocityOffset: 0.2

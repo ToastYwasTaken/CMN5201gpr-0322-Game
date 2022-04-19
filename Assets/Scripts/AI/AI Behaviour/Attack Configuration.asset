@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a331a6a841033248a6c3646befbee3d, type: 3}
-  m_Name: Enemy A Configuration
+  m_Name: Attack Configuration
   m_EditorClassIdentifier: 
   speed: 20
-  angularSpeed: 240
+  angularSpeed: 200
   acceleration: 10
   stoppingDistance: 2
   autoBraking: 1

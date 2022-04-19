@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274681abde473d64ea61bc15db14d759, type: 3}
-  m_Name: Swarm
+  m_Name: Enemy B Random Patrol
   m_EditorClassIdentifier: 
   AIActions:
-  - {fileID: 11400000, guid: a0ca86f7d8bd4f94c86b0fce519e2d41, type: 2}
-  AITransitions: []
+  - {fileID: 11400000, guid: eb2a3888eaacbf54893ad97a30bf56e8, type: 2}
+  AITransitions:
+  - {fileID: 11400000, guid: 6f8ba6750106c6e42a54bae8ea880bb1, type: 2}

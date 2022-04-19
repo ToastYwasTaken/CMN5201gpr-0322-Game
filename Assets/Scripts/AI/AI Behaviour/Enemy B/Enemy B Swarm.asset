@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a331a6a841033248a6c3646befbee3d, type: 3}
-  m_Name: Enemy A Configuration
+  m_Script: {fileID: 11500000, guid: 274681abde473d64ea61bc15db14d759, type: 3}
+  m_Name: Enemy B Swarm
   m_EditorClassIdentifier: 
-  speed: 20
-  angularSpeed: 240
-  acceleration: 10
-  stoppingDistance: 2
-  autoBraking: 1
+  AIActions:
+  - {fileID: 11400000, guid: a0ca86f7d8bd4f94c86b0fce519e2d41, type: 2}
+  AITransitions: []
