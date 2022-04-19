@@ -30,16 +30,18 @@ namespace Assets.Scripts.Player
         {
             while (isActive)
             {
-                while (!isOnTarget)
-                {
-                    _Rotateable.RotateTowardsTarget(target);
-                    yield return Time.fixedDeltaTime;
-                }
-                while (isOnTarget && isShoot)
-                {
-                    _Weapon.Fire();
-                    yield return Time.fixedDeltaTime;
-                }
+                _Rotateable.RotateTowardsTarget(target);
+                //while (!isOnTarget)
+                //{
+                //    _Rotateable.RotateTowardsTarget(target);
+                //    yield return Time.fixedDeltaTime;
+                //}
+                //while (isOnTarget && isShoot)
+                //{
+                    
+                //    _Weapon.Fire();
+                //    yield return Time.fixedDeltaTime;
+                //}
                 yield return Time.fixedDeltaTime;
             }
         }

@@ -43,7 +43,7 @@ namespace Assets.Scripts.Player
         }
     }
     [RequireComponent(typeof(Rigidbody2D))]
-    internal class Rotateable : MonoBehaviour
+    class Rotateable : MonoBehaviour
     {
         [SerializeField] private Transform _parentT;
         [SerializeField] private float _turnSpeed;
@@ -55,12 +55,14 @@ namespace Assets.Scripts.Player
         private Rigidbody2D _rBody;
 
         [SerializeField][Range(0, 360)] private float _parentOffset;
-        private float _constrS, _constrE, _ownAngle, _parentAngle;
+        [SerializeField] private float _constrS, _constrE, _ownAngle, _parentAngle;
         private bool _isWideConstrain;
 
+        [SerializeField] float pangle;
 
         private void OnValidate()
         {
+            if(_rBody == null) _rBody = GetComponent<Rigidbody2D>();
             UpdateAngles();
         }
         private void Awake()
@@ -74,6 +76,7 @@ namespace Assets.Scripts.Player
 
         public void UpdateAngles()
         {
+            
             UpdateOwnAngle();
             UpdateParentAngle();
             UpdateConstrains();
@@ -87,12 +90,12 @@ namespace Assets.Scripts.Player
 
         private void UpdateOwnAngle()
         {
-            _ownAngle = transform.localEulerAngles.z;
+            _ownAngle = _rBody.rotation;
         }
 
         private void UpdateParentAngle()
         {
-            _parentAngle = AngleWrap(_parentT.localEulerAngles.z + 180 + _parentOffset);
+            _parentAngle = AngleWrap(_parentT.localEulerAngles.z +180f + _parentOffset);
         }
 
         private void UpdateConstrains()
@@ -114,7 +117,7 @@ namespace Assets.Scripts.Player
                     return angle;
                 return ClosestAngle(angle, cStart, cEnd);
             }
-            if (angle < cStart && angle > cEnd) //include 0
+            if (cStart > cEnd) //include 0  //start>end?
             {
                 isIncludeZero = true;
                 return ClosestAngle(angle, cStart, cEnd);
@@ -125,6 +128,7 @@ namespace Assets.Scripts.Player
         private float _currTargetAngle;
         public void RotateTowardsTarget(Transform target)
         {
+            pangle = _rBody.rotation;
             UpdateOwnAngle();
             if (_isConstrained)
             {
@@ -154,10 +158,10 @@ namespace Assets.Scripts.Player
                 //float tempOwnAngle = _ownAngle;
                 if (isIncludeZero)
                 {
-                    if (_ownAngle <= ConstrEnd) _ownAngle += 360;
-                    if (tempTargetAngle <= ConstrEnd) tempTargetAngle += 360;
+                    if (_ownAngle <= _constrE && _ownAngle>=0f) _ownAngle += 360;
+                    if (tempTargetAngle <= _constrE && tempTargetAngle >= 0f) tempTargetAngle += 360;
                 }
-                currAngle = AngleWrap(Mathf.Lerp(_ownAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0, 180), 180, _turnSpeed, RotationCurve)));
+                currAngle = AngleWrap(Mathf.Lerp(_ownAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, RotationCurve)));
             }
             _rBody.rotation = currAngle;
         }
@@ -183,7 +187,7 @@ namespace Assets.Scripts.Player
 
         private bool IsWideConstrain()
         {
-            if (Mathf.Abs(ConstrStart - ConstrEnd) >= 180f)
+            if (Mathf.Abs(-ConstrStart + ConstrEnd) > 179f)
                 return true;
             return false;
         }
@@ -206,16 +210,17 @@ namespace Assets.Scripts.Player
 
         private float AngleWrap(float _angle)
         {
-            return _angle < 0 ? 360 + _angle : _angle > 360 ? _angle - 360 : _angle;
+            return _angle < 0 ? 360 + _angle : 
+                   _angle > 360 ? _angle - 360 : _angle;
         }
         private void OnDrawGizmosSelected()
         {
             if (_isConstrained)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawLine(transform.position, DegreeToV3Relative(ConstrStart + _parentAngle));
+                Gizmos.DrawLine(transform.position, DegreeToV3Relative(AngleWrap(ConstrStart + _parentAngle)));
                 Gizmos.color = Color.red;
-                Gizmos.DrawLine(transform.position, DegreeToV3Relative(ConstrEnd + _parentAngle));
+                Gizmos.DrawLine(transform.position, DegreeToV3Relative(AngleWrap(ConstrEnd + _parentAngle)));
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(transform.position, DegreeToV3Relative(_parentAngle));
 
