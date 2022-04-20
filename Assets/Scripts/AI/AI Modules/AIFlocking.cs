@@ -9,14 +9,14 @@ public class AIFlocking
 
     private NavMeshAgent _navMeshAgent;
     
-    public List<NavMeshAgent> Neighbors = new();
+    public List<GameObject> Neighbors = new();
 
     public Vector3 OwnerPosition => _navMeshAgent.transform.position;
     public Vector3 Velocity { get => _navMeshAgent.velocity; set => _navMeshAgent.velocity = value; }
 
-    public AIFlocking(GameObject owner)
+    public AIFlocking(NavMeshAgent agent)
     {
-        _navMeshAgent = owner.GetComponent<NavMeshAgent>();
+        _navMeshAgent = agent;
         
         if (_navMeshAgent == null)
             Debug.LogError("AI Flocking: no NavMeshAgent found!");
@@ -28,24 +28,23 @@ public class AIFlocking
 
         foreach (GameObject neighbor in neighbors)
         {
-            NavMeshAgent agent = neighbor.GetComponent<NavMeshAgent>();
-            if (Neighbors.Contains(agent)) continue;
-            Neighbors.Add(agent);
+            if (Neighbors.Contains(neighbor)) continue;
+            Neighbors.Add(neighbor);
         }
 
         Debug.Log($"Flocking neighbors: {Neighbors.Count}");
     }
 
-    public void AddNeighbor(NavMeshAgent navMeshAgent)
+    public void AddNeighbor(GameObject neighbor)
     {
-        if (Neighbors.Contains(_navMeshAgent)) return;
-        Neighbors.Add(navMeshAgent);
+        if (Neighbors.Contains(neighbor)) return;
+        Neighbors.Add(neighbor);
     }
 
-    public void RemoveNeighbor(NavMeshAgent navMeshAgent)
+    public void RemoveNeighbor(GameObject neighbor)
     {
-        if (!Neighbors.Contains(navMeshAgent)) return;
-        Neighbors.Remove(navMeshAgent);
+        if (!Neighbors.Contains(neighbor)) return;
+        Neighbors.Remove(neighbor);
     }
 
     public void ResetNeighbors()
@@ -57,11 +56,12 @@ public class AIFlocking
     {
         Vector3 alignmentVector3 = Vector3.zero;
         int numberOfNeighbors = 0;
-        foreach (NavMeshAgent neighbor in from neighbor in Neighbors 
-                 let separation = OwnerPosition - neighbor.transform.position 
-                 let currentDistance = separation.magnitude 
-                 where currentDistance > 0f && currentDistance < distance select neighbor)
+        foreach (GameObject neighbor in Neighbors)
         {
+            Vector3 separation = OwnerPosition - neighbor.transform.position;
+            float currentDistance = separation.magnitude;
+
+            if (!(currentDistance > 0f) || !(currentDistance < distance)) continue;
             alignmentVector3 += neighbor.transform.forward;
             numberOfNeighbors++;
         }
@@ -83,13 +83,15 @@ public class AIFlocking
     {
         Vector3 cohesionVector3 = Vector3.zero;
         int numberOfNeighbors = 0;
-        foreach (NavMeshAgent neighbor in from neighbor in Neighbors 
-                 let separation = OwnerPosition - neighbor.transform.position 
-                 let currentDistance = separation.magnitude 
-                 where currentDistance > 0f && currentDistance < distance select neighbor)
+        foreach (GameObject neighbor in Neighbors)
         {
+            Vector3 separation = OwnerPosition - neighbor.transform.position;
+            float currentDistance = separation.magnitude;
+            
+            if (!(currentDistance > 0f) || !(currentDistance < distance)) continue;
             cohesionVector3 += neighbor.transform.position;
             numberOfNeighbors++;
+
         }
 
         if (numberOfNeighbors <= 0) return Vector3.zero;
@@ -103,29 +105,31 @@ public class AIFlocking
     public Vector3 CalculateSeparation(float distance, float weight, float maxVelocity, float speed)
     {
         Vector3 separationVector3 = Vector3.zero;
-        Vector3 steering = Vector3.zero;
         int numberOfNeighbors = 0;
-        foreach (Vector3 separation in from neighbor in Neighbors 
-                 select OwnerPosition - neighbor.transform.position 
-                 into separation 
-                 let currentDistance = separation.magnitude 
-                 where currentDistance > 0f && currentDistance < distance select separation / currentDistance)
+
+        foreach (GameObject neighbor in Neighbors)
         {
+            Vector3 separation = OwnerPosition - neighbor.transform.position;
+            float currentDistance = separation.magnitude;
+
+            if (!(currentDistance > 0f) || !(currentDistance < distance)) continue;
+            separation /= distance;
             separationVector3 += separation;
             separation.Normalize();
             numberOfNeighbors++;
-
-            if (numberOfNeighbors <= 0) return Vector3.zero;
-            
-            Vector3 averangeSeparation = separationVector3 / numberOfNeighbors;
-            averangeSeparation = separation.normalized * speed;
-
-            steering = averangeSeparation - Velocity;
-            if (steering.sqrMagnitude > maxVelocity * maxVelocity)
-            {
-                steering = steering.normalized * maxVelocity;
-            }
         }
+
+        if (numberOfNeighbors <= 0) return Vector3.zero;
+
+        Vector3 averageSeparation = separationVector3 / numberOfNeighbors;
+        averageSeparation = averageSeparation.normalized * speed;
+
+        Vector3 steering = averageSeparation - Velocity;
+        if (steering.sqrMagnitude > maxVelocity * maxVelocity)
+        {
+            steering = steering.normalized * maxVelocity;
+        }
+
         return steering * weight;
     }
 }

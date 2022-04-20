@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Enemy B Spotted Enemy
   m_EditorClassIdentifier: 
   Decision: {fileID: 11400000, guid: eaf3163016c84b64499471c274c305c5, type: 2}
-  IsTrue: {fileID: 11400000, guid: 1e2d19d7e122de84cae2abb84e89c6d2, type: 2}
+  IsTrue: {fileID: 11400000, guid: 4643f5560e0bdec428c34ff975ed663b, type: 2}
   IsFalse: {fileID: 11400000, guid: 4643f5560e0bdec428c34ff975ed663b, type: 2}

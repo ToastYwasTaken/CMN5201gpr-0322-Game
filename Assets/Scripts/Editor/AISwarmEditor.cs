@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AISystem
 {
-    [CustomEditor(typeof(IdleAction))]
+    [CustomEditor(typeof(SwarmAction))]
     public class AISwarmEditor : AIEditor
     {
         private SwarmAction _aiStateAction;

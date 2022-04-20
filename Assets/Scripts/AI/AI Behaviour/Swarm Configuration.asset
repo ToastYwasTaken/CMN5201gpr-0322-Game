@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a331a6a841033248a6c3646befbee3d, type: 3}
   m_Name: Swarm Configuration
   m_EditorClassIdentifier: 
-  speed: 20
-  angularSpeed: 200
-  acceleration: 10
+  speed: 10
+  angularSpeed: 120
+  acceleration: 5
   stoppingDistance: 2
   autoBraking: 1

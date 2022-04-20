@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _aiConfiguration: {fileID: 11400000, guid: 289cdd8b5b3294340a73b2e3bbc7ac87, type: 2}
   AiConfigFoldout: 1
-  OnStateEntered: {fileID: 0}
+  OnStateEntered: {fileID: 11400000, guid: 8e56ba47790e3fa4a94af8d7d6ba4ccf, type: 2}
   OnAgentMoveForward: {fileID: 0}
   OnAgentMoveBack: {fileID: 0}
   OnAgentTurnLeft: {fileID: 0}
   OnAgentTurnRight: {fileID: 0}
   OnAgentStopped: {fileID: 0}
-  _destinationObject: {fileID: 7472622530595944529, guid: e09bf4c92ec3b1d47890346f6e94f587, type: 3}
+  _leaderTag: Player
   _neigbhorTag: Enemy
-  _maxVelocity: 7
-  _alignmentWeight: 1
-  _cohesionWeight: 1
-  _separationWeight: 1
-  _alignmentDistance: 2
-  _cohesionDistance: 2
-  _separationDistance: 3
+  _maxVelocity: 2
+  _alignmentWeight: 2.5
+  _cohesionWeight: 5
+  _separationWeight: 5
+  _alignmentDistance: 14.1
+  _cohesionDistance: 3.9
+  _separationDistance: 3.7
   _velocityOffset: 0.2
