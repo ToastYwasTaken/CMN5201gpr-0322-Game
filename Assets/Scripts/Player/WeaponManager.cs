@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : MonoBehaviour, IWeapon
 {
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private Heatmeter _heatmeter;
@@ -94,7 +94,9 @@ public class WeaponManager : MonoBehaviour
 
         for (int i = 0; i < _weapons.Length; i++)
         {
-            _weapons[i].Shoot(_heatmeter, _playerController.PlayerStats,_firePoints[i]);
+            _weapons[i].Shoot(_heatmeter, _playerController.PlayerStats, _firePoints[i]);
         }
     }
+
+    public void Fire() => FireWeapons();
 }

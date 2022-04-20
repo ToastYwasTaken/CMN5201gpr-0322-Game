@@ -32,11 +32,6 @@ namespace Assets.Scripts.Player
         [SerializeField] private AnimationCurve mDragCurve;
         public AnimationCurve mCurve;
 
-        private PlayerStats _playerStats;
-        public PlayerStats PlayerStats { get => _playerStats; }
-
-        private WeaponManager _weaponManager;
-
         private float pTurnSpeed { get { return mTurnSpeed /3; } set { value = mTurnSpeed; } }
 
         private float pMoveSpeedMax { get { return mMoveSpeedMax * 2; } set { value = mMoveSpeedMax; } }
@@ -50,26 +45,25 @@ namespace Assets.Scripts.Player
         private Vector2 moveInput;
         [SerializeField] private Vector2 mVelocity = Vector2.zero;
         private Vector2 mousPos;
-        private IShoot[] mGuns;
+        private IWeapon[] mWeapons;
         private float deltaT;
         [SerializeField] private float targetAngle;
         private Rigidbody2D rBody;
         private Transform cam;
+
+
+
+
+        public PlayerStats PlayerStats = new PlayerStats(20, 20, 1, 1, 1);
 
         private void Awake()
         {
             ReferenceLib.sPlayerCtrl = this;
             //cControl = GetComponent<CharacterController>();
             rBody = GetComponent<Rigidbody2D>();
-            mGuns = GetComponentsInChildren<IShoot>();
+            mWeapons = GetComponentsInChildren<IWeapon>();
             cam = Camera.main.transform;
             //currTarget = transform.up.ToVector2().GetAngle();
-
-            //toDo: not hardcodes values
-            _playerStats = new PlayerStats(500, 100, 10, 50, 200);
-
-            _weaponManager = GetComponent<WeaponManager>();
-
 
         }
         private void Update()
@@ -121,7 +115,7 @@ namespace Assets.Scripts.Player
                 mVelocity = mVelocity * (pMoveSpeedMax/ sqrMag);
             }
 
-
+            //if (mVelocity.x == float.NaN || mVelocity.y == float.NaN) mVelocity = Vector2.zero;
             rBody.MovePosition(rBody.position + mVelocity * deltaT);
         }
 
@@ -187,18 +181,15 @@ namespace Assets.Scripts.Player
 
         private void DoWeapons()
         {
-            if (_weaponManager == null) return;
-
-            if (Input.GetButton("Fire1"))
-            {
-                _weaponManager.FireWeapons();
-            }
+            if(Input.GetMouseButton(0))
+                foreach (IWeapon weapon in mWeapons) weapon.Fire();
         }
     }
 
-    internal interface IShoot
+    internal interface IWeapon
     {
         public void Fire();
-        public void StopFire();
+
+        //Stopfire();
     }
 }

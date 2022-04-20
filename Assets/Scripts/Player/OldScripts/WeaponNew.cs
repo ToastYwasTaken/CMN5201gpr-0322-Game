@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    internal class WeaponNew : MonoBehaviour, IShoot
+    internal class WeaponNew : MonoBehaviour, IWeapon
     {
         private GameObject Projectile;
         private float fireInterval;

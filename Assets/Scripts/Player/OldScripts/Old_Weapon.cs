@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    internal class Weapon : MonoBehaviour, IShoot
+    internal class Weapon : MonoBehaviour, IWeapon
     {
         [SerializeField] private GameObject lightGO;
 

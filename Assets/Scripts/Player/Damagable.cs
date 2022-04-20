@@ -13,7 +13,7 @@ namespace Assets.Scripts.Player
         }
         public void ChangeHealth(float _amount)
         {
-            mCurrentHealth += _amount;
+            mCurrentHealth -= _amount;
             if (mCurrentHealth < 0)
             {
                 mCurrentHealth = 0;
