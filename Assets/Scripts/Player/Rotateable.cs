@@ -95,7 +95,7 @@ namespace Assets.Scripts.Player
 
         private void UpdateParentAngle()
         {
-            _parentAngle = AngleWrap(_parentT.localEulerAngles.z +180f + _parentOffset);
+            _parentAngle = AngleWrap(_parentT.localEulerAngles.z + 180f + _parentOffset);
         }
 
         private void UpdateConstrains()
