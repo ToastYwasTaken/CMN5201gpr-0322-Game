@@ -47,8 +47,8 @@ namespace Assets.Scripts.Player
 
         private void DamageTarget(GameObject target)
         {
-            IHealth targetIHealth = target.GetComponent<IHealth>();
-            targetIHealth?.ChangeHealth(_projectileStats.AttackPower);
+            IDamageable damageable = target.GetComponent<IDamageable>();
+            if (damageable != null) damageable.DealDamage(_projectileStats.AttackPower, _projectileStats.ArmorPenetration);
         }
     }
 }

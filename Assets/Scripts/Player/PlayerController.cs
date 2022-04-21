@@ -179,10 +179,16 @@ namespace Assets.Scripts.Player
             Camera.main.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * 2;
         }
 
+        private IShoot _shoot;
         private void DoWeapons()
         {
-            if(Input.GetMouseButton(0))
-                foreach (IWeapon weapon in mWeapons) weapon.Fire();
+            if (_shoot == null) _shoot = GetComponent<IShoot>();
+            if (_shoot == null) return;
+
+            if (Input.GetButton("Fire1"))
+            {
+                _shoot.Shoot();
+            }
         }
     }
 

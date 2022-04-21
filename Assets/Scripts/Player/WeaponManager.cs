@@ -3,42 +3,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour, IWeapon
+[RequireComponent(typeof(PlayerCore))]
+public class WeaponManager : MonoBehaviour, IShoot
 {
-    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private PlayerCore _playerCore;
     [SerializeField] private Heatmeter _heatmeter;
+
+    private PlayerInformation _playerInformation;
 
     private Weapon[] _weapons;
     [SerializeField] private Weapon[] _weaponItems;
     [SerializeField] private Weapon _defaultWeapon;
 
+    private Weapon[] _tempWeaponItems;
+
     [SerializeField] private GameObject[] _firePoints;
 
     private readonly int _weaponSlotAmount = 2;
 
+    #region Unity Calls
     private void Awake()
     {
-        if(_weaponItems == null) _weaponItems = new Weapon[_weaponSlotAmount];
-        _weapons = new Weapon[_weaponSlotAmount];
+        if (_weaponItems == null) _weaponItems = new Weapon[_weaponSlotAmount];
 
-        if(_playerController == null)
-        _playerController = GetComponent<PlayerController>();
+        if (_playerCore == null)
+            _playerCore = GetComponent<PlayerCore>();
 
-        if (_heatmeter == null)
-            _heatmeter = GetComponent<Heatmeter>();
+
     }
+
+    private void Start()
+    {
+        _playerInformation = _playerCore.PlayerInformation;
+        _heatmeter = _playerInformation.Heatmeter;
+
+
+        InitializeWeapons();
+
+        LoadWeapons();
+    }
+
 
     private void Update()
     {
         ReduceWeaponsCooldown();
-        LoadWeapons();
+
+        CheckIfWeaponsChanged();
     }
+    #endregion
 
-    private void OnEnable()
+    #region Startup Methods
+    private void InitializeWeapons()
     {
-        InitializeWeapons();
+        _weapons = new Weapon[_weaponSlotAmount];
 
-        LoadWeapons();
+        for (int i = 0; i < _weapons.Length; i++)
+        {
+            SetupWeapon(_defaultWeapon, i);
+        }
+
+        _tempWeaponItems = new Weapon[_weaponSlotAmount];
+
+        for (int i = 0; i < _tempWeaponItems.Length; i++)
+        {
+            _tempWeaponItems[i] = Instantiate(_defaultWeapon);
+        }
     }
 
     private void LoadWeapons()
@@ -51,32 +80,26 @@ public class WeaponManager : MonoBehaviour, IWeapon
             SetupWeapon(_weaponItems[i], i);
         }
     }
+    #endregion
 
-    private void InitializeWeapons()
+    #region Recurring Methods
+    private void CheckIfWeaponsChanged()
     {
-        for (int i = 0; i < _weapons.Length; i++)
+        if (_weaponItems == null) _weaponItems = new Weapon[_weaponSlotAmount];
+
+        for (int i = 0; i < _weaponItems.Length; i++)
         {
-            SetupWeapon(_defaultWeapon, i);
+            if (_weaponItems[i] == null) return;
+            if (_tempWeaponItems[i] == null) return;
+
+            if (_weaponItems[i].ID != _tempWeaponItems[i].ID)
+            {
+                SetupWeapon(_weaponItems[i], i);
+                _tempWeaponItems[i] = Instantiate(_weaponItems[i]);
+            }
         }
     }
 
-    private void SetupWeapon(Weapon newWeapon, int weaponSlot)
-    {
-        if (newWeapon == null) return;
-        if (weaponSlot < 0 || weaponSlot > _weapons.Length - 1) return;
-
-        if(_weapons == null) _weapons = new Weapon[_weaponSlotAmount];
-
-        if (_weapons[weaponSlot] == null) _weapons[weaponSlot] = ScriptableObject.CreateInstance<Weapon>();
-
-        _weapons[weaponSlot].WeaponPower = newWeapon.WeaponPower;
-        _weapons[weaponSlot].ArmorPenetraion = newWeapon.ArmorPenetraion;
-        _weapons[weaponSlot].BulletSpeed = newWeapon.BulletSpeed;
-        _weapons[weaponSlot].HeatmeterUsage = newWeapon.HeatmeterUsage;
-        _weapons[weaponSlot].BulletPrefab = newWeapon.BulletPrefab;
-        _weapons[weaponSlot].FireRate = newWeapon.FireRate;
-    }
-    
     private void ReduceWeaponsCooldown()
     {
         if (_weapons == null) return;
@@ -86,17 +109,30 @@ public class WeaponManager : MonoBehaviour, IWeapon
             if (_weapons[i].IsOnCooldown) _weapons[i].CurrentCooldown -= Time.deltaTime;
         }
     }
+    #endregion
 
-    public void FireWeapons()
+    #region Called Methods
+    private void SetupWeapon(Weapon newWeapon, int weaponSlot)
     {
-        if (_playerController == null) return;
+        if (newWeapon == null) return;
+        if (weaponSlot < 0 || weaponSlot > _weapons.Length - 1) return;
+
+        if (_weapons == null) _weapons = new Weapon[_weaponSlotAmount];
+
+        if (_weapons[weaponSlot] == null) _weapons[weaponSlot] = Instantiate(_defaultWeapon);
+
+        _weapons[weaponSlot] = Instantiate(newWeapon);
+    }
+
+    public void Shoot()
+    {
+        if (_playerCore == null) return;
         if (_heatmeter == null) return;
 
         for (int i = 0; i < _weapons.Length; i++)
         {
-            _weapons[i].Shoot(_heatmeter, _playerController.PlayerStats, _firePoints[i]);
+            _weapons[i].Shoot(_heatmeter, _playerInformation.PlayerStats, _firePoints[i]);
         }
     }
-
-    public void Fire() => FireWeapons();
+    #endregion
 }

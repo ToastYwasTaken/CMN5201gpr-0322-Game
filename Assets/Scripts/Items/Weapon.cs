@@ -46,7 +46,7 @@ public class Weapon : Item
         _heatmeter = heatmeter;
     }
 
-    public void Shoot(Heatmeter heatmeter, PlayerStats playerStats, GameObject firePoint)
+    public void Shoot(Heatmeter heatmeter, EntityStats playerStats, GameObject firePoint)
     {
         if (_isOnCooldown) return;
         if (heatmeter == null) return;
