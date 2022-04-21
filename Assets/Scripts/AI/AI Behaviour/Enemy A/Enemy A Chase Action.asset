@@ -23,7 +23,7 @@ MonoBehaviour:
   _targetTag: Player
   _ignoreLayer:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 503
   _fightDistanceToTarget: 25
   _velocityOffset: 0.2
   _maxVelocity: 3

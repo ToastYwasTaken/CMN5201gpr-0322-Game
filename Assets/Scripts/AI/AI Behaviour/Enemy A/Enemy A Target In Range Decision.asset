@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Enemy A Target In Range Decision
   m_EditorClassIdentifier: 
   _targetTag: Player
-  _range: 20
+  _range: 7

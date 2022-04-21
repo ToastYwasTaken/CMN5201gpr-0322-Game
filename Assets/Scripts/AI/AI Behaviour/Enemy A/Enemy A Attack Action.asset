@@ -23,8 +23,8 @@ MonoBehaviour:
   OnCloseAttack: {fileID: 11400000, guid: f497abea71c4b2a42852b359046fd766, type: 2}
   OnFarAttack: {fileID: 11400000, guid: 8445b43f65c2777439e729d5385d8002, type: 2}
   _targetTag: Player
-  _fightDistanceToTarget: 29
-  _closeAttackDistance: 10
+  _fightDistanceToTarget: 7
+  _closeAttackDistance: 7
   _useFarAttack: 0
-  _farAttackDistance: 30
+  _farAttackDistance: 14
   _velocityOffset: 0.2
