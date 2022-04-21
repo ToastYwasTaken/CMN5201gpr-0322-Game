@@ -22,12 +22,6 @@ namespace AISystem
            var inRange = new AITargetInRange(_owner, _targetTag);
            return inRange.TargetInRange(_range);
        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(_owner.transform.position, _range);   
-        }
    } 
 }
 

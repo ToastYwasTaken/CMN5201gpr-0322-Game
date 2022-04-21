@@ -12,6 +12,7 @@ namespace AISystem
         [SerializeField] private AIEvent OnFarAttack;
 
         [Header("Settings")] 
+        [SerializeField] private bool _lookToTarget = false;
         [SerializeField] private string _targetTag = "Player";
         [SerializeField] private float _fightDistanceToTarget = 7f;
         [SerializeField] private float _closeAttackDistance = 10.0f;
@@ -24,6 +25,7 @@ namespace AISystem
         private NavMeshAgent _navMeshAgent;
         private GameObject _owner;
         private AITargetInRange _targetDistance;
+        private AILookToEnemy _lookToEnemy;
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
@@ -32,6 +34,10 @@ namespace AISystem
             _owner = stateMachine.Owner;
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
             _targetDistance = new AITargetInRange(_owner, _targetTag);
+            _lookToEnemy = stateMachine.GetComponent<AILookToEnemy>();
+            
+            if (_lookToEnemy)
+                _lookToEnemy.FindTargetWithTag(_targetTag);
         }
 
         public override void Execute(AIFSMAgent stateMachine)
@@ -51,6 +57,15 @@ namespace AISystem
             Attack();
             // FightDistanceCheck();
             
+            // Verfolge das Ziel Viusel
+            if (_lookToTarget)
+                _lookToEnemy.LookAt();
+        }
+
+        public override void Exit(AIFSMAgent stateMachine)
+        {
+            if (_lookToEnemy && _lookToTarget)
+                _lookToEnemy.SetDefaultRotation();
         }
 
         private void FightDistanceCheck()

@@ -20,6 +20,7 @@ MonoBehaviour:
   OnAgentTurnLeft: {fileID: 0}
   OnAgentTurnRight: {fileID: 0}
   OnAgentStopped: {fileID: 0}
+  _lookToTarget: 1
   _targetTag: Player
   _ignoreLayer:
     serializedVersion: 2

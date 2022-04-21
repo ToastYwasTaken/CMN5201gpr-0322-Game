@@ -17,11 +17,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 503
   _queryTriggerForScan: 1
-  _viewDistance: 50
+  _viewDistance: 15
   _viewAngle: 120
   _ignoreLayerForView:
     serializedVersion: 2
     m_Bits: 182
   _queryTriggerForView: 1
   _useAura: 1
-  _auraRadius: 15
+  _auraRadius: 7

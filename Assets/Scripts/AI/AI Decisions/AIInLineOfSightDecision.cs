@@ -17,7 +17,7 @@ namespace AISystem
             _owner = stateMachine.Owner;
             
             var enemyInLineOfSight = new AIInLineOfSight(_owner, _targetTag, _ignoreLayer);
-            return enemyInLineOfSight.Ping(_targetTag);
+            return enemyInLineOfSight.IsInLine(_targetTag);
         }
     }
 }

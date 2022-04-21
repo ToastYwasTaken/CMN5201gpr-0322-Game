@@ -22,6 +22,7 @@ MonoBehaviour:
   OnAgentStopped: {fileID: 0}
   OnCloseAttack: {fileID: 11400000, guid: f497abea71c4b2a42852b359046fd766, type: 2}
   OnFarAttack: {fileID: 11400000, guid: 8445b43f65c2777439e729d5385d8002, type: 2}
+  _lookToTarget: 1
   _targetTag: Player
   _fightDistanceToTarget: 7
   _closeAttackDistance: 7

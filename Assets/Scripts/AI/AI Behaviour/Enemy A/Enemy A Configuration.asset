@@ -15,5 +15,5 @@ MonoBehaviour:
   speed: 10
   angularSpeed: 240
   acceleration: 5
-  stoppingDistance: 7
+  stoppingDistance: 10
   autoBraking: 1

@@ -10,6 +10,7 @@ namespace AISystem
         public Transform Target { get; set; }
 
         [Header("Settings")] 
+        [SerializeField] private bool _lookToTarget = false;
         [SerializeField] private string _targetTag = "Player";
         [SerializeField] private LayerMask _ignoreLayer = 0;
         [SerializeField] private float _fightDistanceToTarget = 7f;
@@ -21,11 +22,18 @@ namespace AISystem
         private Vector3 _velocity = Vector3.zero;
 
         private NavMeshAgent _navMeshAgent;
+        private AILookToEnemy _lookToEnemy;
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
             if (OnStateEntered != null) OnStateEntered.Raise();
+            
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
+            _lookToEnemy = stateMachine.GetComponent<AILookToEnemy>();
+            
+            if (_lookToEnemy)
+                _lookToEnemy.FindTargetWithTag(_targetTag);
+            
         }
 
         public override void Execute(AIFSMAgent stateMachine)
@@ -37,17 +45,27 @@ namespace AISystem
                 if (OnAgentMoveForward != null)
                     OnAgentMoveForward.Raise();
             }
-            else 
+            else
             {
                 if (OnAgentStopped != null)
                     OnAgentStopped.Raise();
             }
 
             var enemySightSensor = new AIInLineOfSight(stateMachine.Owner, _targetTag, _ignoreLayer);
-           // FightDistanceCheck();
+            // FightDistanceCheck();
             _navMeshAgent.SetDestination(enemySightSensor.Target.position);
+
+            // Verfolge das Ziel Viusel
+            if (_lookToTarget)
+                _lookToEnemy.LookAt();
         }
 
+        public override void Exit(AIFSMAgent stateMachine)
+        {
+            if (_lookToEnemy && _lookToTarget)
+                _lookToEnemy.SetDefaultRotation();
+        }
+        
         private Vector3 CalculateSeekBehaviour()
         {
             Vector3 desiredVelocity = (Target.position - Owner.position).normalized * _maxVelocity;

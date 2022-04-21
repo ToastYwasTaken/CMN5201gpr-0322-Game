@@ -31,7 +31,7 @@ namespace AISystem
         }
         
         
-        public bool Ping(string targetTag)
+        public bool IsInLine(string targetTag)
         {
             if (Target == null || Owner == null) return false;
 

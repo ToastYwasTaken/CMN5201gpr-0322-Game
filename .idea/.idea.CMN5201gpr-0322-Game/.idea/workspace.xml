@@ -3,14 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="f3bae0b7-d229-45ef-a601-042806e41f23" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameDevScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameDevScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/ChaseAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/ChaseAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Attack Action.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Attack Action.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Chase Action.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Chase Action.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Configuration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Configuration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInFieldOfViewDecision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInFieldOfViewDecision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AITargetInRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AITargetInRange.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AIData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AIData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A In Field Of View Decision.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A In Field Of View Decision.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInLineOfSightDecision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIInLineOfSightDecision.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AITargetInRangeDecision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AITargetInRangeDecision.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIInLineOfSight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AIInLineOfSight.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AILookToEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AILookToEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +99,7 @@
       <workItem from="1650312119847" duration="3102000" />
       <workItem from="1650482468841" duration="187000" />
       <workItem from="1650482856501" duration="221000" />
-      <workItem from="1650545706129" duration="6460000" />
+      <workItem from="1650545706129" duration="18347000" />
     </task>
     <servers />
   </component>
