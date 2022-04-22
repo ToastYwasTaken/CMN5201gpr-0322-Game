@@ -58,7 +58,7 @@ namespace Assets.Scripts.Player
 
         private void Awake()
         {
-            ReferenceLib.sPlayerCtrl = this;
+            //ReferenceLib.sPlayerCtrl = this;
             //cControl = GetComponent<CharacterController>();
             rBody = GetComponent<Rigidbody2D>();
             mWeapons = GetComponentsInChildren<IWeapon>();

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// 22.4.22 JA created 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,7 @@ namespace Assets.Scripts.Player
         [HideInInspector] CameraController _cameraController;
         private void Awake()
         {
+            ReferenceLib.sPlayerCtrl = this;
             if (_movable == null)_movable = GetComponent<Moveable>();
             if (_rotateable == null) _rotateable = GetComponent<Rotateable>();
             if (_cameraController == null) _cameraController = GetComponent<CameraController>();

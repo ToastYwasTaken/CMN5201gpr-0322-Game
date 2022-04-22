@@ -3,5 +3,5 @@ using Assets.Scripts.Player;
 
 static public class ReferenceLib
 {
-    static public PlayerController sPlayerCtrl;
+    static public PlayerController2 sPlayerCtrl;
 }

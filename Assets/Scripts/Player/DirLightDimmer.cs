@@ -12,6 +12,6 @@ public class DirLightDimmer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        mLight.intensity = 1 - Mathf.Clamp01(ReferenceLib.sPlayerCtrl.AngleDifferenceToTarget(transform, true) / 180);
+        //mLight.intensity = 1 - Mathf.Clamp01(ReferenceLib.sPlayerCtrl.AngleDifferenceToTarget(transform, true) / 180);
     }
 }

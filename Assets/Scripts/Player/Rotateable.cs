@@ -123,7 +123,7 @@ namespace Assets.Scripts.Player
                     return angle;
                 return ClosestAngle(angle, cStart, cEnd);
             }
-            if (cStart > cEnd) //include 0  //start>end?
+            if (cStart > cEnd) //include 0
             {
                 isIncludeZero = true;
                 return ClosestAngle(angle, cStart, cEnd);

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    internal class WeaponComp : MonoBehaviour
+    internal class WeaponComp : MonoBehaviour, IWeapon
     {
         [SerializeField] private GameObject _ProjectilePfab;
         [SerializeField] private Transform _Muzzle;
@@ -13,7 +13,8 @@ namespace Assets.Scripts.Player
         public void Fire()
         {
             if (!canShoot) return;
-            Instantiate(_ProjectilePfab, _Muzzle);
+            GameObject projectile = Instantiate(_ProjectilePfab, _Muzzle);
+            projectile.transform.parent = null;
             canShoot = false;
             StartCoroutine(ShootTimer());
         }

@@ -2,9 +2,12 @@
 
 namespace Assets.Scripts.Player
 {
-    internal class Damagable : MonoBehaviour, IHealth
+    public enum eEntityType { PLAYER, ENEMY, ENVIRONMENT }
+
+    public class Damagable : MonoBehaviour, IHealth, IEntity
     {
         [SerializeField] private float mHealth;
+        [SerializeField] eEntityType _eType;
         private float mCurrentHealth;
 
         private void Awake()
@@ -25,6 +28,11 @@ namespace Assets.Scripts.Player
         {
             return mCurrentHealth / mHealth;
         }
+        public eEntityType EType()
+        {
+            return _eType;
+        }
+
         protected virtual void OnDeath()
         {
         }
@@ -33,5 +41,9 @@ namespace Assets.Scripts.Player
     internal interface IHealth
     {
         public void ChangeHealth(float _amount);
+    }
+    internal interface IEntity
+    {
+        public eEntityType EType();
     }
 }

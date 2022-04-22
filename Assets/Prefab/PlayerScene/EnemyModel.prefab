@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &974380780516402904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1060590805474282503}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1060590805474282503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974380780516402904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.033, y: 2.101, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6416932283251555095}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &994615715627569921
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +267,7 @@ GameObject:
   - component: {fileID: 7261160329242522645}
   - component: {fileID: 1371734795489153454}
   - component: {fileID: 1818559283454854438}
+  - component: {fileID: 6914006352712021074}
   m_Layer: 0
   m_Name: enemy1
   m_TagString: Untagged
@@ -342,7 +374,23 @@ MonoBehaviour:
   - {x: 1.0099411, y: -6.8893228, z: 0}
   m_ShapePathHash: 831436549
   m_Mesh: {fileID: 0}
-  m_InstanceId: -62336
+  m_InstanceId: 36774
+--- !u!70 &6914006352712021074
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280265729372006359}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.021542558, y: -0.37699798}
+  m_Size: {x: 8.645841, y: 13.078554}
+  m_Direction: 0
 --- !u!1 &1898327486229874706
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +400,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6416932283251555095}
+  - component: {fileID: 4607359562863709390}
+  - component: {fileID: 8879270859821570630}
   m_Layer: 0
   m_Name: EnemyModel
   m_TagString: Untagged
@@ -374,9 +424,43 @@ Transform:
   - {fileID: 7261160329242522645}
   - {fileID: 2449214984954979442}
   - {fileID: 428409668876812709}
+  - {fileID: 1060590805474282503}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4607359562863709390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898327486229874706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8027f35c835a5c04a99ebcb09f2a15eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 0}
+  _range: 100
+  _aimRange: 30
+  isRange: 0
+  isNotObst: 0
+  IsAimAt: 0
+--- !u!114 &8879270859821570630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898327486229874706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2a5d27b0030a4479790f90dfe0cc3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ProjectilePfab: {fileID: 2912425703784977495, guid: 73b6eab8031c0c144a16f865fe0b36eb, type: 3}
+  _Muzzle: {fileID: 1060590805474282503}
+  _ResetTime: 1
 --- !u!1 &8067673230965374801
 GameObject:
   m_ObjectHideFlags: 0
