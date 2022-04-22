@@ -30,7 +30,7 @@ namespace Assets.Scripts.Player
         {
             while (isActive)
             {
-                _Rotateable.RotateTowardsTarget(target);
+                _Rotateable.RotateTowardsTargetT(target);
                 //while (!isOnTarget)
                 //{
                 //    _Rotateable.RotateTowardsTarget(target);
