@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile 
+/// <summary>
+/// Holds specific information about each cell of a room
+/// </summary>
+
+namespace MapGeneration
 {
-    private GameObject _prefab;
-    private Vector3 _position;
-    private Quaternion _rotation;
-
-    public Tile(GameObject prefab, Vector3 position, Quaternion rotation)
+    public class Tile
     {
-        _prefab = prefab;
-        _position = position;
-        _rotation = rotation;
-    }
+        protected GameObject Prefab;
+        protected Vector3 Position;
+        protected Quaternion Rotation;
 
+        public Tile(GameObject prefab, Vector3 position, Quaternion rotation)
+        {
+            Prefab = prefab;
+            Position = position;
+            Rotation = rotation;
+        }
+
+    }
 }

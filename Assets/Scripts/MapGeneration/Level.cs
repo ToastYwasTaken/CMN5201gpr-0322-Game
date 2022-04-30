@@ -2,34 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Creates a new Level by creating new rooms accordingly
+/// </summary>
+
 namespace MapGeneration
 {
     public class Level
     {
-        private int _roomCount;
+        protected int RoomCount;
         private Room[] _rooms;
 
-        public Room[] Rooms
+        public Room[] PRooms => _rooms;
+
+        public Level(int roomCount, GameObject groundPrefab, GameObject wallPrefab, GameObject borderPrefab, ERoomSize roomSize)
         {
-            get => _rooms;
+            RoomCount = roomCount;
+            InitAllRooms(roomCount, groundPrefab, wallPrefab, borderPrefab, roomSize);
         }
 
-        public Level(int roomCount, GameObject wallPrefab, GameObject groundPrefab, ERoomSize roomSize)
-        {
-            _roomCount = roomCount;
-            InitRooms(roomCount, wallPrefab, groundPrefab, roomSize);
-        }
-
-        public void InitRooms(int roomCount, GameObject wallPrefab, GameObject groundPrefab, ERoomSize roomSize)
+        private void InitAllRooms(int roomCount, GameObject groundPrefab, GameObject wallPrefab, GameObject borderPrefab, ERoomSize roomSize)
         {
             _rooms = new Room[roomCount];
             //Init roomCount-1 normal rooms 
-            for (int i = 0; i < roomCount-1; i++)
-            {
-                _rooms[i] = new NormalRoom(groundPrefab, wallPrefab, roomSize);
-            }
+            InitNormalRooms(groundPrefab, wallPrefab, borderPrefab, roomSize);
             //Init 1 boss room
-            _rooms[roomCount] = new BossRoom(groundPrefab, wallPrefab, roomSize);
+            InitBossRoom(groundPrefab, wallPrefab, borderPrefab, roomSize);
         }
+
+        private void InitNormalRooms(GameObject groundPrefab, GameObject wallPrefab, GameObject borderPrefab, ERoomSize roomSize)
+        {
+            for (int i = 0; i < RoomCount-1; i++)
+            {
+                _rooms[i] = new NormalRoom(groundPrefab, wallPrefab, borderPrefab, roomSize);
+            }
+        }
+
+        private void InitBossRoom(GameObject groundPrefab, GameObject wallPrefab, GameObject borderPrefab, ERoomSize roomSize)
+        {
+            _rooms[RoomCount] = new BossRoom(groundPrefab, wallPrefab, borderPrefab, roomSize);
+        }
+
     }
 }
