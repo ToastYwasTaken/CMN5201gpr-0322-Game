@@ -42,8 +42,8 @@ namespace AISystem
 
             if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
             {
-                if (OnAgentMoveForward != null)
-                    OnAgentMoveForward.Raise();
+                if (OnAgentMoving != null)
+                    OnAgentMoving.Raise();
             }
             else
             {
@@ -63,7 +63,7 @@ namespace AISystem
         public override void Exit(AIFSMAgent stateMachine)
         {
             if (_lookToEnemy && _lookToTarget)
-                _lookToEnemy.SetDefaultRotation();
+                _lookToEnemy.ResetLookAt();
         }
         
         private Vector3 CalculateSeekBehaviour()

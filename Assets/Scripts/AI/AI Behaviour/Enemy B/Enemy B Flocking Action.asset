@@ -23,10 +23,10 @@ MonoBehaviour:
   _leaderTag: Player
   _neigbhorTag: Enemy
   _maxVelocity: 2
-  _alignmentWeight: 2.5
+  _alignmentWeight: 5
   _cohesionWeight: 5
   _separationWeight: 5
   _alignmentDistance: 14.1
-  _cohesionDistance: 3.9
+  _cohesionDistance: 4.5
   _separationDistance: 3.7
   _velocityOffset: 0.2

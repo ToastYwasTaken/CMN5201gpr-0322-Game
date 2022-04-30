@@ -26,8 +26,8 @@ namespace AISystem
             OnUpdateSettings();
             if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
             {
-                if (OnAgentMoveForward != null)
-                    OnAgentMoveForward.Raise();
+                if (OnAgentMoving != null)
+                    OnAgentMoving.Raise();
             }
             else 
             {

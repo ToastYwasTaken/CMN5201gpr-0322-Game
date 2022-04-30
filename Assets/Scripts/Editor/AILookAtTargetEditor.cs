@@ -16,7 +16,7 @@ namespace AISystem
             
             if (GUILayout.Button("Set default rotation"))
             {
-                _lookAtTarget.SetDefaultRotation();
+                _lookAtTarget.ResetLookAt();
             }
             
             base.OnInspectorGUI();

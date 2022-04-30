@@ -9,16 +9,18 @@ namespace AISystem
 
         [Header("AI Events")]
         public AIEvent OnStateEntered;
-        public AIEvent OnAgentMoveForward;
-        public AIEvent OnAgentMoveBack;
-        public AIEvent OnAgentTurnLeft;
-        public AIEvent OnAgentTurnRight;
+        public AIEvent OnAgentMoving;
         public AIEvent OnAgentStopped;
+        public AIEvent OnStateExit;
 
         public abstract void Initialize(AIFSMAgent stateMachine);
         public abstract void Execute(AIFSMAgent stateMachine);
 
-        public virtual void Exit(AIFSMAgent stateMachine) { }
+        public virtual void Exit(AIFSMAgent stateMachine) 
+        {
+            if (OnStateExit != null)
+                OnStateExit.Raise();
+        }
 
         public virtual void OnUpdateSettings() { }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90ddf53bc744baa49b63e12be96c48bb, type: 3}
-  m_Name: Enemy A CanAttack Decision
+  m_Name: Enemy A Can attack Transition
   m_EditorClassIdentifier: 
   Decision: {fileID: 11400000, guid: 89978c47695625d40a0f9a098e6aee65, type: 2}
   IsTrue: {fileID: 11400000, guid: e2dbbc20069752d49a1564d48882275a, type: 2}
