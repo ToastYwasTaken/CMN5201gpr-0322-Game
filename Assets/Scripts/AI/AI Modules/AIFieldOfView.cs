@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace AISystem
 {
-    public class AIFieldOfView 
+    public class AIFieldOfView
     {
-        private Ray _ray;
-
         public Collider[] LookAroundForColliders(Vector3 origin, float radius, LayerMask ignoreLayer, QueryTriggerInteraction queryTrigger = QueryTriggerInteraction.Ignore)
         {
+            Debug.DrawLine(origin, new Vector3(origin.x + radius, origin.y, origin.z), Color.cyan);
+            Debug.DrawLine(origin, new Vector3(origin.x, origin.y + radius, origin.z), Color.cyan);
             return Physics.OverlapSphere(origin, radius, ~ignoreLayer, queryTrigger);
         }
 
@@ -23,29 +23,24 @@ namespace AISystem
             float auraDistance = 5f, bool useAura = false)
         {
             Vector3 dir = destination.position - origin.position;
-            _ray = new Ray(origin.position, dir.normalized);
-            bool isVisible = false;
+            var ray = new Ray(origin.position, dir.normalized);
 
-            if (!Physics.Raycast(_ray, out RaycastHit hit, viewDistance, ~ignoreLayer, queryTrigger)) return isVisible;
-            if (!hit.collider.CompareTag(tag)) return isVisible;
+            if (!Physics.Raycast(ray, out RaycastHit hit, viewDistance,
+                ~ignoreLayer, queryTrigger))
+            {
+                return false;
+            }
+
+            if (!hit.collider.CompareTag(tag)) return false;
+
             Vector3 rayDirection = hit.transform.position - origin.position;
             float angle = Vector3.Angle(rayDirection, origin.forward);
 
-            if (angle < viewAngle * 0.5f)
-            {
-                isVisible = true;
-                Debug.DrawRay(origin.position, dir, Color.green);
-            }
-            else
-            {
-                isVisible = false;
-            }
-
-            if (!(hit.distance <= auraDistance) || !useAura) return isVisible;
-            isVisible = true;
-            
+            //Debug.LogWarning($"Angle: {angle}");
             Debug.DrawRay(origin.position, dir, Color.red);
-            return isVisible;
+
+            return angle < viewAngle * 0.5f || ((hit.distance <= auraDistance) && useAura);
         }
+
     }
 }

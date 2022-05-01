@@ -20,26 +20,10 @@ namespace AISystem
         // [SerializeField] private bool _agentStopByAttack = false;
         [SerializeField] private float _velocityOffset = 0.2f;
 
-        [Header("Scan Settings")]
-        [SerializeField] private float _lookRadius = 5f;
-        [SerializeField] private LayerMask _ignoreLayerForScan = 0;
-        [SerializeField] private QueryTriggerInteraction _queryTriggerForScan = QueryTriggerInteraction.Ignore;
-
-        [Header("FieldOfView Settings")]
-        [SerializeField] private float _viewDistance = 10f;
-        [SerializeField] private float _viewAngle = 120f;
-        [SerializeField] private LayerMask _ignoreLayerForView = 0;
-        [SerializeField] private QueryTriggerInteraction _queryTriggerForView = QueryTriggerInteraction.Ignore;
-
-        [Header("Aura Settings")]
-        [SerializeField] private bool _useAura = true;
-        [SerializeField] private float _auraRadius = 5f;
+       
 
 
-
-        private bool _targetIsVisible = false;
-        private Collider[] _colliders;
-        private GameObject _gameObject;
+ 
 
         private NavMeshAgent _navMeshAgent;
         private GameObject _owner;
@@ -79,17 +63,20 @@ namespace AISystem
                     OnAgentStopped.Raise();
             }
 
-            Attack();
+            //Attack();
+
 
             // Verfolge das Ziel Viusel
-            if (_lookToTarget && TargetIsVisible(stateMachine))
+            if (_lookToTarget)
             {
                 _lookToEnemy.LookAt();
             }
-            else
-            {
-                _lookToEnemy.ResetLookAt();
-            }
+            //else
+            //{
+            //    _lookToEnemy.ResetLookAt();
+            //    Debug.Log("Reset");
+            //}
+
         }
 
         public override void Exit(AIFSMAgent stateMachine)
@@ -113,24 +100,6 @@ namespace AISystem
                     OnCloseAttack.Raise();
             }
         }
-
-        private bool TargetIsVisible(AIFSMAgent stateMachine)
-        {
-            var fov = new AIFieldOfView();
-
-            _colliders = fov.LookAroundForColliders(stateMachine.transform.position, _lookRadius, _ignoreLayerForScan, _queryTriggerForScan);
-
-            _gameObject = fov.LookForGameObject(_colliders, stateMachine.PlayerTag);
-
-            if (_gameObject == null) return false;
-
-            return fov.InFieldOfView(stateMachine.transform,
-               _gameObject.transform, stateMachine.PlayerTag,
-               _viewDistance, _viewAngle,
-               _ignoreLayerForView, _queryTriggerForView,
-               _auraRadius, _useAura);
-        }
-
 
         public override void OnUpdateSettings()
         {

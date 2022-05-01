@@ -27,16 +27,3 @@ MonoBehaviour:
   _useFarAttack: 0
   _farAttackDistance: 14
   _velocityOffset: 0.2
-  _lookRadius: 50
-  _ignoreLayerForScan:
-    serializedVersion: 2
-    m_Bits: 503
-  _queryTriggerForScan: 1
-  _viewDistance: 15
-  _viewAngle: 80
-  _ignoreLayerForView:
-    serializedVersion: 2
-    m_Bits: 502
-  _queryTriggerForView: 1
-  _useAura: 1
-  _auraRadius: 5
