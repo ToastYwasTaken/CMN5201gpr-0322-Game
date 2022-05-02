@@ -1,44 +1,49 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AISystem
 {
     public class AIFieldOfView
     {
-        public Collider[] LookAroundForColliders(Vector3 origin, float radius, LayerMask ignoreLayer, QueryTriggerInteraction queryTrigger = QueryTriggerInteraction.Ignore)
+        public Collider[] GetCollidersAround(Vector3 origin, float radius, LayerMask targetLayer, QueryTriggerInteraction queryTrigger = QueryTriggerInteraction.Ignore)
         {
-            Debug.DrawLine(origin, new Vector3(origin.x + radius, origin.y, origin.z), Color.cyan);
-            Debug.DrawLine(origin, new Vector3(origin.x, origin.y + radius, origin.z), Color.cyan);
-            return Physics.OverlapSphere(origin, radius, ~ignoreLayer, queryTrigger);
+            return Physics.OverlapSphere(origin, radius, targetLayer, queryTrigger);
         }
 
-        public GameObject LookForGameObject(Collider[] colliders, string objectTag)
+        public GameObject GetGameobjectFromColliders(Collider[] colliders, string objectTag)
         {
             return (from collider in colliders where collider.CompareTag(objectTag) select collider.gameObject).FirstOrDefault();
         }
 
-        public bool InFieldOfView(Transform origin, Transform destination,
-            string tag, float viewDistance, float viewAngle, LayerMask ignoreLayer,
+        public GameObject GetTarget(Vector3 ownerPosition, float viewRadius, string objectTag, LayerMask targetLayer, QueryTriggerInteraction query = QueryTriggerInteraction.Ignore)
+        {
+            Collider[] colliders = Physics.OverlapSphere(ownerPosition, viewRadius, targetLayer, query);
+
+            return (from collider in colliders where collider.CompareTag(objectTag) select collider.gameObject).FirstOrDefault();
+        } 
+
+
+        public bool InFieldOfView(Transform ownerTransform, Transform targetTransform,
+            string tag, float viewDistance, float viewAngle, LayerMask targetLayer,
             QueryTriggerInteraction queryTrigger = QueryTriggerInteraction.Ignore,
             float auraDistance = 5f, bool useAura = false)
         {
-            Vector3 dir = destination.position - origin.position;
-            var ray = new Ray(origin.position, dir.normalized);
+            Vector3 dir = targetTransform.position - ownerTransform.position;
+            var ray = new Ray(ownerTransform.position, dir.normalized);
 
             if (!Physics.Raycast(ray, out RaycastHit hit, viewDistance,
-                ~ignoreLayer, queryTrigger))
+                targetLayer, queryTrigger))
             {
                 return false;
             }
 
             if (!hit.collider.CompareTag(tag)) return false;
 
-            Vector3 rayDirection = hit.transform.position - origin.position;
-            float angle = Vector3.Angle(rayDirection, origin.forward);
-
-            //Debug.LogWarning($"Angle: {angle}");
-            Debug.DrawRay(origin.position, dir, Color.red);
-
+            Vector3 rayDirection = hit.transform.position - ownerTransform.position;
+            float angle = Vector3.Angle(rayDirection, ownerTransform.forward);
+            Debug.DrawRay(ownerTransform.position, dir, Color.red);
+            //Debug.LogWarning($"Vector: {rayDirection} | Angle: {angle}");
             return angle < viewAngle * 0.5f || ((hit.distance <= auraDistance) && useAura);
         }
 

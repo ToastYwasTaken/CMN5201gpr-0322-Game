@@ -15,13 +15,13 @@ MonoBehaviour:
   _lookRadius: 50
   _ignoreLayerForScan:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 8
   _queryTriggerForScan: 1
   _viewDistance: 15
   _viewAngle: 120
   _ignoreLayerForView:
     serializedVersion: 2
-    m_Bits: 182
+    m_Bits: 9
   _queryTriggerForView: 1
   _useAura: 1
   _auraRadius: 7

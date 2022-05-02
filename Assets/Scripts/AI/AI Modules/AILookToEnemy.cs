@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace AISystem
 {
@@ -11,6 +8,8 @@ namespace AISystem
     {
         private Vector3 OwnerPosition => gameObject.transform.position;
         private Vector3 TargetPosition => Target.transform.position;
+
+        public GameObject VisibleObject => _targetObject;
 
         [Header("Lool At Settings")]
         [SerializeField] private GameObject _rotatingObject;
@@ -20,93 +19,102 @@ namespace AISystem
 
 
         [Header("Scan Settings")]
-        [SerializeField] private float _lookRadius = 5f;
-        [SerializeField] private LayerMask _ignoreLayerForScan = 0;
+        [SerializeField] private LayerMask _targetLayerForScan = 0;
         [SerializeField] private QueryTriggerInteraction _queryTriggerForScan = QueryTriggerInteraction.Ignore;
 
         [Header("FieldOfView Settings")]
-        [SerializeField] private float _viewDistance = 10f;
-        [SerializeField] private float _viewAngle = 120f;
-        [SerializeField] private LayerMask _ignoreLayerForView = 0;
+        public float ViewDistance = 10f;
+        [Range(0, 360)] public float ViewAngle = 120f;
+        [SerializeField] private LayerMask _targetLayerForView = 0;
         [SerializeField] private QueryTriggerInteraction _queryTriggerForView = QueryTriggerInteraction.Ignore;
 
         [Header("Aura Settings")]
-        [SerializeField] private bool _useAura = true;
-        [SerializeField] private float _auraRadius = 5f;
+        public bool UseAura = true;
+        public float AuraRadius = 5f;
 
-        
-
-
+        // FoV 
+        private GameObject _targetObject = null;
         private bool _targetIsVisible = false;
-        private Collider[] _colliders;
-        private GameObject _gameObject;
-        private Vector3 _refPosition = Vector3.zero;
-        private bool _setDefault = false;
-        private bool _lookToTarget = false;
-        private float _lerpTime = 0.0f;
+
+        // Look At
+        private Quaternion LookRotate => Quaternion.LookRotation(gameObject.transform.forward);
+        private Vector3 LookPosition => gameObject.transform.forward;
+
+        private float _lerpTimeA = 0.0f;
+        private float _lerpTimeB = 0.0f;
         private Quaternion _originQuaternion;
+
+        private AIFieldOfView fov = new();
 
         public void FindTargetWithTag(string targetTag) => Target = GameObject.FindWithTag(targetTag);
 
         public void ResetLookAt()
         {
-            _setDefault = true;
-            _lookToTarget = false;
-            //_rotatingObject.transform.rotation = CalculateRotationToTarget(_refPosition);
-            _rotatingObject.transform.rotation = LerpAngleToTarget(_refPosition);
-        }
-
-        private IEnumerator ResetLook()
-        {   
-            _lerpTime = 0.0f;
-            _originQuaternion = _rotatingObject.transform.rotation;
-
-            while (true)
-            {
-                _rotatingObject.transform.rotation = LerpAngleToTarget(_refPosition);
-                yield return new WaitForEndOfFrame();
-            }
+            _rotatingObject.transform.rotation = LerpRotating(LookRotate);
         }
 
         public void LookAt()
         {
-            _setDefault = false;
-            _lookToTarget = true;
-            _lerpTime = 0.0f;
-            _targetIsVisible = TargetIsVisible();
+            GameObject targetObject = fov.GetTarget(OwnerPosition, ViewDistance, Target.tag, _targetLayerForScan, _queryTriggerForScan);
+
+            _targetIsVisible = TargetIsVisible(targetObject);
+
+            _targetObject = _targetIsVisible ? targetObject : null;
+
             Debug.LogWarning($"Target is Visible: {_targetIsVisible}");
-            // Quaternion rotation = CalculateRotationToTarget(TargetPosition);
+    
+            //if (_targetIsVisible)
+            //{
+                _lerpTimeB = 0.0f;
+                _lerpTimeA = 0.0f;
+                // Look At
+                Quaternion rotation = CalculateRotationToTarget(TargetPosition);
+
+                _rotatingObject.transform.rotation = rotation;
+                _originQuaternion = _rotatingObject.transform.rotation;
+            //}
+            //else
+            //{
+            //    Quaternion lookRotating = LerpAngleToPosition(LookPosition);
+            //    _rotatingObject.transform.rotation = lookRotating; // Quaternion.Euler(lookRotating.x - 180, lookRotating.y, lookRotating.z + 180);
+            //}
             
-            // _rotatingObject.transform.rotation = rotation;
-            // _originQuaternion = _rotatingObject.transform.rotation;
         }
 
-        private bool TargetIsVisible()
+        private bool TargetIsVisible(GameObject target)
         {
-            var fov = new AIFieldOfView();
-
-            _colliders = fov.LookAroundForColliders(_rotatingObject.transform.position, _lookRadius, _ignoreLayerForScan, _queryTriggerForScan);
-
-            _gameObject = fov.LookForGameObject(_colliders, Target.tag);
-
-            return _gameObject != null && fov.InFieldOfView(gameObject.transform,
-               _gameObject.transform, Target.tag,
-               _viewDistance, _viewAngle,
-               _ignoreLayerForView, _queryTriggerForView,
-               _auraRadius, _useAura);
+            return target != null && fov.InFieldOfView(gameObject.transform,
+               target.transform, Target.tag,
+               ViewDistance, ViewAngle,
+               _targetLayerForView, _queryTriggerForView,
+               AuraRadius, UseAura);
         }
 
-        private Quaternion LerpAngleToTarget(Vector3 targetPosition)
+        private Quaternion LerpRotating(Quaternion targetRotating)
         {
-            _lerpTime += Time.deltaTime;
-            return Quaternion.Lerp(_originQuaternion, Quaternion.Euler(targetPosition), _lerpTime * _lerpSpeed);
+            _lerpTimeA += Time.deltaTime;
+            return Quaternion.Lerp(_rotatingObject.transform.rotation, targetRotating, _lerpTimeA * _lerpSpeed);
+        }
+
+        private Quaternion LerpAngleToPosition(Vector3 targetPosition)
+        {
+            _lerpTimeB += Time.deltaTime;
+            return Quaternion.Lerp(_originQuaternion, Quaternion.Euler(targetPosition), _lerpTimeB * _lerpSpeed);
         }
 
         private Quaternion CalculateRotationToTarget(Vector3 targetPosition)
         {
             Vector3 direction = targetPosition - OwnerPosition;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            return Quaternion.AngleAxis(angle + _offset, Vector3.forward * Time.deltaTime);
+            return Quaternion.AngleAxis(angle + _offset, Vector3.forward);
+        }
+
+        public Vector3 DirectionFromAngle(float angleInDegrees, bool angleIsGobal)
+        {
+            if (!angleIsGobal)
+                angleInDegrees += transform.eulerAngles.y;
+
+            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0f, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
     }
 }

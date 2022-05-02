@@ -62,8 +62,8 @@ namespace AISystem
 
         public override void Exit(AIFSMAgent stateMachine)
         {
-            if (_lookToEnemy && _lookToTarget)
-                _lookToEnemy.ResetLookAt();
+            //if (_lookToEnemy && _lookToTarget)
+            //    _lookToEnemy.ResetLookAt();
         }
         
         private Vector3 CalculateSeekBehaviour()

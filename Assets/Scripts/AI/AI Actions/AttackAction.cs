@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -37,6 +38,8 @@ namespace AISystem
             Debug.LogWarning("Attack");
             _owner = stateMachine.Owner;
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
+           
+            
             _lookToEnemy = stateMachine.GetComponent<AILookToEnemy>();
             _targetDistance = new AITargetInRange(_owner, _targetTag);
             _fieldOfView = new AIFieldOfView();
@@ -69,6 +72,7 @@ namespace AISystem
             // Verfolge das Ziel Viusel
             if (_lookToTarget)
             {
+                //_navMeshAgent.updateRotation = false;
                 _lookToEnemy.LookAt();
             }
             //else
@@ -81,8 +85,8 @@ namespace AISystem
 
         public override void Exit(AIFSMAgent stateMachine)
         {
-            if (_lookToEnemy && _lookToTarget)
-                _lookToEnemy.ResetLookAt();
+            //if (_lookToEnemy && _lookToTarget)
+            //    _lookToEnemy.ResetLookAt();
         }
 
         private void Attack()
