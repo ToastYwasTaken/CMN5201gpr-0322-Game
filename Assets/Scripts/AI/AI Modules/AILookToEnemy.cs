@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AISystem
@@ -8,15 +8,12 @@ namespace AISystem
     {
         private Vector3 OwnerPosition => gameObject.transform.position;
         private Vector3 TargetPosition => Target.transform.position;
-
         public GameObject VisibleObject => _targetObject;
 
         [Header("Lool At Settings")]
         [SerializeField] private GameObject _rotatingObject;
         [SerializeField] private float _lerpSpeed = 0.5f;
-        [SerializeField, Range(-180f, 180f)] private float _offset = 0f;
         public GameObject Target;
-
 
         [Header("Scan Settings")]
         [SerializeField] private LayerMask _targetLayerForScan = 0;
@@ -37,7 +34,7 @@ namespace AISystem
         private bool _targetIsVisible = false;
 
         // Look At
-        private Quaternion LookRotate => Quaternion.LookRotation(gameObject.transform.forward);
+        private Quaternion LookRotate => Quaternion.LookRotation(gameObject.transform.up);
         private Vector3 LookPosition => gameObject.transform.forward;
 
         private float _lerpTimeA = 0.0f;
@@ -57,14 +54,14 @@ namespace AISystem
         {
             GameObject targetObject = fov.GetTarget(OwnerPosition, ViewDistance, Target.tag, _targetLayerForScan, _queryTriggerForScan);
 
-            _targetIsVisible = TargetIsVisible(targetObject);
+            _targetIsVisible = TargetIsVisible(gameObject, targetObject);
 
             _targetObject = _targetIsVisible ? targetObject : null;
 
             Debug.LogWarning($"Target is Visible: {_targetIsVisible}");
-    
-            //if (_targetIsVisible)
-            //{
+
+            if (_targetIsVisible)
+            {
                 _lerpTimeB = 0.0f;
                 _lerpTimeA = 0.0f;
                 // Look At
@@ -72,18 +69,20 @@ namespace AISystem
 
                 _rotatingObject.transform.rotation = rotation;
                 _originQuaternion = _rotatingObject.transform.rotation;
-            //}
-            //else
-            //{
-            //    Quaternion lookRotating = LerpAngleToPosition(LookPosition);
-            //    _rotatingObject.transform.rotation = lookRotating; // Quaternion.Euler(lookRotating.x - 180, lookRotating.y, lookRotating.z + 180);
-            //}
-            
+            }
+            else
+            {
+                Quaternion lookRotating = LerpAngleToPosition(LookPosition);
+                _rotatingObject.transform.rotation = lookRotating; // Quaternion.Euler(lookRotating.x - 180, lookRotating.y, lookRotating.z + 180);
+            }
+
         }
 
-        private bool TargetIsVisible(GameObject target)
+        private bool TargetIsVisible(GameObject owner, GameObject target)
         {
-            return target != null && fov.InFieldOfView(gameObject.transform,
+           
+
+            return target != null && fov.InFieldOfView(owner.transform,
                target.transform, Target.tag,
                ViewDistance, ViewAngle,
                _targetLayerForView, _queryTriggerForView,
@@ -105,17 +104,18 @@ namespace AISystem
         private Quaternion CalculateRotationToTarget(Vector3 targetPosition)
         {
             Vector3 direction = targetPosition - OwnerPosition;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            return Quaternion.AngleAxis(angle + _offset, Vector3.forward);
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            return Quaternion.AngleAxis(-angle, Vector3.forward);
         }
 
-        public Vector3 DirectionFromAngle(float angleInDegrees, bool angleIsGobal)
+        public Vector3 DirectionFromAngle(float angleInDegress, bool angleIsGobal)
         {
             if (!angleIsGobal)
-                angleInDegrees += transform.eulerAngles.y;
+                angleInDegress += transform.eulerAngles.z;
 
-            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0f, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+            return new Vector3(Mathf.Sin(angleInDegress * Mathf.Deg2Rad), Mathf.Cos(angleInDegress * Mathf.Deg2Rad), 0f);
         }
+
     }
 }
 

@@ -42,7 +42,7 @@ namespace AISystem
 
             Vector3 rayDirection = hit.transform.position - ownerTransform.position;
             float angle = Vector3.Angle(rayDirection, ownerTransform.forward);
-            Debug.DrawRay(ownerTransform.position, dir, Color.red);
+            Debug.DrawRay(ownerTransform.position, dir, Color.blue);
             //Debug.LogWarning($"Vector: {rayDirection} | Angle: {angle}");
             return angle < viewAngle * 0.5f || ((hit.distance <= auraDistance) && useAura);
         }

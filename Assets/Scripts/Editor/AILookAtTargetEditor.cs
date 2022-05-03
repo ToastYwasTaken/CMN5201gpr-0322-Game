@@ -20,6 +20,7 @@ namespace AISystem
 
             base.OnInspectorGUI();
         }
+
         private void OnSceneGUI()
         {
             var fieldOfView = (AILookToEnemy)target;
@@ -27,11 +28,11 @@ namespace AISystem
             if (fieldOfView.UseAura)
             {
                 Handles.color = Color.cyan;
-                Handles.DrawWireArc(fieldOfView.transform.position, Vector3.up, Vector3.forward, 360, fieldOfView.AuraRadius);
+                Handles.DrawWireArc(fieldOfView.transform.position, Vector3.forward, fieldOfView.DirectionFromAngle(fieldOfView.AuraRadius, false), 360, fieldOfView.AuraRadius);
             }
-         
+
             Handles.color = Color.green;
-            Handles.DrawWireArc(fieldOfView.transform.localPosition, Vector3.up, Vector3.forward, 360, fieldOfView.ViewDistance);
+            Handles.DrawWireArc(fieldOfView.transform.position, Vector3.forward, fieldOfView.DirectionFromAngle(fieldOfView.ViewDistance, false), 360, fieldOfView.ViewDistance);
 
             Vector3 viewAngleA = fieldOfView.DirectionFromAngle(-fieldOfView.ViewAngle / 2, false);
             Vector3 viewAngleB = fieldOfView.DirectionFromAngle(fieldOfView.ViewAngle / 2, false);
@@ -44,5 +45,5 @@ namespace AISystem
         }
     }
 }
-
+    
 

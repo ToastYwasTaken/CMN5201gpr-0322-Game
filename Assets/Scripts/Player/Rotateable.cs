@@ -34,9 +34,9 @@ namespace Assets.Scripts.Player
             //    ("Rotation/ x:Dis y:Spd", _rotateable.RotationCurve, 
             //    Color.red, new Rect(0, 0.05f, 1, 1));
 
-            EditorGUILayout.MinMaxSlider("Constrain: " + 
-                ((int)_rotateable.ConstrStart).ToString() + "/" + 
-                ((int)_rotateable.ConstrEnd).ToString(), ref _rotateable.ConstrStart, 
+            EditorGUILayout.MinMaxSlider("Constrain: " +
+                ((int)_rotateable.ConstrStart).ToString() + "/" +
+                ((int)_rotateable.ConstrEnd).ToString(), ref _rotateable.ConstrStart,
                 ref _rotateable.ConstrEnd, 0, 360);
 
             if (GUI.changed)
