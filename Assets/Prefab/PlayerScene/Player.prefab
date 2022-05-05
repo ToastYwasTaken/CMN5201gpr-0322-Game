@@ -739,7 +739,6 @@ GameObject:
   - component: {fileID: 7576545269406560644}
   - component: {fileID: 1318097878093630658}
   - component: {fileID: 4096101623133359713}
-  - component: {fileID: 4866319893869906703}
   - component: {fileID: 2954168021030677781}
   - component: {fileID: 3360242758510589023}
   - component: {fileID: 7476223424415133758}
@@ -798,29 +797,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 3360242758510589023}
-  _weaponManager: {fileID: 4866319893869906703}
+  _weaponManager: {fileID: 0}
   _heatmeter: {fileID: 2954168021030677781}
---- !u!114 &4866319893869906703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576545269406560640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d8233670181714a9134fe465a0a4d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCore: {fileID: 4096101623133359713}
-  _heatmeter: {fileID: 2954168021030677781}
-  _weaponItems:
-  - {fileID: 11400000, guid: 1231d008f58ba7f45abe29e05ae6f2ad, type: 2}
-  - {fileID: 11400000, guid: 52d1d43ffa4a80046a01fda7cacadcb6, type: 2}
-  _defaultWeapon: {fileID: 11400000, guid: 1231d008f58ba7f45abe29e05ae6f2ad, type: 2}
-  _firePoints:
-  - {fileID: 2649768078200201302}
-  - {fileID: 9088219006787790356}
 --- !u!114 &2954168021030677781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1280,7 +1258,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1446
+  m_InstanceId: 38164
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

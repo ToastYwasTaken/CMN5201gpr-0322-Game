@@ -53,7 +53,7 @@
     <UnityVersion>2021.2.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\OldScripts\Old_Projectile.cs" />
@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Scripts\UI\HeatmeterUIBar.cs" />
     <Compile Include="Assets\Scripts\UI\Window\WindowWithAnimator.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\ShootBehaviour\ShootBehaviour.cs" />
     <Compile Include="Assets\Scripts\AI\AI States\AIState.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
     <Compile Include="Assets\Scripts\UI\Extensions\UIExtensions.cs" />
@@ -100,6 +101,8 @@
     <Compile Include="Assets\Scripts\AI\AI Actions\EvadeAction.cs" />
     <Compile Include="Assets\Scripts\AI\AI Decisions\AIInLineOfSightDecision.cs" />
     <Compile Include="Assets\Scripts\MapGeneration\Tile.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\ShootBehaviour\DefaultShoot.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\WeaponSlot.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\EnableIffSleeping.cs" />
     <Compile Include="Assets\Scripts\MapGeneration\BossRoom.cs" />
     <Compile Include="Assets\Scripts\UI\Window\WindowController.cs" />
@@ -115,7 +118,7 @@
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DungeonManager.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\Scripts\AI\AI Modules\AITargetInRange.cs" />
-    <Compile Include="Assets\Scripts\Items\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\Weapon.cs" />
     <Compile Include="Assets\Scripts\Player\Heatmeter.cs" />
     <Compile Include="Assets\Scripts\AI\AI Modules\AIFieldOfView.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IShoot.cs" />
@@ -128,7 +131,6 @@
     <Compile Include="Assets\Scripts\Player\Damagable.cs" />
     <Compile Include="Assets\Scripts\AI\AIConfiguration.cs" />
     <Compile Include="Assets\Scripts\Player\DirLightDimmer.cs" />
-    <Compile Include="Assets\Scripts\Player\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCore.cs" />
     <Compile Include="Assets\Scripts\Items\Upgrades\OverdriveManager.cs" />
     <Compile Include="Assets\Scripts\AI\AIEvent.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Assets\Scripts\AI\AI States\AIBaseState.cs" />
     <Compile Include="Assets\Scripts\MapGeneration\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Global\ReferenceLib.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\AI\AITransition.cs" />
     <Compile Include="Assets\Scripts\AI\AI States\AIStateAction.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
