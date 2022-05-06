@@ -12,6 +12,7 @@ public class WeaponManager : MonoBehaviour, IShoot
     private PlayerInformation _playerInformation;
 
     private WeaponSlot[] _weaponsSlots;  
+    public WeaponSlot[] WeaponsSlots { get => _weaponsSlots; }
     [SerializeField] private Weapon _defaultWeapon;
 
     [SerializeField] private GameObject[] _firePoints;

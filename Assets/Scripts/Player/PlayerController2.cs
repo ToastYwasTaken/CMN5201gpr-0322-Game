@@ -17,19 +17,30 @@ namespace Assets.Scripts.Player
         [HideInInspector] Moveable _movable;
         [HideInInspector] Rotateable _rotateable;
         [HideInInspector] CameraController _cameraController;
+        [SerializeField] Rotateable _leftWpn, _rightWpn;
+        Inventory _inventory;
+        public Inventory Inventory { get => _inventory; }
         private void Awake()
         {
             ReferenceLib.sPlayerCtrl = this;
             if (_movable == null)_movable = GetComponent<Moveable>();
             if (_rotateable == null) _rotateable = GetComponent<Rotateable>();
             if (_cameraController == null) _cameraController = GetComponent<CameraController>();
+            if (_inventory == null) _inventory = new Inventory(10, GetComponent<WeaponManager>());
+        }
+        private void Update()
+        {
+            _cameraController.DoCamera();
+            //DoInput
         }
 
         private void FixedUpdate()
         {
-            _rotateable.RotateTowardsTargetV2(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            _rotateable.RotateTowardsTargetV2(mousePos);
+            _leftWpn.RotateTowardsTargetV2(mousePos);
+            _rightWpn.RotateTowardsTargetV2(mousePos);
             _movable.DoMovement();
-            _cameraController.DoCamera();
             DoWeapons();
         }
 

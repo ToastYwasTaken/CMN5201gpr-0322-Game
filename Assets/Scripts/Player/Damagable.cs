@@ -8,7 +8,7 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] private float mHealth;
         [SerializeField] eEntityType _eType;
-        private float mCurrentHealth;
+        [SerializeField] private float mCurrentHealth;
 
         private void Awake()
         {

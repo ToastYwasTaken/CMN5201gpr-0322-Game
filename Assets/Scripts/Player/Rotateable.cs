@@ -34,9 +34,9 @@ namespace Assets.Scripts.Player
             //    ("Rotation/ x:Dis y:Spd", _rotateable.RotationCurve, 
             //    Color.red, new Rect(0, 0.05f, 1, 1));
 
-            EditorGUILayout.MinMaxSlider("Constrain: " +
-                ((int)_rotateable.ConstrStart).ToString() + "/" +
-                ((int)_rotateable.ConstrEnd).ToString(), ref _rotateable.ConstrStart,
+            EditorGUILayout.MinMaxSlider("Constrain: " + 
+                ((int)_rotateable.ConstrStart).ToString() + "/" + 
+                ((int)_rotateable.ConstrEnd).ToString(), ref _rotateable.ConstrStart, 
                 ref _rotateable.ConstrEnd, 0, 360);
 
             if (GUI.changed)
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Player
             }
         }
     }
-    [RequireComponent(typeof(Rigidbody2D))]
+    //[RequireComponent(typeof(Rigidbody2D))]
     class Rotateable : MonoBehaviour
     {
         [SerializeField] private Transform _parentT;
@@ -94,7 +94,7 @@ namespace Assets.Scripts.Player
 
         private void UpdateOwnAngle()
         {
-            _ownAngle = _rBody.rotation;
+            _ownAngle = transform.eulerAngles.z;
         }
 
         private void UpdateParentAngle()
@@ -126,6 +126,8 @@ namespace Assets.Scripts.Player
             if (cStart > cEnd) //include 0
             {
                 isIncludeZero = true;
+                if (angle > cStart || angle < cEnd)
+                    return angle;
                 return ClosestAngle(angle, cStart, cEnd);
             }
             return angle;
@@ -136,6 +138,10 @@ namespace Assets.Scripts.Player
         {
             RotateTowardsTargetV2(target.ToVector2());
         }
+        float targetAngle;
+        float currAngle;
+
+        [SerializeField] bool isShowLog = false;
         public void RotateTowardsTargetV2(Vector2 target)
         {
             UpdateOwnAngle();
@@ -146,14 +152,14 @@ namespace Assets.Scripts.Player
             }
 
             Vector2 targetDir = target - transform.position.ToVector2();
-            float targetAngle = AngleWrap(Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f);
+            targetAngle = AngleWrap(Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f);
             if (_isConstrained)
                 targetAngle = ConstrainAngle(_constrS, _constrE, targetAngle);
-            float currAngle = 0;
+            currAngle = 0;
 
-            //_currTargetAngle = targetAngle;
-            if (targetAngle != _currTargetAngle)
-                _currTargetAngle = AngleWrap(LerpAngle(_currTargetAngle, targetAngle));
+            _currTargetAngle = targetAngle;
+            //if (targetAngle != _currTargetAngle)
+            //    _currTargetAngle = AngleWrap(LerpAngle(_currTargetAngle, targetAngle));
 
             float angleDiff = Mathf.Abs(Mathf.DeltaAngle(_currTargetAngle, _ownAngle));
 
@@ -164,15 +170,23 @@ namespace Assets.Scripts.Player
             else
             {
                 float tempTargetAngle = _currTargetAngle;
-                //float tempOwnAngle = _ownAngle;
+                float tempOwnAngle = _ownAngle;
                 if (isIncludeZero)
                 {
-                    if (_ownAngle <= _constrE && _ownAngle>=0f) _ownAngle += 360;
-                    if (tempTargetAngle <= _constrE && tempTargetAngle >= 0f) tempTargetAngle += 360;
+                    if (tempOwnAngle <= _constrE) 
+                        tempOwnAngle += 360;
+                    if (tempTargetAngle <= _constrE) 
+                        tempTargetAngle += 360;
+                    if (tempOwnAngle > _constrE && tempOwnAngle < _constrS) tempOwnAngle += 360;
+                    if (tempTargetAngle > _constrE && tempTargetAngle < _constrS) tempTargetAngle += 360;
                 }
-                currAngle = AngleWrap(Mathf.Lerp(_ownAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
+                currAngle = AngleWrap(Mathf.Lerp(tempOwnAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
+
+                if(isShowLog)
+                    print("ownangle:" + tempOwnAngle + " targewt:" + tempTargetAngle + " currangle:" + currAngle);
             }
-            _rBody.rotation = currAngle;
+            transform.eulerAngles = Vector3.forward * currAngle;
+            //_rBody.rotation = currAngle;
         }
 
         private float LerpAngle(float currTarget, float newTarget)
@@ -196,7 +210,7 @@ namespace Assets.Scripts.Player
 
         private bool IsWideConstrain()
         {
-            if (Mathf.Abs(-ConstrStart + ConstrEnd) > 179f)
+            if (Mathf.Abs(-ConstrStart + ConstrEnd) > 179.9f)
                 return true;
             return false;
         }
