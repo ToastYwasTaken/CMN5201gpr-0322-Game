@@ -1,12 +1,22 @@
 ﻿using System;
+<<<<<<< Updated upstream
 using UnityEngine;
 
 //Based on: https://gamedevelopment.tutsplus.com/de/tutorials/how-to-use-bsp-trees-to-generate-game-maps--gamedev-12268
+=======
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+using Assets.Scripts.MapGeneration;
+>>>>>>> Stashed changes
 
 namespace Assets.Scripts.MapGeneration
 {
     public class Map
     {
+<<<<<<< Updated upstream
         public int X;
         public int Y;
         public int Width;
@@ -84,4 +94,124 @@ namespace Assets.Scripts.MapGeneration
             return true;
         }
     }
+=======
+        protected int Width;
+        protected int Height;
+        protected int HeightOffset;
+        protected int WidthOffset;
+        protected Vector3[,] MapPositions;
+        public List<BSPPartition> Partitions = new List<BSPPartition>();
+        public Map(int maxWidth, int maxHeight)
+        {
+            Width = maxWidth;
+            Height = maxHeight;
+            HeightOffset = (int)(Height * 0.2f);
+            WidthOffset = (int)(Width * 0.2f);
+            MapPositions = new Vector3[Width, Height];
+            AssignPositions();
+            int breakCount = 0;
+            while(Width > 20 && Height > 20)
+            {
+                Debug.Log("Creating BSP map");
+                CreateBSPMap();
+                breakCount++;
+                if(breakCount == 100)
+                {
+                    break;
+                }
+            }
+            DebugLog();
+        }
+
+        private void AssignPositions()
+        {
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    MapPositions[i, j] = new Vector3(i, j, 0);
+                }
+            }
+        }
+
+        private void DebugLog()
+        {
+            for (int i = 0; i < Partitions.Count; i++)
+            {
+                Debug.Log($"Partition {i}:");
+                for (int j = 0; j < Partitions[i].MapPositions.Length; j++)
+                {
+                    for (int k = 0; k < Partitions[i].MapPositions.Length; k++)
+                    {
+                        Debug.Log($"Map[{j}|{k}]");
+                    }
+                }
+            }
+
+        }
+
+        private void CreateBSPMap()
+        {
+            System.Random rnd = new System.Random();
+            int randomPositionOnHorizontal, randomPositionOnVertical;
+            int rndInt = rnd.Next(1, 3);
+            BSPPartition partition;
+            //Splitting horizontally at random
+            if (rndInt == 0)
+            {
+                randomPositionOnHorizontal = rnd.Next(WidthOffset, Width - WidthOffset);
+                partition = new BSPPartition(randomPositionOnHorizontal, Width, 0, Height);
+                Partitions.Add(partition);
+                partition = new BSPPartition(0, randomPositionOnHorizontal, 0, Height);
+                Partitions.Add(partition);
+            }
+            //Splitting vertically
+            else if(rndInt == 1)
+            {
+                randomPositionOnVertical = rnd.Next(HeightOffset, Height - HeightOffset);
+                partition = new BSPPartition(0, Width, randomPositionOnVertical, Height);
+                Partitions.Add(partition);
+                partition = new BSPPartition(0, Width, 0, randomPositionOnVertical);
+                Partitions.Add(partition);
+            }
+        }
+    }
+
+    public class BSPPartition
+    {
+        protected int Width;
+        protected int Height;
+        protected int MinWidth;
+        protected int MinHeight;
+        public Vector3[,] MapPositions;
+
+        public BSPPartition(int minWidth, int maxWidth, int minHeight, int maxHeight)
+        {
+            Width = maxWidth;
+            MinWidth = minWidth;
+            Height = maxHeight;
+            MinHeight = minHeight;
+            MapPositions = new Vector3[Width, Height];
+            AssignPositions();
+        }
+
+        private void AssignPositions()
+        {
+            if(MapPositions.LongLength > 0)
+            {
+            Array.Clear(MapPositions, 0, MapPositions.Length);
+            }
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    MapPositions[i, j] = new Vector3(i+MinWidth, j+MinHeight, 0);
+                }
+            }
+        }
+
+    }
+
+
+>>>>>>> Stashed changes
 }

@@ -45,9 +45,13 @@ namespace MapGeneration
         private List<Map> _onlySmallestLeafs = new List<Map>();
         void Awake()
         {
+<<<<<<< Updated upstream
             //Create BSP Map
             CreateBSPMap();
             Debug.Log("successfully created BSP map");
+=======
+            CreateBSP();
+>>>>>>> Stashed changes
             //Level Generation only, no prefab instantiation
             _level = new Level(_roomCount, _groundPrefab, _wallPrefab, _borderPrefab, ERoomSize.Random);
         }
@@ -104,6 +108,11 @@ namespace MapGeneration
                     //Instantiate Prefabs
                 }
             }
+        }
+
+        private void CreateBSP()
+        {
+            Map map = new Map(100, 100);
         }
 
 

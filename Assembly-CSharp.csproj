@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Player\Test\ProjectileSimple.cs" />
     <Compile Include="Assets\Scripts\Player\Test\TurretAI.cs" />
     <Compile Include="Assets\Scripts\AI\AI Actions\IdleAction.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\Map.cs" />
     <Compile Include="Assets\Scripts\AI\AI Decisions\AIInFieldOfViewDecision.cs" />
     <Compile Include="Assets\Scripts\AI\AIEventListener.cs" />
     <Compile Include="Assets\Scripts\Items\Upgrades\OverdriveBehaviour.cs" />
@@ -154,7 +155,6 @@
     <Compile Include="Assets\Scripts\AI\AITransition.cs" />
     <Compile Include="Assets\Scripts\AI\AI States\AIStateAction.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
-    <Compile Include="Assets\Scripts\MapGeneration\Map.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
