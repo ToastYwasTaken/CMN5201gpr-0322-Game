@@ -10,9 +10,9 @@ namespace MapGeneration
 {
     public class Tile
     {
-        protected GameObject Prefab;
-        protected Vector3 Position;
-        protected Quaternion Rotation;
+        public GameObject Prefab;
+        public Vector3 Position;
+        public Quaternion Rotation;
 
         public Tile(GameObject prefab, Vector3 position, Quaternion rotation)
         {

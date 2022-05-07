@@ -10,13 +10,17 @@ namespace MapGeneration
 {
     public class BossRoom : Room
     {
-        public BossRoom(GameObject ground, GameObject wall, GameObject border, ERoomSize roomSize)
+        public BossRoom(GameObject ground, GameObject wall, GameObject border,
+            int x, int y, int width, int height)
         {
             Ground = ground;
             Wall = wall;
             Border = border;
-            RoomSize = roomSize;
-            AssignRoomSize(roomSize);
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
+            RandomlyOffsetRooms();
             InitRoom();
         }
 
@@ -25,8 +29,8 @@ namespace MapGeneration
         /// </summary>
         protected override void InitRoom()
         {
-            int posX = 0;
-            int posY = 0;
+            int posX = X;
+            int posY = Y;
             Tiles = new Tile[Width, Height];
             Quaternion rotation = Quaternion.identity;
             for (int i = 0; i < Width; i++)
@@ -44,12 +48,13 @@ namespace MapGeneration
                         Tiles[i, j] = new Tile(Border, new Vector3(posX++, posY++, 0), rotation);
                     }
                     //Wall Prefab
-                    else if (true)
-                    {
-                        Tiles[i, j] = new Tile(Wall, new Vector3(posX++, posY++, 0), rotation);
-                    }
+                    //else if (true)
+                    //{
+                    //    Tiles[i, j] = new Tile(Wall, new Vector3(posX++, posY++, 0), rotation);
+                    //}
                 }
             }
+            Debug.Log("Created BossRoom, assigned Tiles");
         }
     }
 }

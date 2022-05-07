@@ -11,13 +11,19 @@ namespace MapGeneration
 {
     public class NormalRoom : Room
     {
-        public NormalRoom(GameObject ground, GameObject wall, GameObject border, ERoomSize roomSize)
+        public NormalRoom(GameObject ground, GameObject wall, GameObject border,
+            int x, int y, int width, int height)
         {
             Ground = ground;
             Wall = wall;
             Border = border;
-            RoomSize = roomSize;
-            AssignRoomSize(roomSize);
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
+            PositionOffset = (X + Y) / 6 ;
+            SizeOffset = (Width + Height) / 6 ;
+            RandomlyOffsetRooms();
             InitRoom();
         }
 
@@ -26,8 +32,8 @@ namespace MapGeneration
         /// </summary>
         protected override void InitRoom()
         {
-            int posX = 0;
-            int posY = 0;
+            int posX = X;
+            int posY = Y;
             Tiles = new Tile[Width, Height];
             Quaternion rotation = Quaternion.identity;
             for (int i = 0; i < Width; i++)
@@ -37,20 +43,23 @@ namespace MapGeneration
                     //Ground Prefab //TODO: Add conditions
                     if (true)
                     {
-                        Tiles[i, j] = new Tile(Ground, new Vector3(posX++, posY++, 0), rotation);
+                        Tiles[i, j] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                     }
                     //Border Prefab 
-                    else if (true)
-                    {
-                        Tiles[i, j] = new Tile(Border, new Vector3(posX++, posY++, 0), rotation);
-                    } 
+                    //else if (true)
+                    //{
+                    //    Tiles[i, j] = new Tile(Border, new Vector3(i, j, 0), rotation);
+                    //} 
                     //Wall Prefab
-                    else if (true)
-                    {
-                        Tiles[i, j] = new Tile(Wall, new Vector3(posX++, posY++, 0), rotation);
-                    }
+                    //else if (true)
+                    //{
+                    //    Tiles[i, j] = new Tile(Wall, new Vector3(i, j, 0), rotation);
+                    //}
                 }
+                posX = X;
+                posY++;
             }
+            Debug.Log("Created Normal Room, assigned Tiles");
         }
 
 

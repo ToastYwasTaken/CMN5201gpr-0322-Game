@@ -17,41 +17,27 @@ namespace MapGeneration
     {
         protected Tile[,] Tiles;    //all tiles + data of one room
         public Tile[,] PTiles => Tiles;
-
+        #region position / size
+        protected int X, Y, Width, Height;
+        #endregion
         protected GameObject Wall;
         protected GameObject Border;
         protected GameObject Ground;
-        protected ERoomSize RoomSize;
-        protected int Width;
-        protected int Height;
-        private const int LOWERRANDOMBOUND = 10;
-        private const int UPPERRANDOMBOUND = 100;
-        private const int NORMALWIDTH = 20;
-        private const int NORMALHEIGHT = 20;
-        private System.Random Random = new((int)(System.DateTime.Now.Ticks));
+        protected int PositionOffset;
+        protected int SizeOffset;
+        private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
 
         /// <summary>
-        /// Assigns width and height accordingly
+        /// Offsets Positions and Size randomly
         /// </summary>
-        /// <param name="roomSize">Generates size either randomly or from constants</param>
-        public void AssignRoomSize(ERoomSize roomSize)
+        protected void RandomlyOffsetRooms()
         {
-            switch (roomSize)
-            {
-                //Assign a random width and height within given bounds
-                case ERoomSize.Random:
-                    Width = Random.Next(LOWERRANDOMBOUND, UPPERRANDOMBOUND);
-                    Height = Random.Next(LOWERRANDOMBOUND, UPPERRANDOMBOUND);
-                    break;
-                //Assign the room with normal given sizes
-                case ERoomSize.Normal:
-                    Width = NORMALWIDTH;
-                    Height = NORMALHEIGHT;
-                    break;
-                default:
-                    break;
-            }
+            X = _rdm.Next(X-PositionOffset, X + PositionOffset);
+            Y = _rdm.Next(Y-PositionOffset, Y + PositionOffset);
+            Width = _rdm.Next(Width-SizeOffset, Width + SizeOffset);
+            Height = _rdm.Next(Height-SizeOffset, Height + SizeOffset);
         }
+
         protected abstract void InitRoom();
     }
 }
