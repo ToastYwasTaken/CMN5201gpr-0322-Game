@@ -23,6 +23,9 @@ namespace MapGeneration
             Height = height;
             PositionOffset = (X + Y) / 6 ;
             SizeOffset = (Width + Height) / 6 ;
+            NormalizePrefabSize(Ground);
+            NormalizePrefabSize(Wall);
+            NormalizePrefabSize(Border);
             RandomlyOffsetRooms();
             InitRoom();
         }
@@ -35,11 +38,12 @@ namespace MapGeneration
             int posX = X;
             int posY = Y;
             Tiles = new Tile[Width, Height];
-            Quaternion rotation = Quaternion.identity;
+            Quaternion rotation;
             for (int i = 0; i < Width; i++)
             {
                 for (int j = 0; j < Height; j++)
                 {
+                    rotation = RandomlyOffsetRotation();
                     //Ground Prefab //TODO: Add conditions
                     if (true)
                     {

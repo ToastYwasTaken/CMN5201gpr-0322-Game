@@ -44,6 +44,12 @@ namespace MapGeneration
 
         void Awake()
         {
+            //Assign motherGO of Map
+            if(_mapMotherGO == null)
+            {
+                _mapMotherGO = new GameObject("Map");
+                _mapMotherGO.transform.position = new Vector3(0, 0, 0);
+            }
             //create original map root
             mapRoot = new BSPMap(0, 0, _mapWidth, _mapHeight);
             //add original map
@@ -64,29 +70,6 @@ namespace MapGeneration
                 Debug.Log("Item " + i + "of roomsList");
             }
         }
-
-        /// <summary>
-        /// Instantiates rooms per tile
-        /// </summary>
-        private void InstantiateRooms()
-        {
-            //Iterate over all rooms
-            for (int h = 0; h < BSPMap.s_roomsList.Count; h++)
-            {
-                //Iterate over 1st dimension of array
-                for (int i = 0; i < BSPMap.s_roomsList[h].PTiles.GetLength(0); i++)
-                {
-                    //Iterate over 2nd dimension of array
-                    for (int j = 0; j < BSPMap.s_roomsList[h].PTiles.GetLength(1); j++)
-                    {
-                        Debug.Log($"Map '{h}': at Tile[{i}|{j}]");
-                        Instantiate(BSPMap.s_roomsList[h].PTiles[i, j].Prefab, BSPMap.s_roomsList[h].PTiles[i, j].Position, BSPMap.s_roomsList[h].PTiles[i, j].Rotation);
-                    }
-                }
-            }
-            Debug.Log("Instantiated all rooms");
-        }
-
 
         /// <summary>
         /// Create BSP Map
@@ -129,6 +112,29 @@ namespace MapGeneration
             //Assign roomCount
             _roomCount = _onlySmallestPartitions.Count;
             Debug.Log($"Splitted original map '{splitAmount}' times to create '{_allMaps.Count}' rooms over all.\nAfter removing rooms that were splitted, '{_roomCount}' rooms remain");
+        }
+
+        /// <summary>
+        /// Instantiates rooms per tile
+        /// </summary>
+        private void InstantiateRooms()
+        {
+            //Iterate over all rooms
+            for (int h = 0; h < BSPMap.s_roomsList.Count; h++)
+            {
+                //Iterate over 1st dimension of array
+                for (int i = 0; i < BSPMap.s_roomsList[h].PTiles.GetLength(0); i++)
+                {
+                    //Iterate over 2nd dimension of array
+                    for (int j = 0; j < BSPMap.s_roomsList[h].PTiles.GetLength(1); j++)
+                    {
+                        Debug.Log($"Map '{h}': at Tile[{i}|{j}]");
+                        GameObject newRoomTile = Instantiate(BSPMap.s_roomsList[h].PTiles[i, j].Prefab, BSPMap.s_roomsList[h].PTiles[i, j].Position, BSPMap.s_roomsList[h].PTiles[i, j].Rotation);
+                        newRoomTile.transform.parent = _mapMotherGO.transform;
+                    }
+                }
+            }
+            Debug.Log("Instantiated all rooms");
         }
 
 

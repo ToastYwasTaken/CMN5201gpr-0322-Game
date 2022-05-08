@@ -38,6 +38,23 @@ namespace MapGeneration
             Height = _rdm.Next(Height-SizeOffset, Height + SizeOffset);
         }
 
+        protected Quaternion RandomlyOffsetRotation()
+        {
+            Quaternion rotation;
+            int rdmInt = _rdm.Next(1, 8);
+            if (rdmInt == 1)
+            {
+                rotation = Quaternion.Euler(0, 0, 90);
+            }
+            else rotation = Quaternion.identity;
+            return rotation;
+        }
+
+        protected void NormalizePrefabSize(GameObject prefab)
+        {
+            prefab.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+
         protected abstract void InitRoom();
     }
 }

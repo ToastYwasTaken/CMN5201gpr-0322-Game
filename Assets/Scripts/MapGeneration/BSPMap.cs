@@ -33,6 +33,10 @@ namespace Assets.Scripts.MapGeneration
             s_MIN_PARTITION_HEIGHT = minPartitionHeight;
         } 
 
+        /// <summary>
+        /// Split Map if splitable and desired partition side isn't too small
+        /// </summary>
+        /// <returns>true if map was split, else returns false </returns>
         public bool SplitMap()
         {
             System.Random rnd = new System.Random();
