@@ -59,16 +59,7 @@ namespace MapGeneration
             Debug.Log("successfully created BSP map");
             //Level Generation only, no prefab instantiation
             mapRoot.CreateRooms(_groundPrefab, _wallPrefab, _borderPrefab);
-            DebugRL();
             InstantiateRooms();
-        }
-
-        private void DebugRL()
-        {
-            for (int i = 0; i < BSPMap.s_roomsList.Count; i++)
-            {
-                Debug.Log("Item " + i + "of roomsList");
-            }
         }
 
         /// <summary>
@@ -119,25 +110,30 @@ namespace MapGeneration
         /// </summary>
         private void InstantiateRooms()
         {
+            //System.Random rdm = new System.Random();
+            //float rdmFloat = (float)rdm.NextDouble();
             //Iterate over all rooms
             for (int h = 0; h < BSPMap.s_roomsList.Count; h++)
             {
+                GameObject newRoomTile;
+                GameObject motherOfRoom = new GameObject($"Mother of room {h}");
+                motherOfRoom.transform.parent = _mapMotherGO.transform;
                 //Iterate over 1st dimension of array
                 for (int i = 0; i < BSPMap.s_roomsList[h].PTiles.GetLength(0); i++)
                 {
                     //Iterate over 2nd dimension of array
                     for (int j = 0; j < BSPMap.s_roomsList[h].PTiles.GetLength(1); j++)
                     {
-                        Debug.Log($"Map '{h}': at Tile[{i}|{j}]");
-                        GameObject newRoomTile = Instantiate(BSPMap.s_roomsList[h].PTiles[i, j].Prefab, BSPMap.s_roomsList[h].PTiles[i, j].Position, BSPMap.s_roomsList[h].PTiles[i, j].Rotation);
-                        newRoomTile.transform.parent = _mapMotherGO.transform;
+                        newRoomTile = Instantiate(BSPMap.s_roomsList[h].PTiles[i, j].Prefab, BSPMap.s_roomsList[h].PTiles[i, j].Position, BSPMap.s_roomsList[h].PTiles[i, j].Rotation);
+                        newRoomTile.transform.name = $"{BSPMap.s_roomsList[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_roomsList[h].PTiles[i, j].Position.x}|{BSPMap.s_roomsList[h].PTiles[i, j].Position.y}]";
+                        // for Debugging: newRoomTile.GetComponent<SpriteRenderer>().color = new Color(rdmFloat, rdmFloat, rdmFloat, 1f);
+                        newRoomTile.transform.parent = motherOfRoom.transform;
                     }
                 }
+                //rdmFloat = (float)rdm.NextDouble();
             }
             Debug.Log("Instantiated all rooms");
         }
-
-
 
 
     }

@@ -111,7 +111,7 @@ namespace Assets.Scripts.MapGeneration
             {
                 Room currentRoom = new NormalRoom(ground, wall, border, X, Y, Width, Height);
                 s_roomsList.Add(currentRoom);
-                Debug.Log("Creating new room");
+                Debug.Log($"Created new room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
             }
         }
     }

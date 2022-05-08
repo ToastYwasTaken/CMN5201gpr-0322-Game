@@ -26,7 +26,7 @@ namespace MapGeneration
             NormalizePrefabSize(Ground);
             NormalizePrefabSize(Wall);
             NormalizePrefabSize(Border);
-            RandomlyOffsetRooms();
+            //RandomlyOffsetRooms();
             InitRoom();
         }
 
@@ -35,19 +35,22 @@ namespace MapGeneration
         /// </summary>
         protected override void InitRoom()
         {
-            int posX = X;
-            int posY = Y;
+            float perlinNoise;
             Tiles = new Tile[Width, Height];
             Quaternion rotation;
-            for (int i = 0; i < Width; i++)
+            for (int i = 0; i < Height; i++)
             {
-                for (int j = 0; j < Height; j++)
+                for (int j = 0; j < Width; j++)
                 {
+                    perlinNoise = Mathf.PerlinNoise(0, 1);
                     rotation = RandomlyOffsetRotation();
-                    //Ground Prefab //TODO: Add conditions
-                    if (true)
+                    //Randomly add walls by perlinNoise
+                    if (perlinNoise > 0.5f)
                     {
-                        Tiles[i, j] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                        Tiles[j, i] = new Tile(Ground, new Vector3(i + X, j + Y, 0), rotation);
+                    }else
+                    {
+                        Tiles[j, i] = new Tile(Wall, new Vector3(i + X, j + Y, 0), rotation);
                     }
                     //Border Prefab 
                     //else if (true)
@@ -60,8 +63,6 @@ namespace MapGeneration
                     //    Tiles[i, j] = new Tile(Wall, new Vector3(i, j, 0), rotation);
                     //}
                 }
-                posX = X;
-                posY++;
             }
             Debug.Log("Created Normal Room, assigned Tiles");
         }
