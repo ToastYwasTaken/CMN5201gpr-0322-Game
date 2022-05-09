@@ -8,7 +8,7 @@ using UnityEngine;
 /// Only to see the noise applied for room generation
 /// </summary>
 
-namespace Assets.Scripts.MapGeneration
+namespace MapGeneration
 {
     public class PerlinNoiseGenerator : MonoBehaviour
     {
@@ -19,7 +19,7 @@ namespace Assets.Scripts.MapGeneration
         [SerializeField, Range(1, 4000)]
         int _height = 256;
         //the higher the darker
-        [SerializeField, Range(0.0f, 20.0f)]
+        [SerializeField, Range(0.0f, 100.0f)]
         float _perlinNoiseIntensity = 1f;
         [SerializeField, Range(0.1f, 0.9f)]
         float _perlinNoiseOffsetX = 0.35f;
@@ -30,7 +30,7 @@ namespace Assets.Scripts.MapGeneration
         float _perlinNoiseScale = 5.0f;
 
         private Renderer _rend;
-        private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
+
         private static PerlinNoiseGenerator _instance;
 
 
@@ -68,29 +68,12 @@ namespace Assets.Scripts.MapGeneration
             tex.Apply();
             return tex;
         }
+
         private Color GenerateColor(int x, int y)
         {
-            float perlinNoise = GeneratePerlinNoiseAtCoordinates(x, y, _perlinNoiseOffsetX, _perlinNoiseOffsetY, _perlinNoiseScale, _perlinNoiseIntensity);
+            float perlinNoise = Mathf.PerlinNoise((x * _perlinNoiseOffsetX) / _perlinNoiseScale, (y * _perlinNoiseOffsetY) /_perlinNoiseScale) / _perlinNoiseIntensity;
             return new Color(perlinNoise, perlinNoise, perlinNoise);
         }
-
-        /// <summary>
-        /// public accessibility to generate this noise for the rooms
-        /// </summary>
-        /// <param name="x">xPos</param>
-        /// <param name="y">yPos</param>
-        /// <returns>perlinNoise at those coordinates</returns>
-        public float GeneratePerlinNoiseAtCoordinates(int x, int y, float perlinNoiseOffsetX, float perlinNoiseOffsetY, float perlinNoiseScale, float perlinNoiseIntensity)
-        {
-            float perlinNoise = Mathf.PerlinNoise((x * perlinNoiseOffsetX) / perlinNoiseScale, y * perlinNoiseOffsetY /perlinNoiseScale) / perlinNoiseIntensity;
-            return perlinNoise;
-        }
-
-        public float RandomFloat(float min, float max)
-        {
-            return (((float)(_rdm.NextDouble()) * (max - min)) + min);
-        }
-
     }
 }
 #endif

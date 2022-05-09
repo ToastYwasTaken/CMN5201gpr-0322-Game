@@ -11,7 +11,7 @@ using UnityEngine;
 ///     TODO: Dungeon algorithm / connecting rooms
 /// </summary>
 
-namespace Assets.Scripts.MapGeneration
+namespace MapGeneration
 {
     public abstract class Room
     {
@@ -25,25 +25,23 @@ namespace Assets.Scripts.MapGeneration
         protected GameObject Ground;
         protected int PositionOffset;
         protected int SizeOffset;
-        protected PerlinNoiseGenerator PerlinNoiseGenerator = new PerlinNoiseGenerator();
-        protected int RoomCount;
-        protected System.Random Rdm = new((int)(System.DateTime.Now.Ticks));
+        private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
 
         /// <summary>
         /// Offsets Positions and Size randomly
         /// </summary>
         protected void RandomlyOffsetRooms()
         {
-            X = Rdm.Next(X-PositionOffset, X + PositionOffset);
-            Y = Rdm.Next(Y-PositionOffset, Y + PositionOffset);
-            Width = Rdm.Next(Width-SizeOffset, Width + SizeOffset);
-            Height = Rdm.Next(Height-SizeOffset, Height + SizeOffset);
+            X = _rdm.Next(X-PositionOffset, X + PositionOffset);
+            Y = _rdm.Next(Y-PositionOffset, Y + PositionOffset);
+            Width = _rdm.Next(Width-SizeOffset, Width + SizeOffset);
+            Height = _rdm.Next(Height-SizeOffset, Height + SizeOffset);
         }
 
         protected Quaternion RandomlyOffsetRotation()
         {
             Quaternion rotation;
-            int rdmInt = Rdm.Next(1, 8);
+            int rdmInt = _rdm.Next(1, 8);
             if (rdmInt == 1)
             {
                 rotation = Quaternion.Euler(0, 0, 90);
