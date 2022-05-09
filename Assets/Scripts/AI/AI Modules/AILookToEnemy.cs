@@ -70,18 +70,24 @@ namespace AISystem
                 _rotatingObject.transform.rotation = rotation;
                 _originQuaternion = _rotatingObject.transform.rotation;
             }
-            else
-            {
-                Quaternion lookRotating = LerpAngleToPosition(LookPosition);
-                _rotatingObject.transform.rotation = lookRotating; // Quaternion.Euler(lookRotating.x - 180, lookRotating.y, lookRotating.z + 180);
-            }
+            // else
+            // {
+            //     Quaternion lookRotating = LerpAngleToPosition(LookPosition);
+            //     _rotatingObject.transform.rotation = lookRotating; // Quaternion.Euler(lookRotating.x - 180, lookRotating.y, lookRotating.z + 180);
+            // }
 
+        }
+
+        public void LookAtInstance()
+        {
+            Quaternion rotation = CalculateRotationToTarget(TargetPosition);
+
+            _rotatingObject.transform.rotation = rotation;
+            _originQuaternion = _rotatingObject.transform.rotation;
         }
 
         private bool TargetIsVisible(GameObject owner, GameObject target)
         {
-           
-
             return target != null && fov.InFieldOfView(owner.transform,
                target.transform, Target.tag,
                ViewDistance, ViewAngle,

@@ -57,7 +57,8 @@ namespace AISystem
 
             // Verfolge das Ziel Viusel
             if (_lookToTarget)
-                _lookToEnemy.LookAt();
+            _lookToEnemy.LookAtInstance();    
+            //_lookToEnemy.LookAt();
         }
 
         public override void Exit(AIFSMAgent stateMachine)
