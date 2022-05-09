@@ -8,7 +8,7 @@ using UnityEngine;
 /// Only to see the noise applied for room generation
 /// </summary>
 
-namespace MapGeneration
+namespace Assets.Scripts.MapGeneration
 {
     public class PerlinNoiseGenerator : MonoBehaviour
     {

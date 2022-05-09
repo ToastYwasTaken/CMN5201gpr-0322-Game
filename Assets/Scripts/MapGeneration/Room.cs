@@ -11,7 +11,7 @@ using UnityEngine;
 ///     TODO: Dungeon algorithm / connecting rooms
 /// </summary>
 
-namespace MapGeneration
+namespace Assets.Scripts.MapGeneration
 {
     public abstract class Room
     {

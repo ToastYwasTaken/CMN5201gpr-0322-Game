@@ -7,7 +7,7 @@ using UnityEngine;
 /// multiple are instantiated in Level.cs
 /// </summary>
 
-namespace MapGeneration
+namespace Assets.Scripts.MapGeneration
 {
     public class NormalRoom : Room
     {
@@ -74,6 +74,8 @@ namespace MapGeneration
         //}
         protected override void InitRoom()
         {
+            int posX = X;
+            int posY = Y;
             Tiles = new Tile[Width, Height];
             Quaternion rotation;
             for (int x = 0; x < Width; x++)
@@ -81,10 +83,13 @@ namespace MapGeneration
                 for (int y = 0; y < Height; y++)
                 {
                     rotation = RandomlyOffsetRotation();
-                    Tiles[x, y] = new Tile(Ground, new Vector3(X + x, Y + y, 0), rotation);
+                    Tiles[x, y] = new Tile(Ground, new Vector3(posX, posY++, 0), rotation); //increment position
                 }
+                //Reset position
+                posY = Y;
+                posX++;
             }
-            Debug.Log("Created Normal Room, assigned Tiles");
+            //Debug.Log("Created Normal Room, assigned Tiles");
         }
 
 

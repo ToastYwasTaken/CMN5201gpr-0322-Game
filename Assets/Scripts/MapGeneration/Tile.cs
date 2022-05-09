@@ -6,7 +6,7 @@ using UnityEngine;
 /// Holds specific information about each cell of a room
 /// </summary>
 
-namespace MapGeneration
+namespace Assets.Scripts.MapGeneration
 {
     public class Tile
     {

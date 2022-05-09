@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using MapGeneration;
 using UnityEngine;
 
 //Based on: https://gamedevelopment.tutsplus.com/de/tutorials/how-to-use-bsp-trees-to-generate-game-maps--gamedev-12268
@@ -12,7 +11,7 @@ namespace Assets.Scripts.MapGeneration
         public int Width;
         public int Height;
         public BSPMap FirstMap, SecondMap;
-        public static List<Room> s_roomsList = new List<Room>();
+        public Room Room;
         private static int s_MIN_PARTITION_WIDTH;
         private static int s_MIN_PARTITION_HEIGHT;
         public BSPMap(int x, int y, int maxWidth, int maxHeight)
@@ -92,26 +91,25 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Create new rooms from prefabs for all rooms lowest partitions
         /// </summary>
-        public void CreateRooms(GameObject ground, GameObject wall, GameObject border)
+        public void CreateRoom(GameObject ground, GameObject wall, GameObject border)
         {
             if (FirstMap != null || SecondMap != null)
             {
                 //Map has been split, checking lower partitions
                 if (FirstMap != null)
                 {
-                    FirstMap.CreateRooms(ground, wall, border);
+                    FirstMap.CreateRoom(ground, wall, border);
                 }
                 if (SecondMap != null)
                 {
-                    SecondMap.CreateRooms(ground, wall, border);
+                    SecondMap.CreateRoom(ground, wall, border);
                 }
             }
             else
             //Create room here
             {
-                Room currentRoom = new NormalRoom(ground, wall, border, X, Y, Width, Height);
-                s_roomsList.Add(currentRoom);
-                //Debug.Log($"Created new room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
+                Room = new NormalRoom(ground, wall, border, X, Y, Width, Height);
+                Debug.Log($"Created new room at : [X : {X} | Y : {Y} with Width: {Width} | Height : {Height} ]");
             }
         }
     }
