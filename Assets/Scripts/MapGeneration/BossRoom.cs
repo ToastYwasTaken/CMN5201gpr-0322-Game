@@ -6,7 +6,7 @@ using UnityEngine;
 /// Creates one boss room for the level
 /// </summary>
 
-namespace MapGeneration
+namespace Assets.Scripts.MapGeneration
 {
     public class BossRoom : Room
     {
@@ -20,7 +20,7 @@ namespace MapGeneration
             Y = y;
             Width = width;
             Height = height;
-            RandomlyOffsetRooms();
+            //RandomlyOffsetRooms();
             InitRoom();
         }
 

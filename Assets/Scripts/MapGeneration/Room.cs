@@ -11,20 +11,20 @@ using UnityEngine;
 ///     TODO: Dungeon algorithm / connecting rooms
 /// </summary>
 
-namespace MapGeneration
+namespace Assets.Scripts.MapGeneration
 {
     public abstract class Room
     {
         protected Tile[,] Tiles;    //all tiles + data of one room
         public Tile[,] PTiles => Tiles;
-        #region position / size
+        #region position / size / offsets
         protected int X, Y, Width, Height;
+        protected int PositionXOffset, PositionYOffset, WidthOffset, HeightOffset;
         #endregion
         protected GameObject Wall;
         protected GameObject Border;
         protected GameObject Ground;
-        protected int PositionOffset;
-        protected int SizeOffset;
+        protected PerlinNoiseGenerator NoiseGenerator = new();
         private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
 
         /// <summary>
@@ -32,10 +32,8 @@ namespace MapGeneration
         /// </summary>
         protected void RandomlyOffsetRooms()
         {
-            X = _rdm.Next(X-PositionOffset, X + PositionOffset);
-            Y = _rdm.Next(Y-PositionOffset, Y + PositionOffset);
-            Width = _rdm.Next(Width-SizeOffset, Width + SizeOffset);
-            Height = _rdm.Next(Height-SizeOffset, Height + SizeOffset);
+            Width = _rdm.Next(WidthOffset, Width-1);
+            Height = _rdm.Next(HeightOffset, Height-1);
         }
 
         protected Quaternion RandomlyOffsetRotation()

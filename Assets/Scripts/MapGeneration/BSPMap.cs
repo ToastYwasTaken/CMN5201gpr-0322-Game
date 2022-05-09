@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using MapGeneration;
 using UnityEngine;
 
 //Based on: https://gamedevelopment.tutsplus.com/de/tutorials/how-to-use-bsp-trees-to-generate-game-maps--gamedev-12268
@@ -111,7 +110,6 @@ namespace Assets.Scripts.MapGeneration
             {
                 Room currentRoom = new NormalRoom(ground, wall, border, X, Y, Width, Height);
                 s_roomsList.Add(currentRoom);
-                Debug.Log($"Created new room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
             }
         }
     }

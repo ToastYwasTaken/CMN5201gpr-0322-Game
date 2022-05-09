@@ -7,7 +7,7 @@ using UnityEngine;
 /// multiple are instantiated in Level.cs
 /// </summary>
 
-namespace MapGeneration
+namespace Assets.Scripts.MapGeneration
 {
     public class NormalRoom : Room
     {
@@ -21,13 +21,14 @@ namespace MapGeneration
             Y = y;
             Width = width;
             Height = height;
-            PositionOffset = (X + Y) / 6 ;
-            SizeOffset = (Width + Height) / 6 ;
+            HeightOffset = Height / 8;
+            WidthOffset = Width / 8;
             NormalizePrefabSize(Ground);
             NormalizePrefabSize(Wall);
             NormalizePrefabSize(Border);
-            //RandomlyOffsetRooms();
+            RandomlyOffsetRooms();
             InitRoom();
+            Debug.Log($"Created new room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
         }
 
         /// <summary>
@@ -35,43 +36,27 @@ namespace MapGeneration
         /// </summary>
         protected override void InitRoom()
         {
-<<<<<<< HEAD
+            int posX = X;
+            int posY = Y;
             float perlinNoise;
-=======
->>>>>>> parent of 2970b1ec (updated MapGen)
             Tiles = new Tile[Width, Height];
             Quaternion rotation;
+            //create a random values between 'lower' and 'upper' bounds
+            float perlinOffset = NoiseGenerator.RandomFloat(0.2f, 0.8f);
+            float perlinScale = NoiseGenerator.RandomFloat(0.8f, 1.5f);
+            float perlinIntensity = NoiseGenerator.RandomFloat(0.8f, 1.5f);
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    perlinNoise = Mathf.PerlinNoise(0, 1);
+                    perlinNoise = NoiseGenerator.GeneratePerlinNoiseAtCoordinates(posX, posY, perlinOffset, perlinOffset, perlinScale, perlinIntensity);
                     rotation = RandomlyOffsetRotation();
-<<<<<<< HEAD
-                    //Randomly add walls by perlinNoise
-                    if (perlinNoise > 0.5f)
-                    {
-                        Tiles[j, i] = new Tile(Ground, new Vector3(i + X, j + Y, 0), rotation);
-                    }else
-                    {
-                        Tiles[j, i] = new Tile(Wall, new Vector3(i + X, j + Y, 0), rotation);
-                    }
-                    //Border Prefab 
-                    //else if (true)
-                    //{
-                    //    Tiles[i, j] = new Tile(Border, new Vector3(i, j, 0), rotation);
-                    //} 
-                    //Wall Prefab
-                    //else if (true)
-                    //{
-                    //    Tiles[i, j] = new Tile(Wall, new Vector3(i, j, 0), rotation);
-                    //}
-=======
-                    Tiles[x, y] = new Tile(Ground, new Vector3(X + x, Y + y, 0), rotation);
->>>>>>> parent of 2970b1ec (updated MapGen)
+                    Tiles[j, i] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                 }
+                posX = X;
+                posY++;
             }
-            Debug.Log("Created Normal Room, assigned Tiles");
+            //Debug.Log("Created Normal Room, assigned Tiles");
         }
 
 
