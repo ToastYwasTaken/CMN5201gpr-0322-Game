@@ -31,37 +31,57 @@ namespace MapGeneration
         }
 
         /// <summary>
-        /// Assigns the tiles of the room
+        /// Assigns the tiles of the room by perlin noise
+        /// Offset Noise after each Room
         /// </summary>
+        //protected override void InitRoom()
+        //{
+        //    Tiles = new Tile[Width, Height];
+        //    Quaternion rotation;
+        //    float perlinNoise;
+        //    //create a random float between 0.2 and 0.8 as perlinOffset each time creating a new room
+        //    float perlinOffset = PerlinNoiseGenerator.RandomFloat(0.2f, 0.8f);
+        //    float perlinScale = PerlinNoiseGenerator.RandomFloat(0.8f, 1.5f);
+        //    float perlinIntensity = PerlinNoiseGenerator.RandomFloat(0.8f, 1.5f);
+        //    for (int x = 0; x < Width; x++)
+        //    {
+        //        for (int y = 0; y < Height; y++)
+        //        {
+        //            rotation = RandomlyOffsetRotation();
+        //            perlinNoise = PerlinNoiseGenerator.GeneratePerlinNoiseAtCoordinates(x, y, perlinOffset, perlinOffset, perlinScale, perlinIntensity);
+        //            Debug.Log($"Noise: {perlinNoise} Offset: {perlinOffset} Scale: {perlinScale} Intensity: {perlinIntensity}");
+        //            //Randomly add walls by perlinNoise
+        //            if (perlinNoise > 0.2f)
+        //            {
+        //                Tiles[x, y] = new Tile(Ground, new Vector3(x + X, y + Y, 0), rotation);
+        //            }else
+        //            {
+        //                Tiles[x, y] = new Tile(Wall, new Vector3(x + X, y + Y, 0), rotation);
+        //            }
+        //            //Border Prefab 
+        //            //else if (true)
+        //            //{
+        //            //    Tiles[i, j] = new Tile(Border, new Vector3(i, j, 0), rotation);
+        //            //} 
+        //            //Wall Prefab
+        //            //else if (true)
+        //            //{
+        //            //    Tiles[i, j] = new Tile(Wall, new Vector3(i, j, 0), rotation);
+        //            //}
+        //        }
+        //    }
+        //    Debug.Log("Created Normal Room, assigned Tiles");
+        //}
         protected override void InitRoom()
         {
-            float perlinNoise;
             Tiles = new Tile[Width, Height];
             Quaternion rotation;
-            for (int i = 0; i < Height; i++)
+            for (int x = 0; x < Width; x++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int y = 0; y < Height; y++)
                 {
-                    perlinNoise = Mathf.PerlinNoise(0, 1);
                     rotation = RandomlyOffsetRotation();
-                    //Randomly add walls by perlinNoise
-                    if (perlinNoise > 0.5f)
-                    {
-                        Tiles[j, i] = new Tile(Ground, new Vector3(i + X, j + Y, 0), rotation);
-                    }else
-                    {
-                        Tiles[j, i] = new Tile(Wall, new Vector3(i + X, j + Y, 0), rotation);
-                    }
-                    //Border Prefab 
-                    //else if (true)
-                    //{
-                    //    Tiles[i, j] = new Tile(Border, new Vector3(i, j, 0), rotation);
-                    //} 
-                    //Wall Prefab
-                    //else if (true)
-                    //{
-                    //    Tiles[i, j] = new Tile(Wall, new Vector3(i, j, 0), rotation);
-                    //}
+                    Tiles[x, y] = new Tile(Ground, new Vector3(X + x, Y + y, 0), rotation);
                 }
             }
             Debug.Log("Created Normal Room, assigned Tiles");
