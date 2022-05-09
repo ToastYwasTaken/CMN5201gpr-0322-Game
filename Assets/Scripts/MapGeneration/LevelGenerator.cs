@@ -11,7 +11,6 @@ using UnityEngine;
 
 namespace MapGeneration
 {
-
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField]
@@ -102,7 +101,7 @@ namespace MapGeneration
             } while (didSplit);
             //Assign roomCount
             _roomCount = _onlySmallestPartitions.Count;
-            Debug.Log($"Splitted original map '{splitAmount}' times to create '{_allMaps.Count}' rooms over all.\nAfter removing rooms that were splitted, '{_roomCount}' rooms remain");
+            //Debug.Log($"Splitted original map '{splitAmount}' times to create '{_allMaps.Count}' rooms over all.\nAfter removing rooms that were splitted, '{_roomCount}' rooms remain");
         }
 
         /// <summary>

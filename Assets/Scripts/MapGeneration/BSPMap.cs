@@ -21,7 +21,7 @@ namespace Assets.Scripts.MapGeneration
             Y = y;
             Width = maxWidth;
             Height = maxHeight;
-            Debug.Log($"Creating new Map: X: [{X}] Y: [{Y}] Width: [{Width}] Height: [{Height}] ");
+            //Debug.Log($"Creating new Map: X: [{X}] Y: [{Y}] Width: [{Width}] Height: [{Height}] ");
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Assets.Scripts.MapGeneration
             {
                 Room currentRoom = new NormalRoom(ground, wall, border, X, Y, Width, Height);
                 s_roomsList.Add(currentRoom);
-                Debug.Log($"Created new room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
+                //Debug.Log($"Created new room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
             }
         }
     }
