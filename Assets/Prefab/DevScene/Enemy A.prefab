@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7315260404001948514}
   - component: {fileID: 2006684359}
   - component: {fileID: 5800965784403032866}
-  - component: {fileID: 8799174242214925448}
   - component: {fileID: 2006684360}
+  - component: {fileID: 4155885469220578773}
   m_Layer: 6
   m_Name: Enemy A
   m_TagString: Enemy
@@ -88,7 +88,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotatingObject: {fileID: 2735952495283642492}
   _lerpSpeed: 0.7
-  _offset: -90
   Target: {fileID: 0}
   _targetLayerForScan:
     serializedVersion: 2
@@ -118,19 +117,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8799174242214925448
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7315260404001948518}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 3}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &2006684360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +145,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!136 &4155885469220578773
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315260404001948518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2.95
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8292143171284177005
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818559283454854438, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_InstanceId
-      value: -7682
+      value: -8466
       objectReference: {fileID: 0}
     - target: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Name

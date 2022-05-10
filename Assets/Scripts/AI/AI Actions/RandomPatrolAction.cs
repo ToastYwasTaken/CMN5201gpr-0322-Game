@@ -43,7 +43,6 @@ namespace AISystem
                 if (OnAgentStopped != null)
                     OnAgentStopped.Raise();
             }
-
         
             //if (!_aIRandomPatrol.HasReached(_navMeshAgent)) return;
 
