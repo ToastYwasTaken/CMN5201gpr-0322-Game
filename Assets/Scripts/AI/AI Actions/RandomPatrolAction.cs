@@ -9,10 +9,13 @@ namespace AISystem
         [SerializeField] private AIEvent OnHasReachedWaypoint;
 
         [Header("Settings")]
-        [SerializeField] private float _range = 10.0f;
+        [SerializeField] private float _distanceToWaypoint = 7f;
+        [SerializeField] private float _waypointDistance = 10.0f;
+        [SerializeField] private float _maxDistance = 2.0f;
         [SerializeField] private float _velocityOffset = 0.2f;
 
         private NavMeshAgent _navMeshAgent = default;
+        private AIRandomPatrol _aIRandomPatrol;
         private GameObject _owner;
         private Vector3 _ownerPosition;
 
@@ -23,6 +26,7 @@ namespace AISystem
             _owner = stateMachine.Owner;
             _ownerPosition = _owner.transform.position;
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
+            _aIRandomPatrol = new AIRandomPatrol();
         }
 
         public override void Execute(AIFSMAgent stateMachine)
@@ -40,13 +44,16 @@ namespace AISystem
                     OnAgentStopped.Raise();
             }
 
-            var patrolPoints = new AIRandomPatrol();
+        
+            //if (!_aIRandomPatrol.HasReached(_navMeshAgent)) return;
 
-
-            if (!patrolPoints.HasReached(_navMeshAgent)) return;
+            // Sorgt für meine weichere Bewegung zwischen den Wegpunkten
+            if (!_aIRandomPatrol.ChangePointByDistance(_navMeshAgent, _distanceToWaypoint)) return; 
+        
             if (OnHasReachedWaypoint != null) OnHasReachedWaypoint.Raise();
 
-            if (!patrolPoints.GetRandomWaypoint(_navMeshAgent.transform.position, _range, out Vector3 point)) return;
+            // Generiert einen neuen Wegpunkt
+            if (!_aIRandomPatrol.GetRandomWaypoint(_navMeshAgent.transform.position, _waypointDistance, _maxDistance,out Vector3 point)) return;
             Debug.DrawRay(point, Vector3.up, Color.magenta, 1.0f);
 
             // TODO line of Sight check

@@ -21,7 +21,7 @@ namespace AISystem
                ref _aiConfigurationEditor);
 
            base.OnInspectorGUI();
-       }
+       }     
    } 
 }
 

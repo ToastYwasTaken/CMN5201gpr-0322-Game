@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dacdac12a38c1d4fa2bf065a2d847a3, type: 3}
   m_Name: Enemy B In Field Of View Decision
   m_EditorClassIdentifier: 
-  _lookRadius: 25
   _ignoreLayerForScan:
     serializedVersion: 2
     m_Bits: 502

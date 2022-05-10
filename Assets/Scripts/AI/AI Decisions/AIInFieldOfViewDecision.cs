@@ -10,7 +10,6 @@ namespace AISystem
         private GameObject _gameObject;
 
         [Header("Scan Settings")]
-        [SerializeField] private float _lookRadius = 5f;
         [SerializeField] private LayerMask _ignoreLayerForScan = 0;
         [SerializeField] private QueryTriggerInteraction _queryTriggerForScan = QueryTriggerInteraction.Ignore;
 
@@ -29,7 +28,7 @@ namespace AISystem
             Debug.Log($"AI: {stateMachine.name} | Decision: {this.name}");
             var fov = new AIFieldOfView();
 
-            _colliders = fov.GetCollidersAround(stateMachine.transform.position, _lookRadius, _ignoreLayerForScan, _queryTriggerForScan);
+            _colliders = fov.GetCollidersAround(stateMachine.transform.position, _viewDistance, _ignoreLayerForScan, _queryTriggerForScan);
 
             // Debug.Log($"Detected Colliders: {_colliders.Length}");
 

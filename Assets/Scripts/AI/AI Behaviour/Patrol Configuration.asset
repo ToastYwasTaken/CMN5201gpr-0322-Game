@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a331a6a841033248a6c3646befbee3d, type: 3}
   m_Name: Patrol Configuration
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 10
   angularSpeed: 200
-  acceleration: 10
-  stoppingDistance: 2
+  acceleration: 5
+  stoppingDistance: 10
   autoBraking: 1

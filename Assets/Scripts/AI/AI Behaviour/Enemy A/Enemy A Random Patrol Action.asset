@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f6e8a619320d64db9cee46fc3d22e3, type: 3}
   m_Name: Enemy A Random Patrol Action
   m_EditorClassIdentifier: 
-  _aiConfiguration: {fileID: 11400000, guid: 2cc9d32714c25db43b0f60452cc4321c, type: 2}
+  _aiConfiguration: {fileID: 11400000, guid: ba07298af6ec0b04498db37921448161, type: 2}
   AiConfigFoldout: 1
   OnStateEntered: {fileID: 0}
-  OnAgentMoveForward: {fileID: 0}
-  OnAgentMoveBack: {fileID: 0}
-  OnAgentTurnLeft: {fileID: 0}
-  OnAgentTurnRight: {fileID: 0}
+  OnAgentMoving: {fileID: 0}
   OnAgentStopped: {fileID: 0}
+  OnStateExit: {fileID: 0}
   OnHasReachedWaypoint: {fileID: 0}
-  _range: 20
+  _distanceToWaypoint: 15
+  _waypointDistance: 30
+  _maxDistance: 3.5
   _velocityOffset: 0.2
