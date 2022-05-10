@@ -43,7 +43,7 @@ public class EntityStats : MonoBehaviour, IDamageable
         }
     }
 
-    private float HealthPercentage { get => _health / _maxHealth; }
+    public float HealthPercentage { get => (_health / _maxHealth) *100f; }
 
     [SerializeField] private float _maxArmor;
     public float MaxArmor { get => _maxArmor; }
@@ -72,10 +72,10 @@ public class EntityStats : MonoBehaviour, IDamageable
 
     
 
-    private float ArmorPercentage { get => _armor / _maxArmor; }
+    public float ArmorPercentage { get => (_armor / _maxArmor) * 100f; }
 
     private bool _isArmorBroken = false;
-
+    public bool IsArmorBroken { get => _isArmorBroken; }
 
 
     [SerializeField] private float _damageReduction;
@@ -115,6 +115,15 @@ public class EntityStats : MonoBehaviour, IDamageable
         _isArmorBroken = false;
         OnArmorRestored?.Invoke();
     }
+
+    [SerializeField] private float _testAttackPower;
+    [SerializeField] private float _testArmorPenetration;
+
+    public void TestDealDamage()
+    {
+        DealDamage(_testAttackPower, _testArmorPenetration);
+    }
+
 
     public void DealDamage(float attackPower, float armorPenetration)
     {

@@ -11,7 +11,7 @@ public class WeaponManager : MonoBehaviour, IShoot
 
     private PlayerInformation _playerInformation;
 
-    private WeaponSlot[] _weaponsSlots;  
+    private WeaponSlot[] _weaponsSlots;
     public WeaponSlot[] WeaponsSlots { get => _weaponsSlots; }
     [SerializeField] private Weapon _defaultWeapon;
 
@@ -50,6 +50,8 @@ public class WeaponManager : MonoBehaviour, IShoot
         {
             _weaponsSlots[i] = new WeaponSlot(_defaultWeapon);
         }
+
+        ReloadWeapons();
     }
     #endregion
 
@@ -60,8 +62,8 @@ public class WeaponManager : MonoBehaviour, IShoot
 
         for (int i = 0; i < _weaponsSlots.Length; i++)
         {
-            if (_weaponsSlots[i].WeaponInstance == null) return;
-            if (_weaponsSlots[i].WeaponInstance.IsOnCooldown) _weaponsSlots[i].WeaponInstance.CurrentCooldown -= Time.deltaTime;
+            if (_weaponsSlots[i].WeaponItem == null) return;
+            if (_weaponsSlots[i].IsOnCooldown) _weaponsSlots[i].CurrentCooldown -= Time.deltaTime;
         }
     }
     #endregion
@@ -74,8 +76,8 @@ public class WeaponManager : MonoBehaviour, IShoot
 
         for (int i = 0; i < _weaponsSlots.Length; i++)
         {
-            if (_weaponsSlots[i].WeaponInstance == null) return;
-            _weaponsSlots[i].WeaponInstance.Shoot(_heatmeter, true, _playerInformation.PlayerStats, _firePoints[i]);
+            if (_weaponsSlots[i].WeaponItem == null) return;
+            _weaponsSlots[i].Shoot(_heatmeter, true, _playerInformation.PlayerStats, _firePoints[i]);
         }
     }
 
@@ -90,15 +92,17 @@ public class WeaponManager : MonoBehaviour, IShoot
     #endregion
 
     #region Editor 
-    [SerializeField] private Weapon _testWeapon1;
-    [SerializeField] private Weapon _testWeapon2;
+    [SerializeField] private Weapon[] _testWeapon = null;
 
-    private void OnValidate()
+    public void ReloadWeapons()
     {
-        if(_testWeapon1 != null)
-            ChangeWeapon(_testWeapon1, 0);
-        if (_testWeapon2 != null)
-            ChangeWeapon(_testWeapon2, 1);
+        if (_testWeapon == null) _testWeapon = new Weapon[_weaponSlotAmount];
+
+        for (int i = 0; i < _weaponsSlots.Length; i++)
+        {
+            if (_testWeapon[i] == null) return;
+            _weaponsSlots[i].WeaponItem = _testWeapon[i];
+        }
     }
     #endregion
 }

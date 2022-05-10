@@ -8,30 +8,93 @@ public class OverdriveManager : MonoBehaviour
 {
     [SerializeField] private PlayerCore _playerCore;
 
-    private OverdriveChips[] _overdriveItems;
-    private OverdriveChips[] _tempOverdriveItems;
+    private PlayerInformation _playerInformation;
 
-    private readonly int _overdriveChipSlotAmount = 3;
+    private OverdriveSlot[] _overdriveSlots;
+    public OverdriveSlot[] OverdriveSlots { get => _overdriveSlots; }
 
+    [SerializeField] private OverdriveChip _defaultOverdriveChip;
+
+    private readonly int _overdriveSlotAmount = 1;
+
+    #region Unity Calls
     private void Awake()
     {
-        if (_playerCore == null) _playerCore = GetComponent<PlayerCore>();
+        if (_playerCore == null)
+            _playerCore = GetComponent<PlayerCore>();
+
+        InitializeWeapons();
     }
 
-    private void CheckIfOverdriveChipsChanged()
+    private void Start()
     {
-        if (_overdriveItems == null) _overdriveItems = new OverdriveChips[_overdriveChipSlotAmount];
+        _playerInformation = _playerCore.PlayerInformation;
+    }
 
-        for (int i = 0; i < _overdriveItems.Length; i++)
+    private void Update()
+    {
+        ReduceWeaponsCooldown();
+
+        CheckAndUseOverdrive();
+    }
+
+    private void CheckAndUseOverdrive()
+    {
+        for (int i = 0; i < _overdriveSlots.Length; i++)
         {
-            if (_overdriveItems[i] == null) return;
-            if (_tempOverdriveItems[i] == null) return;
+            if (_overdriveSlots[i].OverdriveItem == null) return;
+            _overdriveSlots[i].UseOverdrive(_playerInformation);
+        }
+    }
+    #endregion
 
-            if (_overdriveItems[i].ID != _tempOverdriveItems[i].ID)
-            {
-                //SetupWeapon(_weaponItems[i], i);
-                _tempOverdriveItems[i] = Instantiate(_overdriveItems[i]);
-            }
+    #region Startup Methods
+    private void InitializeWeapons()
+    {
+        if (_overdriveSlots != null) return;
+        _overdriveSlots = new OverdriveSlot[_overdriveSlotAmount];
+
+        for (int i = 0; i < _overdriveSlots.Length; i++)
+        {
+            _overdriveSlots[i] = new OverdriveSlot(_defaultOverdriveChip);
+        }
+
+        ReloadOverdriveChips();
+    }
+    #endregion
+
+    #region Recurring Methods
+    private void ReduceWeaponsCooldown()
+    {
+        if (_overdriveSlots == null) InitializeWeapons();
+
+        for (int i = 0; i < _overdriveSlots.Length; i++)
+        {
+            if (_overdriveSlots[i].OverdriveItem == null) return;
+            if (_overdriveSlots[i].IsOnCooldown) _overdriveSlots[i].CurrentCooldown -= Time.deltaTime;
+        }
+    }
+
+    public void ChangeOverdriveChip(OverdriveChip newOverdriveChip, int overdriveSlot)
+    {
+        if (newOverdriveChip == null) return;
+        if (_overdriveSlots == null) InitializeWeapons();
+        if (overdriveSlot < 0 && overdriveSlot > (_overdriveSlots.Length -1)) return;
+
+        _overdriveSlots[overdriveSlot] = new OverdriveSlot(newOverdriveChip);
+    }
+    #endregion
+
+    [SerializeField] private OverdriveChip[] _testOverdriveChips = null;
+
+    public void ReloadOverdriveChips()
+    {
+        if (_testOverdriveChips == null) _testOverdriveChips = new OverdriveChip[_overdriveSlotAmount];
+
+        for (int i = 0; i < _overdriveSlots.Length; i++)
+        {
+            if (_testOverdriveChips[i] == null) return;
+            _overdriveSlots[i].OverdriveItem = _testOverdriveChips[i];
         }
     }
 }

@@ -1,34 +1,16 @@
 ﻿
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{99B3CC20-CA4A-A189-BCF1-7674E5E241F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{5E447AD7-2299-E895-2892-AB4D04083E94}"
-=======
->>>>>>> Stashed changes
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{20ccb399-4aca-89a1-bcf1-7674e5e241f9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{d77a445e-9922-95e8-2892-ab4d04083e94}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.Player.csproj", "{02f6112e-e63e-00c4-03b7-539cb80ffc27}"
-<<<<<<< Updated upstream
-=======
->>>>>>> 31cc59343d78d22a889ac4c784a1cc165b37e251
->>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 		{99B3CC20-CA4A-A189-BCF1-7674E5E241F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{99B3CC20-CA4A-A189-BCF1-7674E5E241F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99B3CC20-CA4A-A189-BCF1-7674E5E241F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,18 +19,6 @@ Global
 		{5E447AD7-2299-E895-2892-AB4D04083E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E447AD7-2299-E895-2892-AB4D04083E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E447AD7-2299-E895-2892-AB4D04083E94}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
->>>>>>> Stashed changes
-		{20ccb399-4aca-89a1-bcf1-7674e5e241f9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20ccb399-4aca-89a1-bcf1-7674e5e241f9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{d77a445e-9922-95e8-2892-ab4d04083e94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{d77a445e-9922-95e8-2892-ab4d04083e94}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02f6112e-e63e-00c4-03b7-539cb80ffc27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02f6112e-e63e-00c4-03b7-539cb80ffc27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-<<<<<<< Updated upstream
-=======
->>>>>>> 31cc59343d78d22a889ac4c784a1cc165b37e251
->>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

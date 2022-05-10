@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class OverdriveBehaviour : ScriptableObject
 {
-    public void UseOverdriveEffect(PlayerInformation playerInformation)
+    public virtual void UseOverdriveEffect(PlayerInformation playerInformation)
     {
 
     }

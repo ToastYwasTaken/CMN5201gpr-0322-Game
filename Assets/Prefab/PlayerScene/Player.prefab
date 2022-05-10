@@ -908,6 +908,7 @@ GameObject:
   - component: {fileID: 1318097878093630658}
   - component: {fileID: 4096101623133359713}
   - component: {fileID: 7190018995371742076}
+  - component: {fileID: 4874678111844051749}
   - component: {fileID: 2954168021030677781}
   - component: {fileID: 3360242758510589023}
   - component: {fileID: 7476223424415133758}
@@ -988,8 +989,22 @@ MonoBehaviour:
   _firePoints:
   - {fileID: 2649768078200201302}
   - {fileID: 9088219006787790356}
-  _testWeapon1: {fileID: 11400000, guid: 52d1d43ffa4a80046a01fda7cacadcb6, type: 2}
-  _testWeapon2: {fileID: 11400000, guid: 1231d008f58ba7f45abe29e05ae6f2ad, type: 2}
+  _testWeapon: []
+--- !u!114 &4874678111844051749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d295cb0ab2139534da8fbc5d0f3fe1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCore: {fileID: 4096101623133359713}
+  _defaultOverdriveChip: {fileID: 0}
+  _testOverdriveChips: []
 --- !u!114 &2954168021030677781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,9 +1017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39257df1db9ee6441a8930dcb9783716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumHeatlevel: 200
+  _maximumHeatlevel: 500
   CooldownMultiplier: 2
-  _overheatPenalty: 1.8
+  _overheatPenalty: 0.25
   CooldownAmountMultipier: 2
 --- !u!114 &3360242758510589023
 MonoBehaviour:
@@ -1024,6 +1039,8 @@ MonoBehaviour:
   _armorPenetrationReduction: 600
   _attackPower: 15
   _armorPenetation: 2
+  _testAttackPower: 0
+  _testArmorPenetration: 0
 --- !u!114 &7476223424415133758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,7 +1512,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: -64166
+  m_InstanceId: 40976
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0
