@@ -23,7 +23,7 @@ public class OverdriveManager : MonoBehaviour
         if (_playerCore == null)
             _playerCore = GetComponent<PlayerCore>();
 
-        InitializeWeapons();
+        InitializeOverdrive();
     }
 
     private void Start()
@@ -33,7 +33,7 @@ public class OverdriveManager : MonoBehaviour
 
     private void Update()
     {
-        ReduceWeaponsCooldown();
+        ReduceOverdriveCooldown();
 
         CheckAndUseOverdrive();
     }
@@ -49,7 +49,7 @@ public class OverdriveManager : MonoBehaviour
     #endregion
 
     #region Startup Methods
-    private void InitializeWeapons()
+    private void InitializeOverdrive()
     {
         if (_overdriveSlots != null) return;
         _overdriveSlots = new OverdriveSlot[_overdriveSlotAmount];
@@ -58,15 +58,13 @@ public class OverdriveManager : MonoBehaviour
         {
             _overdriveSlots[i] = new OverdriveSlot(_defaultOverdriveChip);
         }
-
-        ReloadOverdriveChips();
     }
     #endregion
 
     #region Recurring Methods
-    private void ReduceWeaponsCooldown()
+    private void ReduceOverdriveCooldown()
     {
-        if (_overdriveSlots == null) InitializeWeapons();
+        if (_overdriveSlots == null) InitializeOverdrive();
 
         for (int i = 0; i < _overdriveSlots.Length; i++)
         {
@@ -78,7 +76,7 @@ public class OverdriveManager : MonoBehaviour
     public void ChangeOverdriveChip(OverdriveChip newOverdriveChip, int overdriveSlot)
     {
         if (newOverdriveChip == null) return;
-        if (_overdriveSlots == null) InitializeWeapons();
+        if (_overdriveSlots == null) InitializeOverdrive();
         if (overdriveSlot < 0 && overdriveSlot > (_overdriveSlots.Length -1)) return;
 
         _overdriveSlots[overdriveSlot] = new OverdriveSlot(newOverdriveChip);
@@ -93,6 +91,7 @@ public class OverdriveManager : MonoBehaviour
 
         for (int i = 0; i < _overdriveSlots.Length; i++)
         {
+            if (i < 0 && i > (_testOverdriveChips.Length -1)) return;
             if (_testOverdriveChips[i] == null) return;
             _overdriveSlots[i].OverdriveItem = _testOverdriveChips[i];
         }

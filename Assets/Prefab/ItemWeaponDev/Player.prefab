@@ -738,12 +738,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7576545269406560644}
   - component: {fileID: 7576545269406560645}
+  - component: {fileID: 2408104288508947832}
+  - component: {fileID: 6774561043852795603}
   - component: {fileID: 4096101623133359713}
-  - component: {fileID: 4866319893869906703}
   - component: {fileID: 2954168021030677781}
   - component: {fileID: 3360242758510589023}
   - component: {fileID: 7576545269406560642}
   - component: {fileID: 7576545269406560643}
+  - component: {fileID: 3128727626299789643}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -904,6 +906,43 @@ MonoBehaviour:
   mVelocity: {x: 0, y: 0}
   targetAngle: 0
   currAngle: 0
+--- !u!114 &2408104288508947832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957bef2101e85b74698de6de2b0d2944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCore: {fileID: 4096101623133359713}
+  _heatmeter: {fileID: 0}
+  _defaultWeapon: {fileID: 11400000, guid: dfd58b8151b07564699dc4dd3c99f971, type: 2}
+  _firePoints:
+  - {fileID: 2649768078200201302}
+  - {fileID: 9088219006787790356}
+  _testWeapon:
+  - {fileID: 11400000, guid: 73abcf6799b140548aea7ec67692544b, type: 2}
+  - {fileID: 11400000, guid: dfd58b8151b07564699dc4dd3c99f971, type: 2}
+--- !u!114 &6774561043852795603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d295cb0ab2139534da8fbc5d0f3fe1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCore: {fileID: 4096101623133359713}
+  _defaultOverdriveChip: {fileID: 11400000, guid: f107c130f4438d7419f71a8119f56172, type: 2}
+  _testOverdriveChips:
+  - {fileID: 11400000, guid: f107c130f4438d7419f71a8119f56172, type: 2}
 --- !u!114 &4096101623133359713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,29 +956,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 3360242758510589023}
-  _weaponManager: {fileID: 4866319893869906703}
+  _weaponManager: {fileID: 2408104288508947832}
   _heatmeter: {fileID: 2954168021030677781}
---- !u!114 &4866319893869906703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576545269406560640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d8233670181714a9134fe465a0a4d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCore: {fileID: 4096101623133359713}
-  _heatmeter: {fileID: 2954168021030677781}
-  _weaponItems:
-  - {fileID: 11400000, guid: 52d1d43ffa4a80046a01fda7cacadcb6, type: 2}
-  - {fileID: 11400000, guid: 52d1d43ffa4a80046a01fda7cacadcb6, type: 2}
-  _defaultWeapon: {fileID: 11400000, guid: 1231d008f58ba7f45abe29e05ae6f2ad, type: 2}
-  _firePoints:
-  - {fileID: 2649768078200201302}
-  - {fileID: 9088219006787790356}
+  _overdriveManager: {fileID: 6774561043852795603}
 --- !u!114 &2954168021030677781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +993,8 @@ MonoBehaviour:
   _armorPenetrationReduction: 600
   _attackPower: 15
   _armorPenetation: 2
+  _testAttackPower: 200
+  _testArmorPenetration: 9000
 --- !u!50 &7576545269406560642
 Rigidbody2D:
   serializedVersion: 4
@@ -1011,6 +1032,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.12005854, y: 0.16293669}
   m_Size: {x: 5.0622272, y: 6.5200815}
   m_Direction: 0
+--- !u!114 &3128727626299789643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d295cb0ab2139534da8fbc5d0f3fe1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCore: {fileID: 0}
+  _defaultOverdriveChip: {fileID: 0}
+  _testOverdriveChips: []
 --- !u!1 &7576545269882444202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1307,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 36798
+  m_InstanceId: 41190
 --- !u!1 &7576545270325181344
 GameObject:
   m_ObjectHideFlags: 0
