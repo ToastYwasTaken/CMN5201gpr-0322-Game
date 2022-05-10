@@ -971,6 +971,7 @@ MonoBehaviour:
   _playerStats: {fileID: 3360242758510589023}
   _weaponManager: {fileID: 7190018995371742076}
   _heatmeter: {fileID: 2954168021030677781}
+  _overdriveManager: {fileID: 4874678111844051749}
 --- !u!114 &7190018995371742076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,7 +1513,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40976
+  m_InstanceId: 71150
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

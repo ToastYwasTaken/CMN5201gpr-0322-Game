@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using AngleExtension;
+
 
 namespace Assets.Scripts.Player
 {
@@ -33,7 +35,10 @@ namespace Assets.Scripts.Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            DamageTarget(collision.gameObject);
+            DamageTarget(collision.GetContact(0).collider.gameObject);
+            print(collision.GetContact(0).collider.gameObject.name);
+            //DamageTargetArea(collision.gameObject);
+
 
             //ContactPoint2D contact = collision.GetContact(0); //collision.contacts[0];
 
@@ -44,6 +49,11 @@ namespace Assets.Scripts.Player
 
             //Instantiate(mExplosionPrefab, new Vector3(position.x, position.y, 0), rotation);
             Destroy(gameObject);
+        }
+        private void DamageTargetArea(GameObject target)
+        {
+            IDmgSegment dmgSegment = target.GetComponent<IDmgSegment>();
+            dmgSegment?.DmgByPosition(transform, damage);
         }
         private void DamageTarget(GameObject target)
         {
