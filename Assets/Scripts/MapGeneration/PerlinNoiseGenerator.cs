@@ -30,28 +30,17 @@ namespace Assets.Scripts.MapGeneration
         float _perlinNoiseScale = 5.0f;
 
         private Renderer _rend;
-        private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
-        private static PerlinNoiseGenerator _instance;
+        private static System.Random _rdm = new System.Random((int)(System.DateTime.Now.Ticks));
 
 
         void Start()
         {
-            GetInstance();
             _rend = GetComponent<Renderer>();
         }
 
         void Update()
         {
             _rend.material.mainTexture = CreateTexture(_width, _height);
-        }
-
-        private static PerlinNoiseGenerator GetInstance()
-        {
-            if (_instance == null)
-            {
-                _instance = new PerlinNoiseGenerator();
-            }
-            return _instance;
         }
 
         private Texture2D CreateTexture(int width, int height)
@@ -80,13 +69,13 @@ namespace Assets.Scripts.MapGeneration
         /// <param name="x">xPos</param>
         /// <param name="y">yPos</param>
         /// <returns>perlinNoise at those coordinates</returns>
-        public float GeneratePerlinNoiseAtCoordinates(int x, int y, float perlinNoiseOffsetX, float perlinNoiseOffsetY, float perlinNoiseScale, float perlinNoiseIntensity)
+        public static float GeneratePerlinNoiseAtCoordinates(int x, int y, float perlinNoiseOffsetX, float perlinNoiseOffsetY, float perlinNoiseScale, float perlinNoiseIntensity)
         {
             float perlinNoise = Mathf.PerlinNoise((x * perlinNoiseOffsetX) / perlinNoiseScale, y * perlinNoiseOffsetY /perlinNoiseScale) / perlinNoiseIntensity;
             return perlinNoise;
         }
 
-        public float RandomFloat(float min, float max)
+        public static float RandomFloat(float min, float max)
         {
             return (((float)(_rdm.NextDouble()) * (max - min)) + min);
         }

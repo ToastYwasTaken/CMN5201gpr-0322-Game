@@ -24,7 +24,6 @@ namespace Assets.Scripts.MapGeneration
         protected GameObject Wall;
         protected GameObject Border;
         protected GameObject Ground;
-        protected PerlinNoiseGenerator NoiseGenerator = new();
         private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
 
         /// <summary>

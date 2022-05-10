@@ -21,8 +21,9 @@ namespace Assets.Scripts.MapGeneration
             Y = y;
             Width = width;
             Height = height;
-            HeightOffset = Height / 8;
-            WidthOffset = Width / 8;
+            //Half the size or higher than original partition of BSPMap
+            HeightOffset = Height / 2;
+            WidthOffset = Width / 2;
             NormalizePrefabSize(Ground);
             NormalizePrefabSize(Wall);
             NormalizePrefabSize(Border);
@@ -42,14 +43,14 @@ namespace Assets.Scripts.MapGeneration
             Tiles = new Tile[Width, Height];
             Quaternion rotation;
             //create a random values between 'lower' and 'upper' bounds
-            float perlinOffset = NoiseGenerator.RandomFloat(0.2f, 0.8f);
-            float perlinScale = NoiseGenerator.RandomFloat(0.8f, 1.5f);
-            float perlinIntensity = NoiseGenerator.RandomFloat(0.8f, 1.5f);
+            float perlinOffset = PerlinNoiseGenerator.RandomFloat(0.2f, 0.8f);
+            float perlinScale = PerlinNoiseGenerator.RandomFloat(0.8f, 1.5f);
+            float perlinIntensity = PerlinNoiseGenerator.RandomFloat(0.8f, 1.5f);
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    perlinNoise = NoiseGenerator.GeneratePerlinNoiseAtCoordinates(posX, posY, perlinOffset, perlinOffset, perlinScale, perlinIntensity);
+                    perlinNoise = PerlinNoiseGenerator.GeneratePerlinNoiseAtCoordinates(posX, posY, perlinOffset, perlinOffset, perlinScale, perlinIntensity);
                     rotation = RandomlyOffsetRotation();
                     Tiles[j, i] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                 }
