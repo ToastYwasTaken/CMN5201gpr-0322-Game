@@ -12,6 +12,9 @@ namespace Assets.Scripts.MapGeneration
 {
     public class LevelGenerator : MonoBehaviour
     {
+        /// <summary>
+        /// For optimal settings choose width and height 4x bigger than partitionWidth / partitionHeight
+        /// </summary>
         [SerializeField]
         GameObject _mapMotherGO;
         [Tooltip("total map Width")]
@@ -42,7 +45,7 @@ namespace Assets.Scripts.MapGeneration
         void Awake()
         {
             //Assign motherGO of Map
-            if(_mapMotherGO == null)
+            if (_mapMotherGO == null)
             {
                 _mapMotherGO = new GameObject("Map");
                 _mapMotherGO.transform.position = new Vector3(0, 0, 0);
@@ -71,7 +74,7 @@ namespace Assets.Scripts.MapGeneration
             BSPMap.AssignMinValues(_minPartitionWidth, _minPartitionHeight);
             do
             {
-                if(securityBreakCounter > 200)
+                if (securityBreakCounter > 200)
                 {
                     throw new StackOverflowException($"security break counter {securityBreakCounter} was reached! Catched infinite loop");
                 }
@@ -101,15 +104,32 @@ namespace Assets.Scripts.MapGeneration
         }
 
         /// <summary>
-        /// Instantiates rooms per tile
+        /// Instantiates rooms for each smallest Leaf of BSPMap 
         /// </summary>
         private void InstantiateRooms()
         {
+            //Override last room as Boss room (kinda cheated but idk how else to solve it
+            Room lastRoom = BSPMap.s_roomsList[BSPMap.s_roomsList.Count-1];
+            int lastRoomX = lastRoom.X;
+            int lastRoomY = lastRoom.Y;
+            int lastRoomWidth = lastRoom.Width;
+            int lastRoomHeight = lastRoom.Height;
+            BSPMap.s_roomsList.Remove(lastRoom);
+            BSPMap.s_roomsList.Add(new BossRoom(_groundPrefab, _wallPrefab, _borderPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
             //Iterate over all rooms
             for (int h = 0; h < BSPMap.s_roomsList.Count; h++)
             {
                 GameObject newRoomTile;
-                GameObject motherOfRoom = new GameObject($"Mother of room {h}");
+                GameObject motherOfRoom;
+                //Last room -> Create boss room
+                if (BSPMap.s_roomsList.Count == h+1)
+                {
+                    motherOfRoom = new GameObject($"Mother of boss room {h}");
+                }
+                else
+                {
+                    motherOfRoom = new GameObject($"Mother of room {h}");
+                }
                 motherOfRoom.transform.parent = _mapMotherGO.transform;
                 //Iterate over 1st dimension of array
                 for (int i = 0; i < BSPMap.s_roomsList[h].PTiles.GetLength(0); i++)

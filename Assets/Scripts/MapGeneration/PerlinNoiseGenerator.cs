@@ -6,6 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Unity Editor only script
 /// Only to see the noise applied for room generation
+/// The game only uses the public defined functions
 /// </summary>
 
 namespace Assets.Scripts.MapGeneration

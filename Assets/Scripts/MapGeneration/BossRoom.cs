@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,17 +12,24 @@ namespace Assets.Scripts.MapGeneration
     public class BossRoom : Room
     {
         public BossRoom(GameObject ground, GameObject wall, GameObject border,
-            int x, int y, int width, int height)
+         int x, int y, int width, int height)
         {
+            X = x;
+            Y = y;
             Ground = ground;
             Wall = wall;
             Border = border;
-            X = x;
-            Y = y;
             Width = width;
             Height = height;
-            //RandomlyOffsetRooms();
+            NormalizePrefabSize(Ground);
+            NormalizePrefabSize(Wall);
+            NormalizePrefabSize(Border);
+            RandomlyOffsetPrefabColorBossRoom(Ground);
+            RandomlyOffsetPrefabColorBossRoom(Wall);
+            RandomlyOffsetPrefabColorBossRoom(Border);
+            //Create room
             InitRoom();
+            Debug.Log($"Created new BOSS room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
         }
 
         /// <summary>
@@ -31,30 +39,60 @@ namespace Assets.Scripts.MapGeneration
         {
             int posX = X;
             int posY = Y;
+            float perlinNoise;
             Tiles = new Tile[Width, Height];
-            Quaternion rotation = Quaternion.identity;
-            for (int i = 0; i < Width; i++)
+            Quaternion rotation;
+            //create a random values between 'lower' and 'upper' bounds
+            float perlinOffset = PerlinNoiseGenerator.RandomFloat(0.2f, 0.8f);
+            float perlinScale = PerlinNoiseGenerator.RandomFloat(0.7f, 1.1f);
+            float perlinIntensity = PerlinNoiseGenerator.RandomFloat(0.8f, 1.1f);
+            for (int i = 0; i < Height; i++)
             {
-                for (int j = 0; j < Height; j++)
+                for (int j = 0; j < Width; j++)
                 {
-                    //Ground Prefab //TODO: Add conditions
-                    if (true)
+                    rotation = RandomlyOffsetRotation();
+                    //Create borders, override rotation
+                    //TODO: Remove overlapping walls
+                    if (i == 0)
                     {
-                        Tiles[i, j] = new Tile(Ground, new Vector3(posX++, posY++, 0), rotation);
+                        rotation = Quaternion.Euler(0, 0, 180);
+                        Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                     }
-                    //Border Prefab 
-                    else if (true)
+                    else if (j == 0)
                     {
-                        Tiles[i, j] = new Tile(Border, new Vector3(posX++, posY++, 0), rotation);
+                        rotation = Quaternion.Euler(0, 0, 90);
+                        Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                     }
-                    //Wall Prefab
-                    //else if (true)
-                    //{
-                    //    Tiles[i, j] = new Tile(Wall, new Vector3(posX++, posY++, 0), rotation);
-                    //}
+                    else if (j == Width-1)
+                    {
+                        rotation = Quaternion.Euler(0, 0, 270);
+                        Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                    }
+                    else if (i == Height-1)
+                    {
+                        rotation = Quaternion.Euler(0, 0, 0);
+                        Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                    }
+
+                    else
+                    {
+                        perlinNoise = PerlinNoiseGenerator.GeneratePerlinNoiseAtCoordinates(posX, posY, perlinOffset, perlinOffset, perlinScale, perlinIntensity);
+                        //Create walls from perlinNoise
+                        if (perlinNoise < 0.7f)
+                        {
+                            Tiles[j, i] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                        }
+                        else Tiles[j, i] = new Tile(Wall, new Vector3(posX++, posY, 0), rotation);
+                    }
                 }
+                posX = X;
+                posY++;
             }
-            Debug.Log("Created BossRoom, assigned Tiles");
+        }
+        private void RandomlyOffsetPrefabColorBossRoom(GameObject prefab)
+        {
+            Renderer prefabRend = prefab.GetComponent<Renderer>();
+            prefabRend.sharedMaterial.color = new Color32(220, 110, 210, 255);
         }
     }
 }

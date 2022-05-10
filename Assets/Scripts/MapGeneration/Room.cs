@@ -18,8 +18,8 @@ namespace Assets.Scripts.MapGeneration
         protected Tile[,] Tiles;    //all tiles + data of one room
         public Tile[,] PTiles => Tiles;
         #region position / size / offsets
-        protected int X, Y, Width, Height;
-        protected int PositionXOffset, PositionYOffset, WidthOffset, HeightOffset;
+        public int X, Y, Width, Height;
+        protected int WidthOffset, HeightOffset;
         #endregion
         protected GameObject Wall;
         protected GameObject Border;
@@ -27,14 +27,18 @@ namespace Assets.Scripts.MapGeneration
         private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
 
         /// <summary>
-        /// Offsets Positions and Size randomly
+        /// Offsets roomsize randomly
         /// </summary>
-        protected void RandomlyOffsetRooms()
+        protected void RandomlyOffsetRoomSize()
         {
             Width = _rdm.Next(WidthOffset, Width-1);
             Height = _rdm.Next(HeightOffset, Height-1);
         }
 
+        /// <summary>
+        /// Offsets rotation randomly
+        /// </summary>
+        /// <returns>rotation</returns>
         protected Quaternion RandomlyOffsetRotation()
         {
             Quaternion rotation;
@@ -50,6 +54,11 @@ namespace Assets.Scripts.MapGeneration
         protected void NormalizePrefabSize(GameObject prefab)
         {
             prefab.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+
+        public Vector3 CalculatePlayerSpawnPositionInRoom()
+        {
+            return new Vector3(_rdm.Next(WidthOffset, Width-1),_rdm.Next(HeightOffset, Height-1), 0);
         }
 
         protected abstract void InitRoom();
