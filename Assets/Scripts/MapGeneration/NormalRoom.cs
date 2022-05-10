@@ -57,18 +57,34 @@ namespace Assets.Scripts.MapGeneration
                     //TODO: Remove overlapping walls
                     if (i == 0)
                     {
+                        //skip corner / empty tile
+                        if(j == 0 || j == Width-1)
+                        {
+                            Tiles[j, i] = new Tile(new GameObject(), Vector3.forward, Quaternion.identity);
+                        }
+                        else
+                        {
                         rotation = Quaternion.Euler(0, 0, 180);
                         Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                        }
                     }
                     else if (j == 0)
-                    {
+                    {                        
                         rotation = Quaternion.Euler(0, 0, 90);
                         Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                     }
                     else if (j == Width-1)
                     {
+                        //skip corner / empty tile
+                        if (i == Height-1 || i == 0)
+                        {
+                            Tiles[j, i] = new Tile(new GameObject(), Vector3.forward, Quaternion.identity);
+                        }
+                        else
+                        {
                         rotation = Quaternion.Euler(0, 0, 270); 
                         Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                        }
                     }
                     else if (i == Height-1)
                     {
