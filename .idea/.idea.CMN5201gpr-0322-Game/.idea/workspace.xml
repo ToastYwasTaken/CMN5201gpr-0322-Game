@@ -4,7 +4,9 @@
     <list default="true" id="f3bae0b7-d229-45ef-a601-042806e41f23" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AILookToEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Modules/AILookToEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AI Dev Scene/NavMesh-NavMesh Enemy B.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AI Dev Scene/NavMesh-NavMesh Enemy B.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
@@ -30,14 +32,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "rider.run.widget.enabled.cache": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Build\CMN5201gpr-0322-Game.exe" />
@@ -97,7 +99,8 @@
       <workItem from="1650482468841" duration="187000" />
       <workItem from="1650482856501" duration="221000" />
       <workItem from="1650545706129" duration="18347000" />
-      <workItem from="1652129186113" duration="285000" />
+      <workItem from="1652129186113" duration="996000" />
+      <workItem from="1652292206345" duration="1624000" />
     </task>
     <servers />
   </component>

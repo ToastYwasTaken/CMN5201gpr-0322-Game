@@ -21,11 +21,6 @@ namespace AISystem
         // [SerializeField] private bool _agentStopByAttack = false;
         [SerializeField] private float _velocityOffset = 0.2f;
 
-       
-
-
- 
-
         private NavMeshAgent _navMeshAgent;
         private GameObject _owner;
         private AITargetInRange _targetDistance;
