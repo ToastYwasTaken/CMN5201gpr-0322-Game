@@ -97,19 +97,19 @@ public class EntityStats : MonoBehaviour, IDamageable
         Armor = _maxArmor;
     }
 
-    protected void Death()
+    protected virtual void Death()
     {
         OnDeath?.Invoke();
     }
 
-    protected void ArmorBroken()
+    protected virtual void ArmorBroken()
     {
         if (_isArmorBroken) return;
         _isArmorBroken = true;
         OnArmorBreak?.Invoke();
     }
 
-    protected void ArmorRestored()
+    protected virtual void ArmorRestored()
     {
         if (!_isArmorBroken) return;
         _isArmorBroken = false;
@@ -125,7 +125,7 @@ public class EntityStats : MonoBehaviour, IDamageable
     }
 
 
-    public void DealDamage(float attackPower, float armorPenetration)
+    public virtual void DealDamage(float attackPower, float armorPenetration)
     {
         float damageToHealth = 0f;
         float damageToArmor = 0f;

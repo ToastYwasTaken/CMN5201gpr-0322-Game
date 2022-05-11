@@ -6,9 +6,9 @@ public class DefaultShoot : ShootBehaviour
 {
     public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, int amountOfBullets, float angle, bool randomAngle)
     {
-        GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
+        GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         newBullet.GetComponent<Projectile>().ProjectileStats = projectileStats;
 
-        newBullet.transform.SetParent(null); //
+        newBullet.transform.SetParent(null);
     }
 }

@@ -17,9 +17,12 @@ MonoBehaviour:
   _description: The most basic weapon!
   _isStackable: 0
   _fireRate: 0.75
-  _bulletPrefab: {fileID: 2912425703784977495, guid: 03dde42246ee24e4f899d21e0690632d, type: 3}
+  _bulletPrefab: {fileID: 2912425703784977495, guid: fa8d9f9c8dda9064289efabb60604a6e, type: 3}
   _weaponPower: 10
   _armorPenetration: 5
   _bulletSpeed: 10
   _heatmeterUsage: 12
-  _shootBehaviour: {fileID: 11400000, guid: 1a12e12ae03ef934b8aa0b00542f8b44, type: 2}
+  _shootBehaviour: {fileID: 11400000, guid: ce8c6c8bb8f384845ac8c49b22d6e110, type: 2}
+  _amountOfBullets: 1
+  _fireAngle: 1
+  _randomAngle: 0

@@ -27,9 +27,9 @@ public class Weapon : Item
     [SerializeField] protected ShootBehaviour _shootBehaviour = null;
     public ShootBehaviour ShootBehaviour { get => _shootBehaviour; }
 
-    private int _amountOfBullets;
-    private float _fireAngle;
-    private bool _randomAngle = false;
+    [SerializeField] private int _amountOfBullets;
+    [SerializeField] private float _fireAngle;
+    [SerializeField] private bool _randomAngle = false;
 
 
     public virtual void OnEquip() { }
@@ -45,6 +45,7 @@ public class Weapon : Item
         newBulletStats.AttackPower = playerStats.AttackPower * _weaponPower;
         newBulletStats.ProjectileSpeed = _bulletSpeed;
         newBulletStats.ProjectileLifeTime = 100f;
+        newBulletStats.ProjectileSender = playerStats.gameObject;
 
         if (_shootBehaviour != null)
             _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, _amountOfBullets, _fireAngle, _randomAngle);
