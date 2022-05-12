@@ -11,11 +11,12 @@ namespace Assets.Scripts.MapGeneration
 {
     public class NormalRoom : Room
     {
-        public NormalRoom(GameObject ground, GameObject wall, GameObject border,
+        public NormalRoom(GameObject empty, GameObject ground, GameObject wall, GameObject border,
             int x, int y, int width, int height)
         {
             X = x;
             Y = y;
+            Empty = empty;
             Ground = ground;
             Wall = wall;
             Border = border;
@@ -48,59 +49,73 @@ namespace Assets.Scripts.MapGeneration
             float perlinOffset = PerlinNoiseGenerator.RandomFloat(0.2f, 0.8f);
             float perlinScale = PerlinNoiseGenerator.RandomFloat(0.7f, 1.1f);
             float perlinIntensity = PerlinNoiseGenerator.RandomFloat(0.8f, 1.1f);
-            for (int i = 0; i < Height; i++)
+            for (int y = 0; y < Height; y++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int x = 0; x < Width; x++)
                 {
                     rotation = RandomlyOffsetRotation();
-                    //Create borders, override rotation
-                    //TODO: Remove overlapping walls
-                    if (i == 0)
+                    //Create borders, override rotation, filter out corners
+                    if (y == 0)
                     {
-                        //skip corner / empty tile
-                        if(j == 0 || j == Width-1)
+                        if (x != 0 && x != Width-1)
                         {
-                            Tiles[j, i] = new Tile(new GameObject(), Vector3.forward, Quaternion.identity);
+                            rotation = Quaternion.Euler(0, 0, 180);
+                            Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                         }
                         else
+                        //in corner
                         {
-                        rotation = Quaternion.Euler(0, 0, 180);
-                        Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                            Tiles[x, y] = new Tile(Empty, new Vector3(posX++, posY, 0), rotation);
                         }
                     }
-                    else if (j == 0)
-                    {                        
-                        rotation = Quaternion.Euler(0, 0, 90);
-                        Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
-                    }
-                    else if (j == Width-1)
+                    else if (x == 0)
                     {
-                        //skip corner / empty tile
-                        if (i == Height-1 || i == 0)
+                        if (y != 0 && y != Height-1)
                         {
-                            Tiles[j, i] = new Tile(new GameObject(), Vector3.forward, Quaternion.identity);
+                            rotation = Quaternion.Euler(0, 0, 90);
+                            Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                         }
                         else
+                        //in corner
                         {
-                        rotation = Quaternion.Euler(0, 0, 270); 
-                        Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                            Tiles[x, y] = new Tile(Empty, new Vector3(posX++, posY, 0), rotation);
                         }
                     }
-                    else if (i == Height-1)
+                    else if (x == Width-1)
                     {
-                        rotation = Quaternion.Euler(0, 0, 0);
-                        Tiles[j, i] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                        if (y != Height-1 && y != 0)
+                        {
+                            rotation = Quaternion.Euler(0, 0, 270);
+                            Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                        }
+                        else
+                        //in corner
+                        {
+                            Tiles[x, y] = new Tile(Empty, new Vector3(posX++, posY, 0), rotation);
+                        }
                     }
-
+                    else if (y == Height-1)
+                    {
+                        if (x != Width-1 && x != 0)
+                        {
+                            rotation = Quaternion.Euler(0, 0, 0);
+                            Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                        }
+                        else
+                        //in corner
+                        {
+                            Tiles[x, y] = new Tile(Empty, new Vector3(posX++, posY, 0), rotation);
+                        }
+                    }
                     else
                     {
                         perlinNoise = PerlinNoiseGenerator.GeneratePerlinNoiseAtCoordinates(posX, posY, perlinOffset, perlinOffset, perlinScale, perlinIntensity);
-                        //Create walls from perlinNoise
+                        //Create walls inside bounds from perlinNoise
                         if (perlinNoise < 0.7f)
                         {
-                            Tiles[j, i] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                            Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                         }
-                        else Tiles[j, i] = new Tile(Wall, new Vector3(posX++, posY, 0), rotation);
+                        else Tiles[x, y] = new Tile(Wall, new Vector3(posX++, posY, 0), rotation);
                     }
                 }
                 posX = X;

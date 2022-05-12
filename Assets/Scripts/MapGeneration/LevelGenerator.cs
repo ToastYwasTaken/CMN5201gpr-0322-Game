@@ -30,6 +30,8 @@ namespace Assets.Scripts.MapGeneration
         [Tooltip("minimal height required for splitting a map into 2 new ones")]
         int _minPartitionHeight;
         [SerializeField]
+        GameObject _emptyPrefab;
+        [SerializeField]
         GameObject _groundPrefab;
         [SerializeField]
         GameObject _wallPrefab;
@@ -58,7 +60,7 @@ namespace Assets.Scripts.MapGeneration
             CreateBSPMap();
             Debug.Log("successfully created BSP map");
             //Level Generation only, no prefab instantiation
-            mapRoot.CreateRooms(_groundPrefab, _wallPrefab, _borderPrefab);
+            mapRoot.CreateRooms(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab);
             InstantiateRooms();
         }
 

@@ -18,9 +18,9 @@ namespace Assets.Scripts.MapGeneration
         protected Tile[,] Tiles;    //all tiles + data of one room
         public Tile[,] PTiles => Tiles;
         #region position / size / offsets
-        public int X, Y, Width, Height;
-        protected int WidthOffset, HeightOffset;
+        public int X, Y, Width, Height, WidthOffset, HeightOffset;
         #endregion
+        protected GameObject Empty;
         protected GameObject Wall;
         protected GameObject Border;
         protected GameObject Ground;
@@ -54,11 +54,6 @@ namespace Assets.Scripts.MapGeneration
         protected void NormalizePrefabSize(GameObject prefab)
         {
             prefab.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        }
-
-        public Vector3 CalculatePlayerSpawnPositionInRoom()
-        {
-            return new Vector3(_rdm.Next(WidthOffset, Width-1),_rdm.Next(HeightOffset, Height-1), 0);
         }
 
         protected abstract void InitRoom();

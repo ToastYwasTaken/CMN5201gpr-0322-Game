@@ -33,11 +33,31 @@ namespace Assets.Scripts.MapGeneration
         {
             s_MIN_PARTITION_WIDTH = minPartitionWidth;
             s_MIN_PARTITION_HEIGHT = minPartitionHeight;
-        } 
+        }
 
+        /// <summary>
+        /// Calculates player spawn position
+        /// </summary>
+        /// <returns></returns>
+        public Vector3 CalculatePlayerSpawnPositionInRoom()
+        {
+            Vector3 playerSpawnPosition = new Vector3(0, 0, 0);
+            if (s_allRooms[0] != null)
+            {
+                Room spawnRoom = s_allRooms[0];
+                System.Random rand = new System.Random();
+                playerSpawnPosition = new Vector3(rand.Next(spawnRoom.WidthOffset, Width-1), rand.Next(spawnRoom.HeightOffset, Height-1), 0);
+            }
+            return playerSpawnPosition;
+        }
+
+        /// <summary>
+        /// Returns current room if lowest partition
+        /// </summary>
+        /// <returns></returns>
         private Room GetRoom()
         {
-            if(currentRoom != null)
+            if (currentRoom != null)
             {
                 return currentRoom;
             }
@@ -45,11 +65,11 @@ namespace Assets.Scripts.MapGeneration
             {
                 Room leftRoom = null;
                 Room rightRoom = null;
-                if(FirstMap != null)
+                if (FirstMap != null)
                 {
                     leftRoom = FirstMap.GetRoom();
                 }
-                if(SecondMap != null)
+                if (SecondMap != null)
                 {
                     rightRoom = SecondMap.GetRoom();
                 }
@@ -128,20 +148,20 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Create new rooms from prefabs for all rooms lowest partitions
         /// </summary>
-        public void CreateRooms(GameObject ground, GameObject wall, GameObject border)
+        public void CreateRooms(GameObject empty, GameObject ground, GameObject wall, GameObject border)
         {
             if (FirstMap != null || SecondMap != null)
             {
                 //Map has been split, checking lower partitions
                 if (FirstMap != null)
                 {
-                    FirstMap.CreateRooms(ground, wall, border);
+                    FirstMap.CreateRooms(empty, ground, wall, border);
                 }
                 if (SecondMap != null)
                 {
-                    SecondMap.CreateRooms(ground, wall, border);
+                    SecondMap.CreateRooms(empty, ground, wall, border);
                 }
-                if(FirstMap != null && SecondMap != null)
+                if (FirstMap != null && SecondMap != null)
                 {
                     CreateHallWay(FirstMap.GetRoom(), SecondMap.GetRoom(), ground, wall, border);
                 }
@@ -149,7 +169,7 @@ namespace Assets.Scripts.MapGeneration
             else
             //Lowest partition -> Create room here -> assign room to this partition
             {
-                currentRoom = new NormalRoom(ground, wall, border, X, Y, Width, Height);
+                currentRoom = new NormalRoom(empty, ground, wall, border, X, Y, Width, Height);
                 s_allRooms.Add(currentRoom);
             }
         }
@@ -160,9 +180,9 @@ namespace Assets.Scripts.MapGeneration
             System.Random rdm = new System.Random();
             int rdmInt = rdm.Next(0, 2);
             Room hallway1 = null;
-            Room hallway2= null;
+            Room hallway2 = null;
 
-            if(currentRoom1 == null || currentRoom2 == null)
+            if (currentRoom1 == null || currentRoom2 == null)
             {
                 Debug.Log("a room was null");
                 return;
@@ -188,32 +208,32 @@ namespace Assets.Scripts.MapGeneration
                 {
                     if (rdmInt == 0)
                     {
-                        hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
+                        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+                        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
                     else
                     {
-                        hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
+                        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
+                        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
                 }
                 else if (splitPointY > 0)
                 {
                     if (rdmInt == 0)
                     {
-                        hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
+                        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+                        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                     }
                     else
                     {
-                        hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
+                        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
+                        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                     }
                 }
                 //splitPointY == 0
                 else
                 {
-                    hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
+                    hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
                 }
             }
             else if (splitPointX > 0)
@@ -222,44 +242,44 @@ namespace Assets.Scripts.MapGeneration
                 {
                     if (rdmInt == 0)
                     {
-                        hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
+                        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
+                        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
                     else
                     {
-                        hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
+                        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+                        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
                 }
                 else if (splitPointY > 0)
                 {
                     if (rdmInt == 0)
                     {
-                        hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
+                        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+                        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                     }
                     else
                     {
-                        hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
+                        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
+                        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                     }
                 }
                 //splitPointY == 0
                 else
                 {
-                    hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+                    hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
                 }
-            //splitPointX == 0
+                //splitPointX == 0
             }
             else
             {
                 if (splitPointY < 0)
                 {
-                    hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
+                    hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                 }
                 else if (splitPointY > 0)
                 {
-                    hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
+                    hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                 }
             }
             //Add hallways to list
