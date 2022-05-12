@@ -25,7 +25,20 @@ namespace Assets.Scripts.MapGeneration
         }
         protected override void InitRoom()
         {
-
+            int posX = X;
+            int posY = Y;
+            Quaternion rotation;
+            Tiles = new Tile[Width, Height];
+            for (int i = 0; i < Height; i++)
+            {
+                for (int j = 0; j < Width; j++)
+                {
+                    rotation = RandomlyOffsetRotation();
+                    Tiles[j, i] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                }
+                posX = X;
+                posY++;
+            }
         }
     }
 }

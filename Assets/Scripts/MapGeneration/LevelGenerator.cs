@@ -116,12 +116,21 @@ namespace Assets.Scripts.MapGeneration
             int lastRoomHeight = lastRoom.Height;
             BSPMap.s_allRooms.Remove(lastRoom);
             BSPMap.s_allRooms.Add(new BossRoom(_groundPrefab, _wallPrefab, _borderPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
+            InitNormalRooms();
+            //Commented out for testing
+            //InitHallWays();
+        }
+
+        /// <summary>
+        /// Instantiate Normal rooms / pass instantiating boss room
+        /// </summary>
+        private void InitNormalRooms()
+        {
             GameObject newRoomTile;
             GameObject motherOfRoom;
             //Iterate over all rooms
             for (int h = 0; h < BSPMap.s_allRooms.Count; h++)
             {
-                //Create normal rooms
                 if (BSPMap.s_allRooms.Count != h+1)
                 {
                     motherOfRoom = new GameObject($"Mother of room {h}");
@@ -132,28 +141,57 @@ namespace Assets.Scripts.MapGeneration
                         //Iterate over 2nd dimension of array
                         for (int j = 0; j < BSPMap.s_allRooms[h].PTiles.GetLength(1); j++)
                         {
+                            //Instantiating normal rooms
                             newRoomTile = Instantiate(BSPMap.s_allRooms[h].PTiles[i, j].Prefab, BSPMap.s_allRooms[h].PTiles[i, j].Position, BSPMap.s_allRooms[h].PTiles[i, j].Rotation);
                             newRoomTile.transform.name = $"Normal Room: {BSPMap.s_allRooms[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allRooms[h].PTiles[i, j].Position.x}|{BSPMap.s_allRooms[h].PTiles[i, j].Position.y}]";
                             newRoomTile.transform.parent = motherOfRoom.transform;
                         }
                     }
-                    
                 }
-                //Create BossRoom
-                else
+                else InitBossRoom(h);
+            }
+        }
+
+        /// <summary>
+        /// Instantiate Boss room
+        /// </summary>
+        /// <param name="passCounter"></param>
+        private void InitBossRoom(int passCounter)
+        {
+            GameObject newRoomTile;
+            GameObject motherOfRoom = new GameObject($"Mother of boss room {passCounter}");
+            motherOfRoom.transform.parent = _mapMotherGO.transform;
+            //Iterate over 1st dimension of array
+            for (int i = 0; i < BSPMap.s_allRooms[passCounter].PTiles.GetLength(0); i++)
+            {
+                //Iterate over 2nd dimension of array
+                for (int j = 0; j < BSPMap.s_allRooms[passCounter].PTiles.GetLength(1); j++)
                 {
-                    motherOfRoom = new GameObject($"Mother of boss room {h}");
-                    motherOfRoom.transform.parent = _mapMotherGO.transform;
-                    //Iterate over 1st dimension of array
-                    for (int i = 0; i < BSPMap.s_allRooms[h].PTiles.GetLength(0); i++)
+                    //Instantiating boss room
+                    newRoomTile = Instantiate(BSPMap.s_allRooms[passCounter].PTiles[i, j].Prefab, BSPMap.s_allRooms[passCounter].PTiles[i, j].Position, BSPMap.s_allRooms[passCounter].PTiles[i, j].Rotation);
+                    newRoomTile.transform.name = $" Boss room: {BSPMap.s_allRooms[passCounter].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allRooms[passCounter].PTiles[i, j].Position.x}|{BSPMap.s_allRooms[passCounter].PTiles[i, j].Position.y}]";
+                    newRoomTile.transform.parent = motherOfRoom.transform;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Instantiate Hallway connections
+        /// </summary>
+        private void InitHallWays()
+        {
+            GameObject newRoomTile;
+            GameObject motherOfRoom = new GameObject($"Mother of Hallways");
+            for (int h = 0; h < BSPMap.s_allHallWays.Count; h++)
+            {
+                motherOfRoom.transform.parent = _mapMotherGO.transform;
+                for (int i = 0; i < BSPMap.s_allHallWays[h].PTiles.GetLength(0); i++)
+                {
+                    for (int j = 0; j < BSPMap.s_allHallWays[h].PTiles.GetLength(1); j++)
                     {
-                        //Iterate over 2nd dimension of array
-                        for (int j = 0; j < BSPMap.s_allRooms[h].PTiles.GetLength(1); j++)
-                        {
-                            newRoomTile = Instantiate(BSPMap.s_allRooms[h].PTiles[i, j].Prefab, BSPMap.s_allRooms[h].PTiles[i, j].Position, BSPMap.s_allRooms[h].PTiles[i, j].Rotation);
-                            newRoomTile.transform.name = $" Boss room: {BSPMap.s_allRooms[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allRooms[h].PTiles[i, j].Position.x}|{BSPMap.s_allRooms[h].PTiles[i, j].Position.y}]";
-                            newRoomTile.transform.parent = motherOfRoom.transform;
-                        }
+                        newRoomTile = Instantiate(BSPMap.s_allHallWays[h].PTiles[i, j].Prefab, BSPMap.s_allHallWays[h].PTiles[i, j].Position, BSPMap.s_allHallWays[h].PTiles[i, j].Rotation);
+                        newRoomTile.transform.name = $"Hallway: {BSPMap.s_allHallWays[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allHallWays[h].PTiles[i, j].Position.x}|{BSPMap.s_allHallWays[h].PTiles[i, j].Position.y}]";
+                        newRoomTile.transform.parent = motherOfRoom.transform;
                     }
                 }
             }

@@ -16,7 +16,7 @@ namespace Assets.Scripts.MapGeneration
         private static int s_MIN_PARTITION_HEIGHT;
         private Room currentRoom;
         public static List<Room> s_allRooms = new List<Room>();
-        private static List<Room> s_allHallWays = new List<Room>();
+        public static List<Room> s_allHallWays = new List<Room>();
         public BSPMap(int x, int y, int maxWidth, int maxHeight)
         {
             X = x;
@@ -34,6 +34,40 @@ namespace Assets.Scripts.MapGeneration
             s_MIN_PARTITION_WIDTH = minPartitionWidth;
             s_MIN_PARTITION_HEIGHT = minPartitionHeight;
         } 
+
+        private Room GetRoom()
+        {
+            if(currentRoom != null)
+            {
+                return currentRoom;
+            }
+            else
+            {
+                Room leftRoom = null;
+                Room rightRoom = null;
+                if(FirstMap != null)
+                {
+                    leftRoom = FirstMap.GetRoom();
+                }
+                if(SecondMap != null)
+                {
+                    rightRoom = SecondMap.GetRoom();
+                }
+                if (leftRoom == null && rightRoom == null)
+                {
+                    return null;
+                }
+                else if (leftRoom == null)
+                {
+                    return rightRoom;
+                }
+                else if (rightRoom == null)
+                {
+                    return leftRoom;
+                }
+                else return leftRoom;
+            }
+        }
 
         /// <summary>
         /// Split Map if splitable and desired partition side isn't too small
@@ -109,7 +143,7 @@ namespace Assets.Scripts.MapGeneration
                 }
                 if(FirstMap != null && SecondMap != null)
                 {
-                    CreateHallWay(FirstMap.currentRoom, SecondMap.currentRoom, ground, wall, border);
+                    CreateHallWay(FirstMap.GetRoom(), SecondMap.GetRoom(), ground, wall, border);
                 }
             }
             else
@@ -127,11 +161,20 @@ namespace Assets.Scripts.MapGeneration
             int rdmInt = rdm.Next(0, 2);
             Room hallway1 = null;
             Room hallway2= null;
-            //TODO: FIX DAT SHIT
-            int splitDifferenceHorizontalRoom1 = rdm.Next(currentRoom1.X + 1, currentRoom1.Width-2);
-            int splitDifferenceHorizontalRoom2 = rdm.Next(currentRoom2.X + 1, currentRoom2.Width-2);            
-            int splitDifferenceVerticalRoom1 = rdm.Next(currentRoom1.Y + 1, currentRoom1.Height-2);
-            int splitDifferenceVerticalRoom2 = rdm.Next(currentRoom2.Y + 1, currentRoom2.Height-2);
+
+            if(currentRoom1 == null || currentRoom2 == null)
+            {
+                Debug.Log("a room was null");
+                return;
+            }
+            int rightRoom1 = currentRoom1.Width + currentRoom1.X;
+            int rightRoom2 = currentRoom2.Width + currentRoom2.X;
+            int topRoom1 = currentRoom1.Height + currentRoom1.Y;
+            int topRoom2 = currentRoom2.Height + currentRoom2.Y;
+            int splitDifferenceHorizontalRoom1 = rdm.Next(currentRoom1.X+1, rightRoom1-2);
+            int splitDifferenceHorizontalRoom2 = rdm.Next(currentRoom2.X+1, rightRoom2-2);
+            int splitDifferenceVerticalRoom1 = rdm.Next(currentRoom1.Y+1, topRoom1-2);
+            int splitDifferenceVerticalRoom2 = rdm.Next(currentRoom2.Y+1, topRoom2-2);
 
             Vector2 splitPointRoom1 = new Vector2(splitDifferenceHorizontalRoom1, splitDifferenceVerticalRoom1);
             Vector2 splitPointRoom2 = new Vector2(splitDifferenceHorizontalRoom2, splitDifferenceVerticalRoom2);
@@ -141,19 +184,20 @@ namespace Assets.Scripts.MapGeneration
             //Calculate connection direction
             if (splitPointX < 0)
             {
-                if(splitPointY < 0)
+                if (splitPointY < 0)
                 {
                     if (rdmInt == 0)
                     {
                         hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
-                    else 
+                    else
                     {
                         hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
-                } else if(splitPointY > 0)
+                }
+                else if (splitPointY > 0)
                 {
                     if (rdmInt == 0)
                     {
@@ -171,7 +215,8 @@ namespace Assets.Scripts.MapGeneration
                 {
                     hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
                 }
-            }else if(splitPointX > 0)
+            }
+            else if (splitPointX > 0)
             {
                 if (splitPointY < 0)
                 {
@@ -205,13 +250,14 @@ namespace Assets.Scripts.MapGeneration
                     hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
                 }
             //splitPointX == 0
-            } else 
+            }
+            else
             {
-                if(splitPointY < 0)
+                if (splitPointY < 0)
                 {
                     hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                 }
-                else if(splitPointY > 0)
+                else if (splitPointY > 0)
                 {
                     hallway1 = new HallWay(ground, wall, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                 }
@@ -221,7 +267,8 @@ namespace Assets.Scripts.MapGeneration
             {
                 s_allHallWays.Add(hallway1);
                 s_allHallWays.Add(hallway2);
-            } else s_allHallWays.Add(hallway1);
+            }
+            else s_allHallWays.Add(hallway1);
         }
     }
 }
