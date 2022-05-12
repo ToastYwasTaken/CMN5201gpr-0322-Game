@@ -916,6 +916,7 @@ GameObject:
   - component: {fileID: 3230954389950016416}
   - component: {fileID: 7576545269406560643}
   - component: {fileID: 7576545269406560642}
+  - component: {fileID: 4755430652363361951}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1177,7 +1178,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7576545269406560640}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1207,6 +1208,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!58 &4755430652363361951
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b0362e5a02afe344d97cca689b4d3bd0, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.068416394, y: 0.39647394}
+  serializedVersion: 2
+  m_Radius: 3.9357533
 --- !u!1 &7576545269882444202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1530,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 71150
+  m_InstanceId: 45142
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1521,7 +1538,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7576545270106876275}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b66ad5fc1dc85c8449096f6a56d23839, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
