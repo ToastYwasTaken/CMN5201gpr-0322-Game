@@ -43,7 +43,11 @@ namespace AISystem
 
         private AIFieldOfView fov = new();
 
-        public void FindTargetWithTag(string targetTag) => Target = GameObject.FindWithTag(targetTag);
+        public void FindTargetWithTag(string targetTag)
+        {
+            _targetObject = GameObject.FindWithTag(targetTag);
+            Target = _targetObject;
+        }
 
         public void ResetLookAt()
         {

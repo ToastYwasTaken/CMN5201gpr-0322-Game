@@ -57,7 +57,7 @@ namespace AISystem
 
             // Verfolge das Ziel Viusel
             if (_lookToTarget)
-            _lookToEnemy.LookAtInstance();    
+                _lookToEnemy.LookAtInstance();    
             //_lookToEnemy.LookAt();
         }
 

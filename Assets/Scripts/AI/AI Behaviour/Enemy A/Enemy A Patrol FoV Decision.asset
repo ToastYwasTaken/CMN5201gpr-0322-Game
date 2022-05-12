@@ -12,16 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dacdac12a38c1d4fa2bf065a2d847a3, type: 3}
   m_Name: Enemy A Patrol FoV Decision
   m_EditorClassIdentifier: 
-  _lookRadius: 50
   _ignoreLayerForScan:
     serializedVersion: 2
     m_Bits: 8
   _queryTriggerForScan: 1
-  _viewDistance: 15
+  _viewDistance: 5
   _viewAngle: 120
   _ignoreLayerForView:
     serializedVersion: 2
     m_Bits: 9
   _queryTriggerForView: 1
   _useAura: 1
-  _auraRadius: 7
+  _auraRadius: 1

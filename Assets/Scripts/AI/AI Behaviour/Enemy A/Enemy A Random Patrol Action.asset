@@ -19,7 +19,7 @@ MonoBehaviour:
   OnAgentStopped: {fileID: 0}
   OnStateExit: {fileID: 0}
   OnHasReachedWaypoint: {fileID: 0}
-  _distanceToWaypoint: 4
+  _distanceToWaypoint: 2.5
   _waypointDistance: 30
   _maxDistance: 1
   _velocityOffset: 0.2

@@ -12,20 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bd3d43bd4c3fe45b4f8c50a9584c28, type: 3}
   m_Name: Enemy A Chase Action
   m_EditorClassIdentifier: 
-  _aiConfiguration: {fileID: 11400000, guid: 2cc9d32714c25db43b0f60452cc4321c, type: 2}
+  _aiConfiguration: {fileID: 11400000, guid: 578084f441367a04db396f85b4c06f74, type: 2}
   AiConfigFoldout: 1
   OnStateEntered: {fileID: 0}
-  OnAgentMoveForward: {fileID: 0}
-  OnAgentMoveBack: {fileID: 0}
-  OnAgentTurnLeft: {fileID: 0}
-  OnAgentTurnRight: {fileID: 0}
+  OnAgentMoving: {fileID: 0}
   OnAgentStopped: {fileID: 0}
+  OnStateExit: {fileID: 0}
   _lookToTarget: 1
   _targetTag: Player
   _ignoreLayer:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 8
   _fightDistanceToTarget: 25
   _velocityOffset: 0.2
-  _maxVelocity: 3
+  _maxVelocity: 1
   _seekForce: 0.005

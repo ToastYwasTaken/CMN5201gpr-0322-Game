@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a331a6a841033248a6c3646befbee3d, type: 3}
   m_Name: Chase Configuration
   m_EditorClassIdentifier: 
-  speed: 20
-  angularSpeed: 200
-  acceleration: 10
-  stoppingDistance: 2
+  speed: 8
+  angularSpeed: 100
+  acceleration: 3
+  stoppingDistance: 4
   autoBraking: 1
