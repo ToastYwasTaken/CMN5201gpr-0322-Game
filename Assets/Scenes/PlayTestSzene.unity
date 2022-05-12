@@ -162,7 +162,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &39456488
+--- !u!43 &57110941
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1392,9 +1392,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapMotherGO: {fileID: 2088301316}
-  _mapWidth: 80
+  _mapWidth: 70
   _mapHeight: 80
-  _minPartitionWidth: 10
+  _minPartitionWidth: 20
   _minPartitionHeight: 10
   _emptyPrefab: {fileID: 9092941392263067942, guid: b41e5e979baf5624fbde14834360a012, type: 3}
   _groundPrefab: {fileID: 6781002320295007211, guid: 4c88ebc39d7b92347babe6f773aaebf3, type: 3}

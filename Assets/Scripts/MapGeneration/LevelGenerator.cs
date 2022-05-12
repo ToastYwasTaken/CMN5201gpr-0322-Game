@@ -117,8 +117,8 @@ namespace Assets.Scripts.MapGeneration
             int lastRoomWidth = lastRoom.Width;
             int lastRoomHeight = lastRoom.Height;
             BSPMap.s_allRooms.Remove(lastRoom);
-            BSPMap.s_allRooms.Add(new BossRoom(_groundPrefab, _wallPrefab, _borderPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
-            InitNormalRooms();
+            BSPMap.s_allRooms.Add(new BossRoom(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
+            InstantiateNormalRooms();
             //Commented out for testing
             //InitHallWays();
         }
@@ -126,7 +126,7 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Instantiate Normal rooms / pass instantiating boss room
         /// </summary>
-        private void InitNormalRooms()
+        private void InstantiateNormalRooms()
         {
             GameObject newRoomTile;
             GameObject motherOfRoom;
@@ -150,7 +150,7 @@ namespace Assets.Scripts.MapGeneration
                         }
                     }
                 }
-                else InitBossRoom(h);
+                else InstantiateBossRoom(h);
             }
         }
 
@@ -158,7 +158,7 @@ namespace Assets.Scripts.MapGeneration
         /// Instantiate Boss room
         /// </summary>
         /// <param name="passCounter"></param>
-        private void InitBossRoom(int passCounter)
+        private void InstantiateBossRoom(int passCounter)
         {
             GameObject newRoomTile;
             GameObject motherOfRoom = new GameObject($"Mother of boss room {passCounter}");
