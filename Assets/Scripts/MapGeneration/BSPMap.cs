@@ -23,7 +23,7 @@ namespace Assets.Scripts.MapGeneration
             Y = y;
             Width = maxWidth;
             Height = maxHeight;
-            Debug.Log($"Creating new Map: X: [{X}] Y: [{Y}] Width: [{Width}] Height: [{Height}] ");
+            //Debug.Log($"Creating new Map: X: [{X}] Y: [{Y}] Width: [{Width}] Height: [{Height}] ");
         }
 
         /// <summary>
@@ -208,11 +208,13 @@ namespace Assets.Scripts.MapGeneration
                 {
                     if (rdmInt == 0)
                     {
+                        Debug.Log($"Case 1: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                         hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
                     else
                     {
+                        Debug.Log($"Case 2: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                         hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
@@ -221,11 +223,13 @@ namespace Assets.Scripts.MapGeneration
                 {
                     if (rdmInt == 0)
                     {
+                        Debug.Log($"Case 3: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                         hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                     }
                     else
                     {
+                        Debug.Log($"Case 4: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                         hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                     }
@@ -233,6 +237,7 @@ namespace Assets.Scripts.MapGeneration
                 //splitPointY == 0
                 else
                 {
+                    Debug.Log($"Case 5: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                     hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
                 }
             }
@@ -242,11 +247,13 @@ namespace Assets.Scripts.MapGeneration
                 {
                     if (rdmInt == 0)
                     {
+                        Debug.Log($"Case 6: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                         hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
                     else
                     {
+                        Debug.Log($"Case 7: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                         hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                     }
@@ -255,11 +262,13 @@ namespace Assets.Scripts.MapGeneration
                 {
                     if (rdmInt == 0)
                     {
+                        Debug.Log($"Case 8: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                         hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                     }
                     else
                     {
+                        Debug.Log($"Case 9: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                         hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
                         hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                     }
@@ -267,6 +276,7 @@ namespace Assets.Scripts.MapGeneration
                 //splitPointY == 0
                 else
                 {
+                    Debug.Log($"Case 10: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                     hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
                 }
                 //splitPointX == 0
@@ -275,10 +285,12 @@ namespace Assets.Scripts.MapGeneration
             {
                 if (splitPointY < 0)
                 {
+                    Debug.Log($"Case 11: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                     hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
                 }
                 else if (splitPointY > 0)
                 {
+                    Debug.Log($"Case 12: splitPointX: {splitPointRoom1} | splitPointY: {splitPointRoom2}");
                     hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
                 }
             }
@@ -289,6 +301,7 @@ namespace Assets.Scripts.MapGeneration
                 s_allHallWays.Add(hallway2);
             }
             else s_allHallWays.Add(hallway1);
+            //TODO: Remove wall at splitPoint
         }
     }
 }

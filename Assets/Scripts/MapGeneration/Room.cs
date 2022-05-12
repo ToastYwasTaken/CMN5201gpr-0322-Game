@@ -67,8 +67,8 @@ namespace Assets.Scripts.MapGeneration
             Tiles = new Tile[Width, Height];
             Quaternion rotation;
             //create a random values between 'lower' and 'upper' bounds
-            float perlinOffset = PerlinNoiseGenerator.RandomFloat(0.2f, 0.8f);
-            float perlinScale = PerlinNoiseGenerator.RandomFloat(0.7f, 1.1f);
+            float perlinOffset = PerlinNoiseGenerator.RandomFloat(0.7f, 0.8f);
+            float perlinScale = PerlinNoiseGenerator.RandomFloat(0.9f, 1.0f);
             float perlinIntensity = PerlinNoiseGenerator.RandomFloat(0.8f, 1.1f);
             for (int y = 0; y < Height; y++)
             {
@@ -132,7 +132,7 @@ namespace Assets.Scripts.MapGeneration
                     {
                         perlinNoise = PerlinNoiseGenerator.GeneratePerlinNoiseAtCoordinates(posX, posY, perlinOffset, perlinOffset, perlinScale, perlinIntensity);
                         //Create walls inside bounds from perlinNoise
-                        if (perlinNoise < 0.7f)
+                        if (perlinNoise < 0.8f)
                         {
                             Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                         }

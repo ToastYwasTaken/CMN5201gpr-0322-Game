@@ -30,10 +30,13 @@ namespace Assets.Scripts.MapGeneration
             RandomlyOffsetPrefabColorBossRoom(Border);
             //Create room
             InitRoom();
-            Debug.Log($"Created new BOSS room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
+            //Debug.Log($"Created new BOSS room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
         }
 
-
+        /// <summary>
+        /// Doesnt work
+        /// </summary>
+        /// <param name="prefab"></param>
         private void RandomlyOffsetPrefabColorBossRoom(GameObject prefab)
         {
             Renderer prefabRend = prefab.GetComponent<Renderer>();

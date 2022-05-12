@@ -27,8 +27,8 @@ namespace Assets.Scripts.MapGeneration
         [SerializeField, Range(0.1f, 0.9f)]
         float _perlinNoiseOffsetY = 0.35f;
         //the higher the bigger
-        [SerializeField, Range(1.0f, 100f)]
-        float _perlinNoiseScale = 5.0f;
+        [SerializeField, Range(0.0f, 100f)]
+        float _perlinNoiseScale = 2.0f;
 
         private Renderer _rend;
         private static System.Random _rdm = new System.Random((int)(System.DateTime.Now.Ticks));

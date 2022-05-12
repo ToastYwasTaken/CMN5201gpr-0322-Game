@@ -19,7 +19,7 @@ namespace Assets.Scripts.MapGeneration
             NormalizePrefabSize(Border);
             //Create room
             InitRoom();
-            Debug.Log($"Created new hallway : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
+            //Debug.Log($"Created new hallway : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
         }
         protected override void InitRoom()
         {
