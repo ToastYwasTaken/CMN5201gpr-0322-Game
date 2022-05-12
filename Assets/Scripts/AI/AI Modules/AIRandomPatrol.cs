@@ -32,7 +32,7 @@ namespace AISystem
             Vector3 currentTarget = agent.destination;
 
             float remainingDistance = Vector3.Distance(agent.transform.position, currentTarget);
-            Debug.Log(remainingDistance);
+            // Debug.Log(remainingDistance);
             return remainingDistance <= distance;
         }
     }

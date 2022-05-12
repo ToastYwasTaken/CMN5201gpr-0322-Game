@@ -10,6 +10,8 @@ namespace AISystem
     {
         public NavMeshSurface[] Meshes;
         public bool BuildMeshByStart = false;
+        public bool SpawnEnemy = false;
+        public AIEnemySpawner Spawner;
         
         public void BuildMesh()
         {
@@ -23,6 +25,8 @@ namespace AISystem
         {
             if (!BuildMeshByStart) return;
             BuildMesh();
+            if (!SpawnEnemy) return;
+            Spawner.Spawn();
         }
     }
 }

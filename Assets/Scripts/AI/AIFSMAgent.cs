@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace AISystem
 {
@@ -72,6 +73,28 @@ namespace AISystem
             }
 
             return component;
+        }
+
+        /// <summary>
+        /// Setzt eine zufällige Position innerhalb des NavMesh
+        /// </summary>
+        /// <param name="range"></param>
+        public void SetPositionAtNavMesh(float range)
+        {
+            Vector3 center = transform.position;
+            bool foundPoint = false;
+            int limit = 0;
+            do
+            {
+                limit++;
+              Vector3 rndPoint = center + (Random.insideUnitSphere * range);
+              if (!NavMesh.SamplePosition(rndPoint, out NavMeshHit hit,
+                      1f, NavMesh.AllAreas)) continue;
+              
+              Debug.Log(hit.position);
+              foundPoint = true; 
+              transform.position = hit.position;
+            } while (!foundPoint || !(limit >= 100));
         }
     }
 }
