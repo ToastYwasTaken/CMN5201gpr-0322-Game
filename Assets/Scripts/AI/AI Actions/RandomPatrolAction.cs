@@ -53,7 +53,7 @@ namespace AISystem
 
             // Generiert einen neuen Wegpunkt
             if (!_aIRandomPatrol.GetRandomWaypoint(_navMeshAgent.transform.position, _waypointDistance, _maxDistance,out Vector3 point)) return;
-            Debug.DrawRay(point, Vector3.up, Color.magenta, 1.0f);
+            Debug.DrawRay(point, Vector3.up, Color.magenta, 3.0f);
 
             // TODO line of Sight check
 
