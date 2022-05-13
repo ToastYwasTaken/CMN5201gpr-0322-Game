@@ -19,7 +19,7 @@ namespace Dennis.UI
 
         protected override void AwakeSingleton()
         {
-            var window = FindObjectsOfType<Window>();
+            var window = GameObject.FindObjectsOfType<Window>();
 
             foreach (var uiWindow in window)
             {

@@ -183,6 +183,7 @@
     <Compile Include="Assets\Scripts\AI\AITransition.cs" />
     <Compile Include="Assets\Scripts\AI\AI States\AIStateAction.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
