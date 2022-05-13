@@ -9,6 +9,8 @@ public class DmgSegment : MonoBehaviour, IHealth
     [SerializeField][Range(0f,1f)] float[] _percentage;
     [SerializeField] Collider2D _collider;
     [SerializeField] float _health;
+    [SerializeField] bool _criticalComponent;
+    [SerializeField] GameObject[] _destroyOnDeath;
     float _currHealth;
 
     public void ChangeHealth(float _amount)
@@ -24,6 +26,7 @@ public class DmgSegment : MonoBehaviour, IHealth
         if(_currHealth <= 0)
         {
             _collider.enabled = false;
+            if (_criticalComponent) Destroy(transform.root.gameObject);
         }
     }
 
