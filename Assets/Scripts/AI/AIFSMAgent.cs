@@ -42,7 +42,8 @@ namespace AISystem
 
         private void Update()
         {
-            CurrentState.Execute(this);
+            if (CurrentState != null)
+                CurrentState.Execute(this);
            // Debug.Log($"AI: {gameObject.name} | Current State: {CurrentState.name}");
         }
 
@@ -91,7 +92,7 @@ namespace AISystem
               if (!NavMesh.SamplePosition(rndPoint, out NavMeshHit hit,
                       1f, NavMesh.AllAreas)) continue;
               
-              Debug.Log(hit.position);
+              // Debug.Log(hit.position);
               foundPoint = true; 
               transform.position = hit.position;
             } while (!foundPoint || !(limit >= 100));

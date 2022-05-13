@@ -33,6 +33,7 @@ namespace AISystem
         {
             OnUpdateSettings();
             // Debug.Log(navMeshAgent.velocity.sqrMagnitude);
+            if (_navMeshAgent == null) return;
             if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
             {
                 if (OnAgentMoving != null)
@@ -62,6 +63,7 @@ namespace AISystem
 
         public override void OnUpdateSettings()
         {
+             if (_navMeshAgent == null) return;
             _navMeshAgent.speed = AIConifg.speed;
             _navMeshAgent.angularSpeed = AIConifg.angularSpeed;
             _navMeshAgent.acceleration = AIConifg.acceleration;
