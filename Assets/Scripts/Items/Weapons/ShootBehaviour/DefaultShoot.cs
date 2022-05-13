@@ -8,7 +8,5 @@ public class DefaultShoot : ShootBehaviour
     {
         GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         newBullet.GetComponent<Projectile>().ProjectileStats = projectileStats;
-
-        newBullet.transform.SetParent(null);
     }
 }

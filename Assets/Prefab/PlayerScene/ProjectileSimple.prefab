@@ -135,6 +135,8 @@ MonoBehaviour:
   mLifeTime: 5
   mSpeed: 15
   damage: 5
+  _armorPenetration: 10
+  _attackPower: 20
   mRigidbody: {fileID: 1498543244407894967}
 --- !u!50 &1498543244407894967
 Rigidbody2D:
@@ -167,7 +169,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

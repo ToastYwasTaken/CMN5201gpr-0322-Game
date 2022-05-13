@@ -443,9 +443,6 @@ MonoBehaviour:
   _parent: {fileID: 0}
   _range: 100
   _aimRange: 30
-  isRange: 0
-  isNotObst: 0
-  IsAimAt: 0
 --- !u!114 &8879270859821570630
 MonoBehaviour:
   m_ObjectHideFlags: 0

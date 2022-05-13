@@ -9,6 +9,9 @@ namespace Assets.Scripts.Player
         [SerializeField] private float mLifeTime;
         [SerializeField] private float mSpeed = 5f;
         [SerializeField] private float damage = -5f;
+
+        [SerializeField] private float _armorPenetration;
+        [SerializeField] private float _attackPower;
         //[SerializeField] private float health = 5f;
 
         //[SerializeField] private GameObject mExplosionPrefab;
@@ -33,10 +36,21 @@ namespace Assets.Scripts.Player
             return damage;
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null) damageable.DealDamage(_attackPower, _armorPenetration);
+            Destroy(gameObject);
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             DamageTarget(collision.GetContact(0).collider.gameObject);
             print(collision.GetContact(0).collider.gameObject.name);
+
+
+            
+
             //DamageTargetArea(collision.gameObject);
 
 

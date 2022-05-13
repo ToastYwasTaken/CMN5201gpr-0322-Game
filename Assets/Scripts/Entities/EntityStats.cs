@@ -100,6 +100,7 @@ public class EntityStats : MonoBehaviour, IDamageable
     protected virtual void Death()
     {
         OnDeath?.Invoke();
+        Destroy(this.gameObject);
     }
 
     protected virtual void ArmorBroken()

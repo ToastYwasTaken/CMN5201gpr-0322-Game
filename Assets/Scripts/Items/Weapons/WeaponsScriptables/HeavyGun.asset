@@ -17,9 +17,12 @@ MonoBehaviour:
   _description: Shots slow but hits like a truck!
   _isStackable: 0
   _fireRate: 1.25
-  _bulletPrefab: {fileID: 2912425703784977495, guid: 303990cf9fd802b43a112b63b205ee5d, type: 3}
+  _bulletPrefab: {fileID: 2912425703784977495, guid: fa8d9f9c8dda9064289efabb60604a6e, type: 3}
   _weaponPower: 25
   _armorPenetration: 10
   _bulletSpeed: 5
   _heatmeterUsage: 25
   _shootBehaviour: {fileID: 11400000, guid: 1a12e12ae03ef934b8aa0b00542f8b44, type: 2}
+  _amountOfBullets: 0
+  _fireAngle: 0
+  _randomAngle: 0
