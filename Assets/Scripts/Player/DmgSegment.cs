@@ -13,7 +13,6 @@ public class DmgSegment : MonoBehaviour, IHealth
 
     public void ChangeHealth(float _amount)
     {
-        print("hit");
         _currHealth -= _amount;
         for (int i = 0; i < _percentage.Length; i++)
         {

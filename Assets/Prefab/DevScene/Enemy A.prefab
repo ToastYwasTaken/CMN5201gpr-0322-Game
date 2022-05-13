@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818559283454854438, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_InstanceId
-      value: -538966
+      value: -4941372
       objectReference: {fileID: 0}
     - target: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Name
@@ -251,7 +251,11 @@ PrefabInstance:
     - target: {fileID: 4607359562863709390, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: _parent
       value: 
-      objectReference: {fileID: 7315260404001948519}
+      objectReference: {fileID: 7398778050724221817}
+    - target: {fileID: 4607359562863709390, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
+      propertyPath: _aimRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6416932283251555095, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -332,6 +336,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8879270859821570630, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
+      propertyPath: _projectilePfab
+      value: 
+      objectReference: {fileID: 2912425703784977495, guid: 73b6eab8031c0c144a16f865fe0b36eb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
 --- !u!1 &2735952495283642492 stripped

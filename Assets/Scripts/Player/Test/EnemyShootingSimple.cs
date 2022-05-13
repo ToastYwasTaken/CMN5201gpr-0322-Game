@@ -25,7 +25,7 @@ namespace Assets.Scripts.Player
             //isRange = IsInRange(_target);
             //isNotObst = IsNotObstructed(_target);
             //IsAimAt = IsAimingAt(_target);
-            if ( IsInRange(_target) && IsNotObstructed(_target))
+            if ( IsInRange(_target) && IsNotObstructed(_target) && IsAimingAt(_target))
             {
                 _weapon.Fire();
             }
