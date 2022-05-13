@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5800965784403032866}
   - component: {fileID: 7572879588580289819}
   - component: {fileID: 2108201362}
+  - component: {fileID: 2219112988695497209}
   m_Layer: 8
   m_Name: Enemy B
   m_TagString: Enemy
@@ -162,6 +163,27 @@ MonoBehaviour:
   _queryTriggerForView: 1
   UseAura: 1
   AuraRadius: 5
+--- !u!114 &2219112988695497209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315260404001948518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a3f6a5a4244274bb0d134ccad70115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _maxArmor: 0
+  _damageReduction: 0
+  _armorPenetrationReduction: 0
+  _attackPower: 0
+  _armorPenetation: 0
+  _entityType: 1
+  _testAttackPower: 0
+  _testArmorPenetration: 0
 --- !u!1 &8654676317030522425
 GameObject:
   m_ObjectHideFlags: 0

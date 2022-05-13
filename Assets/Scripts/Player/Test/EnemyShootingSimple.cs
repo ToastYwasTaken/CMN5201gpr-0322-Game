@@ -44,7 +44,7 @@ namespace Assets.Scripts.Player
                 IEntity iEtt = hit.transform.gameObject.GetComponent<IEntity>();
                 if (iEtt != null)
                 {
-                    if (iEtt.EType() == eEntityType.PLAYER)
+                    if (iEtt.EType() == eEntityType.Player)
                         return true;
                 }
             }

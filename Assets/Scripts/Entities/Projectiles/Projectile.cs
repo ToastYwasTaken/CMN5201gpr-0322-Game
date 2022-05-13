@@ -21,7 +21,6 @@ class Projectile : MonoBehaviour
 
     private void Start()
     {
-        Debug.LogWarning("Spawned Bullet");
         if (_rb == null) _rb = GetComponent<Rigidbody>();
         if (_projectileMovement == null) Debug.LogWarning("Projectile Movement Behaviour isnt set!");
         if (_projectileCollision == null) Debug.LogWarning("Projectile Collision Behaviour isnt set!");
@@ -35,5 +34,4 @@ class Projectile : MonoBehaviour
     {
         if (_projectileCollision != null) _projectileCollision.OnCollision(other, _projectileStats, this.gameObject);
     }
-
 }

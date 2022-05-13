@@ -178,6 +178,7 @@ MonoBehaviour:
   _armorPenetrationReduction: 0
   _attackPower: 0
   _armorPenetation: 0
+  _entityType: 1
   _testAttackPower: 0
   _testArmorPenetration: 0
 --- !u!1 &8292143171284177005

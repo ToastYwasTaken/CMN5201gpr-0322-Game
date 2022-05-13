@@ -36,20 +36,15 @@ namespace Assets.Scripts.Player
             return damage;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            IDamageable damageable = collision.GetComponent<IDamageable>();
-            if (damageable != null) damageable.DealDamage(_attackPower, _armorPenetration);
-            Destroy(gameObject);
-        }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
             DamageTarget(collision.GetContact(0).collider.gameObject);
             print(collision.GetContact(0).collider.gameObject.name);
 
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            if (damageable != null) damageable.DealDamage(_attackPower, _armorPenetration);
+            Destroy(gameObject);
 
-            
 
             //DamageTargetArea(collision.gameObject);
 

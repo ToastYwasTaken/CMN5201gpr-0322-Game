@@ -2,8 +2,6 @@
 
 namespace Assets.Scripts.Player
 {
-    public enum eEntityType { PLAYER, ENEMY, ENVIRONMENT }
-
     public class Damagable : MonoBehaviour, IHealth, IEntity
     {
         [SerializeField] private float mHealth;

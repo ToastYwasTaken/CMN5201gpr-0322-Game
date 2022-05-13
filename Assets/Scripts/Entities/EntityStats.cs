@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class EntityStats : MonoBehaviour, IDamageable
+public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
 {
     public delegate void ChangedHealth(float newHealth);
     public event ChangedHealth OnHealthChanged;
@@ -91,10 +91,17 @@ public class EntityStats : MonoBehaviour, IDamageable
     [SerializeField]private float _armorPenetation;
     public float ArmorPenetration { get => _armorPenetation; }
 
+    [SerializeField] private eEntityType _entityType;
+    public eEntityType EntityType { get => _entityType; }
+
+
     private void Start()
     {
         Health = _maxHealth;
         Armor = _maxArmor;
+
+        OnArmorPercentageChanged?.Invoke(ArmorPercentage);
+        OnHealthPercentageChanged?.Invoke(HealthPercentage);
     }
 
     protected virtual void Death()
@@ -146,5 +153,10 @@ public class EntityStats : MonoBehaviour, IDamageable
         Debug.Log($"Damage to armor : {damageToArmor} | Damage to health {damageToHealth} ");
         Armor -= damageToArmor;
         Health -= damageToHealth;
+    }
+
+    public eEntityType GetEntityType()
+    {
+        return EntityType;
     }
 }
