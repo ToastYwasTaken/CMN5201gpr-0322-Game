@@ -188,7 +188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 8.599976, y: -9.300003}
+  m_AnchoredPosition: {x: 8.599976, y: -9.299988}
   m_SizeDelta: {x: 196.1385, y: 37.606}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7297048647003219574
@@ -484,8 +484,9 @@ GameObject:
   - component: {fileID: 4922344377308732293}
   - component: {fileID: 2083276278}
   - component: {fileID: 6402657981732634114}
+  - component: {fileID: 7560903518853121270}
   m_Layer: 5
-  m_Name: Heatmeter UI
+  m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,6 +606,21 @@ MonoBehaviour:
   _player: {fileID: 0}
   _healthSlider: {fileID: 7297048647003219574}
   _armorSlider: {fileID: 8584045381940825655}
+--- !u!114 &7560903518853121270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4922344377308732290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d44149a33dd3c42a7e46934b8baeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _heatmeterSlider: {fileID: 4922344378442907947}
+  _heatmeterSliderImage: {fileID: 4922344377967074937}
 --- !u!1 &4922344377967074935
 GameObject:
   m_ObjectHideFlags: 0
