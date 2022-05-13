@@ -21,8 +21,22 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
+<<<<<<< Updated upstream
     <OutputPath>Temp\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;UNITY_2021_2_18;UNITY_2021_2;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+=======
+    <OutputPath>Temp\Bin\Debug\</OutputPath>
+    <DefineConstants>UNITY_2021_2_18;UNITY_2021_2;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+>>>>>>> Stashed changes
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -35,6 +49,172 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
+<<<<<<< Updated upstream
+=======
+  <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UnityProjectGenerator>Package</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.0.15</UnityProjectGeneratorVersion>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
+    <UnityVersion>2021.2.18f1</UnityVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Scripts\Player\OldScripts\Old_Projectile.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Actions\AttackAction.cs" />
+    <Compile Include="Assets\Scripts\Player\DamageController.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\OverdriveChip.cs" />
+    <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
+    <Compile Include="Assets\Scripts\AI\AIDecision.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\OverdriveSlot.cs" />
+    <Compile Include="Assets\Scripts\Player\DmgSegment.cs" />
+    <Compile Include="Assets\Scripts\UI\ExtendedScene.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\Window.cs" />
+    <Compile Include="Assets\Scripts\Entities\Projectiles\Movement\ForwardProjectileMovement.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\ArmorTrigger.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\AgentLinkMover.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Modules\AIFlocking.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
+    <Compile Include="Assets\Scripts\UI\HeatmeterUIBar.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\WindowWithAnimator.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\ShootBehaviour\ShootBehaviour.cs" />
+    <Compile Include="Assets\Scripts\AI\AI States\AIState.cs" />
+    <Compile Include="Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Upgrade.cs" />
+    <Compile Include="Assets\Scripts\UI\Extensions\UIExtensions.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\NormalRoom.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\Room.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Actions\ChaseAction.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\PerlinNoiseGenerator.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\ClickToMove.cs" />
+    <Compile Include="Assets\Scripts\Player\Test\EnemyShootingSimple.cs" />
+    <Compile Include="Assets\Scripts\Player\OldScripts\Old_Weapon.cs" />
+    <Compile Include="Assets\Scripts\Player\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\OverheatedTrigger.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\ArmorPercentageTrigger.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\RandomWalk.cs" />
+    <Compile Include="Assets\Scripts\UI\MusicSettingsInUI.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Modules\AISwarm.cs" />
+    <Compile Include="Assets\Scripts\Player\Test\ProjectileSimple.cs" />
+    <Compile Include="Assets\Scripts\Player\Test\TurretAI.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Actions\IdleAction.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\BSPMap.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\HealPlayerODBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\DebugOverdriveBehaviour.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Decisions\AIInFieldOfViewDecision.cs" />
+    <Compile Include="Assets\Scripts\AI\AIEventListener.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\OverdriveBehaviour.cs" />
+    <Compile Include="Assets\PlayerStatsUI.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\Oscillator.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Actions\RandomPatrolAction.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\OverdriveTrigger.cs" />
+    <Compile Include="Assets\Scripts\AI\AIFSMAgent.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\HealthTrigger.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\NavMeshSourceTag.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\NavMeshPrefabInstance.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Actions\SwarmAction.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\LocalNavMeshBuilder.cs" />
+    <Compile Include="Assets\Scripts\UI\MainWindowUI.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController2.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Actions\EvadeAction.cs" />
+    <Compile Include="Assets\Scripts\AI\AIEnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Decisions\AIInLineOfSightDecision.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\Tile.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\ShootBehaviour\DefaultShoot.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\WeaponSlot.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\EnableIffSleeping.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\BossRoom.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\HealthPercentageTrigger.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\WindowController.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\RandomInstancing.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\HeatlevelTrigger.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Actions\PatrolAction.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\ArmorBrokenTrigger.cs" />
+    <Compile Include="Assets\Scripts\Player\Rotateable.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\Scripts\Entities\Projectiles\Projectile.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Modules\AIPatrolPoints.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Actions\FlockingAction.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DungeonManager.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Modules\AITargetInRange.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Entities\Projectiles\Collision\DefaultProjectileCollision.cs" />
+    <Compile Include="Assets\Scripts\Player\Heatmeter.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Modules\AIFieldOfView.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IShoot.cs" />
+    <Compile Include="Assets\Scripts\Player\Moveable.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\FreeCam.cs" />
+    <Compile Include="Assets\Scripts\AI\AIDebugMessage.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\ShootBehaviour\MultiShot.cs" />
+    <Compile Include="Assets\Scripts\UI\Extensions\UISingleton.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Modules\AIInLineOfSight.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
+    <Compile Include="Assets\Scripts\Player\Damagable.cs" />
+    <Compile Include="Assets\Scripts\AI\AIConfiguration.cs" />
+    <Compile Include="Assets\Scripts\Player\DirLightDimmer.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\HallWay.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\HeatlevelPercentageTrigger.cs" />
+    <Compile Include="Assets\Scripts\Entities\Projectiles\Movement\ProjectileMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerCore.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\OverdriveManager.cs" />
+    <Compile Include="Assets\Scripts\AI\AIEvent.cs" />
+    <Compile Include="Assets\Scripts\Player\WeaponComp.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\MeshTool.cs" />
+    <Compile Include="Assets\Scripts\Player\General\ExtensionMethods.cs" />
+    <Compile Include="Assets\Scripts\Player\ExplosiveBarrel.cs" />
+    <Compile Include="Assets\Scripts\AI\AINavMeshGenerator.cs" />
+    <Compile Include="Assets\Scripts\Player\OldScripts\WeaponNew.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Decisions\AITargetInRangeDecision.cs" />
+    <Compile Include="Assets\Scripts\Entities\EntityStats.cs" />
+    <Compile Include="Assets\Scripts\Entities\Projectiles\ProjectileStats.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Modules\AIRandomPatrol.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Modules\AILookToEnemy.cs" />
+    <Compile Include="Assets\Scripts\Items\ItemContainer.cs" />
+    <Compile Include="Assets\Scripts\AI\AI States\AIRemainInState.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\SpawnPrefabOnKeyDown.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInformation.cs" />
+    <Compile Include="Assets\Scripts\AI\AI States\AIBaseState.cs" />
+    <Compile Include="Assets\Scripts\Entities\Projectiles\Collision\ProjectileCollision.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\LevelGenerator.cs" />
+    <Compile Include="Assets\Scripts\Global\ReferenceLib.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapons\WeaponManager.cs" />
+    <Compile Include="Assets\Scripts\AI\AITransition.cs" />
+    <Compile Include="Assets\Scripts\AI\AI States\AIStateAction.cs" />
+    <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Audio\AudioSources.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+  </ItemGroup>
+>>>>>>> Stashed changes
   <ItemGroup>
      <Compile Include="Assets\Scripts\Player\OldScripts\Old_Projectile.cs" />
      <Compile Include="Assets\Scripts\AI\AI Actions\AttackAction.cs" />

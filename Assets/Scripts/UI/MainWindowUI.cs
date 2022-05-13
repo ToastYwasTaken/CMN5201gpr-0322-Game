@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 namespace Dennis.UI
@@ -41,6 +42,7 @@ namespace Dennis.UI
         private void Play()
         {
             // ToDo: Add logic to start game!
+            SceneManager.LoadScene(1);
         }
 
         private void Settings()
