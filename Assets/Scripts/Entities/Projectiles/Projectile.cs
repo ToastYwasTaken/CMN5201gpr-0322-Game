@@ -9,7 +9,7 @@ class Projectile : MonoBehaviour
         set { _projectileStats = value; }
     }
 
-    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private ProjectileMovement _projectileMovement = null;
     [SerializeField] private ProjectileCollision _projectileCollision = null;
 
@@ -21,7 +21,7 @@ class Projectile : MonoBehaviour
 
     private void Start()
     {
-        if (_rb == null) _rb = GetComponent<Rigidbody>();
+        if (_rb == null) _rb = GetComponent<Rigidbody2D>();
         if (_projectileMovement == null) Debug.LogWarning("Projectile Movement Behaviour isnt set!");
         if (_projectileCollision == null) Debug.LogWarning("Projectile Collision Behaviour isnt set!");
 
@@ -30,8 +30,8 @@ class Projectile : MonoBehaviour
         Destroy(gameObject, _projectileStats.ProjectileLifeTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_projectileCollision != null) _projectileCollision.OnCollision(other, _projectileStats, this.gameObject);
+        if (_projectileCollision != null) _projectileCollision.OnCollision(collision, _projectileStats, this.gameObject);
     }
 }

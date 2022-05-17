@@ -6,6 +6,6 @@ public class Enemy : EntityStats
 {
     protected override void Death()
     {
-        Destroy(this.gameObject);
+        Destroy(transform.parent.parent.parent.gameObject);
     }
 }

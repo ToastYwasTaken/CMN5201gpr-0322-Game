@@ -1,3 +1,4 @@
+Präsentation:
 Video's / Aufnahmen von Fortschritt zeigen.
 Mehr Elan.
 Waffen-anzeige / UI im Spiel
@@ -6,3 +7,6 @@ Immer vorstellen bei Präsentation (Teamname / Mitglieder / Rollen / Spiel)
 
 
 Bis Alpha muss das Spiel Feature-complete sein!
+Bis Beta Content-complete!
+
+Wir können einen "Trailer" machen, der das Spiel kurz vorstellt.

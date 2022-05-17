@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5800965784403032866}
   - component: {fileID: 2006684360}
   - component: {fileID: 4155885469220578773}
-  - component: {fileID: 357622506798062126}
   m_Layer: 6
   m_Name: Enemy A
   m_TagString: Enemy
@@ -160,27 +159,6 @@ CapsuleCollider:
   m_Height: 0.35
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &357622506798062126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7315260404001948518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3a3f6a5a4244274bb0d134ccad70115, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _maxArmor: 0
-  _damageReduction: 0
-  _armorPenetrationReduction: 0
-  _attackPower: 0
-  _armorPenetation: 0
-  _entityType: 1
-  _testAttackPower: 0
-  _testArmorPenetration: 0
 --- !u!1 &8292143171284177005
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818559283454854438, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_InstanceId
-      value: -4941372
+      value: -27466
       objectReference: {fileID: 0}
     - target: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Name
@@ -347,6 +325,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
   m_PrefabInstance: {fileID: 4584726568968792174}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3342887412177899449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1280265729372006359, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
+  m_PrefabInstance: {fileID: 4584726568968792174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7450316392507274537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342887412177899449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65632991281fc9d4390c3c997c0c07bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 1
+  _maxArmor: 0
+  _damageReduction: 0
+  _armorPenetrationReduction: 0
+  _attackPower: 0
+  _armorPenetation: 0
+  _entityType: 1
+  _testAttackPower: 0
+  _testArmorPenetration: 0
 --- !u!4 &7398778050724221817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6416932283251555095, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
