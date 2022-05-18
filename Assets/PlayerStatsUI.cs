@@ -27,6 +27,8 @@ public class PlayerStatsUI : MonoBehaviour
     private void OnDisable()
     {
         if (_entityStats == null) return;
+        _entityStats.OnHealthPercentageChanged -= UpdateHealthUI;
+        _entityStats.OnArmorPercentageChanged -= UpdateArmorUI;
     }
 
     private void UpdateHealthUI(float newPercentage)

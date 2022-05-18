@@ -68,7 +68,7 @@ public class Inventory
 
         Weapon oldWpn = _wpnManager.WeaponsSlots[wpnSlot].WeaponItem;
 
-        _wpnManager.ChangeWeapon(wpn, wpnSlot);
+        _wpnManager.EquipWeapon(wpn, wpnSlot);
         _itemSlots[invSlot] = oldWpn;
 
         _invChanged.Invoke();

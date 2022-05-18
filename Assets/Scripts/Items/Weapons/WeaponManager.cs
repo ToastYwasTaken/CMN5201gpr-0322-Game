@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerCore))]
-public class WeaponManager : MonoBehaviour, IShoot
+public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
 {
     [SerializeField] private PlayerCore _playerCore;
     [SerializeField] private Heatmeter _heatmeter;
@@ -65,7 +65,7 @@ public class WeaponManager : MonoBehaviour, IShoot
     }
     #endregion
 
-    #region Called Methods
+    #region Interface Methods
     public void Shoot()
     {
         if (_playerCore == null) return;
@@ -78,13 +78,14 @@ public class WeaponManager : MonoBehaviour, IShoot
         }
     }
 
-    public void ChangeWeapon(Weapon newWeapon, int weaponSlot)
+    public bool EquipWeapon(Weapon newWeapon, int weaponSlot)
     {
-        if (newWeapon == null) return;
+        if (newWeapon == null) return false;
         if (_weaponsSlots == null) InitializeWeapons();
-        if (weaponSlot < 0 && weaponSlot > (_weaponsSlots.Length -1)) return;
+        if (weaponSlot < 0 && weaponSlot > (_weaponsSlots.Length -1)) return false;
 
         _weaponsSlots[weaponSlot] = new WeaponSlot(newWeapon);
+        return true;
     }
     #endregion
 
@@ -101,5 +102,12 @@ public class WeaponManager : MonoBehaviour, IShoot
             _weaponsSlots[i].WeaponItem = _testWeapon[i];
         }
     }
+
+    
     #endregion
+}
+
+public interface IEquipWeapons
+{
+    public bool EquipWeapon(Weapon newWeapon, int weaponSlot);
 }

@@ -11,7 +11,7 @@ class Projectile : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private ProjectileMovement _projectileMovement = null;
-    [SerializeField] private ProjectileCollision _projectileCollision = null;
+    [SerializeField] private ProjectileCollision _projectileCollision = null;    
 
     private void Update()
     {
