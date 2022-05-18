@@ -18,25 +18,14 @@ namespace AISystem
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
-            if (OnStateEntered != null) OnStateEntered.Raise();
-
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
         }
 
         public override void Execute(AIFSMAgent stateMachine)
         {
+            if (_navMeshAgent == null) return;
             OnUpdateSettings();
-             if (_navMeshAgent == null) return;
-            if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
-            {
-                if (OnAgentMoving != null)
-                    OnAgentMoving.Raise();
-            }
-            else 
-            {
-                if (OnAgentStopped != null)
-                    OnAgentStopped.Raise();
-            }
+            
             //var navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
             var patrol = new AIPatrolPoints
             {

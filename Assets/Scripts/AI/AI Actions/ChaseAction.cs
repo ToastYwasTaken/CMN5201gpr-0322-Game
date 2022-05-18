@@ -10,12 +10,9 @@ namespace AISystem
         public Transform Target { get; set; }
 
         [Header("Settings")] 
-        [SerializeField] private bool _lookToTarget = false;
+        [SerializeField] private bool _lookToTarget = true;
         [SerializeField] private string _targetTag = "Player";
-        [SerializeField] private LayerMask _ignoreLayer = 0;
         [SerializeField] private float _fightDistanceToTarget = 7f;
-        
-        [SerializeField] private float _velocityOffset = 0f;
         [SerializeField] private float _maxVelocity = 3f;
         [SerializeField] private float _seekForce = 0.005f;
 
@@ -23,13 +20,13 @@ namespace AISystem
 
         private NavMeshAgent _navMeshAgent;
         private AILookToEnemy _lookToEnemy;
+        private AITargetInRange _targetInRange;
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
-            if (OnStateEntered != null) OnStateEntered.Raise();
-            
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
             _lookToEnemy = stateMachine.GetComponent<AILookToEnemy>();
+            _targetInRange = stateMachine.GetComponent<AITargetInRange>();
             
             if (_lookToEnemy)
                 _lookToEnemy.FindTargetWithTag(_targetTag);
@@ -37,23 +34,14 @@ namespace AISystem
         }
 
         public override void Execute(AIFSMAgent stateMachine)
-        {
-            OnUpdateSettings();
+        {  
             if (_navMeshAgent == null) return;
-            if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
-            {
-                if (OnAgentMoving != null)
-                    OnAgentMoving.Raise();
-            }
-            else
-            {
-                if (OnAgentStopped != null)
-                    OnAgentStopped.Raise();
-            }
-
-            var enemySightSensor = new AIInLineOfSight(stateMachine.Owner, _targetTag, _ignoreLayer);
+            OnUpdateSettings();
+            
+            if (!_targetInRange.InRangeByDistance(_fightDistanceToTarget)) return;
+      
             // FightDistanceCheck();
-            _navMeshAgent.SetDestination(enemySightSensor.Target.position);
+            _navMeshAgent.SetDestination(_targetInRange.Target.transform.position);
 
             // Verfolge das Ziel Viusel
             if (_lookToTarget)

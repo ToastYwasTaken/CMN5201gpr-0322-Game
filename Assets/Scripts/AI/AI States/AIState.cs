@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AISystem
 {
-    [CreateAssetMenu(menuName = "AI FSM/State")]
+    [CreateAssetMenu(fileName= "AI_State", menuName = "AI FSM/State")]
     public sealed class AIState : AIBaseState
     {
         public List<AIStateAction> AIActions = new();

@@ -5,22 +5,21 @@ using UnityEngine;
 
 namespace AISystem
 {
-    [CreateAssetMenu(menuName = "AI FSM/Decisions/Target in Range")]
+    [CreateAssetMenu(fileName = "InRange_Decision", menuName = "AI FSM/Decisions/Target in Range")]
    public class AITargetInRangeDecision : AIDecision
    {
-       [SerializeField] private string _targetTag = "Player";
-       [SerializeField] private float _range = 5f;
-
-       private GameObject _owner;
+       private AITargetInRange _inRange;
        
        public override bool Decide(AIFSMAgent stateMachine)
        {
            Debug.Log($"AI Decision: {this.name}");
            
-           _owner = stateMachine.Owner;
-           
-           var inRange = new AITargetInRange(_owner, _targetTag);
-           return inRange.TargetInRange(_range);
+           _inRange = stateMachine.GetComponent<AITargetInRange>();
+           if (_inRange) return _inRange.InRangeByRayCast();
+        
+           Debug.LogError($"The Component \"AITargetInRange\" is not found! " +
+                          $"Please add this to the GameObject: {stateMachine.name}");
+           return false;
        }
    } 
 }

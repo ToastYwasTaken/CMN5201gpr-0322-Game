@@ -12,7 +12,6 @@ namespace AISystem
         [SerializeField] private float _distanceToWaypoint = 7f;
         [SerializeField] private float _waypointDistance = 10.0f;
         [SerializeField] private float _maxDistance = 2.0f;
-        [SerializeField] private float _velocityOffset = 0.2f;
 
         private NavMeshAgent _navMeshAgent = default;
         private AIRandomPatrol _aIRandomPatrol;
@@ -21,8 +20,6 @@ namespace AISystem
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
-            if (OnStateEntered != null) OnStateEntered.Raise();
-
             _owner = stateMachine.Owner;
             _ownerPosition = _owner.transform.position;
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
@@ -30,20 +27,12 @@ namespace AISystem
         }
 
         public override void Execute(AIFSMAgent stateMachine)
-        {
+        {  
+            if (_navMeshAgent == null) return;
             OnUpdateSettings();
             // Debug.Log(navMeshAgent.velocity.sqrMagnitude);
-            if (_navMeshAgent == null) return;
-            if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
-            {
-                if (OnAgentMoving != null)
-                    OnAgentMoving.Raise();
-            }
-            else
-            {
-                if (OnAgentStopped != null)
-                    OnAgentStopped.Raise();
-            }
+          
+
         
             //if (!_aIRandomPatrol.HasReached(_navMeshAgent)) return;
 

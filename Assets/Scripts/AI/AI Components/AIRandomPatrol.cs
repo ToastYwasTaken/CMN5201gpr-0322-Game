@@ -7,7 +7,7 @@ namespace AISystem
     {
         public bool GetRandomWaypoint(Vector3 center, float range, float maxDistance, out Vector3 result)
         {
-            Vector3 rndPoint = center + (Random.insideUnitSphere* range);
+            Vector3 rndPoint = center + (Random.insideUnitSphere * range);
             if (NavMesh.SamplePosition(rndPoint, out NavMeshHit hit, 
                 maxDistance, NavMesh.AllAreas))
             {

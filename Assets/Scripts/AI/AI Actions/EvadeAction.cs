@@ -8,33 +8,18 @@ namespace AISystem
     [CreateAssetMenu(menuName = "AI FSM/Actions/Evade")]
     public class EvadeAction : AIStateAction
     {
-        [Header("Settings")]
-        [SerializeField] private float _velocityOffset = 0.2f;
-        
         private NavMeshAgent _navMeshAgent;
-
-
+        
         public override void Initialize(AIFSMAgent stateMachine)
         {
-            if (OnStateEntered != null) OnStateEntered.Raise();
-
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
         }
 
         public override void Execute(AIFSMAgent stateMachine)
         {
+
+            if (_navMeshAgent == null) return;
             OnUpdateSettings();
-             if (_navMeshAgent == null) return;
-            if (_navMeshAgent.velocity.sqrMagnitude >= _velocityOffset)
-            {
-                if (OnAgentMoving != null)
-                    OnAgentMoving.Raise();
-            }
-            else 
-            {
-                if (OnAgentStopped != null)
-                    OnAgentStopped.Raise();
-            }
         }
 
         public override void OnUpdateSettings()
