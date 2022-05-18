@@ -24,6 +24,7 @@ namespace Assets.Scripts.MapGeneration
         protected GameObject Wall;
         protected GameObject Border;
         protected GameObject Ground;
+        protected GameObject Corner;
         private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
 
         /// <summary>
@@ -65,7 +66,8 @@ namespace Assets.Scripts.MapGeneration
             int posY = Y;
             float perlinNoise;
             Tiles = new Tile[Width, Height];
-            Quaternion rotation;
+            //rotation is changed to make prefabs face the correct way
+            Quaternion rotation = Quaternion.Euler(0,0,0);
             //create a random values between 'lower' and 'upper' bounds
             float perlinOffset = PerlinNoiseGenerator.RandomFloat(0.7f, 0.8f);
             float perlinScale = PerlinNoiseGenerator.RandomFloat(0.9f, 1.0f);
@@ -74,7 +76,6 @@ namespace Assets.Scripts.MapGeneration
             {
                 for (int x = 0; x < Width; x++)
                 {
-                    rotation = RandomlyOffsetRotation();
                     //Create borders, override rotation, filter out corners
                     if (y == 0)
                     {
@@ -83,10 +84,19 @@ namespace Assets.Scripts.MapGeneration
                             rotation = Quaternion.Euler(0, 0, 180);
                             Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                         }
-                        else
-                        //in corner
+                        else 
                         {
-                            Tiles[x, y] = new Tile(Empty, new Vector3(posX++, posY, 0), rotation);
+                            //in bot left corner
+                            if(x == 0)
+                            {
+                            rotation = Quaternion.Euler(0, 0, 90);
+                            }
+                            //in bot right corner
+                            else if(x == Width-1)
+                            {
+                                rotation = Quaternion.Euler(0, 0, 180);
+                            }
+                            Tiles[x, y] = new Tile(Corner, new Vector3(posX++, posY, 0), rotation);
                         }
                     }
                     else if (x == 0)
@@ -97,9 +107,10 @@ namespace Assets.Scripts.MapGeneration
                             Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                         }
                         else
-                        //in corner
+                        //in top left corner
                         {
-                            Tiles[x, y] = new Tile(Empty, new Vector3(posX++, posY, 0), rotation);
+                            rotation = Quaternion.Euler(0, 0, 0);
+                            Tiles[x, y] = new Tile(Corner, new Vector3(posX++, posY, 0), rotation);
                         }
                     }
                     else if (x == Width-1)
@@ -110,9 +121,10 @@ namespace Assets.Scripts.MapGeneration
                             Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                         }
                         else
-                        //in corner
+                        //in top right corner
                         {
-                            Tiles[x, y] = new Tile(Empty, new Vector3(posX++, posY, 0), rotation);
+                            rotation = Quaternion.Euler(0, 0, 270);
+                            Tiles[x, y] = new Tile(Corner, new Vector3(posX++, posY, 0), rotation);
                         }
                     }
                     else if (y == Height-1)
@@ -122,14 +134,10 @@ namespace Assets.Scripts.MapGeneration
                             rotation = Quaternion.Euler(0, 0, 0);
                             Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
                         }
-                        else
-                        //in corner
-                        {
-                            Tiles[x, y] = new Tile(Empty, new Vector3(posX++, posY, 0), rotation);
-                        }
                     }
                     else
                     {
+                        rotation = RandomlyOffsetRotation();
                         perlinNoise = PerlinNoiseGenerator.GeneratePerlinNoiseAtCoordinates(posX, posY, perlinOffset, perlinOffset, perlinScale, perlinIntensity);
                         //Create walls inside bounds from perlinNoise
                         if (perlinNoise < 0.8f)

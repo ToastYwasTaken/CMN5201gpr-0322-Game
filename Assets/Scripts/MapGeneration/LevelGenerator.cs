@@ -38,6 +38,8 @@ namespace Assets.Scripts.MapGeneration
         [SerializeField]
         GameObject _borderPrefab;
         [SerializeField]
+        GameObject _cornerPrefab;
+        [SerializeField]
         GameObject _debugGroundPrefab;
         [SerializeField]
         bool turnOffHallWays;
@@ -64,7 +66,7 @@ namespace Assets.Scripts.MapGeneration
             CreateBSPMap();
             Debug.Log("successfully created BSP map");
             //Level Generation only, no prefab instantiation
-            mapRoot.CreateRooms(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab, _debugGroundPrefab);
+            mapRoot.CreateRooms(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab,_cornerPrefab, _debugGroundPrefab);
             InstantiateRooms();
         }
 
@@ -121,7 +123,7 @@ namespace Assets.Scripts.MapGeneration
             int lastRoomWidth = lastRoom.Width;
             int lastRoomHeight = lastRoom.Height;
             BSPMap.s_allRooms.Remove(lastRoom);
-            BSPMap.s_allRooms.Add(new BossRoom(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
+            BSPMap.s_allRooms.Add(new BossRoom(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
             InstantiateNormalRooms();
             if(turnOffHallWays == false)
             {

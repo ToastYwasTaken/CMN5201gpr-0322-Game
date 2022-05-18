@@ -11,8 +11,7 @@ namespace Assets.Scripts.MapGeneration
 {
     public class BossRoom : Room
     {
-        public BossRoom(GameObject empty, GameObject ground, GameObject wall, GameObject border,
-         int x, int y, int width, int height)
+        public BossRoom(GameObject empty, GameObject ground, GameObject wall, GameObject border, GameObject corner, int x, int y, int width, int height)
         {
             X = x;
             Y = y;
@@ -20,11 +19,13 @@ namespace Assets.Scripts.MapGeneration
             Ground = ground;
             Wall = wall;
             Border = border;
+            Corner = corner;
             Width = width;
             Height = height;
             NormalizePrefabSize(Ground);
             NormalizePrefabSize(Wall);
             NormalizePrefabSize(Border);
+            NormalizePrefabSize(Corner);
             RandomlyOffsetPrefabColorBossRoom(Ground);
             RandomlyOffsetPrefabColorBossRoom(Wall);
             RandomlyOffsetPrefabColorBossRoom(Border);

@@ -11,8 +11,7 @@ namespace Assets.Scripts.MapGeneration
 {
     public class NormalRoom : Room
     {
-        public NormalRoom(GameObject empty, GameObject ground, GameObject wall, GameObject border,
-            int x, int y, int width, int height)
+        public NormalRoom(GameObject empty, GameObject ground, GameObject wall, GameObject border, GameObject corner, int x, int y, int width, int height)
         {
             X = x;
             Y = y;
@@ -20,6 +19,7 @@ namespace Assets.Scripts.MapGeneration
             Ground = ground;
             Wall = wall;
             Border = border;
+            Corner = corner;
             Width = width;
             Height = height;
             //Half the size or higher than original partition of BSPMap
@@ -30,6 +30,7 @@ namespace Assets.Scripts.MapGeneration
             NormalizePrefabSize(Ground);
             NormalizePrefabSize(Wall);
             NormalizePrefabSize(Border);
+            NormalizePrefabSize(Corner);
             //Create room
             InitRoom();
             //Debug.Log($"Created new room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
