@@ -27,12 +27,12 @@ namespace Assets.Scripts.MapGeneration
             int posY = Y;
             Quaternion rotation;
             Tiles = new Tile[Width, Height];
-            for (int i = 0; i < Height; i++)
+            for (int y = 0; y < Height; y++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int x = 0; x < Width; x++)
                 {
                     rotation = RandomlyOffsetRotation();
-                    Tiles[j, i] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                    Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                 }
                 posX = X;
                 posY++;
