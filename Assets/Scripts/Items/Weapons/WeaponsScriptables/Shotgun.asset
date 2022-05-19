@@ -24,5 +24,5 @@ MonoBehaviour:
   _heatmeterUsage: 1
   _shootBehaviour: {fileID: 11400000, guid: ce8c6c8bb8f384845ac8c49b22d6e110, type: 2}
   _amountOfBullets: 5
-  _fireAngle: 30
+  _fireAngle: 90
   _randomAngle: 0

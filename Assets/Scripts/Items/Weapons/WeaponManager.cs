@@ -13,6 +13,7 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
     [SerializeField] private Weapon _defaultWeapon;
 
     [SerializeField] private GameObject[] _firePoints;
+    [SerializeField] private GameObject _parent;
 
     private readonly int _weaponSlotAmount = 2;
 
@@ -74,7 +75,7 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
         for (int i = 0; i < _weaponsSlots.Length; i++)
         {
             if (_weaponsSlots[i].WeaponItem == null) return;
-            _weaponsSlots[i].Shoot(_heatmeter, true, _playerInformation.PlayerStats, _firePoints[i]);
+            _weaponsSlots[i].Shoot(_heatmeter, true, _playerInformation.PlayerStats, _firePoints[i], _parent);
         }
     }
 

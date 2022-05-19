@@ -37,7 +37,7 @@ public class Weapon : Item
     public virtual void OnUnequip() { }
 
 
-    public virtual void Shoot(EntityStats playerStats, GameObject firePoint)
+    public virtual void Shoot(EntityStats playerStats, GameObject firePoint, GameObject parent)
     {
         ProjectileStats newBulletStats = new();
 
@@ -48,6 +48,6 @@ public class Weapon : Item
         newBulletStats.ProjectileSender = playerStats.gameObject;
 
         if (_shootBehaviour != null)
-            _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, _amountOfBullets, _fireAngle, _randomAngle);
+            _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, parent, _amountOfBullets, _fireAngle, _randomAngle);
     }
 }

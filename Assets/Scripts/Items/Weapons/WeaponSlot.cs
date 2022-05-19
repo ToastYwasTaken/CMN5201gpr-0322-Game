@@ -40,7 +40,7 @@ public class WeaponSlot
         }
     }
 
-    public void Shoot(Heatmeter heatmeter, bool useHeatmeter, EntityStats playerStats, GameObject firePoint)
+    public void Shoot(Heatmeter heatmeter, bool useHeatmeter, EntityStats playerStats, GameObject firePoint, GameObject parent)
     {
         if (_isOnCooldown) return;
 
@@ -54,6 +54,6 @@ public class WeaponSlot
         _isOnCooldown = true;
         CurrentCooldown = _weaponItem.FireRate;
 
-        _weaponItem.Shoot(playerStats, firePoint);
+        _weaponItem.Shoot(playerStats, firePoint, parent);
     }
 }
