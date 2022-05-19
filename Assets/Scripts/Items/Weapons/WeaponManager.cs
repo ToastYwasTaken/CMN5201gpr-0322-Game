@@ -103,8 +103,3 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
     }    
     #endregion
 }
-
-public interface IEquipWeapons
-{
-    public bool EquipWeapon(Weapon newWeapon, int weaponSlot);
-}
