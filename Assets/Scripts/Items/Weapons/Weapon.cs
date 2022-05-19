@@ -37,7 +37,7 @@ public class Weapon : Item
     public virtual void OnUnequip() { }
 
 
-    public virtual void Shoot(EntityStats playerStats, GameObject firePoint, GameObject parent)
+    public virtual void Shoot(EntityStats playerStats, GameObject firePoint, Transform parent)
     {
         ProjectileStats newBulletStats = new();
 

@@ -13,7 +13,7 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
     [SerializeField] private Weapon _defaultWeapon;
 
     [SerializeField] private GameObject[] _firePoints;
-    [SerializeField] private GameObject _parent;
+    [SerializeField] private Transform _parent;
 
     private readonly int _weaponSlotAmount = 2;
 
@@ -48,8 +48,6 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
         {
             _weaponsSlots[i] = new WeaponSlot(_defaultWeapon);
         }
-
-        ReloadWeapons();
     }
     #endregion
 
@@ -102,9 +100,7 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
             if (_testWeapon[i] == null) return;
             _weaponsSlots[i].WeaponItem = _testWeapon[i];
         }
-    }
-
-    
+    }    
     #endregion
 }
 

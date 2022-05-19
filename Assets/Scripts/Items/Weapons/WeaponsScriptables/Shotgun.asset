@@ -20,9 +20,9 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 2912425703784977495, guid: cb9aa57d3daf24b49baacb1d6cc539f5, type: 3}
   _weaponPower: 1
   _armorPenetration: 1
-  _bulletSpeed: 1
-  _heatmeterUsage: 1
+  _bulletSpeed: 10
+  _heatmeterUsage: 25
   _shootBehaviour: {fileID: 11400000, guid: ce8c6c8bb8f384845ac8c49b22d6e110, type: 2}
-  _amountOfBullets: 5
-  _fireAngle: 90
-  _randomAngle: 0
+  _amountOfBullets: 15
+  _fireAngle: 45
+  _randomAngle: 1

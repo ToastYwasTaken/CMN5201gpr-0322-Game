@@ -40,7 +40,7 @@ public class WeaponSlot
         }
     }
 
-    public void Shoot(Heatmeter heatmeter, bool useHeatmeter, EntityStats playerStats, GameObject firePoint, GameObject parent)
+    public void Shoot(Heatmeter heatmeter, bool useHeatmeter, EntityStats playerStats, GameObject firePoint, Transform parent)
     {
         if (_isOnCooldown) return;
 
