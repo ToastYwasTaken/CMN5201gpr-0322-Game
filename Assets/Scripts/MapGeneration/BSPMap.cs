@@ -262,14 +262,14 @@ namespace Assets.Scripts.MapGeneration
             //}
             #endregion
             #region
-            int rightRoom1 = currentRoom1.Width + currentRoom1.X;
-            int rightRoom2 = currentRoom2.Width + currentRoom2.X;
-            int topRoom1 = currentRoom1.Height + currentRoom1.Y;
-            int topRoom2 = currentRoom2.Height + currentRoom2.Y;
-            int splitDifferenceHorizontalRoom1 = rdm.Next(currentRoom1.X+1, rightRoom1-2);
-            int splitDifferenceHorizontalRoom2 = rdm.Next(currentRoom2.X+1, rightRoom2-2);
-            int splitDifferenceVerticalRoom1 = rdm.Next(currentRoom1.Y+1, topRoom1-2);
-            int splitDifferenceVerticalRoom2 = rdm.Next(currentRoom2.Y+1, topRoom2-2);
+            int rightRoom1 = room1.Width + room1.X;
+            int rightRoom2 = room2.Width + room2.X;
+            int topRoom1 = room1.Height + room1.Y;
+            int topRoom2 = room2.Height + room2.Y;
+            int splitDifferenceHorizontalRoom1 = rdm.Next(room1.X+1, rightRoom1-2);
+            int splitDifferenceHorizontalRoom2 = rdm.Next(room2.X+1, rightRoom2-2);
+            int splitDifferenceVerticalRoom1 = rdm.Next(room1.Y+1, topRoom1-2);
+            int splitDifferenceVerticalRoom2 = rdm.Next(room2.Y+1, topRoom2-2);
 
             Vector2 splitPointRoom1 = new Vector2(splitDifferenceHorizontalRoom1, splitDifferenceVerticalRoom1);
             Vector2 splitPointRoom2 = new Vector2(splitDifferenceHorizontalRoom2, splitDifferenceVerticalRoom2);
