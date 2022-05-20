@@ -13,7 +13,7 @@ namespace Assets.Scripts.MapGeneration
     public class LevelGenerator : MonoBehaviour
     {
         /// <summary>
-        /// For optimal settings choose width and height 4x bigger than partitionWidth / partitionHeight
+        /// For optimal settings choose width and height ~ 4x bigger than partitionWidth / partitionHeight
         /// </summary>
         [SerializeField]
         GameObject _mapMotherGO;
