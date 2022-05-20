@@ -13,7 +13,8 @@ public class HeatmeterUIBar : MonoBehaviour
     private void Start()
     {
         if (_player == null) _player = RefLib.Player;
-        if (_heatmeter == null) _heatmeter = _player.GetComponent<Heatmeter>();
+        //if (_heatmeter == null) 
+        _heatmeter = _player.GetComponent<Heatmeter>();
     }
 
     private void OnEnable()

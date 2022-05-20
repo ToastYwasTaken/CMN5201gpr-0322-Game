@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerStatsUI : MonoBehaviour
 {
-    [HideInInspector] private GameObject _player;
+    [SerializeField] private GameObject _player;
     [HideInInspector] private EntityStats _entityStats;
     [SerializeField] private Slider _healthSlider;
     [SerializeField] private Slider _armorSlider;

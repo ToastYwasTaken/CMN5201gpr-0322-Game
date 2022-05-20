@@ -737,15 +737,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7576545269406560644}
-  - component: {fileID: 7576545269406560645}
   - component: {fileID: 2408104288508947832}
   - component: {fileID: 6774561043852795603}
   - component: {fileID: 4096101623133359713}
   - component: {fileID: 2954168021030677781}
   - component: {fileID: 3360242758510589023}
+  - component: {fileID: 6885516372532173005}
   - component: {fileID: 7576545269406560642}
   - component: {fileID: 7576545269406560643}
   - component: {fileID: 3128727626299789643}
+  - component: {fileID: 1611647820081589449}
+  - component: {fileID: 7491819594515450616}
+  - component: {fileID: 3425152248251788366}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -772,140 +775,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7576545269406560645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576545269406560640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 489bda3bf2b488e4c91d1e80f6696e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mTurnSpeed: 17.5
-  mMoveSpeedMax: 25.7
-  mMoveAccel: 28.1
-  mMoveDrag: 26.4
-  isCamFollow: 1
-  mAccelCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0057789306
-      value: 0.01401455
-      inSlope: 4.219593
-      outSlope: 4.219593
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.025936602
-    - serializedVersion: 3
-      time: 0.15992989
-      value: 0.6227312
-      inSlope: 1.7618082
-      outSlope: 1.7618082
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.22619282
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.0333862
-      value: 0.23423386
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  mRotationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0059814453
-      value: 0.002166748
-      inSlope: 3.8831117
-      outSlope: 3.8831117
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.02164507
-    - serializedVersion: 3
-      time: 0.14732333
-      value: 0.46774706
-      inSlope: 1.2370385
-      outSlope: 1.2370385
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33045843
-      outWeight: 0.049123965
-    - serializedVersion: 3
-      time: 1.0101929
-      value: 0.7894211
-      inSlope: 0.10551779
-      outSlope: 0.10551779
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.069264024
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  mDragCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0013656616
-      value: -0.0021168524
-      inSlope: 3.1218698
-      outSlope: 3.1218698
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.024531024
-    - serializedVersion: 3
-      time: 1.01287
-      value: 0.8561986
-      inSlope: 1.2767727
-      outSlope: 1.2767727
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.06204906
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  mCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  mVelocity: {x: 0, y: 0}
-  targetAngle: 0
-  currAngle: 0
 --- !u!114 &2408104288508947832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,6 +793,7 @@ MonoBehaviour:
   _firePoints:
   - {fileID: 2649768078200201302}
   - {fileID: 9088219006787790356}
+  _bulletContainer: {fileID: 433294292675443957, guid: 76381f195d567844cbd596aec285e21a, type: 3}
   _testWeapon:
   - {fileID: 11400000, guid: 73abcf6799b140548aea7ec67692544b, type: 2}
   - {fileID: 11400000, guid: dfd58b8151b07564699dc4dd3c99f971, type: 2}
@@ -993,8 +863,23 @@ MonoBehaviour:
   _armorPenetrationReduction: 600
   _attackPower: 15
   _armorPenetation: 2
+  _entityType: 0
   _testAttackPower: 200
   _testArmorPenetration: 9000
+--- !u!114 &6885516372532173005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccfd5793b9d5de42964dbdd5d284e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftWpn: {fileID: 0}
+  _rightWpn: {fileID: 0}
 --- !u!50 &7576545269406560642
 Rigidbody2D:
   serializedVersion: 4
@@ -1047,6 +932,71 @@ MonoBehaviour:
   _playerCore: {fileID: 0}
   _defaultOverdriveChip: {fileID: 0}
   _testOverdriveChips: []
+--- !u!114 &1611647820081589449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f7ae0730e64bc64eab83c1541d0156e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeedMax: 15
+  _moveAccel: 10
+  _moveDrag: 15
+  AccelCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DragCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _velocity: {x: 0, y: 0}
+--- !u!114 &7491819594515450616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67ba65357cc6b2438ecc61cbac47727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentT: {fileID: 0}
+  _turnSpeed: 0
+  _isConstrained: 0
+  ConstrStart: 0
+  ConstrEnd: 0
+  _rotationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _parentOffset: 0
+  isShowLog: 0
+--- !u!114 &3425152248251788366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183aecd79452208488443055538b3102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7576545269882444202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1257,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41190
+  m_InstanceId: 69108
 --- !u!1 &7576545270325181344
 GameObject:
   m_ObjectHideFlags: 0
