@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerStatsUI : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
-
-    private EntityStats _entityStats;
+    [HideInInspector] private GameObject _player;
+    [HideInInspector] private EntityStats _entityStats;
     [SerializeField] private Slider _healthSlider;
     [SerializeField] private Slider _armorSlider;
 
-    private void Awake()
+    private void Start()
     {
-        _entityStats = _player.GetComponent<EntityStats>();
+        if (_player == null) _player = RefLib.Player;
+        if (_entityStats ==null) _entityStats = _player.GetComponent<EntityStats>();
     }
 
     private void OnEnable()
