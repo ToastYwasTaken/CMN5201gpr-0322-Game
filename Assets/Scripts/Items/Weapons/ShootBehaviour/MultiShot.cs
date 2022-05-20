@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Shot Behaviour", menuName = "Items/Weapons/Shot Behaviour/Multishot", order = 100)]
-public class MultiShot : ShootBehaviour
+public class MultiShot : ShotBehaviour
 {
-    public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent, int amountOfBullets, float angle, bool randomAngle)
+
+    [SerializeField] private float _amountOfBullets;
+    [SerializeField] private float _angle;
+    [SerializeField] private bool _randomAngle;
+
+    public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent)
     {
-        if (randomAngle) 
+        if (_randomAngle) 
         {
-            for (int i = 0; i < amountOfBullets; i++)
+            for (int i = 0; i < _amountOfBullets; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
                 float facingRotation = newBullet.transform.rotation.z;
 
-                float startRoation = facingRotation + angle /2f;
-                float angleIncrease = Random.Range(0f, angle);
+                float startRoation = facingRotation + _angle /2f;
+                float angleIncrease = Random.Range(0f, _angle);
 
                 float tempRot = startRoation - angleIncrease;
 
@@ -26,13 +31,13 @@ public class MultiShot : ShootBehaviour
         } 
         else
         {
-            for (int i = 0; i < amountOfBullets; i++)
+            for (int i = 0; i < _amountOfBullets; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
                 float facingRotation = newBullet.transform.rotation.z;
 
-                float startRoation = facingRotation + angle /2f;
-                float angleIncrease = angle / ((float)amountOfBullets -1);
+                float startRoation = facingRotation + _angle /2f;
+                float angleIncrease = _angle / ((float)_amountOfBullets -1);
 
                 float tempRot = startRoation - angleIncrease * i;
 

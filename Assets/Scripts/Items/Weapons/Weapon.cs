@@ -24,14 +24,9 @@ public class Weapon : Item
     [SerializeField] protected float _heatmeterUsage;
     public float HeatmeterUsage { get => _heatmeterUsage; }
 
-    [SerializeField] protected ShootBehaviour _shootBehaviour = null;
-    public ShootBehaviour ShootBehaviour { get => _shootBehaviour; }
-
-    [SerializeField] private int _amountOfBullets;
-    [SerializeField] private float _fireAngle;
-    [SerializeField] private bool _randomAngle = false;
-
-
+    [SerializeField] protected ShotBehaviour _shootBehaviour = null;
+    public ShotBehaviour ShootBehaviour { get => _shootBehaviour; }
+    
     public virtual void OnEquip() { }
 
     public virtual void OnUnequip() { }
@@ -48,6 +43,6 @@ public class Weapon : Item
         newBulletStats.ProjectileSender = playerStats.gameObject;
 
         if (_shootBehaviour != null)
-            _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, parent, _amountOfBullets, _fireAngle, _randomAngle);
+            _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, parent);
     }
 }
