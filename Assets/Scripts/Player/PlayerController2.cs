@@ -27,7 +27,7 @@ namespace Assets.Scripts.Player
             if (_movable == null)_movable = GetComponent<Moveable>();
             if (_rotateable == null) _rotateable = GetComponent<Rotateable>();
             if (_cameraController == null) _cameraController = GetComponent<CameraController>();
-            if (_inventory == null) _inventory = new Inventory(10, GetComponent<WeaponManager>());
+            //if (_inventory == null) _inventory = new Inventory(10, GetComponent<WeaponManager>());
         }
         private void Update()
         {

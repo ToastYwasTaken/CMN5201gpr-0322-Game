@@ -917,6 +917,7 @@ GameObject:
   - component: {fileID: 7576545269406560643}
   - component: {fileID: 7576545269406560642}
   - component: {fileID: 4755430652363361951}
+  - component: {fileID: 8249809556918944076}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -991,7 +992,6 @@ MonoBehaviour:
   _firePoints:
   - {fileID: 2649768078200201302}
   - {fileID: 9088219006787790356}
-  _parent: {fileID: 0}
   _bulletContainer: {fileID: 433294292675443957, guid: 76381f195d567844cbd596aec285e21a, type: 3}
   _testWeapon: []
 --- !u!114 &4874678111844051749
@@ -1021,7 +1021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39257df1db9ee6441a8930dcb9783716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heatMeterUIPfab: {fileID: 4922344377308732290, guid: 694d6d1daabb60447a9c726c98014bdd, type: 3}
   _maximumHeatlevel: 500
   CooldownMultiplier: 2
   _overheatPenalty: 0.25
@@ -1228,6 +1227,23 @@ CircleCollider2D:
   m_Offset: {x: 0.068416394, y: 0.39647394}
   serializedVersion: 2
   m_Radius: 3.9357533
+--- !u!114 &8249809556918944076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e82f29ba119d349af92996551ba8b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventorySize: 0
+  _canvasPfab: {fileID: 1112697167542946315, guid: 87ea01dac52c7034491f80af7ab416bc, type: 3}
+  _canvas: {fileID: 0}
+  _itemDDpFab: {fileID: 5378705166886364565, guid: 7d4d9b6aba3a7b54fa71f44607b5ff65, type: 3}
+  _itemSlots: []
 --- !u!1 &7576545269882444202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1550,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 37600
+  m_InstanceId: 126740
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,103 +1,167 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 
-[Serializable]
-public class Inventory
+public class Inventory : MonoBehaviour
 {
-    int _inventorySize;
-    int _wpnCount;
-    public int InvSize { get => _inventorySize; }
-    public int WpnCount { get => 2; } //wpnManager.weaponSlotAmount; }
-
-    Item[] _itemSlots;
+    [SerializeField] int _inventorySize;
+    public int InvSize { get; private set; }
+    private int _wpnCount;
+    private int _ovdrCount;
 
     WeaponManager _wpnManager;
-    //Upgrade slots
+    OverdriveManager _overdriveManager;
+    [SerializeField] GameObject _canvasPfab;
+    [SerializeField] Transform _canvas;
+    Canvas _canvasComp;
 
-    UnityEvent _invChanged; //inventory has changed
+    [SerializeField] GameObject _itemDDpFab;
+    [SerializeField] ItemSlot[] _itemSlots;
 
-    public Inventory(int size, WeaponManager wpnManager)
+    int slotIndexCounter = 0;
+
+    private void Awake()
     {
-        _inventorySize = size;
-        _wpnManager = wpnManager;
+        RefLib.sInventory = this;
 
-        _invChanged = new UnityEvent();
-        _itemSlots = new Item[InvSize];
+        _wpnManager = GetComponent<WeaponManager>();
+        _overdriveManager = GetComponent<OverdriveManager>();
+        _wpnCount = 0; // _wpnManager.WeaponsSlots.Length;
+        _ovdrCount = 0; // _overdriveManager.OverdriveSlots.Length;
+        InvSize = _inventorySize;
+
+        if (_canvas == null)
+        {
+            GameObject canvas = Instantiate(_canvasPfab);
+            canvas.name = "InventoryCanvas";
+            _canvas = GameObject.Find("InventoryCanvas").transform;
+        }
+        _canvasComp = _canvas.GetComponent<Canvas>();
+
+        if (_itemSlots.Length != InvSize + _wpnCount + _ovdrCount) print("wrong invSize...guess");
+        //_itemSlots = new ItemSlot[InvSize + _wpnCount + _ovdrCount];
+        //for(int i = 0; i < _itemSlots.Length; i++)
+        //{
+        //    _itemSlots[i] = new ItemSlot();
+        //}
+
+        InitSlots(eItemType.ALL, InvSize);
+        InitSlots(eItemType.WEAPON, _wpnCount);
+        InitSlots(eItemType.CHIP, _ovdrCount);
     }
-    public Item GetItem(int slot)
+    void InitSlots(eItemType type, int slotNum)
     {
-        return _itemSlots[slot];
+        for(int i = 0; i < slotNum; i++) 
+        {
+            _itemSlots[slotIndexCounter].SlotData = 
+                new InvSlot() { SlotIndex = slotIndexCounter, SlotType = type };
+            slotIndexCounter++;
+        }
     }
-    public bool PickupItem(Item item)
+
+    public bool PickupItem(Item item, Sprite sprite)
     {
         int slot = 0;
-        while (_itemSlots[slot] != null)
+        while (_itemSlots[slot].ItemDD != null)
         {
             slot++;
             if (slot >= InvSize)
             {
-                InventoryFull();
+                //InventoryFull();
                 return false;
             }
         }
-        _itemSlots[slot] = item;
-        _invChanged.Invoke();
-        return true;
-    }
-    public bool MoveItem(int slotFrom, int slotTo)
-    {
-        if(_itemSlots[slotFrom] == null) return false;
+        GameObject newItemDD = Instantiate(_itemDDpFab);
+        newItemDD.transform.SetParent(_canvas);
+        ItemDragDrop itemDD = newItemDD.GetComponent<ItemDragDrop>();
 
-        Item itemTemp = _itemSlots[slotTo]; //item/null
-        _itemSlots[slotTo] = _itemSlots[slotFrom];
-        _itemSlots[slotFrom] = itemTemp;
-        
-        _invChanged.Invoke();
+        itemDD.Item = item;
+        itemDD.Image.sprite = sprite;
+        itemDD.Canvas = _canvasComp;
+        itemDD.RectTransform.anchoredPosition = _itemSlots[slot].RectTransform.anchoredPosition;
+
+        _itemSlots[slot].ItemDD = itemDD;
         return true;
     }
-    public bool EquipWeapon(int invSlot, int wpnSlot = 0)
+
+    public bool MoveItem(InvSlot slotFrom, InvSlot slotTo)
     {
-        Weapon wpn = _itemSlots[invSlot] as Weapon;
-        if (wpn == null)
-        {
-            WrongItemType();
+        ItemDragDrop itemDDfrom = _itemSlots[slotFrom.SlotIndex].ItemDD;
+        if (itemDDfrom == null || (itemDDfrom._itemType != slotTo.SlotType 
+            && slotTo.SlotType != eItemType.ALL)) 
             return false;
+
+        ItemDragDrop itemDDto = _itemSlots[slotTo.SlotIndex].ItemDD;
+        if(itemDDto != null)
+            if (itemDDto._itemType != slotFrom.SlotType || slotFrom.SlotType != eItemType.ALL)
+                return false;
+
+        itemDDfrom._currentSlot = slotTo;
+        if(itemDDto!=null)
+        {
+            itemDDto._currentSlot = slotFrom;
+            itemDDto.RectTransform.anchoredPosition = itemDDfrom.RectTransform.anchoredPosition;
         }
 
-        Weapon oldWpn = _wpnManager.WeaponsSlots[wpnSlot].WeaponItem;
+        _itemSlots[slotFrom.SlotIndex].ItemDD = itemDDto;
+        _itemSlots[slotTo.SlotIndex].ItemDD = itemDDfrom;
 
-        _wpnManager.EquipWeapon(wpn, wpnSlot);
-        _itemSlots[invSlot] = oldWpn;
 
-        _invChanged.Invoke();
+        if(slotTo.SlotType != eItemType.ALL)
+            EquipItem(itemDDfrom, slotTo.SlotIndex);
+        if (itemDDto != null)
+            if (slotFrom.SlotType != eItemType.ALL)
+                EquipItem(itemDDto, slotFrom.SlotIndex);
+
         return true;
     }
-    public bool EquipUpgrade(int invSlot, int upgSlot = 0)
+
+    public bool EquipItem(ItemDragDrop itemDD, int slot)
     {
-        Upgrade upg = _itemSlots[invSlot] as Upgrade;
-        if (upg == null) return false;
+        switch (itemDD._itemType)
+        {
+            case eItemType.WEAPON:
+                Weapon wpn = itemDD.Item as Weapon;
+                if (wpn == null) return false;
+                if (!_wpnManager.EquipWeapon(wpn, slot - InvSize)) 
+                    return false;
+                return true;
 
-        //Equip upg
+            case eItemType.CHIP:
+                OverdriveChip ovdr = itemDD.Item as OverdriveChip;
+                if (ovdr == null) return false;
+                if (!_overdriveManager.EquipOverdriveChip(ovdr, slot - InvSize - _wpnCount)) 
+                    return false;
+                return true;
 
-        _itemSlots[invSlot] = null;
-        _invChanged.Invoke();
+                //ShootBehaviour
+            default:
+                return false;
+        }
+    }
+    public bool DiscardItem(InvSlot slot)
+    {
+        switch (slot.SlotType)
+        {
+            case eItemType.ALL:
+                break;
+
+            case eItemType.WEAPON:
+                _wpnManager.WeaponsSlots[slot.SlotIndex - InvSize] = null;
+                break;
+
+            case eItemType.CHIP:
+                _overdriveManager.OverdriveSlots[slot.SlotIndex - InvSize- _wpnCount] = null;
+                break;
+
+            default:
+                return false;
+
+        }
+        ItemDragDrop item = _itemSlots[slot.SlotIndex].ItemDD;
+        _itemSlots[slot.SlotIndex].ItemDD = null;
+        Destroy(item);
         return true;
-    }
-    public void DiscardItem(int slot)
-    {
-        if(_itemSlots[slot] == null) return;
-        _invChanged.Invoke();
-        _itemSlots[slot] = null;
-    }
-    
-    void InventoryFull()
-    {
-        Debug.Log("Inventory full");
-    }
-    void WrongItemType()
-    {
-        Debug.Log("Wrong ItemType");
     }
 }
+
