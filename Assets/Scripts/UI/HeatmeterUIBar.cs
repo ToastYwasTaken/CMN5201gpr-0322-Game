@@ -10,8 +10,10 @@ public class HeatmeterUIBar : MonoBehaviour
     [SerializeField] private Slider _heatmeterSlider;
     [SerializeField] private Image _heatmeterSliderImage;
 
-    private void Awake()
+    private void Start()
     {
+        if (_player == null) _player = RefLib.Player;
+        //if (_heatmeter == null) 
         _heatmeter = _player.GetComponent<Heatmeter>();
     }
 

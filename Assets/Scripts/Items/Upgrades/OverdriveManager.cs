@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerCore))]
-public class OverdriveManager : MonoBehaviour
+public class OverdriveManager : MonoBehaviour, IEquipOverdriveChip
 {
     [SerializeField] private PlayerCore _playerCore;
 
@@ -73,13 +73,14 @@ public class OverdriveManager : MonoBehaviour
         }
     }
 
-    public void ChangeOverdriveChip(OverdriveChip newOverdriveChip, int overdriveSlot)
+    public bool EquipOverdriveChip(OverdriveChip newOverdriveChip, int overdriveSlot)
     {
-        if (newOverdriveChip == null) return;
+        if (newOverdriveChip == null) return false;
         if (_overdriveSlots == null) InitializeOverdrive();
-        if (overdriveSlot < 0 && overdriveSlot > (_overdriveSlots.Length -1)) return;
+        if (overdriveSlot < 0 && overdriveSlot > (_overdriveSlots.Length -1)) return false;
 
         _overdriveSlots[overdriveSlot] = new OverdriveSlot(newOverdriveChip);
+        return true;
     }
     #endregion
 
@@ -97,3 +98,4 @@ public class OverdriveManager : MonoBehaviour
         }
     }
 }
+

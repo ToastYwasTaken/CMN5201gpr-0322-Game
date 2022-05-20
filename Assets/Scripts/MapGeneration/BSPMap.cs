@@ -188,6 +188,8 @@ namespace Assets.Scripts.MapGeneration
             int rdmInt = rdm.Next(0, 2);
             Room hallway1 = null;
             Room hallway2 = null;
+            Vector2 connectionPoint1, connectionPoint2;
+            int horizontal1, vertical1, horizontal2, vertical2;
 
             if (room1 == null || room2 == null)
             {
@@ -195,70 +197,83 @@ namespace Assets.Scripts.MapGeneration
                 return;
             }
             #region
-            //int splitVerticalRoom1 = room1.X + room1.Width;
-            //int splitVerticalRoom2 = room2.X + room2.Width;
-            //int splitHorizontalRoom1 = room1.Y + room1.Height;
-            //int splitHorizontalRoom2 = room2.Y + room2.Height;
-
-            //Debug.Log($"Room1: {room1.X} {room1.Y} | Room 2: {room2.X} {room2.Y}");
-
-            ////Room 1 left of Room 2
-            //if (room1.X < room2.X)
+            //Alternative algorithm test
+            //randomly choose horizontal or vertical
+            //bool connectHorizontal = rdm.Next(0,2).Equals(0);
+            //if (connectHorizontal)
             //{
-            //    //Room 1 left and below Room 2
-            //    if (room1.Y < room2.Y)
-            //    {
-            //        Debug.Log("Room 1 left and below room 2");
-
-            //    }
-            //    //Room 1 left and above Room 2
-            //    else if (room1.Y > room2.Y)
-            //    {
-            //        Debug.Log("Room 1 left and above room 2");
-            //    }
-            //    else
-            //    //Room1 and at equal height of room 2
-            //    {
-            //        Debug.Log("Room 1 left and at equal height of room 2");
-
-            //    }
+            //    horizontal1 = ;
+            //    vertical1 = ;
+            //    horizontal2 = ;
+            //    vertical2 = ;
             //}
-            ////Room 1 right of Room 2
-            //else if (room1.X > room2.X)
-            //{
-            //    //Room 1 right and below Room 2
-            //    if (room1.Y < room2.Y)
-            //    {
-            //        Debug.Log("Room 1 right and below room 2");
-
-            //    }
-            //    //Room 1 right and above Room 2
-            //    else if (room1.Y > room2.Y)
-            //    {
-            //        Debug.Log("Room 1 right and above room 2");
-
-            //    }
-            //    //Room 1 right and at equal height of Room 2
-            //    else
-            //    {
-            //        Debug.Log("Room 1 right and at equal height of room 2");
-            //    }
-            //}
-            //// equal width
+            ////connect vertical
             //else
             //{
-            //    //Room 1 at equal width and below Room 2
-            //    if (room1.Y < room2.Y)
-            //    {
-            //        Debug.Log("Room 1 at equal width and below room 2");
+            //    horizontal1 = ;
+            //    vertical1 = ;
+            //    horizontal2 = ;
+            //    vertical2 = ;
+            //}
+            //connectionPoint1 = new Vector2(horizontal1, vertical1);
+            //connectionPoint2 = new Vector2(horizontal2, vertical2);
 
-            //    }
-            //    //Room 1 at equal width and above Room 2
-            //    else if (room1.Y > room2.Y)
-            //    {
-            //        Debug.Log("Room 1 at equal width and above room 2");
+            //Vector2 splitPointRoom1 = new Vector2(splitDifferenceHorizontalRoom1, splitDifferenceVerticalRoom1);
+            //Vector2 splitPointRoom2 = new Vector2(splitDifferenceHorizontalRoom2, splitDifferenceVerticalRoom2);
 
+            ////Points in range of both rooms
+            //int splitPointX = (int)(splitPointRoom2.x - splitPointRoom1.x);
+            //int splitPointY = (int)(splitPointRoom2.y - splitPointRoom1.y);
+
+            ////Debug.Log($"rightRoom1 : {rightRoom1} rightRoom2 : {rightRoom2} topRoom1 : {topRoom1} topRoom2 : {topRoom2} splitPointRoom1 : {splitPointRoom1} splitPointRoom2 : {splitPointRoom2} splitPointX : {splitPointX} splitPointY : {splitPointY}");
+            ////Calculate connection direction
+            //if (splitPointX < 0)
+            //{
+            //    if (splitPointY < 0)
+            //    {
+            //        Debug.Log($"Case 1: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
+            //        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+            //        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
             //    }
+            //    else if (splitPointY > 0)
+            //    {
+            //        Debug.Log($"Case 2: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
+            //        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+            //        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
+            //    }
+            //    //splitPointY == 0
+            //    else
+            //    {
+            //        Debug.Log($"Case 3: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
+            //        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
+            //    }
+            //}
+            //else if (splitPointX > 0)
+            //{
+            //    if (splitPointY < 0)
+            //    {
+            //        Debug.Log($"Case 4: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
+            //        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
+            //        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
+            //    }
+            //    else if (splitPointY > 0)
+            //    {
+            //        Debug.Log($"Case 5: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
+            //        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+            //        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
+            //    }
+            //    //splitPointY == 0
+            //    else
+            //    {
+            //        Debug.Log($"Case 6: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
+            //        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
+            //    }
+            //    //splitPointX == 0
+            //}
+            //else
+            //{
+            //    Debug.Log($"Case 7: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
+            //    hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
             //}
             #endregion
             #region
@@ -278,7 +293,7 @@ namespace Assets.Scripts.MapGeneration
             int splitPointX = (int)(splitPointRoom2.x - splitPointRoom1.x);
             int splitPointY = (int)(splitPointRoom2.y - splitPointRoom1.y);
 
-            Debug.Log($"rightRoom1 : {rightRoom1} rightRoom2 : {rightRoom2} topRoom1 : {topRoom1} topRoom2 : {topRoom2} splitPointRoom1 : {splitPointRoom1} splitPointRoom2 : {splitPointRoom2} splitPointX : {splitPointX} splitPointY : {splitPointY}");
+            //Debug.Log($"rightRoom1 : {rightRoom1} rightRoom2 : {rightRoom2} topRoom1 : {topRoom1} topRoom2 : {topRoom2} splitPointRoom1 : {splitPointRoom1} splitPointRoom2 : {splitPointRoom2} splitPointX : {splitPointX} splitPointY : {splitPointY}");
             //Calculate connection direction
             //
             if (splitPointX < 0)

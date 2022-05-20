@@ -169,6 +169,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7190018995371742076, guid: 1a247bb5a62d8f546877930cb718182d, type: 3}
+      propertyPath: _parent
+      value: 
+      objectReference: {fileID: 1222142102}
+    - target: {fileID: 7190018995371742076, guid: 1a247bb5a62d8f546877930cb718182d, type: 3}
+      propertyPath: _testWeapon.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190018995371742076, guid: 1a247bb5a62d8f546877930cb718182d, type: 3}
+      propertyPath: _testWeapon.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 73abcf6799b140548aea7ec67692544b, type: 2}
+    - target: {fileID: 7190018995371742076, guid: 1a247bb5a62d8f546877930cb718182d, type: 3}
+      propertyPath: _testWeapon.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 73abcf6799b140548aea7ec67692544b, type: 2}
     - target: {fileID: 7576545269406560640, guid: 1a247bb5a62d8f546877930cb718182d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1035,7 +1051,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912678413}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!43 &947500899
+--- !u!43 &980501250
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1199,7 +1215,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &980501250
+--- !u!43 &991242354
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1404,10 +1420,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapMotherGO: {fileID: 2088301316}
-  _mapWidth: 20
-  _mapHeight: 20
-  _minPartitionWidth: 8
-  _minPartitionHeight: 8
+  _mapWidth: 100
+  _mapHeight: 100
+  _minPartitionWidth: 12
+  _minPartitionHeight: 12
   _emptyPrefab: {fileID: 9092941392263067942, guid: b41e5e979baf5624fbde14834360a012, type: 3}
   _groundPrefab: {fileID: 6781002320295007211, guid: 4c88ebc39d7b92347babe6f773aaebf3, type: 3}
   _wallPrefab: {fileID: 6781002320295007211, guid: 217fec9ac2a093c4d9ece3056e77ccfb, type: 3}
@@ -2851,6 +2867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1222142103}
     m_Modifications:
+    - target: {fileID: 2083276278, guid: 694d6d1daabb60447a9c726c98014bdd, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1676208989}
     - target: {fileID: 3809634300065977287, guid: 694d6d1daabb60447a9c726c98014bdd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2951,6 +2971,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -57.4
       objectReference: {fileID: 0}
+    - target: {fileID: 6402657981732634114, guid: 694d6d1daabb60447a9c726c98014bdd, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1676208989}
+    - target: {fileID: 7560903518853121270, guid: 694d6d1daabb60447a9c726c98014bdd, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1676208989}
     - target: {fileID: 9095320255686242905, guid: 694d6d1daabb60447a9c726c98014bdd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

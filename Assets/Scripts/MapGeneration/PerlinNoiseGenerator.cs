@@ -47,11 +47,19 @@ namespace Assets.Scripts.MapGeneration
         private Texture2D CreateTexture(int width, int height)
         {
             Texture2D tex = new Texture2D(width, height);
+            Color color;
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
-                    Color color = GenerateColor(x, y);
+                    if(x <= 1 | y <= 1 | x >= width-2 | y >= height-2)
+                    {
+                        color = new Color(1, 1, 1);
+                    }
+                    else
+                    {
+                    color = GenerateColor(x, y);
+                    }
                     tex.SetPixel(x, y, color);
                 }
             }

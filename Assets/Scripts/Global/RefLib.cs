@@ -1,7 +1,9 @@
 
 using Assets.Scripts.Player;
+using UnityEngine;
 
-static public class ReferenceLib
+static public class RefLib
 {
     static public PlayerController2 sPlayerCtrl;
+    static public GameObject Player;
 }
