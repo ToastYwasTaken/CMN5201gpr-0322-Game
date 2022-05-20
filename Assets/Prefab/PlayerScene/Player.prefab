@@ -991,6 +991,8 @@ MonoBehaviour:
   _firePoints:
   - {fileID: 2649768078200201302}
   - {fileID: 9088219006787790356}
+  _parent: {fileID: 0}
+  _bulletContainer: {fileID: 433294292675443957, guid: 76381f195d567844cbd596aec285e21a, type: 3}
   _testWeapon: []
 --- !u!114 &4874678111844051749
 MonoBehaviour:
@@ -1019,6 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39257df1db9ee6441a8930dcb9783716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heatMeterUIPfab: {fileID: 4922344377308732290, guid: 694d6d1daabb60447a9c726c98014bdd, type: 3}
   _maximumHeatlevel: 500
   CooldownMultiplier: 2
   _overheatPenalty: 0.25
@@ -1041,6 +1044,7 @@ MonoBehaviour:
   _armorPenetrationReduction: 600
   _attackPower: 15
   _armorPenetation: 2
+  _entityType: 0
   _testAttackPower: 0
   _testArmorPenetration: 0
 --- !u!114 &7476223424415133758
@@ -1530,7 +1534,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45142
+  m_InstanceId: 37600
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

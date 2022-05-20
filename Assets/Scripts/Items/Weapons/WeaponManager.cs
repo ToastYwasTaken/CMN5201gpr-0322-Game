@@ -13,7 +13,8 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
     [SerializeField] private Weapon _defaultWeapon;
 
     [SerializeField] private GameObject[] _firePoints;
-    [SerializeField] private Transform _parent;
+    private Transform _parent;
+    [SerializeField] GameObject _bulletContainer;
 
     private readonly int _weaponSlotAmount = 2;
 
@@ -22,6 +23,10 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
     {
         if (_playerCore == null)
             _playerCore = GetComponent<PlayerCore>();
+
+        GameObject bC = Instantiate(_bulletContainer);
+        bC.transform.SetParent(null);
+        _parent = bC.transform;
 
         InitializeWeapons();
     }

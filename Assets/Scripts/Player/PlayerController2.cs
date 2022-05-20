@@ -22,7 +22,8 @@ namespace Assets.Scripts.Player
         public Inventory Inventory { get => _inventory; }
         private void Awake()
         {
-            ReferenceLib.sPlayerCtrl = this;
+            RefLib.Player = gameObject;
+            RefLib.sPlayerCtrl = this;
             if (_movable == null)_movable = GetComponent<Moveable>();
             if (_rotateable == null) _rotateable = GetComponent<Rotateable>();
             if (_cameraController == null) _cameraController = GetComponent<CameraController>();
