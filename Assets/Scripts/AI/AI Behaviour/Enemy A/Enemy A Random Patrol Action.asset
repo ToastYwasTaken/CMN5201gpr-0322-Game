@@ -14,12 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _aiConfiguration: {fileID: 11400000, guid: ba07298af6ec0b04498db37921448161, type: 2}
   AiConfigFoldout: 1
-  OnStateEntered: {fileID: 0}
-  OnAgentMoving: {fileID: 0}
-  OnAgentStopped: {fileID: 0}
-  OnStateExit: {fileID: 0}
   OnHasReachedWaypoint: {fileID: 0}
   _distanceToWaypoint: 2.5
-  _waypointDistance: 30
+  _waypointDistance: 10
   _maxDistance: 1
-  _velocityOffset: 0.2

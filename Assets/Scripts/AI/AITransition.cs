@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using AISystem;
 using UnityEngine;
 
 namespace AISystem
 {
-  [CreateAssetMenu(fileName = "AI_Transition", menuName = "AI FSM/Transition")]
+    [CreateAssetMenu(fileName = "AI_Transition", menuName = "AI FSM/Transition")]
   public sealed class AITransition : ScriptableObject
   {
     public AIDecision Decision;

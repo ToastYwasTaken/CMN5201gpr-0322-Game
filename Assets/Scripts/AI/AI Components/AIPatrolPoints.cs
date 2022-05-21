@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,7 +12,7 @@ namespace AISystem
 
         public Transform GetNext()
         {
-            var point = PatrolPoints[_currentPoint];
+            Transform point = PatrolPoints[_currentPoint];
             _currentPoint = (_currentPoint + 1) % PatrolPoints.Length;
             return point;
         }

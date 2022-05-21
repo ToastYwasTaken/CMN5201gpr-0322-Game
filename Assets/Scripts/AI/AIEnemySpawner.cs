@@ -1,36 +1,57 @@
+using System.Collections.Generic;
+using Assets.Scripts.MapGeneration;
 using UnityEngine;
-using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 namespace AISystem
 {
     public class AIEnemySpawner : MonoBehaviour
     {
-        [SerializeField] private NavMeshSurface _navMesh;
+        [SerializeField] private bool _spawnByStart = true;
         [SerializeField] private GameObject _enemyPrefab;
         [SerializeField] private int _countOfEnemys = 5;
-        [SerializeField] private float _rangeFormCenter = 10f;
+        [SerializeField] private float _rangeFromCenter = 10f;
+        [SerializeField] private float _maxDistance = 1f;
 
         private void Start()
         {
-           // Spawn(_enemyPrefab, _countOfEnemys);
+            if (_spawnByStart) Spawn();
         }
 
         public void Spawn()
         {
             Spawn(_enemyPrefab, _countOfEnemys);
         }
-        
+
         private void Spawn(GameObject _prefab, int _count)
         {
-            float x = _navMesh.size.x;
-            float z = _navMesh.size.z;
-            
-            for (int i = 0; i < _count; i++)
+
+            List<Room> rooms = BSPMap.s_allRooms;
+
+            if (rooms.Count == 0)
             {
-                var center = _navMesh.center; // new Vector3(Random.Range(1f, x),Random.Range(1f, z), 0f);
-                GameObject enemy = Instantiate(_prefab, center, Quaternion.identity);
-                enemy.GetComponent<AIFSMAgent>().SetPositionAtNavMesh(_rangeFormCenter);
+                Debug.LogError("No Rooms for spawnig Enemys!");
+                return;
+            }
+
+            var parentObject = new GameObject(_prefab.name);
+            int enemyCount = 0;
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                // Calculate the center of the Room in the World
+                float x = rooms[i].X + (rooms[i].Width * 0.5f);
+                float y = rooms[i].Y + (rooms[i].Height * 0.5f);
+
+
+                for (int j = 0; j < _count; j++)
+                {   
+                    float offsetX = Random.Range(-2.5f, 2.5f);
+                    float offsetY = Random.Range(-2.5f, 2.5f);
+                    var center = new Vector3(x + offsetX, y + offsetY, 0f);
+                    GameObject enemy = Instantiate(_prefab, center, Quaternion.identity);
+                    enemy.name = $"{_prefab.name}_{enemyCount++}";
+                    enemy.transform.parent = parentObject.transform;
+                    enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
+                }
             }
         }
     }

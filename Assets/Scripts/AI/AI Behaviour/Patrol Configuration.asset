@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Patrol Configuration
   m_EditorClassIdentifier: 
   speed: 1
-  angularSpeed: 100
+  angularSpeed: 120
   acceleration: 0.7
   stoppingDistance: 2
   autoBraking: 1

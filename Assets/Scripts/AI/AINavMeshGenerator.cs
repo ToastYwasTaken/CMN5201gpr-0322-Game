@@ -10,9 +10,7 @@ namespace AISystem
     {
         public NavMeshSurface[] Meshes;
         public bool BuildMeshByStart = false;
-        public bool SpawnEnemy = false;
-        public AIEnemySpawner Spawner;
-        
+
         public void BuildMesh()
         {
             foreach (NavMeshSurface mesh in Meshes)
@@ -23,10 +21,7 @@ namespace AISystem
 
         private void Start()
         {
-            if (!BuildMeshByStart) return;
-            BuildMesh();
-            if (!SpawnEnemy) return;
-            Spawner.Spawn();
+            if (BuildMeshByStart) BuildMesh();
         }
     }
 }

@@ -11,9 +11,7 @@ namespace AISystem
         
         [Header("Settings")] 
         [SerializeField] private Transform[] _patrolPoints = default;
-        [SerializeField] private float _velocityOffset = 0f;
 
- 
         private NavMeshAgent _navMeshAgent;
 
         public override void Initialize(AIFSMAgent stateMachine)

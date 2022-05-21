@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,12 +16,12 @@ namespace AISystem
 
         public override void Execute(AIFSMAgent stateMachine)
         {
-            foreach (var action in AIActions)
+            foreach (AIStateAction action in AIActions)
             {
                 action.Execute(stateMachine);
             }
 
-            foreach (var transition in AITransitions)
+            foreach (AITransition transition in AITransitions)
             {
                 transition.Execute(stateMachine);
             }
