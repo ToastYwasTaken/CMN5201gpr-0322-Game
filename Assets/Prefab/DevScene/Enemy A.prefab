@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2006684359}
   - component: {fileID: 3783511052913980729}
   - component: {fileID: 2337098219079942882}
+  - component: {fileID: 8944106480596637955}
   m_Layer: 6
   m_Name: Enemy A
   m_TagString: Enemy
@@ -160,6 +161,20 @@ MonoBehaviour:
     m_Bits: 9
   Interaction: 1
   Range: 5
+--- !u!114 &8944106480596637955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315260404001948518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f87c4e6edf7c641bc44a17684be6dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerTag: Player
+  _range: 30
 --- !u!1 &8292143171284177005
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818559283454854438, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_InstanceId
-      value: -1081606
+      value: -499814
       objectReference: {fileID: 0}
     - target: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Name
