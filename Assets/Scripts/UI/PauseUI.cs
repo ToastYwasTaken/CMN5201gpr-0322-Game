@@ -20,6 +20,10 @@ namespace Dennis.UI
         [SerializeField]
         private Button ExitButton;
 
+        [Header("Misc")]
+        [SerializeField]
+        private LoadingScreenUI loadingScreen;
+
         private WindowController WindowController { get { return WindowController.s_Instance; } }
 
         // Start is called before the first frame update
@@ -77,7 +81,7 @@ namespace Dennis.UI
         {
             SetTimeScale(1f);
 
-            SceneManager.LoadScene(0);
+            loadingScreen.LoadScene(0);
         }
     }
 }

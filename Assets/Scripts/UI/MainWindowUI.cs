@@ -26,6 +26,8 @@ namespace Dennis.UI
         [Header("Misc")]
         [SerializeField]
         private TMP_Text _versionText;
+        [SerializeField]
+        private LoadingScreenUI loadingScreen;
 
         protected override void Awake()
         {
@@ -42,7 +44,8 @@ namespace Dennis.UI
         private void Play()
         {
             // ToDo: Add logic to start game!
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
+            loadingScreen.LoadScene(1);
         }
 
         private void Settings()
