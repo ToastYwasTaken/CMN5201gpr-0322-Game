@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Based on: https://gamedevelopment.tutsplus.com/de/tutorials/how-to-use-bsp-trees-to-generate-game-maps--gamedev-12268
+//The general idea bases on: https://gamedevelopment.tutsplus.com/de/tutorials/how-to-use-bsp-trees-to-generate-game-maps--gamedev-12268
 namespace Assets.Scripts.MapGeneration
 {
     public class BSPMap
@@ -190,165 +190,66 @@ namespace Assets.Scripts.MapGeneration
             Room hallway2 = null;
 
             #region
-            ////Offsets to ignore borders
-            //int room1X = room1.X + 1;
-            //int room1Y = room1.Y + 1;
-            //int room2X = room2.X + 1;
-            //int room2Y = room2.Y + 1;
-            //int rightRoom1 = room1.Width + room1X-2;
-            //int rightRoom2 = room2.Width + room2X-2;
-            //int topRoom1 = room1.Height + room1Y-2;
-            //int topRoom2 = room2.Height + room2Y-2;
+            //Offsets to ignore borders
+            int room1X = room1.X + 1;
+            int room1Y = room1.Y + 1;
+            int room2X = room2.X + 1;
+            int room2Y = room2.Y + 1;
+            int rightRoom1 = room1.Width + room1X-3;
+            int rightRoom2 = room2.Width + room2X-3;
+            int topRoom1 = room1.Height + room1Y-3;
+            int topRoom2 = room2.Height + room2Y-3;
 
-            ////Debug also ignores borders
-            //Debug.Log($"Room1 at [{room1X} | {room1Y}] x | Width - x+Width : [{room1X}|{room1.Width-2}-{rightRoom1}] \ny | Height - y+Height : [{room1Y}|{room1.Height-2}-{topRoom1}] \nRoom2 at [{room2X} | {room2Y}] x | Width - x+Width : [{room2X}|{room2.Width-2}-{rightRoom2}] \ny | Height - y+Height : [{room2Y}|{room2.Height-2}-{topRoom2}]");
-            ////Check if the ranges are overlapping, e.g. Set1(x:2 | x+width:10) and Set2(x:9 |  x+width:12) -> true, 9,10 in both ranges
-            //bool horizontallyOverlappingRange = room1X <= rightRoom2 && room2X <= rightRoom1;
-            //bool verticallyOverlappingRange = room1Y <= topRoom2 && room2Y <= topRoom1;
+            //Debug also ignores borders
+            Debug.Log($"Room1 at [{room1X} | {room1Y}] x | Width - x+Width : [{room1X}|{room1.Width-2} - {rightRoom1}] y | Height - y+Height : [{room1Y}|{room1.Height-2} - {topRoom1}] \nRoom2 at [{room2X} | {room2Y}] x | Width - x+Width : [{room2X}|{room2.Width-2} - {rightRoom2}] y | Height - y+Height : [{room2Y}|{room2.Height-2} - {topRoom2}]");
+            //Check if the ranges are overlapping, e.g. Set1(x:2 | x+width:10) and Set2(x:9 |  x+width:12) -> true, 9,10 in both ranges
+            bool splitHorizontal = Mathf.Abs(room1Y - room2Y) <= 2; 
+            bool splitVertical = Mathf.Abs(room1X - room2X) <= 2;
+            Debug.Log($"{room1Y} {room2Y} {topRoom1} {topRoom2}");
+            int randomIntOnRangeHorizontal;
+            int randomIntOnRangeVertical;
 
-            //Vector2 splitPointRoom1, splitPointRoom2;
-            //if (horizontallyOverlappingRange)
-            //{
-            //    //Connect rooms horizontally
-            //    if (!verticallyOverlappingRange)
-            //    {
-            //        Debug.Log("Connect rooms horizontally");
-            //    }
-            //    else
-            //    //both overlapping -> Room 'inside' the other room -> shouldn't happen
-            //    {
-            //        Debug.LogError("Edge case, rooms overlapping ");
-            //    }
-            //}else
-            ////horizontally not overlapping
-            //{
-            //    //Connect rooms vertically
-            //    if (verticallyOverlappingRange)
-            //    {
-            //        Debug.Log("Connect rooms vertically");
-
-            //    }
-            //    else
-            //    //Rooms diagonal, create 2 connections
-            //    {
-            //        Debug.Log("Connect rooms diagonally");
-            //    }
-            //}
-
-            #endregion
-            #region
-            int rightRoom1 = room1.Width + room1.X;
-            int rightRoom2 = room2.Width + room2.X;
-            int topRoom1 = room1.Height + room1.Y;
-            int topRoom2 = room2.Height + room2.Y;
-            int splitDifferenceHorizontalRoom1 = rdm.Next(room1.X+1, rightRoom1-2);
-            int splitDifferenceHorizontalRoom2 = rdm.Next(room2.X+1, rightRoom2-2);
-            int splitDifferenceVerticalRoom1 = rdm.Next(room1.Y+1, topRoom1-2);
-            int splitDifferenceVerticalRoom2 = rdm.Next(room2.Y+1, topRoom2-2);
-
-            Vector2 splitPointRoom1 = new Vector2(splitDifferenceHorizontalRoom1, splitDifferenceVerticalRoom1);
-            Vector2 splitPointRoom2 = new Vector2(splitDifferenceHorizontalRoom2, splitDifferenceVerticalRoom2);
-
-            //Points in range of both rooms
-            int splitPointX = (int)(splitPointRoom2.x - splitPointRoom1.x);
-            int splitPointY = (int)(splitPointRoom2.y - splitPointRoom1.y);
-
-            //Debug.Log($"rightRoom1 : {rightRoom1} rightRoom2 : {rightRoom2} topRoom1 : {topRoom1} topRoom2 : {topRoom2} splitPointRoom1 : {splitPointRoom1} splitPointRoom2 : {splitPointRoom2} splitPointX : {splitPointX} splitPointY : {splitPointY}");
-            //Calculate connection direction
-            //
-            if (splitPointX < 0)
+            Vector2 splitPointRoom1, splitPointRoom2;
+            if (splitHorizontal)
             {
-                if (splitPointY < 0)
+                //Connect rooms horizontally
+                if (!splitVertical)
                 {
-                    if (rdmInt == 0)
-                    {
-                        Debug.Log($"Case 1: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
-                    }
-                    else
-                    {
-                        Debug.Log($"Case 2: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
-                    }
+                    randomIntOnRangeHorizontal = rdm.Next(Mathf.Max(room1Y, room2Y), Mathf.Min(topRoom1, topRoom2));
+                    splitPointRoom1 = new Vector2(rightRoom1+1, randomIntOnRangeHorizontal); //point on the right of the room
+                    splitPointRoom2 = new Vector2(room2X-1, randomIntOnRangeHorizontal);
+                    Debug.Log($"Connect rooms horizontally at: {splitPointRoom1} and {splitPointRoom2}");
+                    hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, (int)(splitPointRoom2.x-splitPointRoom1.x + 1), 3);
                 }
-                else if (splitPointY > 0)
-                {
-                    if (rdmInt == 0)
-                    {
-                        Debug.Log($"Case 3: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
-                    }
-                    else
-                    {
-                        Debug.Log($"Case 4: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                        hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
-                    }
-                }
-                //splitPointY == 0
                 else
+                //both overlapping -> Room 'inside' the other room -> shouldn't happen
                 {
-                    Debug.Log($"Case 5: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                    hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
+                    Debug.LogError("Edge case, rooms overlapping");
+                    return;
                 }
-            }
-            else if (splitPointX > 0)
-            {
-                if (splitPointY < 0)
-                {
-                    if (rdmInt == 0)
-                    {
-                        Debug.Log($"Case 6: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
-                    }
-                    else
-                    {
-                        Debug.Log($"Case 7: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
-                    }
-                }
-                else if (splitPointY > 0)
-                {
-                    if (rdmInt == 0)
-                    {
-                        Debug.Log($"Case 8: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
-                    }
-                    else
-                    {
-                        Debug.Log($"Case 9: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                        hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom2.y, Math.Abs(splitPointX), 1);
-                        hallway2 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
-                    }
-                }
-                //splitPointY == 0
-                else
-                {
-                    Debug.Log($"Case 10: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                    hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, Math.Abs(splitPointX), 1);
-                }
-                //splitPointX == 0
             }
             else
+            //horizontally not overlapping
             {
-                if (splitPointY < 0)
+                //Connect rooms vertically
+                if (splitVertical)
                 {
-                    Debug.Log($"Case 11: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                    hallway1 = new HallWay(ground, border, (int)splitPointRoom2.x, (int)splitPointRoom2.y, 1, Math.Abs(splitPointY));
+                    randomIntOnRangeVertical = rdm.Next(Mathf.Max(room1X, room2X), Mathf.Min(rightRoom1, rightRoom2));
+                    splitPointRoom1 = new Vector2(randomIntOnRangeVertical, topRoom1+1);
+                    splitPointRoom2 = new Vector2(randomIntOnRangeVertical, room2Y-1);
+                    Debug.Log($"Connect rooms vertically at: {splitPointRoom1} and {splitPointRoom2}");
+                    hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 3, (int)(splitPointRoom2.y-splitPointRoom1.y + 1));
                 }
-                else if (splitPointY > 0)
+                else
+                //Rooms diagonal
                 {
-                    Debug.Log($"Case 12: splitPointX: {splitPointX} | splitPointY: {splitPointY} | splitPointRoom1.x : {splitPointRoom1.x} | splitPointRoom1.y : {splitPointRoom1.y} | splitPointRoom2.x : {splitPointRoom2.x}  | splitPointRoom2.y : {splitPointRoom2.y}");
-                    hallway1 = new HallWay(ground, border, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 1, Math.Abs(splitPointY));
+                    Debug.LogError("Edge case, rooms diagonal");
+                    return;
                 }
             }
+
             #endregion
+
             //Add hallways to list
             if (hallway2 != null && hallway1 != null)
             {

@@ -127,7 +127,7 @@ namespace Assets.Scripts.MapGeneration
             InstantiateNormalRooms();
             if(turnOffHallWays == false)
             {
-            InitHallWays();
+            InstantiateHallWays();
             }
         }
 
@@ -138,6 +138,10 @@ namespace Assets.Scripts.MapGeneration
         {
             GameObject newRoomTile;
             GameObject motherOfRoom;
+            if (BSPMap.s_allRooms == null ||BSPMap.s_allRooms.Count == 0)
+            {
+                return;
+            }
             //Iterate over all rooms
             for (int h = 0; h < BSPMap.s_allRooms.Count; h++)
             {
@@ -188,10 +192,14 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Instantiate Hallway connections
         /// </summary>
-        private void InitHallWays()
+        private void InstantiateHallWays()
         {
             GameObject newRoomTile;
             GameObject motherOfRoom = new GameObject($"Mother of Hallways");
+            if(BSPMap.s_allHallWays == null ||BSPMap.s_allHallWays.Count == 0)
+            {
+                return;
+            }
             for (int h = 0; h < BSPMap.s_allHallWays.Count; h++)
             {
                 motherOfRoom.transform.parent = _mapMotherGO.transform;

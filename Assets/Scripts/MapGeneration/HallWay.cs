@@ -19,7 +19,7 @@ namespace Assets.Scripts.MapGeneration
             NormalizePrefabSize(Border);
             //Create room
             InitRoom();
-            //Debug.Log($"Created new hallway : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
+            Debug.Log($"Created new hallway : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
         }
         protected override void InitRoom()
         {
@@ -31,6 +31,15 @@ namespace Assets.Scripts.MapGeneration
             {
                 for (int x = 0; x < Width; x++)
                 {
+                    //Hallway is horizontal
+                    if(Height < Width)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                     rotation = RandomlyOffsetRotation();
                     Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                 }
