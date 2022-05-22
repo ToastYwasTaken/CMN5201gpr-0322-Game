@@ -30,6 +30,8 @@ public class DmgSegment : MonoBehaviour, IHealth
         }
     }
 
+    public eEntityType EType() => eEntityType.Player;
+
     private void Awake()
     {
         foreach (SpriteMask m in _masks)

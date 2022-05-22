@@ -39,6 +39,7 @@ namespace Assets.Scripts.Player
     internal interface IHealth
     {
         public void ChangeHealth(float _amount);
+        public eEntityType EType();
     }
     internal interface IEntity
     {

@@ -42,7 +42,10 @@ namespace Assets.Scripts.Player
             //print(collision.GetContact(0).collider.gameObject.name);
 
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-            if (damageable != null) damageable.DealDamage(_attackPower, _armorPenetration);
+
+            if (!collision.gameObject.GetComponent<PlayerController2>()) return;
+            if (damageable == null) return;
+            damageable.DealDamage(_attackPower, _armorPenetration);
             Destroy(gameObject);
 
 

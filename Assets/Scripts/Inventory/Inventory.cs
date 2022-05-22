@@ -45,7 +45,7 @@ public class Inventory : MonoBehaviour
         //{
         //    _itemSlots[i] = new ItemSlot();
         //}
-
+        if (_itemSlots.Length<=0) return;
         InitSlots(eItemType.ALL, InvSize);
         InitSlots(eItemType.WEAPON, _wpnCount);
         InitSlots(eItemType.CHIP, _chipCount);
