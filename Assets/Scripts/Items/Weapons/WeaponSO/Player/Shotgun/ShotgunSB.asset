@@ -10,5 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a56a62afc21b244bbaffbc66fa8604b, type: 3}
-  m_Name: MS
+  m_Name: ShotgunSB
   m_EditorClassIdentifier: 
+  _amountOfBullets: 3
+  _angle: 15
+  _randomAngle: 0

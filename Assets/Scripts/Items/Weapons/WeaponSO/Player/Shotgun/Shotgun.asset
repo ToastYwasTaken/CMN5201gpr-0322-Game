@@ -22,7 +22,4 @@ MonoBehaviour:
   _armorPenetration: 1
   _bulletSpeed: 10
   _heatmeterUsage: 25
-  _shootBehaviour: {fileID: 11400000, guid: ce8c6c8bb8f384845ac8c49b22d6e110, type: 2}
-  _amountOfBullets: 15
-  _fireAngle: 45
-  _randomAngle: 1
+  _shootBehaviour: {fileID: 11400000, guid: 21e3ebf8c465c694ea2867468e794d95, type: 2}

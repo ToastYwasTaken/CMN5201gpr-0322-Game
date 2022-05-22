@@ -32,7 +32,7 @@ public class WeaponComp : MonoBehaviour, IWeapon
 
     private void Update()
     {
-        ReduceWeaponCooldown();
+       ReduceWeaponCooldown();
     }
 
 
