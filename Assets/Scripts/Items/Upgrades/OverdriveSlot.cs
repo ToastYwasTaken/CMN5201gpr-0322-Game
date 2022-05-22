@@ -29,8 +29,6 @@ public class OverdriveSlot
         get => _overdriveItem;
         set
         {
-            if (value == null) return;
-
             if (_overdriveItem != null) _overdriveItem.OnUnequip();
 
             _overdriveItem = value;

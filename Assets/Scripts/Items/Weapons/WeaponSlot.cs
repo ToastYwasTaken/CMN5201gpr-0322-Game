@@ -30,8 +30,6 @@ public class WeaponSlot
         get => _weaponItem;
         set
         {
-            if (value == null) return;
-
             if (_weaponItem != null) _weaponItem.OnUnequip();
 
             _weaponItem = value;

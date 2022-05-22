@@ -37,12 +37,18 @@ public class Weapon : Item
         ProjectileStats newBulletStats = new();
 
         newBulletStats.ArmorPenetration = _armorPenetration;
-        newBulletStats.AttackPower = playerStats.AttackPower * _weaponPower;
+        newBulletStats.AttackPower = CalculateAttackPower(playerStats.AttackPower, _weaponPower);
         newBulletStats.ProjectileSpeed = _bulletSpeed;
-        newBulletStats.ProjectileLifeTime = 100f;
+        newBulletStats.ProjectileLifeTime = 20f;
         newBulletStats.ProjectileSender = playerStats.gameObject;
+        newBulletStats.ProjectileOwnerType = playerStats.EntityType;
 
         if (_shootBehaviour != null)
             _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, parent);
+    }
+
+    public float CalculateAttackPower(float attackPower, float weaponPower)
+    {
+        return attackPower + weaponPower;
     }
 }

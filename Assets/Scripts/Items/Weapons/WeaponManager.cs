@@ -91,6 +91,15 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
         _weaponsSlots[weaponSlot] = new WeaponSlot(newWeapon);
         return true;
     }
+
+    public bool UnequipWeapon(int weaponSlot)
+    {
+        if (_weaponsSlots == null) InitializeWeapons();
+        if (weaponSlot < 0 && weaponSlot > (_weaponsSlots.Length -1)) return false;
+
+        _weaponsSlots[weaponSlot] = new WeaponSlot(null);
+        return true;
+    }
     #endregion
 
     #region Editor 
@@ -105,6 +114,6 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
             if (_testWeapon[i] == null) return;
             _weaponsSlots[i].WeaponItem = _testWeapon[i];
         }
-    }    
+    }
     #endregion
 }

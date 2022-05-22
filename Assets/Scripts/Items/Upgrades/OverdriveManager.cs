@@ -72,6 +72,9 @@ public class OverdriveManager : MonoBehaviour, IEquipOverdriveChip
             if (_overdriveSlots[i].IsOnCooldown) _overdriveSlots[i].CurrentCooldown -= Time.deltaTime;
         }
     }
+    #endregion
+
+    #region Interfaces
 
     public bool EquipOverdriveChip(OverdriveChip newOverdriveChip, int overdriveSlot)
     {
@@ -82,8 +85,19 @@ public class OverdriveManager : MonoBehaviour, IEquipOverdriveChip
         _overdriveSlots[overdriveSlot] = new OverdriveSlot(newOverdriveChip);
         return true;
     }
+
+    public bool UnequipOverdriveChip(int overdriveSlot) 
+    {
+        if (_overdriveSlots == null) InitializeOverdrive();
+        if (overdriveSlot < 0 && overdriveSlot > (_overdriveSlots.Length -1)) return false;
+
+        _overdriveSlots[overdriveSlot] = new OverdriveSlot(null);
+        return true;
+    }
     #endregion
 
+
+    #region Editor
     [SerializeField] private OverdriveChip[] _testOverdriveChips = null;
 
     public void ReloadOverdriveChips()
@@ -97,5 +111,6 @@ public class OverdriveManager : MonoBehaviour, IEquipOverdriveChip
             _overdriveSlots[i].OverdriveItem = _testOverdriveChips[i];
         }
     }
+    #endregion
 }
 
