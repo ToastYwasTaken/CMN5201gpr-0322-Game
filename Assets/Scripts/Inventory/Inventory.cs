@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] int _inventorySize;
     public int InvSize { get; private set; }
     private int _wpnCount;
-    private int _ovdrCount;
+    private int _chipCount;
 
     WeaponManager _wpnManager;
     OverdriveManager _overdriveManager;
@@ -18,7 +18,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject _itemDDpFab;
     [SerializeField] ItemSlot[] _itemSlots;
 
-    int slotIndexCounter = 0;
+    public ItemSlot[] ItemSlots { get { return _itemSlots; } }
+
 
     private void Awake()
     {
@@ -26,8 +27,8 @@ public class Inventory : MonoBehaviour
 
         _wpnManager = GetComponent<WeaponManager>();
         _overdriveManager = GetComponent<OverdriveManager>();
-        _wpnCount = 0; // _wpnManager.WeaponsSlots.Length;
-        _ovdrCount = 0; // _overdriveManager.OverdriveSlots.Length;
+        _wpnCount = 2;//_wpnManager.WeaponsSlots.Length;
+        _chipCount = 1; //_overdriveManager.OverdriveSlots.Length;
         InvSize = _inventorySize;
 
         if (_canvas == null)
@@ -38,7 +39,7 @@ public class Inventory : MonoBehaviour
         }
         _canvasComp = _canvas.GetComponent<Canvas>();
 
-        if (_itemSlots.Length != InvSize + _wpnCount + _ovdrCount) print("wrong invSize...guess");
+        if (_itemSlots.Length != InvSize + _wpnCount + _chipCount) print("wrong invSize...guess");
         //_itemSlots = new ItemSlot[InvSize + _wpnCount + _ovdrCount];
         //for(int i = 0; i < _itemSlots.Length; i++)
         //{
@@ -47,19 +48,43 @@ public class Inventory : MonoBehaviour
 
         InitSlots(eItemType.ALL, InvSize);
         InitSlots(eItemType.WEAPON, _wpnCount);
-        InitSlots(eItemType.CHIP, _ovdrCount);
+        InitSlots(eItemType.CHIP, _chipCount);
     }
+
+    [SerializeField] bool isColorize;
+    int slotIndexCounter = 0;
     void InitSlots(eItemType type, int slotNum)
     {
-        for(int i = 0; i < slotNum; i++) 
+        for (int i = 0; i < slotNum; i++) 
         {
             _itemSlots[slotIndexCounter].SlotData = 
                 new InvSlot() { SlotIndex = slotIndexCounter, SlotType = type };
+
+            if(isColorize)
+            {
+                _itemSlots[slotIndexCounter].gameObject.GetComponent<Image>().color = TypeColor(type);
+                _itemSlots[slotIndexCounter].gameObject.name = type.ToString() + "slot" + slotIndexCounter.ToString();
+            }
             slotIndexCounter++;
         }
     }
 
-    public bool PickupItem(Item item, Sprite sprite)
+    Color TypeColor(eItemType type)
+    {
+        switch (type)
+        {
+            case eItemType.ALL:
+                return Color.white;
+            case eItemType.WEAPON:
+                return Color.red;
+            case eItemType.CHIP:
+                return Color.blue;
+            default:
+                return Color.black;
+        }
+    }
+
+    public bool PickupItem(Item item, Sprite sprite, Color color, eItemType type)
     {
         int slot = 0;
         while (_itemSlots[slot].ItemDD != null)
@@ -77,9 +102,12 @@ public class Inventory : MonoBehaviour
 
         itemDD.Item = item;
         itemDD.Image.sprite = sprite;
+        itemDD.Image.color = color;
         itemDD.Canvas = _canvasComp;
-        itemDD.RectTransform.anchoredPosition = _itemSlots[slot].RectTransform.anchoredPosition;
-
+        itemDD._currentSlot = _itemSlots[slot].SlotData;
+        itemDD.RectTransform.anchoredPosition = 
+            _itemSlots[slot].RectTransform.anchoredPosition;
+        itemDD._itemType = type;
         _itemSlots[slot].ItemDD = itemDD;
         return true;
     }
@@ -93,14 +121,15 @@ public class Inventory : MonoBehaviour
 
         ItemDragDrop itemDDto = _itemSlots[slotTo.SlotIndex].ItemDD;
         if(itemDDto != null)
-            if (itemDDto._itemType != slotFrom.SlotType || slotFrom.SlotType != eItemType.ALL)
+            if (itemDDto._itemType != slotFrom.SlotType && slotFrom.SlotType != eItemType.ALL)
                 return false;
 
         itemDDfrom._currentSlot = slotTo;
         if(itemDDto!=null)
         {
             itemDDto._currentSlot = slotFrom;
-            itemDDto.RectTransform.anchoredPosition = itemDDfrom.RectTransform.anchoredPosition;
+            itemDDto.RectTransform.anchoredPosition = 
+                ItemSlots[slotFrom.SlotIndex].RectTransform.anchoredPosition;
         }
 
         _itemSlots[slotFrom.SlotIndex].ItemDD = itemDDto;
@@ -108,10 +137,12 @@ public class Inventory : MonoBehaviour
 
 
         if(slotTo.SlotType != eItemType.ALL)
-            EquipItem(itemDDfrom, slotTo.SlotIndex);
+            if(!EquipItem(itemDDfrom, slotTo.SlotIndex))
+                return false;
         if (itemDDto != null)
             if (slotFrom.SlotType != eItemType.ALL)
-                EquipItem(itemDDto, slotFrom.SlotIndex);
+                if(!EquipItem(itemDDto, slotFrom.SlotIndex))
+                    return false;
 
         return true;
     }
@@ -128,9 +159,9 @@ public class Inventory : MonoBehaviour
                 return true;
 
             case eItemType.CHIP:
-                OverdriveChip ovdr = itemDD.Item as OverdriveChip;
-                if (ovdr == null) return false;
-                if (!_overdriveManager.EquipOverdriveChip(ovdr, slot - InvSize - _wpnCount)) 
+                OverdriveChip chip = itemDD.Item as OverdriveChip;
+                if (chip == null) return false;
+                if (!_overdriveManager.EquipOverdriveChip(chip, slot - InvSize - _wpnCount)) 
                     return false;
                 return true;
 

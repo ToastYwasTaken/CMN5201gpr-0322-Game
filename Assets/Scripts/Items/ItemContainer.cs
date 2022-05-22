@@ -7,14 +7,14 @@ public class ItemContainer : MonoBehaviour
 {
     [SerializeField] Item _item;
     [SerializeField] SpriteRenderer _spriteRenderer;
-    public Item Item { get { return _item; } }
+    [SerializeField] eItemType _itemType;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_item == null) return;
         PlayerController2 pContrl = collision.gameObject.GetComponent<PlayerController2>();
         if (pContrl != null)
-            if(RefLib.sInventory.PickupItem(_item, _spriteRenderer.sprite))
+            if(RefLib.sInventory.PickupItem(_item, _spriteRenderer.sprite, _spriteRenderer.color, _itemType))
                 Destroy(gameObject);
         //if usable > pContrl.stats.Changestats()
     }
