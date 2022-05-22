@@ -43,8 +43,8 @@ namespace Assets.Scripts.Player
 
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
-            if (damageable == null) 
-                if (!collision.gameObject.GetComponent<PlayerController2>())
+            if (damageable != null) 
+                if (collision.gameObject.GetComponent<PlayerController2>())
                 {
                     damageable.DealDamage(_attackPower, _armorPenetration);
                     Destroy(gameObject);
