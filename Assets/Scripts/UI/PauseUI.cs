@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 namespace Dennis.UI
@@ -22,9 +23,11 @@ namespace Dennis.UI
 
         [Header("Misc")]
         [SerializeField]
+<<<<<<< Updated upstream
         private LoadingScreenUI loadingScreen;
-        [SerializeField]
+=======
         private TMP_Text versionText;
+>>>>>>> Stashed changes
 
         private WindowController WindowController { get { return WindowController.s_Instance; } }
 
