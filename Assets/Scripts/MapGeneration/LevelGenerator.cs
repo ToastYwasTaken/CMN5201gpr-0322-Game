@@ -40,6 +40,8 @@ namespace Assets.Scripts.MapGeneration
         [SerializeField]
         GameObject _cornerPrefab;
         [SerializeField]
+        GameObject _bigCornerPrefab;
+        [SerializeField]
         GameObject _debugGroundPrefab;
         [SerializeField]
         bool turnOffHallWays;
@@ -66,7 +68,7 @@ namespace Assets.Scripts.MapGeneration
             CreateBSPMap();
             Debug.Log("successfully created BSP map");
             //Level Generation only, no prefab instantiation
-            mapRoot.CreateRooms(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab,_cornerPrefab, _debugGroundPrefab);
+            mapRoot.CreateRooms(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab,_cornerPrefab, _bigCornerPrefab, _debugGroundPrefab);
             InstantiateRooms();
         }
 
