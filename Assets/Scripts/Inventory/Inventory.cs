@@ -51,6 +51,19 @@ public class Inventory : MonoBehaviour
         InitSlots(eItemType.CHIP, _chipCount);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            SwitchShowInv();
+        }
+    }
+
+    void SwitchShowInv()
+    {
+        _canvas.gameObject.SetActive(!_canvas.gameObject.active);
+    }
+
     [SerializeField] bool isColorize;
     int slotIndexCounter = 0;
     void InitSlots(eItemType type, int slotNum)
