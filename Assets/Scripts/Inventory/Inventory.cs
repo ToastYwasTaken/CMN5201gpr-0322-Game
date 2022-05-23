@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,9 +34,7 @@ public class Inventory : MonoBehaviour
 
         if (_canvas == null)
         {
-            GameObject canvas = Instantiate(_canvasPfab);
-            canvas.name = "InventoryCanvas";
-            _canvas = GameObject.Find("InventoryCanvas").transform;
+            SetupCanvas();
         }
         _canvasComp = _canvas.GetComponent<Canvas>();
 
@@ -49,6 +48,9 @@ public class Inventory : MonoBehaviour
         InitSlots(eItemType.ALL, InvSize);
         InitSlots(eItemType.WEAPON, _wpnCount);
         InitSlots(eItemType.CHIP, _chipCount);
+
+        AddSlotImages();
+        SwitchShowInv();
     }
 
     private void Update()
@@ -58,10 +60,27 @@ public class Inventory : MonoBehaviour
             SwitchShowInv();
         }
     }
+    List<Image> _allImages = new List<Image>();
+    bool _showAllImages = true;
 
+    void AddSlotImages()
+    {
+        foreach (var item in _itemSlots)
+            _allImages.Add(item.gameObject.GetComponent<Image>());
+    }
     void SwitchShowInv()
     {
-        _canvas.gameObject.SetActive(!_canvas.gameObject.active);
+        foreach(Image image in _allImages)
+            image.enabled = !_showAllImages;
+        _showAllImages = !_showAllImages;
+    }
+
+    void SetupCanvas()
+    {
+        GameObject canvas = Instantiate(_canvasPfab);
+        canvas.transform.SetParent(null);
+        _itemSlots = canvas.GetComponentsInChildren<ItemSlot>();
+        _canvas = canvas.transform;
     }
 
     [SerializeField] bool isColorize;
@@ -122,6 +141,9 @@ public class Inventory : MonoBehaviour
             _itemSlots[slot].RectTransform.anchoredPosition;
         itemDD._itemType = type;
         _itemSlots[slot].ItemDD = itemDD;
+
+        _allImages.Add(newItemDD.GetComponent<Image>());
+        newItemDD.GetComponent<Image>().enabled = _showAllImages;
         return true;
     }
 
@@ -204,6 +226,7 @@ public class Inventory : MonoBehaviour
         }
         ItemDragDrop item = _itemSlots[slot.SlotIndex].ItemDD;
         _itemSlots[slot.SlotIndex].ItemDD = null;
+        _allImages.Remove(item.gameObject.GetComponent<Image>());
         Destroy(item);
         return true;
     }

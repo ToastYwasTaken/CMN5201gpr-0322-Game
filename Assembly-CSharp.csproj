@@ -189,6 +189,10 @@
     <Compile Include="Assets\Scripts\AI\AIController.cs" />
     <Compile Include="Assets\Scripts\Effects\DamageText\SpawnDamageText.cs" />
     <Compile Include="Assets\Scripts\Effects\DamageText\DamageText.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\RandomOverdriveTrigger.cs" />
+    <Compile Include="Assets\Scripts\Global\DamageCalculation.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Behaviour\SummonProjectiles.cs" />
+    <Compile Include="Assets\Scripts\Items\Upgrades\Behaviour\ReduceHeatlevelODB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

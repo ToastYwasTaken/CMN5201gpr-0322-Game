@@ -1241,12 +1241,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e82f29ba119d349af92996551ba8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventorySize: 0
-  _canvasPfab: {fileID: 1112697167542946315, guid: 87ea01dac52c7034491f80af7ab416bc, type: 3}
+  _inventorySize: 6
+  _canvasPfab: {fileID: 5344312376363061214, guid: 5228b07799f5b054aad996a88f3bf74c, type: 3}
   _canvas: {fileID: 0}
   _itemDDpFab: {fileID: 5378705166886364565, guid: 7d4d9b6aba3a7b54fa71f44607b5ff65, type: 3}
   _itemSlots: []
-  isColorize: 0
+  isColorize: 1
 --- !u!1 &7576545269882444202
 GameObject:
   m_ObjectHideFlags: 0

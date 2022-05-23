@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class PlayerStatsUI : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
-    [HideInInspector] private EntityStats _entityStats;
+    [SerializeField] private EntityStats _entityStats;
     [SerializeField] private Slider _healthSlider;
     [SerializeField] private Slider _armorSlider;
 
-    private void Start()
+    private void Awake()
     {
         if (_player == null) _player = RefLib.Player;
         if (_entityStats ==null) _entityStats = _player.GetComponent<EntityStats>();
