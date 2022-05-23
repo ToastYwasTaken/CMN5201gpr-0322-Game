@@ -5,6 +5,8 @@ public class DefaultProjectileCollision : ProjectileCollision
 {
     public override void OnCollision(Collider2D collision, ProjectileStats projectileStats, GameObject projectile)
     {
+        if (collision.CompareTag("Wall")) Destroy(projectile.gameObject);
+
         IReturnEntityType hittedObjectIType = collision.GetComponent<IReturnEntityType>();
 
         eEntityType hittedType;
