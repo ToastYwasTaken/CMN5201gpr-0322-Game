@@ -8,6 +8,8 @@ public class ItemContainer : MonoBehaviour
     [SerializeField] Item _item;
     [SerializeField] SpriteRenderer _spriteRenderer;
     [SerializeField] eItemType _itemType;
+    public Item Item { set { _item = value; }}
+    public eItemType ItemType { set { _itemType = value; }}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
