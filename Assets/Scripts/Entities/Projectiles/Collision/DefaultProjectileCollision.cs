@@ -14,7 +14,8 @@ public class DefaultProjectileCollision : ProjectileCollision
         if (hittedType == projectileStats.ProjectileOwnerType) return;
 
         IDamageable damageable = collision.GetComponent<IDamageable>();
-        if (damageable != null) damageable.DealDamage(projectileStats.AttackPower, projectileStats.ArmorPenetration);
+        if (damageable != null) damageable.DealDamage(projectileStats.AttackPower, projectileStats.ArmorPenetration,
+                                                      projectileStats.CanCrit, projectileStats.CritChance);
 
         Destroy(projectile.gameObject);
     }

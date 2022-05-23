@@ -54,8 +54,7 @@ namespace Assets.Scripts.Player
 
 
 
-        public PlayerStats PlayerStats = new PlayerStats(20, 20, 1, 1, 1);
-
+        
         private void Awake()
         {
             //ReferenceLib.sPlayerCtrl = this;

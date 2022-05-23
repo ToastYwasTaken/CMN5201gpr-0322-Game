@@ -16,10 +16,10 @@ MonoBehaviour:
   _name: Heavy Gun
   _description: Shots slow but hits like a truck!
   _isStackable: 0
-  _fireRate: 1.25
+  _fireRate: 2
   _bulletPrefab: {fileID: 2912425703784977495, guid: cb9aa57d3daf24b49baacb1d6cc539f5, type: 3}
-  _weaponPower: 25
+  _weaponPower: 7
   _armorPenetration: 10
-  _bulletSpeed: 5
-  _heatmeterUsage: 25
+  _bulletSpeed: 9
+  _heatmeterUsage: 30
   _shootBehaviour: {fileID: 11400000, guid: 774b651ca7ea2814bb8ca566dd6079d7, type: 2}

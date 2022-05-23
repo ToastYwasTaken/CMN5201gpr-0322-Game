@@ -16,10 +16,10 @@ MonoBehaviour:
   _name: Pistol
   _description: The most basic weapon!
   _isStackable: 0
-  _fireRate: 0.75
+  _fireRate: 1
   _bulletPrefab: {fileID: 2912425703784977495, guid: cb9aa57d3daf24b49baacb1d6cc539f5, type: 3}
-  _weaponPower: 10
+  _weaponPower: 5
   _armorPenetration: 5
-  _bulletSpeed: 10
-  _heatmeterUsage: 12
+  _bulletSpeed: 7
+  _heatmeterUsage: 15
   _shootBehaviour: {fileID: 11400000, guid: ef40e77abd816464e958661699caf31d, type: 2}

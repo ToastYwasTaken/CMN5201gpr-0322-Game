@@ -16,10 +16,10 @@ MonoBehaviour:
   _name: 
   _description: 
   _isStackable: 0
-  _fireRate: 1
+  _fireRate: 1.5
   _bulletPrefab: {fileID: 2912425703784977495, guid: cb9aa57d3daf24b49baacb1d6cc539f5, type: 3}
-  _weaponPower: 1
-  _armorPenetration: 1
-  _bulletSpeed: 10
+  _weaponPower: 3
+  _armorPenetration: 2
+  _bulletSpeed: 6
   _heatmeterUsage: 25
   _shootBehaviour: {fileID: 11400000, guid: 21e3ebf8c465c694ea2867468e794d95, type: 2}

@@ -1043,6 +1043,8 @@ MonoBehaviour:
   _armorPenetrationReduction: 600
   _attackPower: 15
   _armorPenetation: 2
+  _canCrit: 1
+  _critChance: 10
   _entityType: 0
   _testAttackPower: 0
   _testArmorPenetration: 0
@@ -1244,6 +1246,7 @@ MonoBehaviour:
   _canvas: {fileID: 0}
   _itemDDpFab: {fileID: 5378705166886364565, guid: 7d4d9b6aba3a7b54fa71f44607b5ff65, type: 3}
   _itemSlots: []
+  isColorize: 0
 --- !u!1 &7576545269882444202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1553,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 126740
+  m_InstanceId: 29858
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

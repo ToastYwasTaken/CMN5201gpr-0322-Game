@@ -20,6 +20,13 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     public delegate void ArmorRestore();
     public event ArmorRestore OnArmorRestored;
 
+    public delegate void TakeHealthDamage(float damage, bool didCrit);
+    public event TakeHealthDamage OnHealthDamageTaken;
+
+    public delegate void TakeArmorDamage(float damage, bool didCrit);
+    public event TakeArmorDamage OnArmorDamageTaken;
+
+    [Header("Defensive Stats")]
     [SerializeField] private float _maxHealth;
     public float MaxHealth { get => _maxHealth; }
 
@@ -43,7 +50,7 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
         }
     }
 
-    public float HealthPercentage { get => (_health / _maxHealth) *100f; }
+    public float HealthPercentage { get => _health / _maxHealth *100f; }
 
     [SerializeField] private float _maxArmor;
     public float MaxArmor { get => _maxArmor; }
@@ -84,13 +91,20 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     [SerializeField] private float _armorPenetrationReduction;
     public float ArmorPenetrionReducion { get => _armorPenetrationReduction; }
 
-
+    [Header("Offensive Stats")]
     [SerializeField] private float _attackPower;
     public float AttackPower { get => _attackPower; }
     
     [SerializeField]private float _armorPenetation;
     public float ArmorPenetration { get => _armorPenetation; }
 
+    [SerializeField] private bool _canCrit = true;
+    public bool CanCrit { get => _canCrit; }
+
+    [SerializeField, Range(0, 100)] private float _critChance;
+    public float CritChance { get => _critChance / 100f; }
+
+    [Header("Entity Types")]
     [SerializeField] private eEntityType _entityType;
     public eEntityType EntityType { get => _entityType; }
 
@@ -124,35 +138,48 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
         OnArmorRestored?.Invoke();
     }
 
+    [Header("Editor Debugging")]
     [SerializeField] private float _testAttackPower;
     [SerializeField] private float _testArmorPenetration;
 
     public void TestDealDamage()
     {
-        DealDamage(_testAttackPower, _testArmorPenetration);
+        DealDamage(_testAttackPower, _testArmorPenetration, false, 0f);
     }
 
 
-    public virtual void DealDamage(float attackPower, float armorPenetration)
+    public virtual void DealDamage(float attackPower, float armorPenetration, bool canCrit, float critChance)
     {
         float damageToHealth = 0f;
         float damageToArmor = 0f;
+        float critModifier = 1f;
+        bool didCrit = false;
+
+        if (canCrit)
+        {
+            if (critChance > UnityEngine.Random.Range(0f, 1f)) 
+            {
+                critModifier = 2f; 
+                didCrit = true;
+            }
+        }
 
         if (_isArmorBroken)
         {
-            damageToHealth = attackPower - _damageReduction;
+            damageToHealth = (attackPower - _damageReduction) * critModifier;
         }
         else
         {
             if (armorPenetration - _armorPenetrationReduction < 1) damageToArmor = 0f;
-            else damageToArmor = (attackPower * (armorPenetration - _armorPenetrationReduction));
+            else damageToArmor = (attackPower + (armorPenetration - _armorPenetrationReduction)) * critModifier;
 
             if (damageToArmor > _armor) damageToHealth = damageToArmor - _armor;
         }
 
-        Debug.Log($"Damage to armor : {damageToArmor} | Damage to health {damageToHealth} ");
         Armor -= damageToArmor;
+        if(damageToArmor > 0) OnArmorDamageTaken?.Invoke(damageToArmor, didCrit);
         Health -= damageToHealth;
+        if (damageToHealth > 0) OnHealthDamageTaken?.Invoke(damageToHealth, didCrit);
     }
 
     public eEntityType GetEntityType()
