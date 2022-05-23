@@ -6,10 +6,12 @@ namespace AISystem
     /// <summary>
     /// Generiert NavMeshes zur Laufzeit
     /// </summary>
+    [RequireComponent(typeof(AIEnemySpawner))]
     public class AINavMeshGenerator : MonoBehaviour
     {
         public NavMeshSurface[] Meshes;
         public bool BuildMeshByStart = false;
+        public bool SpawnEnemies = true;
 
         public void BuildMesh()
         {
@@ -17,11 +19,15 @@ namespace AISystem
             {
                 mesh.BuildNavMesh();
             }
+
+            if (SpawnEnemies)
+                GetComponent<AIEnemySpawner>().Spawn();
         }
 
         private void Start()
         {
             if (BuildMeshByStart) BuildMesh();
+
         }
     }
 }
