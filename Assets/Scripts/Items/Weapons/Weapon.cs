@@ -45,7 +45,7 @@ public class Weapon : Item
         ProjectileStats newBulletStats = new()
         {
             ArmorPenetration = _armorPenetration,
-            AttackPower = CalculateAttackPower(playerStats.AttackPower, _weaponPower),
+            AttackPower = DamageCalculation.CalculateAttackPower(playerStats.AttackPower, _weaponPower),
 
             CanCrit = playerStats.CanCrit,
             CritChance = playerStats.CritChance,
@@ -57,10 +57,5 @@ public class Weapon : Item
             ProjectileLifeTime = 20f
         };
         return newBulletStats;
-    }
-
-    public float CalculateAttackPower(float attackPower, float weaponPower)
-    {
-        return attackPower + weaponPower;
     }
 }

@@ -117,3 +117,4 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
     }
     #endregion
 }
+

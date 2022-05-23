@@ -9,7 +9,7 @@ public class Heatmeter : MonoBehaviour
     public float CurrentHeatlevel
     {
         get { return _currentHeatlevel; }
-        private set
+        set
         {
             if (value == _currentHeatlevel) return;
             if (value > _maximumHeatlevel) value = _maximumHeatlevel;
