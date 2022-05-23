@@ -13,7 +13,7 @@ namespace Assets.Scripts.MapGeneration
     public class LevelGenerator : MonoBehaviour
     {
         /// <summary>
-        /// For optimal settings choose width and height ~ 4x bigger than partitionWidth / partitionHeight
+        /// For optimal settings choose width and height ~ 4x bigger t han partitionWidth / partitionHeight
         /// </summary>
         [SerializeField]
         GameObject _mapMotherGO;
@@ -68,7 +68,7 @@ namespace Assets.Scripts.MapGeneration
             CreateBSPMap();
             Debug.Log("successfully created BSP map");
             //Level Generation only, no prefab instantiation
-            mapRoot.CreateRooms(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab,_cornerPrefab, _bigCornerPrefab, _debugGroundPrefab);
+            mapRoot.CreateRooms(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab, _cornerPrefab, _bigCornerPrefab, _debugGroundPrefab);
             InstantiateRooms();
         }
 
@@ -127,9 +127,9 @@ namespace Assets.Scripts.MapGeneration
             BSPMap.s_allRooms.Remove(lastRoom);
             BSPMap.s_allRooms.Add(new BossRoom(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
             InstantiateNormalRooms();
-            if(turnOffHallWays == false)
+            if (turnOffHallWays == false)
             {
-            InstantiateHallWays();
+                InstantiateHallWays();
             }
         }
 
@@ -198,7 +198,7 @@ namespace Assets.Scripts.MapGeneration
         {
             GameObject newRoomTile;
             GameObject motherOfRoom = new GameObject($"Mother of Hallways");
-            if(BSPMap.s_allHallWays == null ||BSPMap.s_allHallWays.Count == 0)
+            if (BSPMap.s_allHallWays == null ||BSPMap.s_allHallWays.Count == 0)
             {
                 return;
             }
