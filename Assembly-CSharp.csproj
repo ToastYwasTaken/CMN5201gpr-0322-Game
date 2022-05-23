@@ -106,6 +106,7 @@
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\Oscillator.cs" />
     <Compile Include="Assets\Scripts\UI\PauseUI.cs" />
     <Compile Include="Assets\Scripts\AI\AI Actions\RandomPatrolAction.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemSpawner.cs" />
     <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\OverdriveTrigger.cs" />
     <Compile Include="Assets\Scripts\AI\AIFSMAgent.cs" />
     <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\Health\HealthTrigger.cs" />
@@ -193,14 +194,6 @@
     <Compile Include="Assets\Scripts\AI\AI States\AIStateAction.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
     <Compile Include="Assets\Scripts\AI\AIController.cs" />
-<<<<<<< Updated upstream
-    <Compile Include="Assets\Scripts\Inventory\ItemSpawner.cs" />
-=======
-<<<<<<< HEAD
-=======
-    <Compile Include="Assets\Scripts\Inventory\ItemSpawner.cs" />
->>>>>>> 4d5d7d296167fa52ebb5129b27dc3ba6e86255e5
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
