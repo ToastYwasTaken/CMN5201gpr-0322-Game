@@ -10,3 +10,13 @@ public abstract class OverdriveBehaviour : ScriptableObject
 
     }
 }
+
+public class SummonProjectiles : OverdriveBehaviour
+{
+    [SerializeField] private int _amountOfBullets;
+
+    public override void UseOverdriveEffect(PlayerInformation playerInformation)
+    {
+        
+    }
+}
