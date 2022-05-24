@@ -6,6 +6,9 @@ namespace Assets.Scripts.MapGeneration
 {
     public class HallWay : Room
     {
+        private Vector3 _connectionPoint1 = new Vector3(0,0,0); 
+        private Vector3 _connectionPoint2 = new Vector3(0,0,0);
+        public static List<Vector3> s_connections = new List<Vector3>();
         public HallWay(GameObject ground, GameObject border, GameObject corner,
     int x, int y, int width, int height)
         {
@@ -55,6 +58,8 @@ namespace Assets.Scripts.MapGeneration
                             else
                             {
                                 rotation = RandomlyOffsetRotation();
+                                _connectionPoint1 = new Vector3(posX, posY, 0);
+                                s_connections.Add(_connectionPoint1);
                                 Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                             }
                         }
@@ -77,6 +82,8 @@ namespace Assets.Scripts.MapGeneration
                             else
                             {
                                 rotation = RandomlyOffsetRotation();
+                                _connectionPoint2 = new Vector3(posX, posY, 0);
+                                s_connections.Add(_connectionPoint2);
                                 Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                             }
                         }
@@ -124,7 +131,9 @@ namespace Assets.Scripts.MapGeneration
                             //Mid
                             else
                             {
-                                rotation = RandomlyOffsetRotation();
+                                rotation = RandomlyOffsetRotation(); 
+                                _connectionPoint1 = new Vector3(posX, posY, 0);
+                                s_connections.Add(_connectionPoint1);
                                 Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                             }
                         }
@@ -147,6 +156,8 @@ namespace Assets.Scripts.MapGeneration
                             else
                             {
                                 rotation = RandomlyOffsetRotation();
+                                _connectionPoint2 = new Vector3(posX, posY, 0);
+                                s_connections.Add(_connectionPoint2);
                                 Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                             }
                         }

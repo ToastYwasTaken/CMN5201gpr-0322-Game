@@ -157,11 +157,16 @@ namespace Assets.Scripts.MapGeneration
                         //Iterate over 2nd dimension of array
                         for (int j = 0; j < BSPMap.s_allRooms[h].PTiles.GetLength(1); j++)
                         {
-                            //Instantiating normal rooms
-                            newRoomTile = Instantiate(BSPMap.s_allRooms[h].PTiles[i, j].Prefab, BSPMap.s_allRooms[h].PTiles[i, j].Position, BSPMap.s_allRooms[h].PTiles[i, j].Rotation);
-                            newRoomTile.transform.name = $"Normal Room: {BSPMap.s_allRooms[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allRooms[h].PTiles[i, j].Position.x}|{BSPMap.s_allRooms[h].PTiles[i, j].Position.y}]";
-                            newRoomTile.transform.parent = motherOfRoom.transform;
+                            //Don't instantiate border where the HallWay is
+                            if (!HallWay.s_connections.Contains(BSPMap.s_allRooms[h].PTiles[i, j].Position))
+                            {
+                                //Instantiating normal rooms
+                                newRoomTile = Instantiate(BSPMap.s_allRooms[h].PTiles[i, j].Prefab, BSPMap.s_allRooms[h].PTiles[i, j].Position, BSPMap.s_allRooms[h].PTiles[i, j].Rotation);
+                                newRoomTile.transform.name = $"Normal Room: {BSPMap.s_allRooms[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allRooms[h].PTiles[i, j].Position.x}|{BSPMap.s_allRooms[h].PTiles[i, j].Position.y}]";
+                                newRoomTile.transform.parent = motherOfRoom.transform;
+                            }
                         }
+
                     }
                 }
                 else InstantiateBossRoom(h);
@@ -183,10 +188,14 @@ namespace Assets.Scripts.MapGeneration
                 //Iterate over 2nd dimension of array
                 for (int j = 0; j < BSPMap.s_allRooms[passCounter].PTiles.GetLength(1); j++)
                 {
-                    //Instantiating boss room
-                    newRoomTile = Instantiate(BSPMap.s_allRooms[passCounter].PTiles[i, j].Prefab, BSPMap.s_allRooms[passCounter].PTiles[i, j].Position, BSPMap.s_allRooms[passCounter].PTiles[i, j].Rotation);
-                    newRoomTile.transform.name = $" Boss room: {BSPMap.s_allRooms[passCounter].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allRooms[passCounter].PTiles[i, j].Position.x}|{BSPMap.s_allRooms[passCounter].PTiles[i, j].Position.y}]";
-                    newRoomTile.transform.parent = motherOfRoom.transform;
+                    //Don't instantiate border where the HallWay is
+                    if (!HallWay.s_connections.Contains(BSPMap.s_allRooms[passCounter].PTiles[i, j].Position))
+                    {
+                        //Instantiating boss room
+                        newRoomTile = Instantiate(BSPMap.s_allRooms[passCounter].PTiles[i, j].Prefab, BSPMap.s_allRooms[passCounter].PTiles[i, j].Position, BSPMap.s_allRooms[passCounter].PTiles[i, j].Rotation);
+                        newRoomTile.transform.name = $" Boss room: {BSPMap.s_allRooms[passCounter].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allRooms[passCounter].PTiles[i, j].Position.x}|{BSPMap.s_allRooms[passCounter].PTiles[i, j].Position.y}]";
+                        newRoomTile.transform.parent = motherOfRoom.transform;
+                    }
                 }
             }
         }
@@ -209,6 +218,7 @@ namespace Assets.Scripts.MapGeneration
                 {
                     for (int j = 0; j < BSPMap.s_allHallWays[h].PTiles.GetLength(1); j++)
                     {
+
                         newRoomTile = Instantiate(BSPMap.s_allHallWays[h].PTiles[i, j].Prefab, BSPMap.s_allHallWays[h].PTiles[i, j].Position, BSPMap.s_allHallWays[h].PTiles[i, j].Rotation);
                         newRoomTile.transform.name = $"Hallway: {BSPMap.s_allHallWays[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allHallWays[h].PTiles[i, j].Position.x}|{BSPMap.s_allHallWays[h].PTiles[i, j].Position.y}]";
                         newRoomTile.transform.parent = motherOfRoom.transform;
