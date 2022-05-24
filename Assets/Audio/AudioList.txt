@@ -1,0 +1,26 @@
+Must have:
+	Audio:
+	- Game Melody
+	- Main Menu Melody
+	Sounds:
+	- Sound for each weapon type firing:
+		> Howitzer
+		> Machinegun
+		> Pistol
+		> Shotgun
+		> Rocketlauncher
+	- Sound for impact depending on caliber
+
+Nice-to-have:
+	Audio:
+	- Boss Room Melody
+	Sounds:
+	- Tank Hover Sound
+	- Impact sound for each weapon type:
+		> Howitzer
+		> Machinegun
+		> Pistol
+		> Shotgun
+		> Rocketlauncher
+
+	- Shell dropping sound
