@@ -1,30 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Shot Behaviour", menuName = "Items/Weapons/Shot Behaviour/Rapidfire", order = 100)]
 public class RapidFire : ShotBehaviour
 {
+
     [SerializeField] private int _amountOfBullets;
     [SerializeField] private float _delayBetweenShots;
 
-    public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent)
+    public override async void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent)
     {
-        int shotsLeft = _amountOfBullets;
-        float currentDelay = 0f;
+        for (int i = 0; i < _amountOfBullets; i++)
+        {            
+            GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+            newBullet.GetComponent<Projectile>().ProjectileStats = projectileStats;
+            newBullet.transform.SetParent(parent);
 
-        while (shotsLeft > 0)
-        {
-            Debug.LogWarning(currentDelay);
-            if (currentDelay < 0) 
-            {
-                GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
-                newBullet.GetComponent<Projectile>().ProjectileStats = projectileStats;
-                newBullet.transform.SetParent(parent);
-
-                shotsLeft--;
-                currentDelay = _delayBetweenShots;
-                Debug.LogWarning("Bullet Fired");
-            } 
-            else currentDelay -= Time.deltaTime;
-        }
+            await Task.Delay((int)(_delayBetweenShots*1000f));            
+        }        
     }
 }
 
