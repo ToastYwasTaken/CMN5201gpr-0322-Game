@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 namespace Dennis.UI
 {
@@ -22,6 +22,8 @@ namespace Dennis.UI
 
         [Header("Misc")]
         [SerializeField]
+        private TMP_Text versionText;
+        [SerializeField]
         private LoadingScreenUI loadingScreen;
 
         private WindowController WindowController { get { return WindowController.s_Instance; } }
@@ -29,6 +31,8 @@ namespace Dennis.UI
         // Start is called before the first frame update
         void Start()
         {
+            versionText.text = string.Format("Version: {0}", Application.version);
+
             ResumeButton.onClick.AddListener(() => WindowController.OnBack());
             SettingsButton.onClick.AddListener(OpenSettingsWindow);
             ExitButton.onClick.AddListener(ExitToMainMenu);
