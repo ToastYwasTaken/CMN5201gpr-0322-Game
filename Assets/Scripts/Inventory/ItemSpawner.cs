@@ -45,7 +45,7 @@ public class ItemSpawner : MonoBehaviour
     bool TryGetFloorTile(Transform room)
     {
         int r = Random.Range(0, room.childCount);
-        if (room.GetChild(r).name.Contains("Floor Tile"))
+        if (room.GetChild(r).name.Contains("Floor"))
         {
             _spawnPoints.Add(room.GetChild(r).transform);
             return true;
