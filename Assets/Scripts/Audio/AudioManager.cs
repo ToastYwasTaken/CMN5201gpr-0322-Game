@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,8 +11,7 @@ public class AudioManager : MonoBehaviour
     AudioSource _soundSource;
 
     private static AudioManager s_instance;
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (s_instance != null && s_instance != this)
         {
