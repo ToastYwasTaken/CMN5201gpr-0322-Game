@@ -19,18 +19,27 @@ namespace Dennis.UI
         [SerializeField]
         private TMP_Dropdown qualityDropdown;
 
-        [Header("Audio")]
+        [Header("AudioMixer")]
         [SerializeField]
         private AudioMixer masterMixer;
 
+        [Header("Master Volume")]
         [SerializeField]
         private Slider masterVolumeSlider;
+        [SerializeField]
+        private TMP_Text masterPercentText;
 
+        [Header("SFX Volume")]
         [SerializeField]
         private Slider sfxVolumeSlider;
+        [SerializeField]
+        private TMP_Text sfxPercentText;
 
+        [Header("Music Volume")]
         [SerializeField]
         private Slider musicVolumeSlider;
+        [SerializeField]
+        private TMP_Text musicPercentText;
 
         private void Start()
         {
@@ -71,18 +80,21 @@ namespace Dennis.UI
         {
             masterMixer.SetFloat("MasterVolume", Mathf.Log(sliderValue) * 20);
             PlayerPrefs.SetFloat("MasterVolume", masterVolumeSlider.value);
+            masterPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
         }
 
         public void SetSFXVolume(float sliderValue)
         {
             masterMixer.SetFloat("SFXVolume", Mathf.Log(sliderValue) * 20);
             PlayerPrefs.SetFloat("SFXVolume", sfxVolumeSlider.value);
+            sfxPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
         }
 
         public void SetMusicVolume(float sliderValue)
         {
             masterMixer.SetFloat("MusicVolume", Mathf.Log(sliderValue) * 20);
             PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
+            musicPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
         }
 
         private void LoadValues()
