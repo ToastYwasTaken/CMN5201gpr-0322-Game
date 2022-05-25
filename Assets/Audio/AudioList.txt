@@ -9,18 +9,17 @@ Must have:
 		> Pistol
 		> Shotgun
 		> Rocketlauncher
-	- Sound for impact depending on caliber
+	- Sound for impact
+	- PickUp Item sound
+	- Tank Hover Sound
 
 Nice-to-have:
 	Audio:
 	- Boss Room Melody
 	Sounds:
-	- Tank Hover Sound
 	- Impact sound for each weapon type:
 		> Howitzer
 		> Machinegun
 		> Pistol
 		> Shotgun
 		> Rocketlauncher
-
-	- Shell dropping sound
