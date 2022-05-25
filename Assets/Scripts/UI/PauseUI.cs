@@ -7,7 +7,7 @@ namespace Dennis.UI
     /// <summary>
     /// Changelog:
     /// -------------------------
-    /// Franz: added Music pausing / unpausing
+    /// Franz: added Music pausing / unpausing in menu
     /// </summary>
     public class PauseUI : MonoBehaviour
     {
@@ -30,16 +30,17 @@ namespace Dennis.UI
         private TMP_Text versionText;
         [SerializeField]
         private LoadingScreenUI loadingScreen;
-        [SerializeField]
-        private AudioManager _audioManager;
 
-        public bool IsPaused;
+        private AudioManager _audioManager;
+        public bool IsPaused = false;
 
         private WindowController WindowController { get { return WindowController.s_Instance; } }
 
         // Start is called before the first frame update
         void Start()
         {
+            _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+
             versionText.text = string.Format("Version: {0}", Application.version);
 
             ResumeButton.onClick.AddListener(() => WindowController.OnBack());

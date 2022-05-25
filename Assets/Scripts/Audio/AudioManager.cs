@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
-using Dennis.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField]
-    PauseUI _pauseUI;
     [SerializeField]
     AudioSource _musicSource;
     [SerializeField]
     AudioSource _soundSource;
     [SerializeField]
-    AudioClip _musicMainMenu;
+    public AudioClip MusicMainMenu;
     [SerializeField]
-    AudioClip _musicLevel;
+    public AudioClip MusicLevel;
     [SerializeField]
-    AudioClip _musicBossRoom;
+    public AudioClip MusicBossRoom;
 
     private static AudioManager s_instance;
     void Awake()
@@ -32,39 +29,6 @@ public class AudioManager : MonoBehaviour
             s_instance = this;
         }
         DontDestroyOnLoad(this);
-    }
-    private void Update()
-    {
-        if (!_musicSource.isPlaying)
-        {
-            if (_pauseUI != null)
-            {
-                if (!_pauseUI.IsPaused)
-                {
-                    if (SceneManager.GetActiveScene().buildIndex == 1)
-                    {
-                        //in 'normal' game
-                        if (true)
-                        {
-                            PlayMelody(_musicLevel);
-                        }
-                        //in boss room
-                        //else if (true)
-                        //{
-                        //    PlayMelody(_musicBossRoom);
-                        //}
-                    }
-                }
-            }
-            else
-            {
-                //In Main menu
-                if (SceneManager.GetActiveScene().buildIndex == 0)
-                {
-                    PlayMelody(_musicMainMenu);
-                }
-            }
-        }
     }
 
     /// <summary>
@@ -85,6 +49,13 @@ public class AudioManager : MonoBehaviour
     public void ContinueMelody()
     {
         _musicSource.UnPause();
+    }
+
+    public void ChangeMelody(AudioClip newMelodyClip)
+    {
+        _musicSource.Stop();
+        _musicSource.clip = newMelodyClip;
+        _musicSource.Play();
     }
 
     /// <summary>

@@ -4,7 +4,12 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 namespace Dennis.UI
-{
+{    
+     /// <summary>
+     /// Changelog:
+     /// -------------------------
+     /// Franz: added Music pausing / unpausing
+     /// </summary>
     public class MainWindowUI : WindowWithAnimator
     {
         [Header("UI Buttons")]
@@ -29,8 +34,13 @@ namespace Dennis.UI
         [SerializeField]
         private LoadingScreenUI loadingScreen;
 
+        private AudioManager _audioManager;
+
         protected override void Awake()
         {
+            _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+            _audioManager.PlayMelody(_audioManager.MusicMainMenu);
+
             _versionText.text = string.Format("Version: {0}", Application.version);
 
             _playButton.onClick.AddListener(Play);
@@ -46,6 +56,7 @@ namespace Dennis.UI
             // ToDo: Add logic to start game!
             //SceneManager.LoadScene(1);
             loadingScreen.LoadScene(1);
+            _audioManager.ChangeMelody(_audioManager.MusicLevel);
         }
 
         private void Settings()
