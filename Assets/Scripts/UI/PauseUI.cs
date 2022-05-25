@@ -4,6 +4,11 @@ using TMPro;
 
 namespace Dennis.UI
 {
+    /// <summary>
+    /// Changelog:
+    /// -------------------------
+    /// Franz: added Music pausing / unpausing
+    /// </summary>
     public class PauseUI : MonoBehaviour
     {
         [Header("Windows")]
@@ -25,6 +30,10 @@ namespace Dennis.UI
         private TMP_Text versionText;
         [SerializeField]
         private LoadingScreenUI loadingScreen;
+        [SerializeField]
+        private AudioManager _audioManager;
+
+        public bool IsPaused;
 
         private WindowController WindowController { get { return WindowController.s_Instance; } }
 
@@ -36,15 +45,21 @@ namespace Dennis.UI
             ResumeButton.onClick.AddListener(() => WindowController.OnBack());
             SettingsButton.onClick.AddListener(OpenSettingsWindow);
             ExitButton.onClick.AddListener(ExitToMainMenu);
-
             PauseWindow.OnDisableAction += OnDisablePauseWindow;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if(WindowController.CurrentWindow == null && !PauseWindow.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
+            if (WindowController.CurrentWindow == null && !PauseWindow.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
             {
+                if (!IsPaused)
+                {
+                    //Pause Audio when opening Pause menu
+                    Debug.Log("pausing melody");
+                    _audioManager.PauseMelody();
+                    IsPaused = true;
+                }
                 Show();
             }
         }
@@ -68,11 +83,18 @@ namespace Dennis.UI
 
         void OnDisablePauseWindow()
         {
-            if(WindowController.HasWindowHistory)
+            if (WindowController.HasWindowHistory)
             {
                 return;
             }
 
+            //Continue Audio
+            if (IsPaused)
+            {
+                Debug.Log("resuming melody");
+                _audioManager.ContinueMelody();
+                IsPaused = false;
+            }
             SetTimeScale(1f);
         }
 
@@ -83,6 +105,7 @@ namespace Dennis.UI
 
         void ExitToMainMenu()
         {
+            IsPaused = false;
             SetTimeScale(1f);
 
             loadingScreen.LoadScene(0);
