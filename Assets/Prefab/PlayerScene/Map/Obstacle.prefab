@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5048791428105947207}
-  - component: {fileID: 7260052246031109302}
+  - component: {fileID: 6673906760797661095}
   m_Layer: 0
-  m_Name: wall2Corner
+  m_Name: Obstacle
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7260052246031109302
+--- !u!65 &6673906760797661095
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.2145815, y: 10.339803, z: 22.908875}
-  m_Center: {x: 0.028266907, y: 0.026997924, z: -0.29390156}
+  m_Size: {x: 9.228553, y: 9.202078, z: 22.908876}
+  m_Center: {x: 0.040906966, y: -0.010925233, z: -0.29390216}
 --- !u!1 &7432932657229289506
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: cea6102464de5e94eafcc0a0b3d15d90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8be36bc24b5f17646ba588976c62fc5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

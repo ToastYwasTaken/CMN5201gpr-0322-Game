@@ -148,28 +148,28 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Create new rooms from prefabs for all rooms lowest partitions
         /// </summary>
-        public void CreateRooms(GameObject empty, GameObject ground, GameObject wall, GameObject border, GameObject corner, GameObject bigCorner, GameObject debugGround)
+        public void CreateRooms(GameObject ground, GameObject obstacle1, GameObject obstacle2, GameObject wall, GameObject corner)
         {
             if (FirstMap != null || SecondMap != null)
             {
                 //Map has been split, checking lower partitions
                 if (FirstMap != null)
                 {
-                    FirstMap.CreateRooms(empty, ground, wall, border, corner, bigCorner, debugGround);
+                    FirstMap.CreateRooms(ground, obstacle1, obstacle2, wall, corner);
                 }
                 if (SecondMap != null)
                 {
-                    SecondMap.CreateRooms(empty, ground, wall, border, corner, bigCorner, debugGround);
+                    SecondMap.CreateRooms(ground, obstacle1, obstacle2, wall, corner);
                 }
                 if (FirstMap != null && SecondMap != null)
                 {
-                    CreateHallWay(FirstMap.GetRoom(), SecondMap.GetRoom(), debugGround, border, bigCorner); //replace with normal ground once done
+                    CreateHallWay(FirstMap.GetRoom(), SecondMap.GetRoom(), ground, wall, corner); //replace with normal ground once done
                 }
             }
             else
             //Lowest partition -> Create room here -> assign room to this partition
             {
-                currentRoom = new NormalRoom(empty, ground, wall, border, corner, X, Y, Width, Height);
+                currentRoom = new NormalRoom(ground, obstacle1, obstacle2, wall, corner, X, Y, Width, Height);
                 s_allRooms.Add(currentRoom);
             }
         }
@@ -177,11 +177,11 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Hallway creation algorithm
         /// </summary>
-        /// <param name="room1"></param>
-        /// <param name="room2"></param>
+        /// <param name="room1">Hallway connects to room2</param>
+        /// <param name="room2">Hallway connects to room1</param>
         /// <param name="ground"></param>
-        /// <param name="border"></param>
-        private void CreateHallWay(Room room1, Room room2, GameObject ground, GameObject border, GameObject corner)
+        /// <param name="wall"></param>
+        private void CreateHallWay(Room room1, Room room2, GameObject ground, GameObject wall, GameObject corner)
         {
             //Calculate possible connection location
             System.Random rdm = new System.Random();
@@ -216,11 +216,11 @@ namespace Assets.Scripts.MapGeneration
                 if (!splitVertical)
                 {
                     //Calculating splitPoints
-                    randomIntOnRangeHorizontal = rdm.Next(Mathf.Max(room1Y, room2Y)+1, Mathf.Min(topRoom1, topRoom2)-1);
+                    randomIntOnRangeHorizontal = rdm.Next(Mathf.Max(room1Y, room2Y), Mathf.Min(topRoom1, topRoom2));
                     splitPointRoom1 = new Vector2(rightRoom1+1, randomIntOnRangeHorizontal); //point on the right of the room
                     splitPointRoom2 = new Vector2(room2X-1, randomIntOnRangeHorizontal);
                     //Debug.Log($"Connect rooms horizontally at: {splitPointRoom1} and {splitPointRoom2}");
-                    hallway1 = new HallWay(ground, border, corner, (int)splitPointRoom1.x, (int)splitPointRoom1.y, (int)(splitPointRoom2.x-splitPointRoom1.x + 1), 3);
+                    hallway1 = new HallWay(ground, wall, corner, (int)splitPointRoom1.x, (int)splitPointRoom1.y, (int)(splitPointRoom2.x-splitPointRoom1.x + 1), 3);
                 }
                 else
                 //both overlapping -> Room 'inside' the other room -> shouldn't happen
@@ -236,11 +236,11 @@ namespace Assets.Scripts.MapGeneration
                 if (splitVertical)
                 {
                     //Calculating splitPoints
-                    randomIntOnRangeVertical = rdm.Next(Mathf.Max(room1X, room2X)+1, Mathf.Min(rightRoom1, rightRoom2)-1);
+                    randomIntOnRangeVertical = rdm.Next(Mathf.Max(room1X, room2X), Mathf.Min(rightRoom1, rightRoom2));
                     splitPointRoom1 = new Vector2(randomIntOnRangeVertical, topRoom1+1);
                     splitPointRoom2 = new Vector2(randomIntOnRangeVertical, room2Y-1);
                     //Debug.Log($"Connect rooms vertically at: {splitPointRoom1} and {splitPointRoom2}");
-                    hallway1 = new HallWay(ground, border, corner, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 3, (int)(splitPointRoom2.y-splitPointRoom1.y + 1));
+                    hallway1 = new HallWay(ground, wall, corner, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 3, (int)(splitPointRoom2.y-splitPointRoom1.y + 1));
                 }
                 else
                 //Rooms diagonal

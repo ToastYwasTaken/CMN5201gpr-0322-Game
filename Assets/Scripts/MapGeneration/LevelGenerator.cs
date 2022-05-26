@@ -30,19 +30,15 @@ namespace Assets.Scripts.MapGeneration
         [Tooltip("minimal height required for splitting a map into 2 new ones")]
         int _minPartitionHeight;
         [SerializeField]
-        GameObject _emptyPrefab;
-        [SerializeField]
         GameObject _groundPrefab;
+        [SerializeField]
+        GameObject _obstacle1Prefab;
+        [SerializeField]
+        GameObject _obstacle2Prefab;
         [SerializeField]
         GameObject _wallPrefab;
         [SerializeField]
-        GameObject _borderPrefab;
-        [SerializeField]
         GameObject _cornerPrefab;
-        [SerializeField]
-        GameObject _bigCornerPrefab;
-        [SerializeField]
-        GameObject _debugGroundPrefab;
         [SerializeField]
         bool turnOffHallWays;
 
@@ -68,7 +64,7 @@ namespace Assets.Scripts.MapGeneration
             CreateBSPMap();
             Debug.Log("successfully created BSP map");
             //Level Generation only, no prefab instantiation
-            mapRoot.CreateRooms(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab, _cornerPrefab, _bigCornerPrefab, _debugGroundPrefab);
+            mapRoot.CreateRooms(_groundPrefab, _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab);
             InstantiateRooms();
         }
 
@@ -125,7 +121,7 @@ namespace Assets.Scripts.MapGeneration
             int lastRoomWidth = lastRoom.Width;
             int lastRoomHeight = lastRoom.Height;
             BSPMap.s_allRooms.Remove(lastRoom);
-            BSPMap.s_allRooms.Add(new BossRoom(_emptyPrefab, _groundPrefab, _wallPrefab, _borderPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
+            BSPMap.s_allRooms.Add(new BossRoom(_groundPrefab, _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
             InstantiateNormalRooms();
             if (turnOffHallWays == false)
             {

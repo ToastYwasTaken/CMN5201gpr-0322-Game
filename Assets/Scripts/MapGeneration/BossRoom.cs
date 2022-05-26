@@ -11,24 +11,24 @@ namespace Assets.Scripts.MapGeneration
 {
     public class BossRoom : Room
     {
-        public BossRoom(GameObject empty, GameObject ground, GameObject wall, GameObject border, GameObject corner, int x, int y, int width, int height)
+        public BossRoom(GameObject ground, GameObject obstacle1, GameObject obstacle2, GameObject wall, GameObject corner, int x, int y, int width, int height)
         {
             X = x;
             Y = y;
-            Empty = empty;
             Ground = ground;
+            Obstacle1 = obstacle1;
+            Obstacle2 = obstacle2;
             Wall = wall;
-            Border = border;
             Corner = corner;
             Width = width;
             Height = height;
             NormalizePrefabSize(Ground);
+            NormalizePrefabSize(Obstacle1);
             NormalizePrefabSize(Wall);
-            NormalizePrefabSize(Border);
             NormalizePrefabSize(Corner);
             RandomlyOffsetPrefabColorBossRoom(Ground);
+            RandomlyOffsetPrefabColorBossRoom(Obstacle1);
             RandomlyOffsetPrefabColorBossRoom(Wall);
-            RandomlyOffsetPrefabColorBossRoom(Border);
             //Create room
             InitRoom();
             //Debug.Log($"Created new BOSS room : [X : {X} | Y : {Y} | Width: {Width} | Height : {Height} ]");
