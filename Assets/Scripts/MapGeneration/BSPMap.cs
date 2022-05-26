@@ -148,22 +148,22 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Create new rooms from prefabs for all rooms lowest partitions
         /// </summary>
-        public void CreateRooms(GameObject ground, GameObject obstacle1, GameObject obstacle2, GameObject wall, GameObject corner)
+        public void CreateRooms(GameObject ground, GameObject obstacle1, GameObject obstacle2, GameObject wall, GameObject corner, GameObject door)
         {
             if (FirstMap != null || SecondMap != null)
             {
                 //Map has been split, checking lower partitions
                 if (FirstMap != null)
                 {
-                    FirstMap.CreateRooms(ground, obstacle1, obstacle2, wall, corner);
+                    FirstMap.CreateRooms(ground, obstacle1, obstacle2, wall, corner, door);
                 }
                 if (SecondMap != null)
                 {
-                    SecondMap.CreateRooms(ground, obstacle1, obstacle2, wall, corner);
+                    SecondMap.CreateRooms(ground, obstacle1, obstacle2, wall, corner, door);
                 }
                 if (FirstMap != null && SecondMap != null)
                 {
-                    CreateHallWay(FirstMap.GetRoom(), SecondMap.GetRoom(), ground, wall, corner); //replace with normal ground once done
+                    CreateHallWay(FirstMap.GetRoom(), SecondMap.GetRoom(), ground, wall, corner, door); //replace with normal ground once done
                 }
             }
             else
@@ -181,7 +181,7 @@ namespace Assets.Scripts.MapGeneration
         /// <param name="room2">Hallway connects to room1</param>
         /// <param name="ground"></param>
         /// <param name="wall"></param>
-        private void CreateHallWay(Room room1, Room room2, GameObject ground, GameObject wall, GameObject corner)
+        private void CreateHallWay(Room room1, Room room2, GameObject ground, GameObject wall, GameObject corner, GameObject door)
         {
             //Calculate possible connection location
             System.Random rdm = new System.Random();
