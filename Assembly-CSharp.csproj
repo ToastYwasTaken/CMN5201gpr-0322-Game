@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\MapGeneration\PerlinNoiseGenerator.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\ClickToMove.cs" />
     <Compile Include="Assets\Scripts\Items\Weapons\ShootBehaviour\RapidFire.cs" />
+    <Compile Include="Assets\Scripts\UI\Animation\ButtonAnimationUI.cs" />
     <Compile Include="Assets\Scripts\Player\Test\EnemyShootingSimple.cs" />
     <Compile Include="Assets\Scripts\Entities\Projectiles\Collision\ExplosionCollision.cs" />
     <Compile Include="Assets\Scripts\Player\OldScripts\Old_Weapon.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Assets\Scripts\Items\Upgrades\OverdriveManager.cs" />
     <Compile Include="Assets\Scripts\AI\AIEvent.cs" />
     <Compile Include="Assets\Scripts\Entities\WeaponComp.cs" />
+    <Compile Include="Assets\Scripts\Player\General\DoorTrigger.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemDragDrop.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\MeshTool.cs" />
     <Compile Include="Assets\Scripts\Player\General\ExtensionMethods.cs" />
@@ -180,6 +182,7 @@
     <Compile Include="Assets\Scripts\AI\AI Decisions\AITargetInRangeDecision.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityStats.cs" />
     <Compile Include="Assets\Scripts\Entities\Projectiles\ProjectileStats.cs" />
+    <Compile Include="Assets\Scripts\Player\General\Door.cs" />
     <Compile Include="Assets\Scripts\AI\AI Components\AIRandomPatrol.cs" />
     <Compile Include="Assets\Scripts\AI\AI Components\AILookToEnemy.cs" />
     <Compile Include="Assets\Scripts\Items\ItemContainer.cs" />
@@ -197,7 +200,6 @@
     <Compile Include="Assets\Scripts\AI\AI States\AIStateAction.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
     <Compile Include="Assets\Scripts\AI\AIController.cs" />
-    <Compile Include="Assets\Scripts\UI\Animation\ButtonAnimationUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
