@@ -20,10 +20,10 @@ namespace Assets.Scripts.MapGeneration
         #region position / size / offsets
         public int X, Y, Width, Height, WidthOffset, HeightOffset;
         #endregion
-        protected GameObject Empty;
-        protected GameObject Wall;
-        protected GameObject Border;
         protected GameObject Ground;
+        protected GameObject Obstacle1;
+        protected GameObject Obstacle2;
+        protected GameObject Wall;
         protected GameObject Corner;
         private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
 
@@ -83,7 +83,7 @@ namespace Assets.Scripts.MapGeneration
                         if (x != 0 && x != Width-1)
                         {
                             rotation = Quaternion.Euler(0, 0, 180);
-                            Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                            Tiles[x, y] = new Tile(Wall, new Vector3(posX++, posY, 0), rotation);
                         }
                         else
                         {
@@ -105,7 +105,7 @@ namespace Assets.Scripts.MapGeneration
                         if (y != 0 && y != Height-1)
                         {
                             rotation = Quaternion.Euler(0, 0, 90);
-                            Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                            Tiles[x, y] = new Tile(Wall, new Vector3(posX++, posY, 0), rotation);
                         }
                         else
                         //in top left corner
@@ -119,7 +119,7 @@ namespace Assets.Scripts.MapGeneration
                         if (y != Height-1 && y != 0)
                         {
                             rotation = Quaternion.Euler(0, 0, 270);
-                            Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                            Tiles[x, y] = new Tile(Wall, new Vector3(posX++, posY, 0), rotation);
                         }
                         else
                         //in top right corner
@@ -133,7 +133,7 @@ namespace Assets.Scripts.MapGeneration
                         if (x != Width-1 && x != 0)
                         {
                             rotation = Quaternion.Euler(0, 0, 0);
-                            Tiles[x, y] = new Tile(Border, new Vector3(posX++, posY, 0), rotation);
+                            Tiles[x, y] = new Tile(Wall, new Vector3(posX++, posY, 0), rotation);
                         }
                     }
                     //Next to wall, don't create inside bounds walls
@@ -153,7 +153,7 @@ namespace Assets.Scripts.MapGeneration
                         {
                             Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                         }
-                        else Tiles[x, y] = new Tile(Wall, new Vector3(posX++, posY, 0), rotation);
+                        else Tiles[x, y] = new Tile(Obstacle1, new Vector3(posX++, posY, 0), rotation);
                     }
                 }
                 posX = X;
