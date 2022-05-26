@@ -41,7 +41,7 @@ namespace Dennis.UI
             _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
             _audioManager.PlayMelody(_audioManager.MusicMainMenu);
 
-            _versionText.text = string.Format("Version: {0}", Application.version);
+            _versionText.text = string.Format("VERSION: {0}", Application.version);
 
             _playButton.onClick.AddListener(Play);
             _settingsButton.onClick.AddListener(Settings);

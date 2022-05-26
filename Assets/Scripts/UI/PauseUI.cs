@@ -44,7 +44,7 @@ namespace Dennis.UI
             _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
             }else _audioManager = new AudioManager();
 
-            versionText.text = string.Format("Version: {0}", Application.version);
+            versionText.text = string.Format("VERSION: {0}", Application.version);
 
             ResumeButton.onClick.AddListener(() => WindowController.OnBack());
             SettingsButton.onClick.AddListener(OpenSettingsWindow);
