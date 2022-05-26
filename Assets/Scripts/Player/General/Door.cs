@@ -5,6 +5,13 @@ using UnityEngine;
 public class Door : MonoBehaviour, IDoor
 {
     [SerializeField] GameObject DoorGO;
+    [SerializeField] bool _isOpenByTrigger;
+
+    private void Awake()
+    {
+        GameObject door = GetComponentInChildren<DoorTrigger>().gameObject;
+        door.SetActive(_isOpenByTrigger);
+    }
     public void OpenDoor() 
     {
         DoorGO.SetActive(false);
@@ -15,7 +22,7 @@ public class Door : MonoBehaviour, IDoor
     }
 }
 
-interface IDoor
+public interface IDoor
 {
     public void OpenDoor();
     public void CloseDoor();
