@@ -43,7 +43,7 @@ namespace Assets.Scripts.MapGeneration
         protected Quaternion RandomlyOffsetRotation()
         {
             Quaternion rotation;
-            int rdmInt = _rdm.Next(1, 6);
+            int rdmInt = _rdm.Next(1, 3);
             if (rdmInt == 1)
             {
                 rotation = Quaternion.Euler(0, 0, 90);
@@ -139,6 +139,7 @@ namespace Assets.Scripts.MapGeneration
                     //Next to wall, don't create inside bounds walls
                     else if (x <= 1 | y <= 1 | x >= Width - 2 | y >= Height - 2)
                     {
+                        rotation = RandomlyOffsetRotation();
                         Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                     }
                     //Create inside bounds walls by perlin noise

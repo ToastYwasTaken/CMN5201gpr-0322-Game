@@ -216,7 +216,7 @@ namespace Assets.Scripts.MapGeneration
                 if (!splitVertical)
                 {
                     //Calculating splitPoints
-                    randomIntOnRangeHorizontal = rdm.Next(Mathf.Max(room1Y, room2Y), Mathf.Min(topRoom1, topRoom2));
+                    randomIntOnRangeHorizontal = rdm.Next(Mathf.Max(room1Y, room2Y)+1, Mathf.Min(topRoom1, topRoom2)-1);
                     splitPointRoom1 = new Vector2(rightRoom1+1, randomIntOnRangeHorizontal); //point on the right of the room
                     splitPointRoom2 = new Vector2(room2X-1, randomIntOnRangeHorizontal);
                     //Debug.Log($"Connect rooms horizontally at: {splitPointRoom1} and {splitPointRoom2}");
@@ -236,7 +236,7 @@ namespace Assets.Scripts.MapGeneration
                 if (splitVertical)
                 {
                     //Calculating splitPoints
-                    randomIntOnRangeVertical = rdm.Next(Mathf.Max(room1X, room2X), Mathf.Min(rightRoom1, rightRoom2));
+                    randomIntOnRangeVertical = rdm.Next(Mathf.Max(room1X, room2X)+1, Mathf.Min(rightRoom1, rightRoom2)-1);
                     splitPointRoom1 = new Vector2(randomIntOnRangeVertical, topRoom1+1);
                     splitPointRoom2 = new Vector2(randomIntOnRangeVertical, room2Y-1);
                     //Debug.Log($"Connect rooms vertically at: {splitPointRoom1} and {splitPointRoom2}");

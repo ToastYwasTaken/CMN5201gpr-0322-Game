@@ -39,7 +39,10 @@ namespace Dennis.UI
         // Start is called before the first frame update
         void Start()
         {
+            if(GameObject.Find("/AudioManager") != null)
+            {
             _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+            }else _audioManager = new AudioManager();
 
             versionText.text = string.Format("Version: {0}", Application.version);
 

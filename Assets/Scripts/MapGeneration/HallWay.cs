@@ -8,6 +8,8 @@ namespace Assets.Scripts.MapGeneration
     {
         private Vector3 _connectionPoint = new Vector3(0,0,0); 
         public static List<Vector3> s_connections = new List<Vector3>();
+        //public static List<Vector3> s_doorLocations = new List<Vector3>();
+
         public HallWay(GameObject ground, GameObject border, GameObject corner,
     int x, int y, int width, int height)
         {
