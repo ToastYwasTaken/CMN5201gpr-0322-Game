@@ -40,7 +40,8 @@ namespace Assets.Scripts.MapGeneration
         /// <param name="prefab"></param>
         private void RandomlyOffsetPrefabColorBossRoom(GameObject prefab)
         {
-            Renderer prefabRend = prefab.GetComponent<Renderer>();
+            //Renderer prefabRend = prefab.GetComponent<Renderer>();
+            Renderer prefabRend = prefab.GetComponentInChildren<Renderer>();
             prefabRend.sharedMaterial.color = new Color32(220, 110, 210, 255);
         }
     }
