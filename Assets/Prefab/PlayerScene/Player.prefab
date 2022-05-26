@@ -908,9 +908,9 @@ GameObject:
   - component: {fileID: 1318097878093630658}
   - component: {fileID: 4096101623133359713}
   - component: {fileID: 7190018995371742076}
+  - component: {fileID: 5137960299286758894}
   - component: {fileID: 4874678111844051749}
   - component: {fileID: 2954168021030677781}
-  - component: {fileID: 3360242758510589023}
   - component: {fileID: 7476223424415133758}
   - component: {fileID: 3518353601495219296}
   - component: {fileID: 3230954389950016416}
@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5784c942d64ec424292da9feaafc0078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 3360242758510589023}
+  _playerStats: {fileID: 0}
   _weaponManager: {fileID: 7190018995371742076}
   _heatmeter: {fileID: 2954168021030677781}
   _overdriveManager: {fileID: 4874678111844051749}
@@ -994,6 +994,29 @@ MonoBehaviour:
   - {fileID: 9088219006787790356}
   _bulletContainer: {fileID: 433294292675443957, guid: 76381f195d567844cbd596aec285e21a, type: 3}
   _testWeapon: []
+--- !u!114 &5137960299286758894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576545269406560640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4b7d9e8df58b347b6c4e2aa99bb290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 500
+  _maxArmor: 250
+  _damageReduction: 5
+  _armorPenetrationReduction: 5
+  _attackPower: 2
+  _armorPenetation: 2
+  _canCrit: 1
+  _critChance: 15
+  _entityType: 0
+  _testAttackPower: 0
+  _testArmorPenetration: 0
 --- !u!114 &4874678111844051749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,29 +1048,6 @@ MonoBehaviour:
   CooldownMultiplier: 2
   _overheatPenalty: 0.25
   CooldownAmountMultipier: 2
---- !u!114 &3360242758510589023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576545269406560640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3a3f6a5a4244274bb0d134ccad70115, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 5000
-  _maxArmor: 15000
-  _damageReduction: 100
-  _armorPenetrationReduction: 600
-  _attackPower: 15
-  _armorPenetation: 2
-  _canCrit: 1
-  _critChance: 10
-  _entityType: 0
-  _testAttackPower: 0
-  _testArmorPenetration: 0
 --- !u!114 &7476223424415133758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 29858
+  m_InstanceId: 42076
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

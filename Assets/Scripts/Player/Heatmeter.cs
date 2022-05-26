@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Heatmeter : MonoBehaviour
+public class Heatmeter : MonoBehaviour, IReduceHeatlevel
 {
     private float _currentHeatlevel;
     public float CurrentHeatlevel
@@ -11,12 +11,9 @@ public class Heatmeter : MonoBehaviour
         get { return _currentHeatlevel; }
         set
         {
-            if (value == _currentHeatlevel) return;
             if (value > _maximumHeatlevel) value = _maximumHeatlevel;
             if (value < 0) value = 0;
 
-
-            //Debug.Log("Current Heatlevel: " + value);
             _currentHeatlevel = value;
 
             if (value == _maximumHeatlevel)
@@ -115,5 +112,11 @@ public class Heatmeter : MonoBehaviour
         if (_isOverheated) return;
 
         CurrentHeatlevel += heatleavelToAdd; 
-    }              
+    }
+
+    public void ReduceHeatlevel(float amountToReduce) 
+    {
+        if(amountToReduce <= 0) return;
+        CurrentHeatlevel -= amountToReduce;
+    }
 }
