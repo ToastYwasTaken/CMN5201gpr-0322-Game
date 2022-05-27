@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818559283454854438, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_InstanceId
-      value: -3867926
+      value: -15686
       objectReference: {fileID: 0}
     - target: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Name
@@ -433,6 +433,7 @@ MonoBehaviour:
   _entityType: 1
   _testAttackPower: 0
   _testArmorPenetration: 0
+  _lootTable: {fileID: 11400000, guid: 4a4323f0a8520474fb4b76a4e16b9ec9, type: 2}
 --- !u!1 &3613446757256253110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 974380780516402904, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
