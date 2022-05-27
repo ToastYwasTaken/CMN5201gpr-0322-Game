@@ -23,3 +23,5 @@ MonoBehaviour:
   _bulletSpeed: 6
   _heatmeterUsage: 25
   _shootBehaviour: {fileID: 11400000, guid: 21e3ebf8c465c694ea2867468e794d95, type: 2}
+  WeaponShootSound: {fileID: 0}
+  WeaponImpactSound: {fileID: 0}

@@ -220,7 +220,7 @@ namespace Assets.Scripts.MapGeneration
                     splitPointRoom1 = new Vector2(rightRoom1+1, randomIntOnRangeHorizontal); //point on the right of the room
                     splitPointRoom2 = new Vector2(room2X-1, randomIntOnRangeHorizontal);
                     //Debug.Log($"Connect rooms horizontally at: {splitPointRoom1} and {splitPointRoom2}");
-                    hallway1 = new HallWay(ground, wall, corner, (int)splitPointRoom1.x, (int)splitPointRoom1.y, (int)(splitPointRoom2.x-splitPointRoom1.x + 1), 3);
+                    hallway1 = new HallWay(ground, wall, corner, door, (int)splitPointRoom1.x, (int)splitPointRoom1.y, (int)(splitPointRoom2.x-splitPointRoom1.x + 1), 3);
                 }
                 else
                 //both overlapping -> Room 'inside' the other room -> shouldn't happen
@@ -240,7 +240,7 @@ namespace Assets.Scripts.MapGeneration
                     splitPointRoom1 = new Vector2(randomIntOnRangeVertical, topRoom1+1);
                     splitPointRoom2 = new Vector2(randomIntOnRangeVertical, room2Y-1);
                     //Debug.Log($"Connect rooms vertically at: {splitPointRoom1} and {splitPointRoom2}");
-                    hallway1 = new HallWay(ground, wall, corner, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 3, (int)(splitPointRoom2.y-splitPointRoom1.y + 1));
+                    hallway1 = new HallWay(ground, wall, corner, door, (int)splitPointRoom1.x, (int)splitPointRoom1.y, 3, (int)(splitPointRoom2.y-splitPointRoom1.y + 1));
                 }
                 else
                 //Rooms diagonal

@@ -163,12 +163,7 @@ namespace Assets.Scripts.MapGeneration
                                 newRoomTile.transform.name = $"Normal Room: {BSPMap.s_allRooms[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allRooms[h].PTiles[i, j].Position.x}|{BSPMap.s_allRooms[h].PTiles[i, j].Position.y}]";
                                 newRoomTile.transform.parent = motherOfRoom.transform;
                             }
-                            else
-                            {
-                                Debug.Log(BSPMap.s_allRooms[h].PTiles[i, j].Position);
-                            }
                         }
-
                     }
                 }
                 else InstantiateBossRoom(h);

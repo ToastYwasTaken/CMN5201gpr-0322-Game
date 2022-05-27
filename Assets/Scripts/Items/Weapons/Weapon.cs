@@ -26,7 +26,14 @@ public class Weapon : Item
 
     [SerializeField] protected ShotBehaviour _shootBehaviour = null;
     public ShotBehaviour ShootBehaviour { get => _shootBehaviour; }
-    
+
+    [Header("Audio")]
+    [SerializeField]
+    public AudioClip WeaponShootSound;
+    [SerializeField]
+    public AudioClip WeaponImpactSound;
+    private AudioManager _audioManager;
+
     public virtual void OnEquip() { }
 
     public virtual void OnUnequip() { }
@@ -37,7 +44,10 @@ public class Weapon : Item
         ProjectileStats newBulletStats = SetupProjectileStats(playerStats);
 
         if (_shootBehaviour != null)
+        {
             _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, parent);
+            
+        }
     }
 
     private ProjectileStats SetupProjectileStats(EntityStats playerStats)

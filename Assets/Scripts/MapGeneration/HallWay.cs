@@ -8,9 +8,8 @@ namespace Assets.Scripts.MapGeneration
     {
         private Vector3 _connectionPoint = new Vector3(0,0,0); 
         public static List<Vector3> s_connections = new List<Vector3>();
-        public static List<Vector3> s_doorLocations = new List<Vector3>();
 
-        public HallWay(GameObject ground, GameObject border, GameObject corner,
+        public HallWay(GameObject ground, GameObject border, GameObject corner, GameObject door,
     int x, int y, int width, int height)
         {
             X = x;
@@ -18,6 +17,7 @@ namespace Assets.Scripts.MapGeneration
             Ground = ground;
             Wall = border;
             Corner = corner;
+            Door = door;
             Width = width;
             Height = height;
             NormalizePrefabSize(Ground);
@@ -59,14 +59,13 @@ namespace Assets.Scripts.MapGeneration
                                 s_connections.Add(_connectionPoint);
                                 Tiles[x, y] = new Tile(Corner, new Vector3(posX++, posY, 0), rotation);
                             }
-                            //Mid
+                            //Mid left
                             else
                             {
-                                rotation = RandomlyOffsetRotation();
+                                rotation = Quaternion.Euler(0, 0, 90);
                                 _connectionPoint = new Vector3(posX, posY, 0);
                                 s_connections.Add(_connectionPoint);
-                                s_doorLocations.Add(_connectionPoint);
-                                Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                                Tiles[x, y] = new Tile(Door, new Vector3(posX++, posY, 0), rotation);
                             }
                         }
                         //right side
@@ -88,14 +87,13 @@ namespace Assets.Scripts.MapGeneration
                                 s_connections.Add(_connectionPoint);
                                 Tiles[x, y] = new Tile(Corner, new Vector3(posX++, posY, 0), rotation);
                             }
-                            //Mid
+                            //Mid right
                             else
                             {
-                                rotation = RandomlyOffsetRotation();
+                                rotation = Quaternion.Euler(0, 0, 90);
                                 _connectionPoint = new Vector3(posX, posY, 0);
                                 s_connections.Add(_connectionPoint);
-                                s_doorLocations.Add(_connectionPoint);
-                                Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                                Tiles[x, y] = new Tile(Door, new Vector3(posX++, posY, 0), rotation);
                             }
                         }
                         //Mid
@@ -143,14 +141,13 @@ namespace Assets.Scripts.MapGeneration
                                 s_connections.Add(_connectionPoint);
                                 Tiles[x, y] = new Tile(Corner, new Vector3(posX++, posY, 0), rotation);
                             }
-                            //Mid
+                            //Bot mid
                             else
                             {
-                                rotation = RandomlyOffsetRotation(); 
+                                rotation = Quaternion.Euler(0, 0, 0);
                                 _connectionPoint = new Vector3(posX, posY, 0);
                                 s_connections.Add(_connectionPoint);
-                                s_doorLocations.Add(_connectionPoint);
-                                Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                                Tiles[x, y] = new Tile(Door, new Vector3(posX++, posY, 0), rotation);
                             }
                         }
                         //Top
@@ -172,14 +169,13 @@ namespace Assets.Scripts.MapGeneration
                                 s_connections.Add(_connectionPoint);
                                 Tiles[x, y] = new Tile(Corner, new Vector3(posX++, posY, 0), rotation);
                             }
-                            //Mid
+                            //Top mid
                             else
                             {
-                                rotation = RandomlyOffsetRotation();
+                                rotation = Quaternion.Euler(0, 0, 0);
                                 _connectionPoint = new Vector3(posX, posY, 0);
                                 s_connections.Add(_connectionPoint);
-                                s_doorLocations.Add(_connectionPoint);
-                                Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
+                                Tiles[x, y] = new Tile(Door, new Vector3(posX++, posY, 0), rotation);
                             }
                         }
                         //Mid

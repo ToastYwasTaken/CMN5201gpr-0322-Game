@@ -25,6 +25,7 @@ namespace Assets.Scripts.MapGeneration
         protected GameObject Obstacle2;
         protected GameObject Wall;
         protected GameObject Corner;
+        protected GameObject Door;
         private System.Random _rdm = new((int)(System.DateTime.Now.Ticks));
 
         /// <summary>
@@ -153,7 +154,15 @@ namespace Assets.Scripts.MapGeneration
                         {
                             Tiles[x, y] = new Tile(Ground, new Vector3(posX++, posY, 0), rotation);
                         }
-                        else Tiles[x, y] = new Tile(Obstacle1, new Vector3(posX++, posY, 0), rotation);
+                        else
+                        {
+                            int rdmInt =_rdm.Next(1, 3);
+                            if(rdmInt == 1)
+                            {
+                            Tiles[x, y] = new Tile(Obstacle1, new Vector3(posX++, posY, 0), rotation);
+                            }
+                            else Tiles[x, y] = new Tile(Obstacle2, new Vector3(posX++, posY, 0), rotation);
+                        }
                     }
                 }
                 posX = X;
