@@ -212,6 +212,8 @@
     <Compile Include="Assets\Scripts\Interfaces\IRestoreHealth.cs" />
     <Compile Include="Assets\Scripts\UI\Animation\ButtonAnimationUI.cs" />
     <Compile Include="Assets\Scripts\Player\General\InstantiateOnAwake.cs" />
+    <Compile Include="Assets\Scripts\Items\Loottables\LootTable.cs" />
+    <Compile Include="Assets\Scripts\Player\General\BackgroundSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
