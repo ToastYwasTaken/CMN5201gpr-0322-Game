@@ -1029,7 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2924528, g: 0.29107332, b: 0.29107332, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11218,6 +11218,71 @@ Transform:
   m_Father: {fileID: 1319662364}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -128.1}
+--- !u!1001 &1696672031
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6726731192180411937, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_Name
+      value: PostProcessVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411937, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411966, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: weight
+      value: 0.633
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4822146
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.1866326
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.6745294
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726731192180411967, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab23f9c62b555874d89617b48e7a4b8b, type: 3}
 --- !u!1 &1706999499
 GameObject:
   m_ObjectHideFlags: 0
@@ -13735,7 +13800,7 @@ RectTransform:
   m_GameObject: {fileID: 2030222304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 164581306}
@@ -13766,17 +13831,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Binding of Tank
+  m_text: Tank Patrol
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c3d23ec7f690d7448b2d0abadf206488, type: 2}
+  m_sharedMaterial: {fileID: 6656777691783693085, guid: c3d23ec7f690d7448b2d0abadf206488, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278236645
+  m_fontColor: {r: 0.8962264, g: 0.70797795, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -13793,13 +13858,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 65.77
+  m_fontSizeBase: 65.77
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -13965,10 +14030,10 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
