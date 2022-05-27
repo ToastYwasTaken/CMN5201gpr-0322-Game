@@ -43,6 +43,8 @@ namespace AISystem
         
         public bool InRangeByRayCast()
         {
+            if (Target == null) return false;
+
             Vector3 dir = Target.transform.position - Owner.transform.position;
             var ray = new Ray(Owner.transform.position, dir.normalized);
         

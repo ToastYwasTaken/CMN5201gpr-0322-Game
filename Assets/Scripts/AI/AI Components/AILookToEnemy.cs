@@ -42,6 +42,7 @@ namespace AISystem
 
         public void LookAt(GameObject target)
         {
+            if (target == null) return;
             _lerpTimeB = 0.0f;
             _lerpTimeA = 0.0f;
             // Look At
@@ -53,6 +54,7 @@ namespace AISystem
 
         public void LookAtInstance()
         {
+            if (Target == null) return;
             Quaternion rotation = CalculateRotationToTarget(TargetPosition);
 
             _rotatingObject.transform.rotation = rotation;

@@ -22,6 +22,7 @@ namespace Assets.Scripts.Player
         //[SerializeField] bool isRange, isNotObst, IsAimAt;
         private void FixedUpdate()
         {
+            if (_target == null) return;
             //isRange = IsInRange(_target);
             //isNotObst = IsNotObstructed(_target);
             //IsAimAt = IsAimingAt(_target);
