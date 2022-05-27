@@ -53,8 +53,6 @@ namespace Dennis.UI
 
         private void Play()
         {
-            // ToDo: Add logic to start game!
-            //SceneManager.LoadScene(1);
             loadingScreen.LoadScene(1);
         }
 
