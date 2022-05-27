@@ -3,6 +3,6 @@
 public struct WeaponAudio
 {
     public AudioClip WeaponShootSound;
-    public AudioClip WeaponInpactSound;
+    public AudioClip WeaponImpactSound;
     public AudioManager AudioManager;
 }

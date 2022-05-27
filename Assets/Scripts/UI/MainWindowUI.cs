@@ -56,7 +56,6 @@ namespace Dennis.UI
             // ToDo: Add logic to start game!
             //SceneManager.LoadScene(1);
             loadingScreen.LoadScene(1);
-            _audioManager.ChangeMelody(_audioManager.MusicLevel);
         }
 
         private void Settings()

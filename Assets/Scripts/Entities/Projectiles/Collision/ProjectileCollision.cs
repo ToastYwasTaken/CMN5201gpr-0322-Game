@@ -13,12 +13,12 @@ public abstract class ProjectileCollision : ScriptableObject
             return;
         }
 
-        if (weaponAudio.WeaponInpactSound == null)
+        if (weaponAudio.WeaponImpactSound == null)
         {
             Debug.LogWarning("Weapon impact sound not set!");
             return;
         }
 
-        weaponAudio.AudioManager.PlaySound(weaponAudio.WeaponInpactSound);
+        weaponAudio.AudioManager.PlaySound(weaponAudio.WeaponImpactSound);
     }
 }

@@ -51,7 +51,7 @@ public class Weapon : Item
     {
         WeaponAudio weaponAudio = new()
         {
-            WeaponInpactSound = _weaponImpactSound,
+            WeaponImpactSound = _weaponImpactSound,
             WeaponShootSound = _weaponShootSound,
             AudioManager = audioManager,
         };

@@ -15,14 +15,19 @@ namespace Dennis.UI
         [SerializeField]
         private TMP_Text loadingText;
 
+        private AudioManager _audioManager;
+
         private void Start()
         {
             loadingScreen.SetActive(false);
+            _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
         }
 
         public void LoadScene(int sceneIndex)
         {
             StartCoroutine(LoadAsynchronously(sceneIndex));
+            //Start game melody when done loading
+            _audioManager.ChangeMelody(_audioManager.MusicLevel);
         }
 
         private IEnumerator LoadAsynchronously(int sceneIndex)

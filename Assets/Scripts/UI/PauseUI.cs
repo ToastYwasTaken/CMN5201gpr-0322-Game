@@ -60,7 +60,6 @@ namespace Dennis.UI
                 if (!IsPaused)
                 {
                     //Pause Audio when opening Pause menu
-                    Debug.Log("pausing melody");
                     _audioManager.PauseMelody();
                     IsPaused = true;
                 }

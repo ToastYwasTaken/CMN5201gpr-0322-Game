@@ -23,5 +23,5 @@ MonoBehaviour:
   _bulletSpeed: 5
   _heatmeterUsage: 0
   _shootBehaviour: {fileID: 11400000, guid: 64b97bdbd9d3b7b48b4f4144cfc47c24, type: 2}
-  WeaponShootSound: {fileID: 0}
-  WeaponImpactSound: {fileID: 0}
+  _weaponShootSound: {fileID: 8300000, guid: f7a6dd2779870ef44b6868f1f458ef30, type: 3}
+  _weaponImpactSound: {fileID: 8300000, guid: e16d44ca1ebc3c64d85d9fd29deba17c, type: 3}
