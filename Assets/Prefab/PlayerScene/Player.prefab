@@ -974,6 +974,7 @@ MonoBehaviour:
   _weaponManager: {fileID: 7190018995371742076}
   _heatmeter: {fileID: 2954168021030677781}
   _overdriveManager: {fileID: 4874678111844051749}
+  _audioManager: {fileID: 0}
 --- !u!114 &7190018995371742076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,10 +1045,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39257df1db9ee6441a8930dcb9783716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumHeatlevel: 500
-  CooldownMultiplier: 2
-  _overheatPenalty: 0.25
-  CooldownAmountMultipier: 2
+  _maximumHeatlevel: 100
+  CooldownMultiplier: 1
+  _overheatPenalty: 0.2
+  CooldownAmountMultipier: 5
 --- !u!114 &7476223424415133758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,6 +1177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183aecd79452208488443055538b3102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _zoomMin: 5
+  _zoomMax: 8
 --- !u!70 &7576545269406560643
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1553,7 +1556,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 42076
+  m_InstanceId: 67162
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

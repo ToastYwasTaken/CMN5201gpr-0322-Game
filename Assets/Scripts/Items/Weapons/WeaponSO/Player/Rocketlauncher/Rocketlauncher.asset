@@ -16,12 +16,12 @@ MonoBehaviour:
   _name: 
   _description: 
   _isStackable: 0
-  _fireRate: 2
+  _fireRate: 2.5
   _bulletPrefab: {fileID: 2912425703784977495, guid: b38abd826eb4a2f40a60d09db0f15aa3, type: 3}
-  _weaponPower: 5
-  _armorPenetration: 15
+  _weaponPower: 30
+  _armorPenetration: 30
   _bulletSpeed: 5
-  _heatmeterUsage: 40
+  _heatmeterUsage: 60
   _shootBehaviour: {fileID: 11400000, guid: 636f9a324d9f4f243bb12d57805921a4, type: 2}
   _weaponShootSound: {fileID: 8300000, guid: f2cf1eda8b26230418fa66a5e5110b5d, type: 3}
   _weaponImpactSound: {fileID: 8300000, guid: f394ff33663e3d949957bd71b18dceed, type: 3}
