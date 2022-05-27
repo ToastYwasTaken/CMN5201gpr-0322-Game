@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1905602882026188726}
   - component: {fileID: 8918236863796743188}
   m_Layer: 30
-  m_Name: Bullet Player
+  m_Name: Bullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 1905602882026188726}
   _projectileMovement: {fileID: 11400000, guid: ec8ea1de6a352fc409498deff2033259, type: 2}
-  _projectileCollision: {fileID: 11400000, guid: 047b321e34e368543b04ec1dadedd33c, type: 2}
+  _projectileCollision: {fileID: 11400000, guid: 80f4e73dbefdb904d9c08fa56c6bfd98, type: 2}
 --- !u!114 &3661775778771860736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.934
-  m_Color: {r: 0, g: 0.8480973, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.5827384, b: 1, a: 1}
   m_Intensity: 0.52
   m_LightVolumeIntensity: 0.47
   m_LightVolumeIntensityEnabled: 0
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.70554465, g: 0.73451364, b: 0.990566, a: 1}
+  m_Color: {r: 0, g: 0.58431375, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

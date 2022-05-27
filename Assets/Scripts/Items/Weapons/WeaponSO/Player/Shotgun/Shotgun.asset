@@ -17,7 +17,7 @@ MonoBehaviour:
   _description: 
   _isStackable: 0
   _fireRate: 1.5
-  _bulletPrefab: {fileID: 2912425703784977495, guid: cb9aa57d3daf24b49baacb1d6cc539f5, type: 3}
+  _bulletPrefab: {fileID: 2912425703784977495, guid: aff84b8fa1358d94cbf7d7664b43e39a, type: 3}
   _weaponPower: 8
   _armorPenetration: 8
   _bulletSpeed: 6

@@ -1007,8 +1007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4b7d9e8df58b347b6c4e2aa99bb290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 500
-  _maxArmor: 250
+  _maxHealth: 250
+  _maxArmor: 500
   _damageReduction: 5
   _armorPenetrationReduction: 5
   _attackPower: 2
@@ -1047,8 +1047,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumHeatlevel: 100
   CooldownMultiplier: 1
-  _overheatPenalty: 0.2
-  CooldownAmountMultipier: 5
+  _overheatPenalty: 0.1
+  CooldownAmountMultipier: 3
 --- !u!114 &7476223424415133758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,7 +1556,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67162
+  m_InstanceId: 42526
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

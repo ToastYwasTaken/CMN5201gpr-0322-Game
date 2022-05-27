@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97868e98fe9b48e4a81485b0a2bfe54e, type: 3}
   m_Name: ReduceHeatmeterAction
   m_EditorClassIdentifier: 
-  _reduceHeatlevelAmount: 500
+  _reduceHeatlevelAmount: 50

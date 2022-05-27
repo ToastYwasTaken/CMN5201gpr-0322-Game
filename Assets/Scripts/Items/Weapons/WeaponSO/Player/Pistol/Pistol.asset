@@ -17,7 +17,7 @@ MonoBehaviour:
   _description: The most basic weapon!
   _isStackable: 0
   _fireRate: 1
-  _bulletPrefab: {fileID: 2912425703784977495, guid: cb9aa57d3daf24b49baacb1d6cc539f5, type: 3}
+  _bulletPrefab: {fileID: 2912425703784977495, guid: cca58bb489a7e514b9370cbbb754af0d, type: 3}
   _weaponPower: 15
   _armorPenetration: 15
   _bulletSpeed: 7
