@@ -193,10 +193,10 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.38
+    m_Value: 0.48
   intensity:
     m_OverrideState: 1
-    m_Value: 3.41
+    m_Value: 7.37
   scatter:
     m_OverrideState: 0
     m_Value: 0.752
@@ -216,8 +216,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 43d7623d357d00b4f87c80afadb95192, type: 3}
   dirtIntensity:
-    m_OverrideState: 1
-    m_Value: 10.94
+    m_OverrideState: 0
+    m_Value: 6.71
 --- !u!114 &-1969429618892260773
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb4b772797da9440885e8bd939e9560, type: 3}
   m_Name: ColorCurves
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   master:
     m_OverrideState: 1
     m_Value:
@@ -276,7 +276,7 @@ MonoBehaviour:
           time: 0
           value: 0
           inSlope: 0
-          outSlope: 1
+          outSlope: 0.28048387
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 1
+          inSlope: 2.9245107
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   green:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       <length>k__BackingField: 2
       m_Loop: 0
@@ -375,8 +375,8 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.02097902
-          value: 0.9849624
+          time: 0.46153846
+          value: 0.8345865
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -397,8 +397,8 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.46853146
-          value: 0.94736844
+          time: 0.46153846
+          value: 0.9849624
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   satVsSat:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       <length>k__BackingField: 0
       m_Loop: 0
@@ -424,22 +424,13 @@ MonoBehaviour:
   lumVsSat:
     m_OverrideState: 1
     m_Value:
-      <length>k__BackingField: 1
+      <length>k__BackingField: 0
       m_Loop: 0
       m_ZeroValue: 0.5
       m_Range: 1
       m_Curve:
         serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0.513986
-          value: 0.91729325
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
+        m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
