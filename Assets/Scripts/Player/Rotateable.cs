@@ -21,35 +21,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    [CustomEditor(typeof(Rotateable))]
-    public class RotateableEditor : Editor
-    {
-        private Rotateable _rotateable; 
-        public override void OnInspectorGUI()
-        {
-            base.OnInspectorGUI();
-            _rotateable = (Rotateable)target;
-
-            //_rotateable.RotationCurve = EditorGUILayout.CurveField
-            //    ("Rotation/ x:Dis y:Spd", _rotateable.RotationCurve, 
-            //    Color.red, new Rect(0, 0.05f, 1, 1));
-
-            EditorGUILayout.MinMaxSlider("Constrain: " + 
-                ((int)_rotateable.ConstrStart).ToString() + "/" + 
-                ((int)_rotateable.ConstrEnd).ToString(), ref _rotateable.ConstrStart, 
-                ref _rotateable.ConstrEnd, 0, 360);
-
-            if (GUI.changed)
-                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
-            if (GUILayout.Button("Center"))
-            {
-                _rotateable.CenterConstrains();
-                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
-            }
-        }
-    }
     //[RequireComponent(typeof(Rigidbody2D))]
-    class Rotateable : MonoBehaviour
+    public class Rotateable : MonoBehaviour
     {
         [SerializeField] private Transform _parentT;
         [SerializeField] private float _turnSpeed;
