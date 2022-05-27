@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818559283454854438, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_InstanceId
-      value: -15686
+      value: -691226
       objectReference: {fileID: 0}
     - target: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Name
@@ -423,10 +423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 125
-  _maxArmor: 500
-  _damageReduction: 5
-  _armorPenetrationReduction: 2
-  _attackPower: 5
+  _maxArmor: 250
+  _damageReduction: 1
+  _armorPenetrationReduction: 1
+  _attackPower: 1
   _armorPenetation: 1
   _canCrit: 0
   _critChance: 0
