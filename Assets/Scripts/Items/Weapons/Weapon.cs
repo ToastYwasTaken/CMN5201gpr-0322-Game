@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts.Player;
 using UnityEngine;
 
@@ -28,29 +29,36 @@ public class Weapon : Item
     public ShotBehaviour ShootBehaviour { get => _shootBehaviour; }
 
     [Header("Audio")]
-    [SerializeField]
-    public AudioClip WeaponShootSound;
-    [SerializeField]
-    public AudioClip WeaponImpactSound;
-    private AudioManager _audioManager;
+    [SerializeField] private AudioClip _weaponShootSound;
+    [SerializeField] private AudioClip _weaponImpactSound;
 
     public virtual void OnEquip() { }
 
     public virtual void OnUnequip() { }
 
 
-    public virtual void Shoot(EntityStats playerStats, GameObject firePoint, Transform parent)
+    public virtual void Shoot(EntityStats playerStats, GameObject firePoint, Transform parent, AudioManager audioManager)
     {
-        ProjectileStats newBulletStats = SetupProjectileStats(playerStats);
+        ProjectileStats newBulletStats = SetupProjectileStats(playerStats, audioManager);
 
         if (_shootBehaviour != null)
         {
-            _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, parent);
-            
+            _shootBehaviour.Fire(newBulletStats, _bulletPrefab, firePoint, parent, SetupWeaponAudio(audioManager));            
         }
     }
 
-    private ProjectileStats SetupProjectileStats(EntityStats playerStats)
+    private WeaponAudio SetupWeaponAudio(AudioManager audioManager) 
+    {
+        WeaponAudio weaponAudio = new()
+        {
+            WeaponInpactSound = _weaponImpactSound,
+            WeaponShootSound = _weaponShootSound,
+            AudioManager = audioManager,
+        };
+        return weaponAudio;
+    }
+
+    private ProjectileStats SetupProjectileStats(EntityStats playerStats, AudioManager audioManager)
     {
         ProjectileStats newBulletStats = new()
         {
@@ -62,6 +70,8 @@ public class Weapon : Item
 
             ProjectileOwnerType = playerStats.EntityType,
             ProjectileSender = playerStats.gameObject,
+
+            WeaponAudio = SetupWeaponAudio(audioManager),
 
             ProjectileSpeed = _bulletSpeed,
             ProjectileLifeTime = 20f

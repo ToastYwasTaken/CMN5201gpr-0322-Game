@@ -5,7 +5,7 @@ public class DefaultProjectileCollision : ProjectileCollision
 {
     public override void OnCollision(Collider2D collision, ProjectileStats projectileStats, GameObject projectile)
     {
-        if (collision.CompareTag("Wall")) Destroy(projectile.gameObject);
+        if (collision.CompareTag("Wall")) AfterCollisionEffects(projectileStats, projectile);
 
         IReturnEntityType hittedObjectIType = collision.GetComponent<IReturnEntityType>();
 
@@ -19,6 +19,12 @@ public class DefaultProjectileCollision : ProjectileCollision
         if (damageable != null) damageable.DealDamage(projectileStats.AttackPower, projectileStats.ArmorPenetration,
                                                       projectileStats.CanCrit, projectileStats.CritChance);
 
+        AfterCollisionEffects(projectileStats, projectile);
+    }
+
+    private void AfterCollisionEffects(ProjectileStats projectileStats, GameObject projectile)
+    {
+        PlayCollisionSound(projectileStats.WeaponAudio);
         Destroy(projectile.gameObject);
     }
 }

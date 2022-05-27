@@ -26,7 +26,6 @@ class Projectile : MonoBehaviour
         if (_projectileCollision == null) Debug.LogWarning("Projectile Collision Behaviour isnt set!");
 
         _rb.velocity = Vector2.zero;
-        Debug.LogWarning("Bullet spawned");
         Destroy(gameObject, _projectileStats.ProjectileLifeTime);
     }
 

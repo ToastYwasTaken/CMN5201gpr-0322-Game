@@ -1,6 +1,3 @@
-using Assets.Scripts.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCore : MonoBehaviour
@@ -13,6 +10,7 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] private WeaponManager _weaponManager;
     [SerializeField] private Heatmeter _heatmeter;
     [SerializeField] private OverdriveManager _overdriveManager;
+    [SerializeField] private AudioManager _audioManager;
 
     private void Awake()
     {
@@ -23,9 +21,13 @@ public class PlayerCore : MonoBehaviour
         if (_weaponManager == null) _weaponManager = GetComponent<WeaponManager>();
         if (_overdriveManager == null) _overdriveManager = GetComponent<OverdriveManager>();
 
+        if(_audioManager == null) _audioManager = FindObjectOfType<AudioManager>();
+
+
         _playerInformation.Heatmeter = _heatmeter;
         _playerInformation.WeaponManager = _weaponManager;
         _playerInformation.PlayerStats = _playerStats;
         _playerInformation.OverdriveManager = _overdriveManager;
+        _playerInformation.AudioManager = _audioManager;
     }
 }

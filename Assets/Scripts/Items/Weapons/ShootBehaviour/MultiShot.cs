@@ -8,13 +8,15 @@ public class MultiShot : ShotBehaviour
     [SerializeField] private float _angle;
     [SerializeField] private bool _randomAngle;
 
-    public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent)
+    public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent, WeaponAudio weaponManager)
     {
         if (_randomAngle) 
         {
             for (int i = 0; i < _amountOfBullets; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
+                PlaySound(weaponManager);
+
                 float facingRotation = newBullet.transform.rotation.z;
 
                 float startRoation = facingRotation + _angle /2f;
@@ -34,6 +36,8 @@ public class MultiShot : ShotBehaviour
             for (int i = 0; i < _amountOfBullets; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
+                PlaySound(weaponManager);
+
                 float facingRotation = newBullet.transform.rotation.z;
 
                 float startRoation = facingRotation + _angle /2f;

@@ -13,11 +13,14 @@ public class WeaponComp : MonoBehaviour, IWeapon
     [SerializeField] private bool _useRandomWeapons;
     [SerializeField] private Weapon[] _randomWeapons;
 
+    [SerializeField] private AudioManager _audioManager;
+
     private WeaponSlot _weaponSlot;
 
     private void Awake()
     {
        if(_enemyStats == null) _enemyStats = GetComponentInChildren<Enemy>();
+        if (_audioManager == null) FindObjectOfType<AudioManager>();
     }
 
     private void Start()
@@ -46,7 +49,7 @@ public class WeaponComp : MonoBehaviour, IWeapon
             return;
         } 
 
-        _weaponSlot.Shoot(null, false, _enemyStats, _muzzle, _parent);
+        _weaponSlot.Shoot(null, false, _enemyStats, _muzzle, _parent, _audioManager);
     }
 
     public void ChangeWeapon(Weapon newWeapon)

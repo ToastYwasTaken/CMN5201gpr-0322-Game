@@ -4,4 +4,5 @@
     public WeaponManager WeaponManager;
     public EntityStats PlayerStats;
     public OverdriveManager OverdriveManager;
+    public AudioManager AudioManager;
 }

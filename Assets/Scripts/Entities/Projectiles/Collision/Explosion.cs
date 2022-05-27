@@ -8,6 +8,7 @@ public class Explosion : MonoBehaviour
     private void Start()
     {
         ExplosionEffect(ProjectileStats, ExplosionRadius);
+        PlayExplosionSound(ProjectileStats.WeaponAudio);
     }
 
     private void ExplosionEffect(ProjectileStats projectileStats, float explosionRadius)
@@ -19,17 +20,9 @@ public class Explosion : MonoBehaviour
 
             eEntityType hittedType;
             if (hittedObjectIType != null) hittedType = hittedObjectIType.GetEntityType();
-            else
-            {
-                Destroy(this.gameObject);
-                return;
-            }
+            else continue;
 
-            if (hittedType == projectileStats.ProjectileOwnerType)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
+            if (hittedType == projectileStats.ProjectileOwnerType) continue;
 
             IDamageable damageable = targets[i].GetComponent<IDamageable>();
             if (damageable != null) damageable.DealDamage(projectileStats.AttackPower, projectileStats.ArmorPenetration,
@@ -38,5 +31,23 @@ public class Explosion : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+    }
+
+    private void PlayExplosionSound(WeaponAudio weaponAudio)
+    {
+
+        if (weaponAudio.AudioManager == null)
+        {
+            Debug.LogWarning("No Audiomanager found!");
+            return;
+        }
+
+        if (weaponAudio.WeaponInpactSound == null)
+        {
+            Debug.LogWarning("Weapon impact sound not set!");
+            return;
+        }
+
+        weaponAudio.AudioManager.PlaySound(weaponAudio.WeaponInpactSound);
     }
 }

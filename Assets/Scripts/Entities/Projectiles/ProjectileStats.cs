@@ -11,6 +11,8 @@ public struct ProjectileStats
     public eEntityType ProjectileOwnerType;
     public GameObject ProjectileSender;
 
+    public WeaponAudio WeaponAudio;
+
     public float ProjectileLifeTime;
 }
 
