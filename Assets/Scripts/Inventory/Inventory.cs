@@ -53,12 +53,21 @@ public class Inventory : MonoBehaviour
         SwitchShowInv();
     }
 
+    bool _isMenu = false, _isOpen = false;
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Escape)) _isMenu = !_isMenu;
+        if (Input.GetKeyDown(KeyCode.Tab) && !_isMenu)
         {
+            _isOpen = !_isOpen;
             SwitchShowInv();
         }
+        if (_isOpen && _isMenu)
+        {
+            _isOpen = !_isOpen;
+            SwitchShowInv();
+        }
+
     }
     List<Image> _allImages = new List<Image>();
     bool _showAllImages = true;
