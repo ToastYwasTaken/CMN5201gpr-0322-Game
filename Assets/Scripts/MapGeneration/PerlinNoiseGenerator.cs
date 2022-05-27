@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if (UNITY_EDITOR)
+//#if (UNITY_EDITOR)
 /// <summary>
 /// Unity Editor only script
 /// Only to see the noise applied for room generation
@@ -91,4 +91,4 @@ namespace Assets.Scripts.MapGeneration
 
     }
 }
-#endif
+//#endif

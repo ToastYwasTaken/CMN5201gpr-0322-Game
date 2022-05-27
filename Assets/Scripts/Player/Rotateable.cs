@@ -209,6 +209,7 @@ namespace Assets.Scripts.Player
             return _angle < 0 ? 360 + _angle : 
                    _angle > 360 ? _angle - 360 : _angle;
         }
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             if (_isConstrained)
@@ -224,6 +225,7 @@ namespace Assets.Scripts.Player
                 Handles.DrawSolidArc(transform.position, Vector3.forward, DegreeToV3Relative(ConstrStart + _parentAngle) - transform.position, Mathf.Abs(ConstrStart - ConstrEnd), 2.5f);
             }
         }
+#endif
 
         private Vector3 DegreeToV3Relative(float degree)
         {
