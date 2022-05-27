@@ -20,7 +20,7 @@ namespace Dennis.UI
         private void Start()
         {
             loadingScreen.SetActive(false);
-            _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+            _audioManager = GameObject.Find("/AudioManager")?.GetComponent<AudioManager>();
         }
 
         public void LoadScene(int sceneIndex)
