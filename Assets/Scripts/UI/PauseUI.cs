@@ -16,6 +16,8 @@ namespace Dennis.UI
         private Window PauseWindow;
         [SerializeField]
         private Window SettingsWindow;
+        [SerializeField]
+        private GameObject PlayerUI;
 
         [Header("Buttons")]
         [SerializeField]
@@ -81,6 +83,9 @@ namespace Dennis.UI
         void Show()
         {
             WindowController.OpenWindow(PauseWindow);
+
+            PlayerUI.SetActive(false);
+
             SetTimeScale(0f);
         }
 
@@ -98,6 +103,9 @@ namespace Dennis.UI
                 _audioManager.ContinueMelody();
                 IsPaused = false;
             }
+
+            PlayerUI.SetActive(true);
+
             SetTimeScale(1f);
         }
 
