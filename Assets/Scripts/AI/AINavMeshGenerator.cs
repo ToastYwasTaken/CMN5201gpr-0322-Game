@@ -21,7 +21,7 @@ namespace AISystem
             }
 
             if (SpawnEnemies)
-                GetComponent<AIEnemySpawner>().Spawn();
+                GetComponent<AIEnemySpawner>().SpawnEnemies();
         }
 
         private void Start()
