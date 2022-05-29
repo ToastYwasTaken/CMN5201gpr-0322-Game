@@ -5,26 +5,36 @@ using UnityEngine;
 public class WeaponComp : MonoBehaviour, IWeapon
 {
     [SerializeField] private Weapon _weaponItem;
-    [SerializeField] private GameObject _muzzle;
+    [SerializeField] private GameObject[] _muzzles;
     [SerializeField] private Enemy _enemyStats;
 
     [SerializeField] private Transform _parent;
+    [SerializeField] Transform _target;
 
     [SerializeField] private bool _useRandomWeapons;
     [SerializeField] private Weapon[] _randomWeapons;
+    [SerializeField] Rotateable[] _turrets;
 
     [SerializeField] private AudioManager _audioManager;
 
     private WeaponSlot _weaponSlot;
 
+    public Transform Target { get { return _target; }  set { _target = value; } }
+    bool hasTurrets = false;
+
     private void Awake()
     {
        if(_enemyStats == null) _enemyStats = GetComponentInChildren<Enemy>();
-        if (_audioManager == null) FindObjectOfType<AudioManager>();
+       if (_audioManager == null) FindObjectOfType<AudioManager>();
+       if (_turrets != null) hasTurrets = true;
+       
+
     }
 
     private void Start()
     {
+        if(Target == null) Target = RefLib.Player.GetComponent<Transform>();
+
         if (_weaponItem == null) 
         {
             Debug.LogWarning("Enemy has no weapon equiped!");
@@ -37,19 +47,40 @@ public class WeaponComp : MonoBehaviour, IWeapon
     {
        ReduceWeaponCooldown();
     }
+    private void FixedUpdate()
+    {
+        if(hasTurrets)
+            DoTurrets();
+    }
 
+    int _currentMuzzle = 0;
+    GameObject GetMuzzle()
+    {
+        _currentMuzzle++;
+        return _muzzles[_currentMuzzle % _muzzles.Length];
+        //GameObject gO = _muzzles[_currentMuzzle];
+        //_currentMuzzle++;
+        //return gO;
 
+    }
+    void DoTurrets()
+    {
+        foreach (Rotateable turret in _turrets)
+        {
+            turret.RotateTowardsTargetT(Target);
+        }
+    }
 
     public void Fire()
     {
         if (_weaponSlot.WeaponItem ==null) return;
-        if (_muzzle == null)
+        if (_muzzles == null)
         {
             Debug.LogWarning("Enemy has no muzzle!");
             return;
         } 
 
-        _weaponSlot.Shoot(null, false, _enemyStats, _muzzle, _parent, _audioManager);
+        _weaponSlot.Shoot(null, false, _enemyStats, GetMuzzle(), _parent, _audioManager);
     }
 
     public void ChangeWeapon(Weapon newWeapon)

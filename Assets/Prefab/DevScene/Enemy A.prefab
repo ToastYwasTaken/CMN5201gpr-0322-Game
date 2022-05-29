@@ -222,6 +222,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.7
       objectReference: {fileID: 0}
+    - target: {fileID: 1280265729372006359, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1371734795489153454, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Color.b
       value: 0.6792453
@@ -240,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818559283454854438, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_InstanceId
-      value: -786592
+      value: -299994
       objectReference: {fileID: 0}
     - target: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Name
@@ -362,6 +366,14 @@ PrefabInstance:
       propertyPath: _useRandomWeapons
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8879270859821570630, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
+      propertyPath: _muzzles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879270859821570630, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
+      propertyPath: _muzzles.Array.data[0]
+      value: 
+      objectReference: {fileID: 3613446757256253110}
     - target: {fileID: 8879270859821570630, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: _randomWeapons.Array.size
       value: 3

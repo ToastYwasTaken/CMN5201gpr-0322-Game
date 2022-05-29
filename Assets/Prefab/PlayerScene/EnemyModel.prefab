@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7261160329242522645
 Transform:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   - {x: 1.0099411, y: -6.8893228, z: 0}
   m_ShapePathHash: 831436549
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39970
+  m_InstanceId: 42920
 --- !u!70 &6914006352712021074
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -462,6 +462,7 @@ MonoBehaviour:
   _parent: {fileID: 0}
   _useRandomWeapons: 0
   _randomWeapons: []
+  _audioManager: {fileID: 0}
 --- !u!1 &7731916165958593339
 GameObject:
   m_ObjectHideFlags: 0
