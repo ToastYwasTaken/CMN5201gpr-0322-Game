@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IDoor
 {
-    [SerializeField] GameObject DoorGO;
+    [SerializeField] GameObject _doorGO;
+    [SerializeField] DoorTrigger _doorTrigger;
     [SerializeField] bool _isOpenByTrigger;
 
     private void Awake()
     {
-        GameObject door = GetComponentInChildren<DoorTrigger>().gameObject;
-        door.SetActive(_isOpenByTrigger);
+        if (_doorTrigger == null) return;
+        _doorTrigger.IsOpen = _isOpenByTrigger;
     }
     public void OpenDoor() 
     {
-        DoorGO.SetActive(false);
+        _doorGO.SetActive(false);
     }
     public void CloseDoor()
     {
-        DoorGO.SetActive(true);
+        _doorGO.SetActive(true);
     }
 }
 
