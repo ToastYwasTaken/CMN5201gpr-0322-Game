@@ -30,7 +30,7 @@ namespace Assets.Scripts.MapGeneration
         [Tooltip("minimal height required for splitting a map into 2 new ones")]
         int _minPartitionHeight;
         [SerializeField]
-        GameObject _groundPrefab;
+        GameObject[] _groundPrefabs;
         [SerializeField]
         GameObject _obstacle1Prefab;
         [SerializeField]
@@ -44,7 +44,10 @@ namespace Assets.Scripts.MapGeneration
         [SerializeField]
         bool turnOffHallWays;
 
-        private BSPMap mapRoot;
+        private System.Random _rdm;
+        private int _rdmInt;
+        private BSPMap _mapRoot;
+        private float elapsedTime;
         //containt all maps, the ones generated and their originals
         private List<BSPMap> _allMaps = new List<BSPMap>();
         //smallest leafs contains the smallest Leafs / partitions that remain after splitting the original x times
@@ -52,6 +55,7 @@ namespace Assets.Scripts.MapGeneration
 
         void Awake()
         {
+            elapsedTime = Time.realtimeSinceStartup;
             //Assign motherGO of Map
             if (_mapMotherGO == null)
             {
@@ -59,15 +63,22 @@ namespace Assets.Scripts.MapGeneration
                 _mapMotherGO.transform.position = new Vector3(0, 0, 0);
             }
             //create original map root
-            mapRoot = new BSPMap(0, 0, _mapWidth, _mapHeight);
+            _mapRoot = new BSPMap(0, 0, _mapWidth, _mapHeight);
             //add original map
-            _allMaps.Add(mapRoot);
+            _allMaps.Add(_mapRoot);
             //Create BSP Map
             CreateBSPMap();
-            Debug.Log("successfully created BSP map");
+            //Choose random Prefab for ground
+            _rdm = new System.Random();
+            while (_groundPrefabs[_rdmInt] == null)
+            {
+            _rdmInt = _rdm.Next(0, _groundPrefabs.Length);
+            }
             //Level Generation only, no prefab instantiation
-            mapRoot.CreateRooms(_groundPrefab, _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, _doorPrefab);
+            _mapRoot.CreateRooms(_groundPrefabs[_rdmInt], _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, _doorPrefab);
             InstantiateRooms();
+            
+            Debug.Log($"successfully instantiated the Level [elapsed time: {Time.realtimeSinceStartup - elapsedTime}]");
         }
 
         /// <summary>
@@ -123,7 +134,7 @@ namespace Assets.Scripts.MapGeneration
             int lastRoomWidth = lastRoom.Width;
             int lastRoomHeight = lastRoom.Height;
             BSPMap.s_allRooms.Remove(lastRoom);
-            BSPMap.s_allRooms.Add(new BossRoom(_groundPrefab, _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
+            BSPMap.s_allRooms.Add(new BossRoom(_groundPrefabs[_rdmInt], _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
             InstantiateNormalRooms();
             if (turnOffHallWays == false)
             {

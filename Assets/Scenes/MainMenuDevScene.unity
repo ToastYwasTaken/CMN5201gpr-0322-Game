@@ -2000,7 +2000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 897081305}
   _soundSource: {fileID: 897081304}
-  MusicMainMenu: {fileID: 8300000, guid: 30d84072aaefdeb498e1430baffca438, type: 3}
+  MusicMainMenu: {fileID: 8300000, guid: b5c611aa041e6b34abdbfb5d35000287, type: 3}
   MusicLevel: {fileID: 8300000, guid: 19e584a09fc5f5d45acbf19627f69546, type: 3}
   MusicBossRoom: {fileID: 8300000, guid: 67c5fefaee4c4834fb60b556407814aa, type: 3}
 --- !u!4 &897081307
