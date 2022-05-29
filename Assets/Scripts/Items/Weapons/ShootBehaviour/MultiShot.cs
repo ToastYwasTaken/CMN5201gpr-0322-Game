@@ -8,14 +8,14 @@ public class MultiShot : ShotBehaviour
     [SerializeField] private float _angle;
     [SerializeField] private bool _randomAngle;
 
-    public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent, WeaponAudio weaponManager)
+    public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent,
+                              WeaponAudio weaponAudio, WeaponScreenshake weaponScreenshake)
     {
         if (_randomAngle) 
         {
             for (int i = 0; i < _amountOfBullets; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
-                PlaySound(weaponManager);
 
                 float facingRotation = newBullet.transform.rotation.z;
 
@@ -29,6 +29,7 @@ public class MultiShot : ShotBehaviour
                 newBullet.GetComponent<Projectile>().ProjectileStats = projectileStats;
 
                 newBullet.transform.SetParent(parent);
+                newBullet.transform.localScale = bulletPrefab.transform.localScale;
             }
         } 
         else
@@ -36,7 +37,7 @@ public class MultiShot : ShotBehaviour
             for (int i = 0; i < _amountOfBullets; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
-                PlaySound(weaponManager);
+                PlaySound(weaponAudio);
 
                 float facingRotation = newBullet.transform.rotation.z;
 
@@ -50,7 +51,11 @@ public class MultiShot : ShotBehaviour
                 newBullet.GetComponent<Projectile>().ProjectileStats = projectileStats;
 
                 newBullet.transform.SetParent(parent);
+                newBullet.transform.localScale = bulletPrefab.transform.localScale;
             }
         }
+
+        PlaySound(weaponAudio);
+        Screenshake(weaponScreenshake);
     }
 }

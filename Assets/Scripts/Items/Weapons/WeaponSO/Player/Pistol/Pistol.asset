@@ -17,11 +17,13 @@ MonoBehaviour:
   _description: The most basic weapon!
   _isStackable: 0
   _fireRate: 1
-  _bulletPrefab: {fileID: 2912425703784977495, guid: cca58bb489a7e514b9370cbbb754af0d, type: 3}
   _weaponPower: 15
   _armorPenetration: 15
   _bulletSpeed: 7
   _heatmeterUsage: 15
+  _bulletPrefab: {fileID: 2912425703784977495, guid: cca58bb489a7e514b9370cbbb754af0d, type: 3}
   _shootBehaviour: {fileID: 11400000, guid: ef40e77abd816464e958661699caf31d, type: 2}
   _weaponShootSound: {fileID: 8300000, guid: f7a6dd2779870ef44b6868f1f458ef30, type: 3}
   _weaponImpactSound: {fileID: 8300000, guid: e16d44ca1ebc3c64d85d9fd29deba17c, type: 3}
+  _useScreenshake: 1
+  _shakeData: {fileID: 11400000, guid: 87da8b78fa90af84ab3707d83e6554c3, type: 2}

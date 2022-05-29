@@ -8,12 +8,14 @@ public class RapidFire : ShotBehaviour
     [SerializeField] private int _amountOfBullets;
     [SerializeField] private float _delayBetweenShots;
 
-    public override async void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent, WeaponAudio weaponManager)
+    public override async void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent,
+                                    WeaponAudio weaponAudio, WeaponScreenshake weaponScreenshake)
     {
         for (int i = 0; i < _amountOfBullets; i++)
         {            
             GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
-            PlaySound(weaponManager);
+            PlaySound(weaponAudio);
+            Screenshake(weaponScreenshake);
 
             newBullet.GetComponent<Projectile>().ProjectileStats = projectileStats;
             newBullet.transform.SetParent(parent);

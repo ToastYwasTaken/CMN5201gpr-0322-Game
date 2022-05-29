@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1966d8d8b9b4749adf54ada7632e99, type: 3}
   m_Name: RestoreArmorAction
   m_EditorClassIdentifier: 
-  _restoreArmorAmount: 50
+  _restoreArmorAmount: 200
