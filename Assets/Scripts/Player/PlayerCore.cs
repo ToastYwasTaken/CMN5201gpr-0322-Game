@@ -25,7 +25,7 @@ public class PlayerCore : MonoBehaviour
         if (_weaponManager == null) _weaponManager = GetComponent<WeaponManager>();
         if (_overdriveManager == null) _overdriveManager = GetComponent<OverdriveManager>();
 
-        _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+        //_audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
 
         _playerInformation.Heatmeter = _heatmeter;
         _playerInformation.WeaponManager = _weaponManager;
