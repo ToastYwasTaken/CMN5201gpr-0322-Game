@@ -25,7 +25,7 @@ namespace AISystem
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
-            Debug.LogWarning("Attack");
+         
             _owner = stateMachine.Owner;
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
             _lookToEnemy = stateMachine.GetComponent<AILookToEnemy>();
@@ -44,7 +44,7 @@ namespace AISystem
             
             // Attack
             Attack();
-
+  
             // Verfolge das Ziel Viusel
             if (_lookToTarget)
             {
@@ -72,13 +72,15 @@ namespace AISystem
             if (_targetDistance.InRangeByDistance(_farAttackDistance) && _useFarAttack)
             {
                 if (OnFarAttack != null)
-                    OnFarAttack.Raise();
+                    OnFarAttack.Raise(); 
+                Debug.Log($"{_owner.name}: execute far attack");
             }
             // Nahbereich
             else if (_targetDistance.InRangeByDistance(_closeAttackDistance))
             {
                 if (OnCloseAttack != null)
                     OnCloseAttack.Raise();
+                Debug.Log($"{_owner.name}: execute close attack");
             }
         }
 

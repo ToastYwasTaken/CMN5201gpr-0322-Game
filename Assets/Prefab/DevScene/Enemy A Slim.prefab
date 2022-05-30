@@ -231,6 +231,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: ViewAngle
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: ViewRadius
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4545088729615860187, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: _rotatingObject
       value: 

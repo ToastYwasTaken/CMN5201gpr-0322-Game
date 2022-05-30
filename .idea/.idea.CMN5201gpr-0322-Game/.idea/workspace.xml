@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3bae0b7-d229-45ef-a601-042806e41f23" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIMetDecision.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Base.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Normal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Normal.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Slim.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Slim.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Player.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Entities/Bullets/Enemy/Bullet Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Entities/Bullets/Enemy/Bullet Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/ChaseAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/ChaseAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/EvadeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/EvadeAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/FlockingAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/FlockingAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/IdleAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/IdleAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/PatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/PatrolAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/RandomPatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/RandomPatrolAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIHitDecision.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIHitDecision.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Decisions/AIMetDecision.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +30,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/AI Components/AIMet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/AIEnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/AIFSMAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/AIFieldOfViewEditor.cs" root0="FORCE_HIGHLIGHTING" />
@@ -74,10 +79,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15912">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="15912" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -112,7 +117,7 @@
       <workItem from="1652376328326" duration="4807000" />
       <workItem from="1652860623184" duration="4612000" />
       <workItem from="1653897268846" duration="2203000" />
-      <workItem from="1653919289285" duration="2172000" />
+      <workItem from="1653919289285" duration="7966000" />
     </task>
     <servers />
   </component>

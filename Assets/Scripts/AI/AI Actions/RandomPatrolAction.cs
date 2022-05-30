@@ -16,7 +16,7 @@ namespace AISystem
         private NavMeshAgent _navMeshAgent = default;
         private AIRandomPatrol _aIRandomPatrol;
         private GameObject _owner;
-        private Vector3 _ownerPosition;
+        private Vector3 _ownerPosition = Vector3.zero;
 
         public override void Initialize(AIFSMAgent stateMachine)
         {
