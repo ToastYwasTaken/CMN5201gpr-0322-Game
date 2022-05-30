@@ -8,7 +8,6 @@ public class Enemy : EntityStats
     {
         DropLoot(_lootTable);
         Destroy(transform.parent.parent.parent.gameObject);
-
     }
 
     [SerializeField] private LootTable _lootTable;

@@ -50,7 +50,7 @@ public class DmgFlash : MonoBehaviour
     void DeathFlash()
     {
         OnRoutineDone += DestroySelf;
-        StartCoroutine(Flash(_intervaMin, _intervaMax, _time, false));
+        StartCoroutine(Flash(_intervaMin, _intervaMax, 3f, false));
     }
     void DamageFlash(float foo, bool bar)
     {

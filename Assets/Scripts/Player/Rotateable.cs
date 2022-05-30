@@ -237,30 +237,3 @@ namespace Assets.Scripts.Player
         }
     }
 }
-
-//float tempTargetAngle = _currTargetAngle;
-////float tempOwnAngle = _ownAngle;
-//float tempOwnAngle = _ownAngle;
-//if (isIncludeZero)
-//{
-//    if (_ownAngle <= _constrE && _ownAngle >= 0f) _ownAngle += 360;
-//    if (tempTargetAngle <= _constrE && tempTargetAngle >= 0f) tempTargetAngle += 360;
-//    if (tempOwnAngle <= _constrE) tempOwnAngle += 360;
-//    if (tempTargetAngle <= _constrE) tempTargetAngle += 360;
-//}
-//currAngle = AngleWrap(Mathf.Lerp(_ownAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
-//currAngle = AngleWrap(Mathf.Lerp(tempOwnAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
-
-
-//float tempTargetAngle = _currTargetAngle;
-//float tempOwnAngle = _ownAngle;
-//if (isIncludeZero)
-//{
-//    if (tempOwnAngle <= _constrE)
-//        tempOwnAngle += 360;
-//    if (tempTargetAngle <= _constrE)
-//        tempTargetAngle += 360;
-//    if (tempOwnAngle > _constrE && tempOwnAngle < _constrS) tempOwnAngle += 360;
-//    if (tempTargetAngle > _constrE && tempTargetAngle < _constrS) tempTargetAngle += 360;
-//}
-//currAngle = AngleWrap(Mathf.Lerp(tempOwnAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));

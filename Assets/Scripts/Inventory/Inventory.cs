@@ -36,6 +36,7 @@ public class Inventory : MonoBehaviour
         {
             SetupCanvas();
         }
+        SetupSlots();
         _canvasComp = _canvas.GetComponent<Canvas>();
 
         if (_itemSlots.Length != InvSize + _wpnCount + _chipCount) print("wrong invSize...guess");
@@ -76,6 +77,7 @@ public class Inventory : MonoBehaviour
     {
         foreach (var item in _itemSlots)
             _allImages.Add(item.gameObject.GetComponent<Image>());
+        _allImages.Add(_canvas.GetChild(0).gameObject.GetComponent<Image>());
     }
     void SwitchShowInv()
     {
@@ -88,8 +90,11 @@ public class Inventory : MonoBehaviour
     {
         GameObject canvas = Instantiate(_canvasPfab);
         canvas.transform.SetParent(null);
-        _itemSlots = canvas.GetComponentsInChildren<ItemSlot>();
         _canvas = canvas.transform;
+    }
+    void SetupSlots()
+    {
+        _itemSlots = _canvas.GetComponentsInChildren<ItemSlot>();
     }
 
     [SerializeField] bool isColorize;

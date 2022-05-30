@@ -75,7 +75,7 @@ namespace Assets.Scripts.Player
             if (_moveInput == Vector2.zero)
                 ApplyDrag(sqrMag);
             else
-                _velocity += _moveInput * Mathf.Lerp(0, MoveAccel, LerpDist(sqrMag, MoveSpeedMax, MoveAccel, AccelCurve)) * Time.fixedDeltaTime; //pMoveAccel * deltaT;
+                _velocity += _moveInput * Mathf.Lerp(0, MoveAccel, LerpDist(sqrMag, MoveSpeedMax, MoveAccel, AccelCurve)) * Time.deltaTime; //pMoveAccel * deltaT;
 
             if (_velocity == Vector2.zero) return;
 

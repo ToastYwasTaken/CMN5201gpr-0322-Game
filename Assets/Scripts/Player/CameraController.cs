@@ -28,7 +28,8 @@ namespace Assets.Scripts.Player
 
         private void CameraMovement()
         {
-            _camera.position = new Vector3(transform.position.x, transform.position.y, -10);
+            Vector3 v3Temp = new Vector3(transform.position.x, transform.position.y, -10);
+            _camera.position = Vector3.Lerp(new Vector3(_camera.position.x, _camera.position.y, -10), v3Temp, Time.deltaTime * 3);
         }
 
         [SerializeField] float _zoomMin = 5f, _zoomMax = 8f;

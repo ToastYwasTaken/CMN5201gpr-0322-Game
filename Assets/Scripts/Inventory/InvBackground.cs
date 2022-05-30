@@ -12,7 +12,7 @@ public class InvBackground : MonoBehaviour, IDropHandler
         {
             ItemDragDrop item = eventData.pointerDrag.GetComponent<ItemDragDrop>();
             if (item != null)
-                item.ResetPosition();
+                Destroy(item.gameObject);
         }
     }
 }

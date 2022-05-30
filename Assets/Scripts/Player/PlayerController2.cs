@@ -33,6 +33,7 @@ namespace Assets.Scripts.Player
         {
             _cameraController.DoCamera();
             //DoInput
+            _movable.DoMovement();
         }
 
         private void FixedUpdate()
@@ -41,7 +42,7 @@ namespace Assets.Scripts.Player
             _rotateable.RotateTowardsTargetV2(mousePos);
             _leftWpn.RotateTowardsTargetV2(mousePos);
             _rightWpn.RotateTowardsTargetV2(mousePos);
-            _movable.DoMovement();
+            
             DoWeapons();
         }
 
