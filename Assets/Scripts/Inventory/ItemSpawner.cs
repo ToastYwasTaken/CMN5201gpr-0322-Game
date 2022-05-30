@@ -59,7 +59,7 @@ public class ItemSpawner : MonoBehaviour
         {
             GameObject newItem = Instantiate(_items[Random.Range(0, _items.Length)], pos);
             newItem.transform.SetParent(transform);
-            newItem.transform.localScale = Vector3.one;
+            newItem.transform.localScale = Vector3.one/4;
         }
     }
 }
