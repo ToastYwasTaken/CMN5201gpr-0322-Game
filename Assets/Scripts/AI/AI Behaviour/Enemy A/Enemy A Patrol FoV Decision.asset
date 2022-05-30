@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dacdac12a38c1d4fa2bf065a2d847a3, type: 3}
   m_Name: Enemy A Patrol FoV Decision
   m_EditorClassIdentifier: 
-  _showDebugLogs: 1
+  _showDebugLogs: 0

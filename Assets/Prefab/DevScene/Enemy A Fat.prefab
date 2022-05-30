@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: ViewAngle
       value: 160
       objectReference: {fileID: 0}
+    - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: AuraRadius
+      value: 3.92
+      objectReference: {fileID: 0}
     - target: {fileID: 4545088729615860187, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: _rotatingObject
       value: 
@@ -131,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636275169142309667, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_InstanceId
-      value: -1347130
+      value: -196506
       objectReference: {fileID: 0}
     - target: {fileID: 2012279086826269495, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_LocalRotation.w
