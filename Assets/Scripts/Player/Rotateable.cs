@@ -109,6 +109,7 @@ namespace Assets.Scripts.Player
         private float _currTargetAngle;
         public void RotateTowardsTargetT(Transform target)
         {
+            if (target == null) return;
             RotateTowardsTargetV2(target.ToVector2());
         }
         float targetAngle;

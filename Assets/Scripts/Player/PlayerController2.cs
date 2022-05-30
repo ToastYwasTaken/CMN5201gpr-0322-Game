@@ -31,6 +31,7 @@ namespace Assets.Scripts.Player
         }
         private void Update()
         {
+            if (!GlobalValues.IsPlayerActive) return;
             _cameraController.DoCamera();
             //DoInput
             _movable.DoMovement();
@@ -38,6 +39,7 @@ namespace Assets.Scripts.Player
 
         private void FixedUpdate()
         {
+            if (!GlobalValues.IsPlayerActive) return;
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _rotateable.RotateTowardsTargetV2(mousePos);
             _leftWpn.RotateTowardsTargetV2(mousePos);

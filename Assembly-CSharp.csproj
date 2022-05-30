@@ -245,6 +245,8 @@
     <Compile Include="Assets\FirstGearGames\Utilities\FrameRateCalculator.cs" />
     <Compile Include="Assets\FirstGearGames\SmoothCameraShaker\Scripts\Shakables\ShakableRigidbody.cs" />
     <Compile Include="Assets\Scripts\UI\ParallaxUI.cs" />
+    <Compile Include="Assets\Scripts\AI\AI Decisions\AIHitDecision.cs" />
+    <Compile Include="Assets\Scripts\Entities\WeaponCompMulti.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
