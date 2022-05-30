@@ -8,18 +8,25 @@ public class Door : MonoBehaviour, IDoor
     [SerializeField] DoorTrigger _doorTrigger;
     [SerializeField] bool _isOpenByTrigger;
 
+    DmgFlash _flash;
+    Collider2D _doorCollider;
+
     private void Awake()
     {
         if (_doorTrigger == null) return;
+        _flash = _doorGO.GetComponent<DmgFlash>();
+        _doorCollider = _doorGO.GetComponent<Collider2D>();
         _doorTrigger.IsOpen = _isOpenByTrigger;
     }
     public void OpenDoor() 
     {
-        _doorGO.SetActive(false);
+        _flash.StartFlash(false);
+        _doorCollider.enabled = false;
     }
     public void CloseDoor()
     {
-        _doorGO.SetActive(true);
+        _doorCollider.enabled = true;
+        _flash.StartFlash(true);
     }
 }
 
