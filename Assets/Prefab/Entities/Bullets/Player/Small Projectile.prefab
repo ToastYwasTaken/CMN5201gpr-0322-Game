@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 1905602882026188726}
   _projectileMovement: {fileID: 11400000, guid: ec8ea1de6a352fc409498deff2033259, type: 2}
-  _projectileCollision: {fileID: 11400000, guid: 80f4e73dbefdb904d9c08fa56c6bfd98, type: 2}
+  _projectileCollision: {fileID: 11400000, guid: 047b321e34e368543b04ec1dadedd33c, type: 2}
 --- !u!114 &3661775778771860736
 MonoBehaviour:
   m_ObjectHideFlags: 0
