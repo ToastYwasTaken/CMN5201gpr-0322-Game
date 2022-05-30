@@ -17,8 +17,12 @@ MonoBehaviour:
   _description: 
   _isStackable: 0
   _cooldown: 4
-  _overdriveBehaviours: []
-  _overdriveTriggers: []
+  _overdriveBehaviours:
+  - {fileID: 11400000, guid: 797cf990625ac724281254aa95345a3d, type: 2}
+  - {fileID: 11400000, guid: a4459e2db1bcd5a47a0b8c6dec9a75e4, type: 2}
+  _overdriveTriggers:
+  - {fileID: 11400000, guid: 00be66bc8bc05eb42934e836b9c23077, type: 2}
+  - {fileID: 11400000, guid: 70bfc3f9211d117409e7ea2a34cf464b, type: 2}
   _overdriveEffects: []
   _overdriveEquipEffects:
   - {fileID: 11400000, guid: 3afb6ef3aa07d144fbb2dccfc07ccb58, type: 2}
