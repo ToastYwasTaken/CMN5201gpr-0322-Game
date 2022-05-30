@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace Dennis.UI
 {
-    public class ButtonAnimationUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class SelectableAnimationUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private Animator anim;
 
