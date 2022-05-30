@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 293afeeb9a89ab04383c0adaf8eb7c2f, type: 3}
-  m_Name: Heatrecovery
+  m_Name: CritTest
   m_EditorClassIdentifier: 
   _iD: 0
-  _name: Heatrecovery XIV
-  _description: Due to the heat the reactor restores some health of the ship.
+  _name: 
+  _description: 
   _isStackable: 0
-  _cooldown: 5
+  _cooldown: 0
   _overdriveBehaviours: []
   _overdriveTriggers: []
   _overdriveEffects: []

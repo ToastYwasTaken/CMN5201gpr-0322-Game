@@ -70,10 +70,10 @@ public class SummonProjectiles : OverdriveBehaviour
         ProjectileStats newBulletStats = new()
         {
             ArmorPenetration = _armorPenetration,
-            AttackPower = DamageCalculation.CalculateAttackPower(playerStats.AttackPower, _weaponPower),
+            AttackPower = DamageCalculation.CalculateAttackPower(playerStats.BaseAttackPower, _weaponPower),
 
             CanCrit = playerStats.CanCrit,
-            CritChance = playerStats.CritChance,
+            CritChance = playerStats.CritChanceNormalized,
 
             ProjectileOwnerType = playerStats.EntityType,
             ProjectileSender = playerStats.gameObject,

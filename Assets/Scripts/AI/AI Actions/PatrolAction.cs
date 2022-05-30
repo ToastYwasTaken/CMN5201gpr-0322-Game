@@ -21,7 +21,7 @@ namespace AISystem
 
         public override void Execute(AIFSMAgent stateMachine)
         {
-            if (_navMeshAgent == null) return;
+            if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return;
             OnUpdateSettings();
             
             //var navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();

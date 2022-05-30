@@ -89,11 +89,11 @@ namespace AISystem
             {
                 transform.position = newPoint;
             }
-            // else
-            // {
-            //     // Destory the enemy, when they are not on the NavMesh
-            //     Destroy(gameObject);
-            // }
+            else
+            {
+                // Destroy the enemy, when they are not on the NavMesh
+                Destroy(gameObject);
+            }
         }
 
         public bool PositionOnNavMesh(float range, float maxDistance, out Vector3 result)
@@ -103,7 +103,7 @@ namespace AISystem
             Vector3 center = transform.position;
             Vector3 rndPoint = center + (Random.insideUnitSphere * range);
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 100; i++)
             {
                 if (!NavMesh.SamplePosition(rndPoint, out NavMeshHit hit, maxDistance, NavMesh.AllAreas)) continue;
                 result = hit.position;

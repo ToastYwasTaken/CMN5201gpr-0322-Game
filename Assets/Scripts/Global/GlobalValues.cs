@@ -7,4 +7,6 @@ static public class GlobalValues
     static public int doorTriggerNum = 0;
     static public int PlayerCurrRoom = 0;
     static public bool[] doorsPassed;
+
+    static public bool IsPlayerActive = true;
 }
