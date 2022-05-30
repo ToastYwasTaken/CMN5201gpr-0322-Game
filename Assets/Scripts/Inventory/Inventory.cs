@@ -133,15 +133,28 @@ public class Inventory : MonoBehaviour
     public bool PickupItem(Item item, Sprite sprite, Color color, eItemType type)
     {
         int slot = 0;
-        while (_itemSlots[slot].ItemDD != null)
-        {
-            slot++;
-            if (slot >= InvSize)
+
+        if(type == eItemType.WEAPON)
+            for (int i = 0; i < _wpnCount; i++)
+                if (_itemSlots[_inventorySize + i].ItemDD == null)
+                    slot = _inventorySize + i;
+
+        else if(type == eItemType.CHIP)
+            for (int k = 0; k < _chipCount; k++)
+                if (_itemSlots[_inventorySize + _wpnCount + k].ItemDD == null)
+                    slot = _inventorySize + _wpnCount + k;
+
+        if(slot == 0)
+            while (_itemSlots[slot].ItemDD != null)
             {
-                //InventoryFull();
-                return false;
+                slot++;
+                if (slot >= InvSize)
+                {
+                    //InventoryFull();
+                    return false;
+                }
             }
-        }
+
         GameObject newItemDD = Instantiate(_itemDDpFab);
         newItemDD.transform.SetParent(_canvas);
 
@@ -162,6 +175,9 @@ public class Inventory : MonoBehaviour
 
         _allImages.Add(newItemDD.GetComponent<Image>());
         newItemDD.GetComponent<Image>().enabled = _showAllImages;
+
+        if (_itemSlots[slot].SlotData.SlotType != eItemType.ALL)
+            EquipItem(itemDD, slot);
         return true;
     }
 
@@ -196,6 +212,7 @@ public class Inventory : MonoBehaviour
             if (slotFrom.SlotType != eItemType.ALL)
                 if(!EquipItem(itemDDto, slotFrom.SlotIndex))
                     return false;
+        if (itemDDto == null) UnequipSlot(slotFrom);
 
         return true;
     }
@@ -217,8 +234,23 @@ public class Inventory : MonoBehaviour
                 if (!_overdriveManager.EquipOverdriveChip(chip, slot - InvSize - _wpnCount)) 
                     return false;
                 return true;
+            default:
+                return false;
+        }
+    }
+    public bool UnequipSlot(InvSlot itemSl)
+    {
+        switch (itemSl.SlotType)
+        {
+            case eItemType.WEAPON:
+                if (!_wpnManager.UnequipWeapon(itemSl.SlotIndex - InvSize)) 
+                    return false;
+                return true;
 
-                //ShootBehaviour
+            case eItemType.CHIP:
+                if (!_overdriveManager.UnequipOverdriveChip(itemSl.SlotIndex - InvSize - _wpnCount)) 
+                    return false;
+                return true;
             default:
                 return false;
         }
