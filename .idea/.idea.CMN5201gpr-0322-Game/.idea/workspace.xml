@@ -4,8 +4,9 @@
     <list default="true" id="f3bae0b7-d229-45ef-a601-042806e41f23" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayTestSzene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayTestSzene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/PlayerScene/Map/Floor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/PlayerScene/Map/Floor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AIFSMAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AIFSMAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +106,7 @@
       <workItem from="1652376328326" duration="4807000" />
       <workItem from="1652860623184" duration="4612000" />
       <workItem from="1653897268846" duration="2203000" />
+      <workItem from="1653919289285" duration="1130000" />
     </task>
     <servers />
   </component>
