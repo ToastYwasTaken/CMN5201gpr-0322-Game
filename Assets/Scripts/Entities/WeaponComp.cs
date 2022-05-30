@@ -53,15 +53,12 @@ public class WeaponComp : MonoBehaviour, IWeapon
             DoTurrets();
     }
 
-    int _currentMuzzle = 0;
+    int _currentMuzzle = -1;
     GameObject GetMuzzle()
     {
-        _currentMuzzle++;
-        return _muzzles[_currentMuzzle % _muzzles.Length];
-        //GameObject gO = _muzzles[_currentMuzzle];
-        //_currentMuzzle++;
-        //return gO;
-
+        if(_muzzles == null) return gameObject;
+        _currentMuzzle = (_currentMuzzle + 1) % _muzzles.Length;
+        return _muzzles[_currentMuzzle];
     }
     void DoTurrets()
     {

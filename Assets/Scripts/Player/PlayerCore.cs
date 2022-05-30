@@ -25,7 +25,7 @@ public class PlayerCore : MonoBehaviour
         if (_weaponManager == null) _weaponManager = GetComponent<WeaponManager>();
         if (_overdriveManager == null) _overdriveManager = GetComponent<OverdriveManager>();
 
-        _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+        _audioManager = GameObject.Find("/AudioManager")?.GetComponent<AudioManager>();
 
         _playerInformation.Heatmeter = _heatmeter;
         _playerInformation.WeaponManager = _weaponManager;
@@ -38,6 +38,9 @@ public class PlayerCore : MonoBehaviour
     {
         _posX = transform.position.x;
         _posY = transform.position.y;
+
+        if (_audioManager == null) return;
+
         if (PlayerInBossRoom() && !triggered)
         {
             _audioManager.ChangeMelody(_audioManager.MusicBossRoom);

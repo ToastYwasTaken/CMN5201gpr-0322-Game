@@ -35,12 +35,11 @@ namespace AISystem
 
         public override void Execute(AIFSMAgent stateMachine)
         {  
-            if (_navMeshAgent == null) return;
+            if (_navMeshAgent == null || _navMeshAgent.enabled != false) return;
             OnUpdateSettings();
             
             if (!_targetInRange.InRangeByDistance(_fightDistanceToTarget)) return;
       
-            // FightDistanceCheck();
             _navMeshAgent.SetDestination(_targetInRange.Target.transform.position);
 
             // Verfolge das Ziel Viusel

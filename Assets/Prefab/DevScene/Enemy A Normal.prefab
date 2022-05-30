@@ -89,6 +89,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1898637170416482237}
     m_Modifications:
+    - target: {fileID: 738008574826293438, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: m_Color.a
+      value: 0.28235295
+      objectReference: {fileID: 0}
     - target: {fileID: 984172656692084537, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_Name
       value: EnemyNormal
@@ -99,7 +103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428568114229580863, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_InstanceId
-      value: -4038792
+      value: -8226950
       objectReference: {fileID: 0}
     - target: {fileID: 5691926448612232252, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_RootOrder

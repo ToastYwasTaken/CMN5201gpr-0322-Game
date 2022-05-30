@@ -121,7 +121,7 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     protected virtual void Death()
     {
         OnDeath?.Invoke();
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 
     protected virtual void ArmorBroken()

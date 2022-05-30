@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    [RequireComponent(typeof(WeaponComp))]
+    //[RequireComponent(typeof(WeaponComp))]
     [RequireComponent(typeof(Rotateable))]
     internal class TurretAI : MonoBehaviour
     {
         [SerializeField] private Transform target;
         private Rotateable _Rotateable;
-        private WeaponComp _Weapon;
+        //private WeaponComp _Weapon;
 
         [SerializeField] private bool isActive;
         [SerializeField] private bool isShoot;
@@ -18,7 +18,7 @@ namespace Assets.Scripts.Player
         private void Awake()
         {
             _Rotateable = GetComponent<Rotateable>();
-            _Weapon = GetComponent<WeaponComp>();
+            //_Weapon = GetComponent<WeaponComp>();
         }
         private void Start()
         {
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Player
                 while (isOnTarget && isShoot)
                 {
                     _Rotateable.RotateTowardsTargetT(target);
-                    _Weapon.Fire();
+                    //_Weapon.Fire();
                     yield return Time.fixedDeltaTime;
                 }
                 yield return Time.fixedDeltaTime;

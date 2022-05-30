@@ -34,7 +34,7 @@ namespace Assets.Scripts.Player
         [SerializeField] AnimationCurve _rotationCurve;
 
         [SerializeField][Range(0, 360)] private float _parentOffset;
-        private float _constrS, _constrE, _ownAngle, _parentAngle;
+        [SerializeField] private float _constrS, _constrE, _ownAngle, _parentAngle;
         private bool _isWideConstrain;
 
         private void OnValidate()
@@ -73,8 +73,8 @@ namespace Assets.Scripts.Player
         private void UpdateParentAngle()
         {
             if(_parentT != null)
-                _parentAngle = AngleWrap(_parentT.localEulerAngles.z + 180f + _parentOffset);
-            else _parentAngle = AngleWrap(180f + _parentOffset);
+                _parentAngle = AngleWrap(_parentT.eulerAngles.z + 180f + _parentOffset);
+            else _parentAngle = AngleWrap (180f + _parentOffset);
         }
 
         private void UpdateConstrains()
@@ -146,16 +146,15 @@ namespace Assets.Scripts.Player
                 float tempOwnAngle = _ownAngle;
                 if (isIncludeZero)
                 {
-                    if (tempOwnAngle <= _constrE) 
-                        tempOwnAngle += 360;
-                    if (tempTargetAngle <= _constrE) 
-                        tempTargetAngle += 360;
-                    if (tempOwnAngle > _constrE && tempOwnAngle < _constrS) tempOwnAngle += 360;
-                    if (tempTargetAngle > _constrE && tempTargetAngle < _constrS) tempTargetAngle += 360;
+                    if (_ownAngle <= _constrE && _ownAngle >= 0f) _ownAngle += 360;
+                    if (tempTargetAngle <= _constrE && tempTargetAngle >= 0f) tempTargetAngle += 360;
+                    if (tempOwnAngle <= _constrE) tempOwnAngle += 360;
+                    if (tempTargetAngle <= _constrE) tempTargetAngle += 360;
                 }
+                //currAngle = AngleWrap(Mathf.Lerp(_ownAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
                 currAngle = AngleWrap(Mathf.Lerp(tempOwnAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
 
-                if(isShowLog)
+                if (isShowLog)
                     print("ownangle:" + tempOwnAngle + " targewt:" + tempTargetAngle + " currangle:" + currAngle);
             }
             transform.eulerAngles = Vector3.forward * currAngle;
@@ -250,4 +249,18 @@ namespace Assets.Scripts.Player
 //    if (tempTargetAngle <= _constrE) tempTargetAngle += 360;
 //}
 //currAngle = AngleWrap(Mathf.Lerp(_ownAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
+//currAngle = AngleWrap(Mathf.Lerp(tempOwnAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
+
+
+//float tempTargetAngle = _currTargetAngle;
+//float tempOwnAngle = _ownAngle;
+//if (isIncludeZero)
+//{
+//    if (tempOwnAngle <= _constrE)
+//        tempOwnAngle += 360;
+//    if (tempTargetAngle <= _constrE)
+//        tempTargetAngle += 360;
+//    if (tempOwnAngle > _constrE && tempOwnAngle < _constrS) tempOwnAngle += 360;
+//    if (tempTargetAngle > _constrE && tempTargetAngle < _constrS) tempTargetAngle += 360;
+//}
 //currAngle = AngleWrap(Mathf.Lerp(tempOwnAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
