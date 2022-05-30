@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 6416932283251555095}
-  _range: 15
+  _range: 50
   _aimRange: 15
 --- !u!114 &8879270859821570630
 MonoBehaviour:
@@ -216,7 +216,7 @@ MonoBehaviour:
   - {x: 0.12225727, y: -2.0850792, z: 0}
   m_ShapePathHash: -828316393
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58740
+  m_InstanceId: 443162
 --- !u!70 &6885190368398641121
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -265,14 +265,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65632991281fc9d4390c3c997c0c07bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 125
-  _maxArmor: 250
-  _damageReduction: 1
-  _armorPenetrationReduction: 1
-  _attackPower: 1
-  _armorPenetation: 1
+  _baseMaxHealth: 0
+  _baseMaxArmor: 0
+  _baseDamageReduction: 0
+  _baseArmorPenetrationReduction: 0
+  _baseAttackPower: 0
+  _baseArmorPenetation: 0
   _canCrit: 0
-  _critChance: 0
+  _baseCritChance: 0
   _entityType: 1
   _testAttackPower: 0
   _testArmorPenetration: 0
