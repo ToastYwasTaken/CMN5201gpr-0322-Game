@@ -290,7 +290,7 @@ MonoBehaviour:
   - {x: 1.4419442, y: -1.8573484, z: 0.000001249704}
   m_ShapePathHash: -875674650
   m_Mesh: {fileID: 0}
-  m_InstanceId: 33674
+  m_InstanceId: 73094
 --- !u!70 &6940966918981393468
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 2006684359}
   - component: {fileID: 3783511052913980729}
   - component: {fileID: 2337098219079942882}
+  - component: {fileID: 2890779244329303575}
   - component: {fileID: 449391542895350555}
   m_Layer: 8
   m_Name: Enemy B
@@ -544,6 +545,23 @@ MonoBehaviour:
     m_Bits: 9
   Interaction: 1
   Range: 5
+--- !u!114 &2890779244329303575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315260404001948518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccad58a5c9af5d549aad2e53995c5b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletMask:
+    serializedVersion: 2
+    m_Bits: 1073741824
+  Interaction: 1
+  DetectionRadius: 1
 --- !u!114 &449391542895350555
 MonoBehaviour:
   m_ObjectHideFlags: 0
