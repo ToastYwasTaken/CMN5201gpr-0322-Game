@@ -82,7 +82,7 @@ public class Inventory : MonoBehaviour
     void SwitchShowInv()
     {
         foreach(Image image in _allImages)
-            image.enabled = !_showAllImages;
+            if(image!=null)image.enabled = !_showAllImages;
         _showAllImages = !_showAllImages;
     }
 
@@ -144,6 +144,7 @@ public class Inventory : MonoBehaviour
         }
         GameObject newItemDD = Instantiate(_itemDDpFab);
         newItemDD.transform.SetParent(_canvas);
+
         ItemDragDrop itemDD = newItemDD.GetComponent<ItemDragDrop>();
 
         itemDD.Item = item;
@@ -153,6 +154,9 @@ public class Inventory : MonoBehaviour
         itemDD._currentSlot = _itemSlots[slot].SlotData;
         itemDD.RectTransform.anchoredPosition = 
             _itemSlots[slot].RectTransform.anchoredPosition;
+        itemDD.RectTransform.localScale = new Vector3(1, 1, 1);
+        itemDD.RectTransform.transform.localPosition -= 
+            new Vector3(0, 0, itemDD.RectTransform.transform.localPosition.z);
         itemDD._itemType = type;
         _itemSlots[slot].ItemDD = itemDD;
 
@@ -239,8 +243,8 @@ public class Inventory : MonoBehaviour
 
         }
         ItemDragDrop item = _itemSlots[slot.SlotIndex].ItemDD;
-        _itemSlots[slot.SlotIndex].ItemDD = null;
         _allImages.Remove(item.gameObject.GetComponent<Image>());
+        _itemSlots[slot.SlotIndex].ItemDD = null;
         Destroy(item);
         return true;
     }

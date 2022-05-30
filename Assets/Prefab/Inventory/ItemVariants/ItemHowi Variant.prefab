@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3906557741199473367, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
       propertyPath: m_Name
-      value: Item
+      value: ItemHowi Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3906557741199473368, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
       propertyPath: _item
@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3906557741199473371, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3906557741199473371, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3906557741199473371, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
       propertyPath: m_LocalPosition.z
