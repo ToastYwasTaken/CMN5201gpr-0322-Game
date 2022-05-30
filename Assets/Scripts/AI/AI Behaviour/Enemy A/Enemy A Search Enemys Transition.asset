@@ -15,3 +15,4 @@ MonoBehaviour:
   Decision: {fileID: 11400000, guid: cba492bb8cf21204e8b7726d513f8d23, type: 2}
   IsTrue: {fileID: 11400000, guid: 05f4f423f7547d14385ebb24ac8432d1, type: 2}
   IsFalse: {fileID: 11400000, guid: f1451cbe43e86ea4cb3f3f10a48ee787, type: 2}
+  RemainInState: 0

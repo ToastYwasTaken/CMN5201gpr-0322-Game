@@ -61,16 +61,6 @@ namespace AISystem
             return steering * _seekForce;
 
         }
-        
-        private void FightDistanceCheck()
-        {
-            _navMeshAgent.isStopped = _navMeshAgent.remainingDistance <= _fightDistanceToTarget;
-
-            if (_navMeshAgent.isStopped)
-            {
-                //_navMeshAgent.transform.forward = Target.position;
-            }
-        }
 
         public override void OnUpdateSettings()
         {

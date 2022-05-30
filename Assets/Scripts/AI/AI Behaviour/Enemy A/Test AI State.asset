@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dacdac12a38c1d4fa2bf065a2d847a3, type: 3}
-  m_Name: Enemy A Patrol FoV Decision
+  m_Script: {fileID: 11500000, guid: 274681abde473d64ea61bc15db14d759, type: 3}
+  m_Name: Test AI State
   m_EditorClassIdentifier: 
-  _showDebugLogs: 1
+  AIActions:
+  - {fileID: 11400000, guid: 87dd7f281a74472439202d33421b98be, type: 2}
+  AITransitions:
+  - {fileID: 11400000, guid: ca9b038e3aba29a43a080a94648627e5, type: 2}
