@@ -6,6 +6,6 @@ public class HealthPercentageTrigger : OverdriveFloatTrigger
 {
     public override bool CheckTriggerCondition(PlayerInformation playerInformation)
     {
-        return CheckTriggers(playerInformation.PlayerStats.HealthPercentage, checkValue, checkOperator);
+        return CheckTriggers(playerInformation.PlayerStats.HealthPercentageNormalized, checkValue, checkOperator);
     }
 }

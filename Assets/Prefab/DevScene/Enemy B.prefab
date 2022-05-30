@@ -290,7 +290,7 @@ MonoBehaviour:
   - {x: 1.4419442, y: -1.8573484, z: 0.000001249704}
   m_ShapePathHash: -875674650
   m_Mesh: {fileID: 0}
-  m_InstanceId: 375462
+  m_InstanceId: 33674
 --- !u!70 &6940966918981393468
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -319,18 +319,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65632991281fc9d4390c3c997c0c07bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1
-  _maxArmor: 0
-  _damageReduction: 0
-  _armorPenetrationReduction: 0
-  _attackPower: 0
-  _armorPenetation: 0
-  _canCrit: 1
-  _critChance: 0
+  _baseMaxHealth: 700
+  _baseMaxArmor: 1250
+  _baseDamageReduction: 9
+  _baseArmorPenetrationReduction: 9
+  _baseAttackPower: 5
+  _baseArmorPenetation: 4
+  _canCrit: 0
+  _baseCritChance: 0
   _entityType: 1
   _testAttackPower: 0
   _testArmorPenetration: 0
-  _lootTable: {fileID: 0}
+  _lootTable: {fileID: 11400000, guid: 4a4323f0a8520474fb4b76a4e16b9ec9, type: 2}
 --- !u!114 &9052640864388844448
 MonoBehaviour:
   m_ObjectHideFlags: 0

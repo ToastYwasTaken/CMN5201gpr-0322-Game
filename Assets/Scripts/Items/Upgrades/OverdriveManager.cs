@@ -82,7 +82,10 @@ public class OverdriveManager : MonoBehaviour, IEquipOverdriveChip
         if (_overdriveSlots == null) InitializeOverdrive();
         if (overdriveSlot < 0 && overdriveSlot > (_overdriveSlots.Length -1)) return false;
 
+        _overdriveSlots[overdriveSlot].Unequip(_playerInformation);
+
         _overdriveSlots[overdriveSlot] = new OverdriveSlot(newOverdriveChip);
+        _overdriveSlots[overdriveSlot].Equip(_playerInformation);
         return true;
     }
 
@@ -90,6 +93,9 @@ public class OverdriveManager : MonoBehaviour, IEquipOverdriveChip
     {
         if (_overdriveSlots == null) InitializeOverdrive();
         if (overdriveSlot < 0 && overdriveSlot > (_overdriveSlots.Length -1)) return false;
+
+        _overdriveSlots[overdriveSlot].Unequip(_playerInformation);
+        _overdriveSlots[overdriveSlot].DeactivateEffects(_playerInformation);
 
         _overdriveSlots[overdriveSlot] = new OverdriveSlot(null);
         return true;
