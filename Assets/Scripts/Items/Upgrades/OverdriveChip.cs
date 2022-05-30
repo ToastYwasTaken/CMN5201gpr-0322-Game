@@ -9,48 +9,108 @@ public class OverdriveChip : Item
     [SerializeField] private float _cooldown;
     public float Cooldown { get => _cooldown; }
 
-    [SerializeField] OverdriveBehaviour[] _overdriveBehaviour;
-    [SerializeField] OverdriveTrigger[] _overdriveTrigger;
+    [SerializeField] OverdriveBehaviour[] _overdriveBehaviours;
+    [SerializeField] OverdriveTrigger[] _overdriveTriggers;
+    [SerializeField] OverdriveEffect[] _overdriveEffects;
+    [SerializeField] OverdriveEquipEffect[] _overdriveEquipEffects;
 
-    public void OnEquip()
+    public void OnEquip(PlayerInformation playerInformation)
     {
-        if (_overdriveBehaviour == null) Debug.LogWarning("Overdrive Behaviour wasnt set!");
-        if (_overdriveBehaviour == null) Debug.LogWarning("Overdrive Trigger wasnt set!");
+        if (_overdriveBehaviours == null) Debug.LogWarning("Overdrive Behaviour wasnt set!");
+        if (_overdriveTriggers == null) Debug.LogWarning("Overdrive Trigger wasnt set!");
 
-        for (int i = 0; i < _overdriveTrigger.Length; i++)
+        if (_overdriveTriggers == null || _overdriveTriggers.Length == 0)
         {
-            _overdriveTrigger[i].SetupEventTriggers();
+            for (int i = 0; i < _overdriveTriggers.Length; i++)
+            { 
+                if (_overdriveTriggers == null) continue;
+                _overdriveTriggers[i].SetupEventTriggers();
+            }
+        }
+
+        
+        for (int i = 0; i < _overdriveEquipEffects.Length; i++)
+        {
+            if (_overdriveTriggers == null) continue;
+            _overdriveEquipEffects[i].ActivateEffects(playerInformation);
         }
     }
 
-    public void OnUnequip()
+    public void OnUnequip(PlayerInformation playerInformation)
     {
-        for (int i = 0; i < _overdriveTrigger.Length; i++)
+        if (_overdriveTriggers == null || _overdriveTriggers.Length == 0)
         {
-            _overdriveTrigger[i].RemoveEventTriggers();
+            for (int i = 0; i < _overdriveTriggers.Length; i++)
+            {
+                if (_overdriveTriggers == null) continue;
+                _overdriveTriggers[i].RemoveEventTriggers();
+            }
+        }        
+
+        for (int i = 0; i < _overdriveEquipEffects.Length; i++)
+        {
+            if (_overdriveTriggers == null) continue;
+            _overdriveEquipEffects[i].DeactivateEffects(playerInformation);
         }
     }
 
-    public bool ValidateTrigger(PlayerInformation playerInformation)
+    public bool ActivateBehaviours(PlayerInformation playerInformation)
     {
+        if (_overdriveBehaviours == null || _overdriveBehaviours.Length == 0) return false;
+
         if (CheckTriggers(playerInformation))
         {
-            for (int i = 0; i < _overdriveBehaviour.Length; i++)
+            for (int i = 0; i < _overdriveBehaviours.Length; i++)
             {
-                if (_overdriveBehaviour[i] != null) _overdriveBehaviour[i].UseOverdriveEffect(playerInformation);
+                if (_overdriveBehaviours[i] == null) continue;
+                _overdriveBehaviours[i].UseOverdriveEffect(playerInformation);
             }
             return true;
         }
         else return false;
     }
 
+    public bool ActivateEffects(PlayerInformation playerInformation)
+    {
+        if (_overdriveEffects == null || _overdriveEffects.Length == 0) return false;
+
+        if (CheckTriggers(playerInformation))
+        {
+            for (int i = 0; i < _overdriveEffects.Length; i++)
+            {
+                if (_overdriveEffects[i] == null) continue;
+                _overdriveEffects[i].ActivateEffects(playerInformation);
+            }
+            return true;
+        }
+        else return false;
+    }
+
+    public void DeactivateEffects(PlayerInformation playerInformation)
+    {
+        if (_overdriveEffects == null || _overdriveEffects.Length == 0) return;
+
+        for (int i = 0; i < _overdriveEffects.Length; i++)
+        {
+            if (_overdriveEffects[i] == null) continue;
+            _overdriveEffects[i].DeactivateEffects(playerInformation);
+        }
+    }
+
     private bool CheckTriggers(PlayerInformation playerInformation)
     {
         bool isValid = true;
 
-        for (int i = 0; i < _overdriveTrigger.Length; i++)
+        if (_overdriveTriggers == null || _overdriveTriggers.Length == 0) return false;
+
+        for (int i = 0; i < _overdriveTriggers.Length; i++)
         {
-            if (!_overdriveTrigger[i].CheckTriggerCondition(playerInformation)) isValid = false;
+            if (_overdriveTriggers == null)
+            {
+                isValid = false;
+                continue;
+            }
+            else if(!_overdriveTriggers[i].CheckTriggerCondition(playerInformation)) isValid = false;
         }
 
         return isValid;

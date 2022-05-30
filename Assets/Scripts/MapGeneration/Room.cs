@@ -59,7 +59,7 @@ namespace Assets.Scripts.MapGeneration
         }
 
         /// <summary>
-        /// Assigns the tiles of the room / same as for NormalRoom
+        /// Assigns the tiles of the room 
         /// </summary>
         protected virtual void InitRoom()
         {

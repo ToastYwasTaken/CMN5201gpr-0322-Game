@@ -42,12 +42,12 @@ namespace Assets.Scripts.MapGeneration
         [SerializeField]
         GameObject _doorPrefab;
         [SerializeField]
-        bool turnOffHallWays;
+        bool _turnOffHallWays;
 
         private System.Random _rdm;
         private int _rdmInt;
         private BSPMap _mapRoot;
-        private float elapsedTime;
+        private float _elapsedTime;
         //containt all maps, the ones generated and their originals
         private List<BSPMap> _allMaps = new List<BSPMap>();
         //smallest leafs contains the smallest Leafs / partitions that remain after splitting the original x times
@@ -55,7 +55,7 @@ namespace Assets.Scripts.MapGeneration
 
         void Awake()
         {
-            elapsedTime = Time.realtimeSinceStartup;
+            _elapsedTime = Time.realtimeSinceStartup;
             //Assign motherGO of Map
             if (_mapMotherGO == null)
             {
@@ -78,7 +78,7 @@ namespace Assets.Scripts.MapGeneration
             _mapRoot.CreateRooms(_groundPrefabs[_rdmInt], _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, _doorPrefab);
             InstantiateRooms();
             
-            Debug.Log($"successfully instantiated the Level [elapsed time: {Time.realtimeSinceStartup - elapsedTime}]");
+            Debug.Log($"successfully instantiated the Level [elapsed time: {Time.realtimeSinceStartup - _elapsedTime}]");
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Assets.Scripts.MapGeneration
             int splitAmount = 0;
             int securityBreakCounter = 0;
             //Set static boarder max / min values for partitions
-            BSPMap.AssignMinValues(_minPartitionWidth, _minPartitionHeight);
+            BSPMap.AssignMinPartitionValues(_minPartitionWidth, _minPartitionHeight);
             do
             {
                 if (securityBreakCounter > 200)
@@ -136,7 +136,7 @@ namespace Assets.Scripts.MapGeneration
             BSPMap.s_allRooms.Remove(lastRoom);
             BSPMap.s_allRooms.Add(new BossRoom(_groundPrefabs[_rdmInt], _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
             InstantiateNormalRooms();
-            if (turnOffHallWays == false)
+            if (_turnOffHallWays == false)
             {
                 InstantiateHallWays();
             }

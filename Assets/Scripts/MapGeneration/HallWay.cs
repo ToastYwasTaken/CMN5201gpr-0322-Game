@@ -9,13 +9,13 @@ namespace Assets.Scripts.MapGeneration
         private Vector3 _connectionPoint = new Vector3(0,0,0); 
         public static List<Vector3> s_connections = new List<Vector3>();
 
-        public HallWay(GameObject ground, GameObject border, GameObject corner, GameObject door,
+        public HallWay(GameObject ground, GameObject wall, GameObject corner, GameObject door,
     int x, int y, int width, int height)
         {
             X = x;
             Y = y;
             Ground = ground;
-            Wall = border;
+            Wall = wall;
             Corner = corner;
             Door = door;
             Width = width;

@@ -17,7 +17,8 @@ MonoBehaviour:
   _description: Due to the heat the reactor restores some health of the ship.
   _isStackable: 0
   _cooldown: 5
-  _overdriveBehaviour:
-  - {fileID: 11400000, guid: 0ec3a1b9a6fff6a4b877478ba3e53145, type: 2}
-  _overdriveTrigger:
-  - {fileID: 11400000, guid: b9f458e8363295345b6a9acdf4928fb8, type: 2}
+  _overdriveBehaviours: []
+  _overdriveTriggers: []
+  _overdriveEffects: []
+  _overdriveEquipEffects:
+  - {fileID: 11400000, guid: 3afb6ef3aa07d144fbb2dccfc07ccb58, type: 2}

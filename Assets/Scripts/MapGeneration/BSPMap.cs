@@ -14,7 +14,7 @@ namespace Assets.Scripts.MapGeneration
         public BSPMap FirstMap, SecondMap;
         private static int s_MIN_PARTITION_WIDTH;
         private static int s_MIN_PARTITION_HEIGHT;
-        private Room currentRoom;
+        private Room _currentRoom;
         public static List<Room> s_allRooms = new List<Room>();
         public static List<Room> s_allHallWays = new List<Room>();
         public BSPMap(int x, int y, int maxWidth, int maxHeight)
@@ -29,65 +29,12 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Assigning static values of 's_MIN_PARTITION_WIDTH' and 's_MIN_PARTITION_HEIGHT'
         /// </summary>
-        public static void AssignMinValues(int minPartitionWidth, int minPartitionHeight)
+        public static void AssignMinPartitionValues(int minPartitionWidth, int minPartitionHeight)
         {
             s_MIN_PARTITION_WIDTH = minPartitionWidth;
             s_MIN_PARTITION_HEIGHT = minPartitionHeight;
         }
 
-        /// <summary>
-        /// Calculates player spawn position
-        /// </summary>
-        /// <returns></returns>
-        public Vector3 CalculatePlayerSpawnPositionInRoom()
-        {
-            Vector3 playerSpawnPosition = new Vector3(0, 0, 0);
-            if (s_allRooms[0] != null)
-            {
-                Room spawnRoom = s_allRooms[0];
-                System.Random rand = new System.Random();
-                playerSpawnPosition = new Vector3(rand.Next(spawnRoom.WidthOffset, Width-1), rand.Next(spawnRoom.HeightOffset, Height-1), 0);
-            }
-            return playerSpawnPosition;
-        }
-
-        /// <summary>
-        /// Returns current room if lowest partition
-        /// </summary>
-        /// <returns></returns>
-        private Room GetRoom()
-        {
-            if (currentRoom != null)
-            {
-                return currentRoom;
-            }
-            else
-            {
-                Room leftRoom = null;
-                Room rightRoom = null;
-                if (FirstMap != null)
-                {
-                    leftRoom = FirstMap.GetRoom();
-                }
-                if (SecondMap != null)
-                {
-                    rightRoom = SecondMap.GetRoom();
-                }
-                if (leftRoom == null && rightRoom == null)
-                {
-                    return null;
-                }
-                else if (leftRoom == null)
-                {
-                    return rightRoom;
-                }
-                else if (rightRoom == null)
-                {
-                    return leftRoom;
-                }
-                else return leftRoom;
-            }
-        }
 
         /// <summary>
         /// Split Map if splitable and desired partition side isn't too small
@@ -169,8 +116,8 @@ namespace Assets.Scripts.MapGeneration
             else
             //Lowest partition -> Create room here -> assign room to this partition
             {
-                currentRoom = new NormalRoom(ground, obstacle1, obstacle2, wall, corner, X, Y, Width, Height);
-                s_allRooms.Add(currentRoom);
+                _currentRoom = new NormalRoom(ground, obstacle1, obstacle2, wall, corner, X, Y, Width, Height);
+                s_allRooms.Add(_currentRoom);
             }
         }
 
@@ -187,9 +134,7 @@ namespace Assets.Scripts.MapGeneration
             System.Random rdm = new System.Random();
             int rdmInt = rdm.Next(0, 2);
             Room hallway1 = null;
-            Room hallway2 = null;
 
-            #region
             //Offsets to ignore borders
             int room1X = room1.X + 1;
             int room1Y = room1.Y + 1;
@@ -250,16 +195,50 @@ namespace Assets.Scripts.MapGeneration
                 }
             }
 
-            #endregion
-
             //Add hallways to list
-            if (hallway2 != null && hallway1 != null)
+            if (hallway1 != null)
             {
                 s_allHallWays.Add(hallway1);
-                s_allHallWays.Add(hallway2);
             }
             else s_allHallWays.Add(hallway1);
-            //TODO: Remove wall at splitPoint
+        }
+
+        /// <summary>
+        /// Returns current room if lowest partition
+        /// </summary>
+        /// <returns></returns>
+        private Room GetRoom()
+        {
+            if (_currentRoom != null)
+            {
+                return _currentRoom;
+            }
+            else
+            {
+                Room leftRoom = null;
+                Room rightRoom = null;
+                if (FirstMap != null)
+                {
+                    leftRoom = FirstMap.GetRoom();
+                }
+                if (SecondMap != null)
+                {
+                    rightRoom = SecondMap.GetRoom();
+                }
+                if (leftRoom == null && rightRoom == null)
+                {
+                    return null;
+                }
+                else if (leftRoom == null)
+                {
+                    return rightRoom;
+                }
+                else if (rightRoom == null)
+                {
+                    return leftRoom;
+                }
+                else return leftRoom;
+            }
         }
     }
 }

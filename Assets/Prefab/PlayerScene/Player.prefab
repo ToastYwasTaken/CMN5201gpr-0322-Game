@@ -1007,14 +1007,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4b7d9e8df58b347b6c4e2aa99bb290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 250
-  _maxArmor: 500
-  _damageReduction: 5
-  _armorPenetrationReduction: 5
-  _attackPower: 2
-  _armorPenetation: 2
+  _baseMaxHealth: 250
+  _baseMaxArmor: 500
+  _baseDamageReduction: 5
+  _baseArmorPenetrationReduction: 5
+  _baseAttackPower: 5
+  _baseArmorPenetation: 5
   _canCrit: 1
-  _critChance: 15
+  _baseCritChance: 15
   _entityType: 0
   _testAttackPower: 0
   _testArmorPenetration: 0
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 261160
+  m_InstanceId: 46450
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0

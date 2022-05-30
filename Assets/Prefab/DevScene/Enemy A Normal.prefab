@@ -103,7 +103,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428568114229580863, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_InstanceId
-      value: -8226950
+      value: -6258
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _baseMaxArmor
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _baseMaxHealth
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _baseAttackPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _baseArmorPenetation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _baseDamageReduction
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _baseArmorPenetrationReduction
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5691926448612232252, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_RootOrder

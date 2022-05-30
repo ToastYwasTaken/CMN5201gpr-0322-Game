@@ -123,7 +123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636275169142309667, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_InstanceId
-      value: -8225540
+      value: -4130
       objectReference: {fileID: 0}
     - target: {fileID: 2012279086826269495, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -328,6 +328,30 @@ PrefabInstance:
     - target: {fileID: 8168648063094564822, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_Offset.y
       value: -0.07274778
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _baseMaxArmor
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _baseMaxHealth
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _baseAttackPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _baseArmorPenetation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _baseDamageReduction
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _baseArmorPenetrationReduction
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8636857224100666144, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_RootOrder

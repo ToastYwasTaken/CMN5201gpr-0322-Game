@@ -4,8 +4,13 @@
     <list default="true" id="f3bae0b7-d229-45ef-a601-042806e41f23" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayTestSzene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayTestSzene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CMN5201gpr-0322-Game.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/AttackAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/ChaseAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/ChaseAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/EvadeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/EvadeAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/FlockingAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/FlockingAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/IdleAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/IdleAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/PatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/PatrolAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/RandomPatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Actions/RandomPatrolAction.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +26,8 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/AIEnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/AIFSMAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/AIFieldOfViewEditor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -105,6 +112,7 @@
       <workItem from="1652376328326" duration="4807000" />
       <workItem from="1652860623184" duration="4612000" />
       <workItem from="1653897268846" duration="2203000" />
+      <workItem from="1653919289285" duration="2172000" />
     </task>
     <servers />
   </component>
