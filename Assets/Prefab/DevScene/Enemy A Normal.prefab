@@ -13,7 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542815182992262208, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: DetectionRadius
-      value: 0.44
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: ViewAngle
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4545088729615860187, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: _rotatingObject
@@ -115,7 +119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428568114229580863, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_InstanceId
-      value: -89278
+      value: -1261672
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _baseMaxArmor

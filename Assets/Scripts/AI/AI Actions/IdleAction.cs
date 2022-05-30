@@ -23,6 +23,7 @@ namespace AISystem
 
         public override void Exit(AIFSMAgent stateMachine)
         {
+            if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return;
             _navMeshAgent.isStopped = false;
         }
 
