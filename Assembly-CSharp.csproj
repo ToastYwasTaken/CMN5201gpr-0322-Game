@@ -144,6 +144,7 @@
     <Compile Include="Assets\Scripts\Items\Weapons\WeaponSlot.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\EnableIffSleeping.cs" />
     <Compile Include="Assets\Scripts\MapGeneration\BossRoom.cs" />
+    <Compile Include="Assets\Scripts\Player\General\DmgFlash.cs" />
     <Compile Include="Assets\Scripts\Entities\Pickupables\PickpupAction.cs" />
     <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\Health\HealthPercentageTrigger.cs" />
     <Compile Include="Assets\Scripts\UI\Window\WindowController.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Assets\Scripts\AI\AI Actions\PatrolAction.cs" />
     <Compile Include="Assets\Scripts\Items\Upgrades\Triggers\Armor\ArmorBrokenTrigger.cs" />
     <Compile Include="Assets\Scripts\Player\Rotateable.cs" />
+    <Compile Include="Assets\Scripts\Player\General\DmgFlashComponent.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\Scripts\Entities\Projectiles\Projectile.cs" />
     <Compile Include="Assets\Scripts\AI\AI Components\AIPatrolPoints.cs" />
@@ -209,6 +211,7 @@
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\MeshTool.cs" />
     <Compile Include="Assets\Scripts\Player\General\ExtensionMethods.cs" />
     <Compile Include="Assets\Scripts\Player\ExplosiveBarrel.cs" />
+    <Compile Include="Assets\Scripts\Player\General\DmgFlashTrigger.cs" />
     <Compile Include="Assets\Scripts\AI\AINavMeshGenerator.cs" />
     <Compile Include="Assets\Scripts\Player\OldScripts\WeaponNew.cs" />
     <Compile Include="Assets\Scripts\AI\AI Decisions\AITargetInRangeDecision.cs" />
