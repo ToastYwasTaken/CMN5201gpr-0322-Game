@@ -14,7 +14,7 @@ namespace Assets.Scripts.Player
     [RequireComponent(typeof(CameraController))]
     public class PlayerController2 : MonoBehaviour
     {
-        [HideInInspector] Moveable _movable;
+        [SerializeField] Moveable _movable;
         [HideInInspector] Rotateable _rotateable;
         [HideInInspector] CameraController _cameraController;
         [SerializeField] Rotateable _leftWpn, _rightWpn;

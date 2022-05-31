@@ -18,12 +18,15 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] GameObject _itemDDpFab;
     [SerializeField] ItemSlot[] _itemSlots;
+    [SerializeField] bool _isActive = false;
 
     public ItemSlot[] ItemSlots { get { return _itemSlots; } }
 
 
     private void Awake()
     {
+        if (!_isActive) return;
+
         RefLib.sInventory = this;
 
         _wpnManager = GetComponent<WeaponManager>();
@@ -36,7 +39,7 @@ public class Inventory : MonoBehaviour
         {
             SetupCanvas();
         }
-        SetupSlots();
+        if (_itemSlots.Length==0) SetupSlots();
         _canvasComp = _canvas.GetComponent<Canvas>();
 
         if (_itemSlots.Length != InvSize + _wpnCount + _chipCount) print("wrong invSize...guess");
@@ -45,7 +48,7 @@ public class Inventory : MonoBehaviour
         //{
         //    _itemSlots[i] = new ItemSlot();
         //}
-        if (_itemSlots.Length<=0) return;
+        if (_itemSlots.Length==0) return;
         InitSlots(eItemType.ALL, InvSize);
         InitSlots(eItemType.WEAPON, _wpnCount);
         InitSlots(eItemType.CHIP, _chipCount);
@@ -75,15 +78,21 @@ public class Inventory : MonoBehaviour
 
     void AddSlotImages()
     {
-        foreach (var item in _itemSlots)
-            _allImages.Add(item.gameObject.GetComponent<Image>());
-        _allImages.Add(_canvas.GetChild(0).gameObject.GetComponent<Image>());
+        foreach(Image image in _canvas.GetComponentsInChildren<Image>())
+            _allImages.Add(image);
+
+        //foreach (var item in _itemSlots)
+        //    _allImages.Add(item.gameObject.GetComponent<Image>());
+        //_allImages.Add(_canvas.GetChild(0).gameObject.GetComponent<Image>());
     }
     void SwitchShowInv()
     {
         foreach(Image image in _allImages)
-            if(image!=null)image.enabled = !_showAllImages;
+            if(image!=null) image.enabled = !_showAllImages;
         _showAllImages = !_showAllImages;
+
+        for (int k = 0; k < 2; k++)
+            _canvas.GetChild(k).gameObject.SetActive(_showAllImages);
     }
 
     void SetupCanvas()
@@ -94,7 +103,15 @@ public class Inventory : MonoBehaviour
     }
     void SetupSlots()
     {
-        _itemSlots = _canvas.GetComponentsInChildren<ItemSlot>();
+        int count = 0;
+        _itemSlots = new ItemSlot[_inventorySize + _wpnCount + _chipCount];
+        foreach(Transform child in _canvas.transform)
+        {
+            if (count >= _inventorySize + _wpnCount + _chipCount) return;
+            ItemSlot slot = child.GetComponent<ItemSlot>();
+            if(slot!=null)
+                _itemSlots[count++] = slot;
+        }
     }
 
     [SerializeField] bool isColorize;
@@ -108,10 +125,9 @@ public class Inventory : MonoBehaviour
 
             if(isColorize)
             {
-                _itemSlots[slotIndexCounter].gameObject.GetComponent<Image>().color = TypeColor(type);
-                _itemSlots[slotIndexCounter].gameObject.name = type.ToString() + "slot" + slotIndexCounter.ToString();
+                _itemSlots[slotIndexCounter].gameObject.transform.GetChild(1).GetComponent<Image>().color = TypeColor(type);
+                _itemSlots[slotIndexCounter++].gameObject.name = type.ToString() + "slot" + slotIndexCounter.ToString();
             }
-            slotIndexCounter++;
         }
     }
 
