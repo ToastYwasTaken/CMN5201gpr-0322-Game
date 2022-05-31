@@ -18,4 +18,4 @@ MonoBehaviour:
   _targetTag: Player
   _fightDistanceToTarget: 10
   _maxVelocity: 1
-  _seekForce: 0.005
+  _seekForce: 0.1

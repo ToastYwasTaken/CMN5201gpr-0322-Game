@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialState: {fileID: 11400000, guid: b1eee3bed035e2445999cddaf03db6e0, type: 2}
-  _showDebugLogs: 1
+  _showDebugLogs: 0
   PlayerTag: Player
 --- !u!114 &2006684359
 MonoBehaviour:

@@ -9,7 +9,7 @@ namespace AISystem
         public Transform Owner { get; set; }
         public Transform Target { get; set; }
 
-        [Header("Settings")] 
+        [Header("Settings")]
         [SerializeField] private bool _lookToTarget = true;
         [SerializeField] private string _targetTag = "Player";
         [SerializeField] private float _fightDistanceToTarget = 7f;
@@ -27,29 +27,34 @@ namespace AISystem
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
             _lookToEnemy = stateMachine.GetComponent<AILookToEnemy>();
             _targetInRange = stateMachine.GetComponent<AITargetInRange>();
-            
+            Owner = stateMachine.Owner.transform;
+
             if (_lookToEnemy)
+            {
                 _lookToEnemy.FindTargetWithTag(_targetTag);
-            
+                Target = _lookToEnemy.Target.transform;
+            }
+
+
         }
 
         public override void Execute(AIFSMAgent stateMachine)
-        {  
+        {
             if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return;
 
             OnUpdateSettings();
-            
+
             if (!_targetInRange.InRangeByDistance(_fightDistanceToTarget)) return;
-          
-            // Vector3 point = CalculateSeekBehaviour();
+
+            Vector3 point = CalculateSeekBehaviour();
             // Debug.Log($"Point: {point}");
 
-            _navMeshAgent.SetDestination(_targetInRange.Target.transform.position);
-  
+            _navMeshAgent.SetDestination(_targetInRange.Target.transform.position + point);
+
             // Verfolge das Ziel Viusel
             if (_lookToTarget)
-                _lookToEnemy.LookAtTarget();    
-        
+                _lookToEnemy.LookAtTarget();
+
         }
 
         public override void Exit(AIFSMAgent stateMachine)
@@ -57,13 +62,12 @@ namespace AISystem
             //if (_lookToEnemy && _lookToTarget)
             //    _lookToEnemy.ResetLookAt();
         }
-        
+
         private Vector3 CalculateSeekBehaviour()
         {
             Vector3 desiredVelocity = (Target.position - Owner.position).normalized * _maxVelocity;
-            Vector3 steering = desiredVelocity - _velocity;
+            Vector3 steering = desiredVelocity - _navMeshAgent.velocity;
             return steering * _seekForce;
-
         }
 
         public override void OnUpdateSettings()
