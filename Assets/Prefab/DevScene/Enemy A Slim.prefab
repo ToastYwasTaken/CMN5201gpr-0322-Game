@@ -212,6 +212,7 @@ MonoBehaviour:
   _movePos: {fileID: 0}
   _lerpSpeed: 0
   _entityStats: {fileID: 6066062864918340542}
+  _isDestroyOnDeath: 1
   test: 0
 --- !u!114 &6066062864918340542 stripped
 MonoBehaviour:
@@ -237,15 +238,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: ViewAngle
-      value: 160
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: AuraRadius
-      value: 1.46
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: ViewRadius
-      value: 15
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268807526479581694, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: Range
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4545088729615860187, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: _rotatingObject
@@ -311,6 +316,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6527510856999981182, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: _initialState
+      value: 
+      objectReference: {fileID: 11400000, guid: f1451cbe43e86ea4cb3f3f10a48ee787, type: 2}
     - target: {fileID: 6527510856999981183, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: m_Radius
       value: 0.36

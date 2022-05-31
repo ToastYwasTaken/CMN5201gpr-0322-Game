@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ddf53bc744baa49b63e12be96c48bb, type: 3}
+  m_Name: Enemy B FoV
+  m_EditorClassIdentifier: 
+  Decision: {fileID: 11400000, guid: ea3a6a6db04d8ca41978b3f9a64618a6, type: 2}
+  IsTrue: {fileID: 11400000, guid: bd984a5a1b3353941989627d54b45291, type: 2}
+  IsFalse: {fileID: 11400000, guid: df37499c06cd6a64e9b3e6e67a4a911c, type: 2}
+  RemainInState: 0

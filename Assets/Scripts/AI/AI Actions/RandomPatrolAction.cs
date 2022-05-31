@@ -29,10 +29,13 @@ namespace AISystem
         public override void Execute(AIFSMAgent stateMachine)
         {  
             if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return;
+            // {
+            //     Debug.LogError("NavMeshAgent is NULL or not on NavMesh!");
+            //     return;
+            // } 
+                
             OnUpdateSettings();
             // Debug.Log(navMeshAgent.velocity.sqrMagnitude);
-          
-
         
             //if (!_aIRandomPatrol.HasReached(_navMeshAgent)) return;
 
@@ -43,6 +46,7 @@ namespace AISystem
 
             // Generiert einen neuen Wegpunkt
             if (!_aIRandomPatrol.GetRandomWaypoint(_navMeshAgent.transform.position, _waypointDistance, _maxDistance,out Vector3 point)) return;
+            
             Debug.DrawRay(point, Vector3.up, Color.magenta, 3.0f);
 
             // TODO line of Sight check

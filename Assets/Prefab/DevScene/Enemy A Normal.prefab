@@ -11,13 +11,25 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.33
       objectReference: {fileID: 0}
+    - target: {fileID: 486333573031311049, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 542815182992262208, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: DetectionRadius
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: ViewAngle
-      value: 160
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: AuraRadius
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: ViewRadius
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4545088729615860187, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: _rotatingObject
@@ -87,9 +99,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6527510856999981182, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: _initialState
+      value: 
+      objectReference: {fileID: 11400000, guid: 865cea04cd7dd254c9770196c686f684, type: 2}
+    - target: {fileID: 6527510856999981183, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: m_Height
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6527510856999981183, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: m_Radius
-      value: 0.39
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
@@ -119,7 +139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428568114229580863, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_InstanceId
-      value: -1261672
+      value: -6326
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _baseMaxArmor
@@ -189,10 +209,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 6707547857970149936, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _constrE
+      value: 216.4696
+      objectReference: {fileID: 0}
+    - target: {fileID: 6707547857970149936, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _constrS
+      value: 142.53809
+      objectReference: {fileID: 0}
+    - target: {fileID: 6707547857970149936, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _ownAngle
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6707547857970149936, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _parentAngle
+      value: 360
+      objectReference: {fileID: 0}
     - target: {fileID: 7839021846379588973, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _enemyStats
       value: 
       objectReference: {fileID: 2212057152559335682}
+    - target: {fileID: 8912237487542764544, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _constrE
+      value: 216.4696
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912237487542764544, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _constrS
+      value: 142.53809
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912237487542764544, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _ownAngle
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912237487542764544, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _parentAngle
+      value: 360
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
 --- !u!114 &2212057152559335682 stripped

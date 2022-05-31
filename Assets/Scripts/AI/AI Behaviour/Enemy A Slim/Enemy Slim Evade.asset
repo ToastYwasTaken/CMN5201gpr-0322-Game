@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274681abde473d64ea61bc15db14d759, type: 3}
+  m_Name: Enemy Slim Evade
+  m_EditorClassIdentifier: 
+  AIActions:
+  - {fileID: 11400000, guid: bf89db7530fc8944c85aff0550788d70, type: 2}
+  AITransitions:
+  - {fileID: 11400000, guid: d92d844ad51583f479ff6b630a10ab03, type: 2}

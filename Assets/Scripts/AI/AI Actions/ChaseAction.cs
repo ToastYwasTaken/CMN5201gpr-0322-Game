@@ -35,13 +35,17 @@ namespace AISystem
 
         public override void Execute(AIFSMAgent stateMachine)
         {  
-            if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return;
+            if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh)
+            {
+                Debug.LogError("NavMeshAgent is NULL or not on NavMesh!");
+                return;
+            } 
             OnUpdateSettings();
             
             if (!_targetInRange.InRangeByDistance(_fightDistanceToTarget)) return;
           
             _navMeshAgent.SetDestination(_targetInRange.Target.transform.position);
-
+  
             // Verfolge das Ziel Viusel
             if (_lookToTarget)
                 _lookToEnemy.LookAtInstance();    

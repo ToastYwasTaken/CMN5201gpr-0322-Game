@@ -21,8 +21,10 @@ namespace AISystem
         [Header("Boss Room Info")]
         [SerializeField] private GameObject _bossPrefab;
         [SerializeField] private int _spawnCount = 1;
-
-        [SerializeField] Transform _enemysParent;
+        [SerializeField] private bool _spawnEnemySupporter = false;
+        [SerializeField] private GameObject _enemySupporter;
+        [SerializeField] private int _spawnSupporterCount = 0;
+        [SerializeField] private Transform _enemiesParent;
 
         public void SpawnEnemies()
         {
@@ -47,7 +49,7 @@ namespace AISystem
 
             var parentObject = new GameObject(prefab.name);
 
-            parentObject.transform.parent = _enemysParent;
+            parentObject.transform.parent = _enemiesParent;
 
             int enemyCount = 0;
             for (int i = 0; i < rooms.Count; i++)
@@ -101,7 +103,7 @@ namespace AISystem
 
             if (rooms.Count == 0)
             {
-                Debug.LogError("No Rooms for spawnig Enemys!");
+                Debug.LogError("No Rooms for spawnig Enemies!");
                 return;
             }
 
@@ -119,11 +121,27 @@ namespace AISystem
             {
                 float offsetX = UnityEngine.Random.Range(-2.5f, 2.5f);
                 float offsetY = UnityEngine.Random.Range(-2.5f, 2.5f);
+                var rotation = Quaternion.Euler(0f, 0f, 180f);
                 var center = new Vector3(x + offsetX, y + offsetY, 0f);
-                GameObject enemy = Instantiate(_bossPrefab, center, Quaternion.identity);
+                GameObject enemy = Instantiate(_bossPrefab, center, rotation);
                 enemy.name = $"{_bossPrefab.name}-{enemyCount++}";
                 enemy.transform.parent = parentObject.transform;
                 enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
+            }
+
+            if (_spawnEnemySupporter)
+            {
+                for (int j = 0; j < _spawnSupporterCount; j++)
+                {
+                    float offsetX = UnityEngine.Random.Range(-2.5f, 2.5f);
+                    float offsetY = UnityEngine.Random.Range(-2.5f, 2.5f);
+                    
+                    var center = new Vector3(x + offsetX, y + offsetY, 0f);
+                    GameObject enemy = Instantiate(_enemySupporter, center, Quaternion.identity);
+                    enemy.name = $"{_enemySupporter.name}-{enemyCount++}";
+                    enemy.transform.parent = parentObject.transform;
+                    enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
+                }
             }
 
         }

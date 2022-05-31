@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ddf53bc744baa49b63e12be96c48bb, type: 3}
+  m_Name: Enemy Normal Search Enemys Transition
+  m_EditorClassIdentifier: 
+  Decision: {fileID: 11400000, guid: 33fc0035d6c180649a20d095435d6edb, type: 2}
+  IsTrue: {fileID: 11400000, guid: 2623f5a30f4157046a9fa8360ce8946d, type: 2}
+  IsFalse: {fileID: 11400000, guid: 865cea04cd7dd254c9770196c686f684, type: 2}
+  RemainInState: 0

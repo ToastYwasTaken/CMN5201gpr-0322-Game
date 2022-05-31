@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf82727e4d5e91d41aaf7f353c7a2b42, type: 3}
+  m_Name: Enemy B Attack Action
+  m_EditorClassIdentifier: 
+  _aiConfiguration: {fileID: 11400000, guid: 394f554d90226dd4988aa083b843bcd6, type: 2}
+  AiConfigFoldout: 1
+  OnCloseAttack: {fileID: 0}
+  OnFarAttack: {fileID: 0}
+  _lookToTarget: 0
+  _targetTag: Player
+  _closeAttackDistance: 10
+  _useFarAttack: 0
+  _farAttackDistance: 5

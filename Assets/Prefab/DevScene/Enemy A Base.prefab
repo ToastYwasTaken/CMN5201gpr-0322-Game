@@ -111,10 +111,10 @@ NavMeshAgent:
   m_GameObject: {fileID: 6527510856999981178}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.46
   m_Speed: 10
   m_Acceleration: 5
-  avoidancePriority: 50
+  avoidancePriority: 5
   m_AngularSpeed: 240
   m_StoppingDistance: 7
   m_AutoTraverseOffMeshLink: 1
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5477e95af8c004db5e5d615b60244a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialState: {fileID: 11400000, guid: f1451cbe43e86ea4cb3f3f10a48ee787, type: 2}
+  _initialState: {fileID: 11400000, guid: 865cea04cd7dd254c9770196c686f684, type: 2}
   _showDebugLogs: 0
   PlayerTag: Player
 --- !u!114 &4545088729615860187

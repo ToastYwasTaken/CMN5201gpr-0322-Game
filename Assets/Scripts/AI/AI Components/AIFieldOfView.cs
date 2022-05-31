@@ -49,6 +49,7 @@ namespace AISystem
             if (!hit.collider.CompareTag(TargetTag)) return false;
 
             Vector3 rayDirection = hit.transform.position - OwnerTransform.position;
+            //Debug.Log($"Aura: {hit.distance} - {AuraRadius}");
             float angle = Vector3.Angle(rayDirection, OwnerTransform.forward);
             Debug.DrawRay(OwnerTransform.position, dir, Color.blue);
             //Debug.LogWarning($"Vector: {rayDirection} | Angle: {angle}");

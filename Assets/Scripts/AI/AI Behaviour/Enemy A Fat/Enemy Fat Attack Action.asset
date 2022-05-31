@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf82727e4d5e91d41aaf7f353c7a2b42, type: 3}
+  m_Name: Enemy Fat Attack Action
+  m_EditorClassIdentifier: 
+  _aiConfiguration: {fileID: 11400000, guid: aaac28c3532b4434cbc4364538940c7b, type: 2}
+  AiConfigFoldout: 1
+  OnCloseAttack: {fileID: 11400000, guid: f497abea71c4b2a42852b359046fd766, type: 2}
+  OnFarAttack: {fileID: 11400000, guid: 8445b43f65c2777439e729d5385d8002, type: 2}
+  _lookToTarget: 1
+  _targetTag: Player
+  _closeAttackDistance: 1.5
+  _useFarAttack: 0
+  _farAttackDistance: 3
