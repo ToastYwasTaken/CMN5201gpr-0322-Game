@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dacdac12a38c1d4fa2bf065a2d847a3, type: 3}
-  m_Name: Enemy B Field Of View Decision
+  m_Script: {fileID: 11500000, guid: 274681abde473d64ea61bc15db14d759, type: 3}
+  m_Name: Enemy Boss Attack
   m_EditorClassIdentifier: 
-  _showDebugLogs: 0
+  AIActions:
+  - {fileID: 11400000, guid: ac4407e1567582a4b9bf7a4c4bdb30ed, type: 2}
+  AITransitions:
+  - {fileID: 11400000, guid: 70a1023b2c289a84ba88ba513d45dc49, type: 2}

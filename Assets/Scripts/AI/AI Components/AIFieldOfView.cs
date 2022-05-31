@@ -16,6 +16,13 @@ namespace AISystem
         public bool UseAura = false;
         public float AuraRadius = 2.5f;
 
+        [Header("Met settings")]
+        [SerializeField] private bool _useMetCheck = false;
+        [SerializeField] private LayerMask _bulletMask = 0;
+        [SerializeField] private float _detectionRadius = 1f;
+
+
+
         #region Propertys
 
         public Transform OwnerTransform => gameObject.transform;
@@ -53,15 +60,34 @@ namespace AISystem
             float angle = Vector3.Angle(rayDirection, OwnerTransform.forward);
             Debug.DrawRay(OwnerTransform.position, dir, Color.blue);
             //Debug.LogWarning($"Vector: {rayDirection} | Angle: {angle}");
-            return angle < ViewAngle * 0.5f || ((hit.distance <= AuraRadius) && UseAura);
+            bool inAura = (hit.distance <= AuraRadius) && UseAura;
+            Debug.Log($"Target in Aura: {inAura}");
+            return angle < ViewAngle * 0.5f || inAura;
         }
         
+        public bool AmMet()
+        {
+            if (!_useMetCheck) return false;
+            Vector3 position = transform.position;
+            var center = new Vector2(position.x, position.y);
+            Collider2D collider = Physics2D.OverlapCircle(center, _detectionRadius, _bulletMask);
+            return collider != null;
+        }
+
+
         public Vector3 DirectionFromAngle(float angleInDegress, bool angleIsGobal)
         {
             if (!angleIsGobal)
                 angleInDegress += transform.eulerAngles.z;
 
             return new Vector3(Mathf.Sin(angleInDegress * Mathf.Deg2Rad), Mathf.Cos(angleInDegress * Mathf.Deg2Rad), 0f);
+        }
+
+        private void OnDrawGizmos() 
+        {
+            if (!_useMetCheck) return;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, _detectionRadius);  
         }
 
     }

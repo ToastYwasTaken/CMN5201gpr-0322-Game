@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: ViewRadius
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 2268807526479581694, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: Range
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4545088729615860187, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: _rotatingObject
       value: 
@@ -133,13 +137,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyNormal
       objectReference: {fileID: 0}
+    - target: {fileID: 2882563280405183461, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _range
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882563280405183461, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _aimRange
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3428568114229580863, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3428568114229580863, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_InstanceId
-      value: -6326
+      value: -3996848
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _baseMaxArmor

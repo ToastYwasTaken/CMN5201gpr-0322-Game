@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274681abde473d64ea61bc15db14d759, type: 3}
-  m_Name: Enemy B Rnd Patrol INITIAL
+  m_Name: Enemy Boss Chase
   m_EditorClassIdentifier: 
   AIActions:
-  - {fileID: 11400000, guid: 88da8916df6b1a340b4c69f93a28a50d, type: 2}
+  - {fileID: 11400000, guid: 1450be1cedae83c4cae8340ee0d15eea, type: 2}
   AITransitions:
-  - {fileID: 11400000, guid: eb292a7a9d7084e44924c4c34d6b574f, type: 2}
+  - {fileID: 11400000, guid: 70a1023b2c289a84ba88ba513d45dc49, type: 2}

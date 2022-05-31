@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 4545088729615860187}
   - component: {fileID: 833972284032722469}
   - component: {fileID: 2268807526479581694}
-  - component: {fileID: 542815182992262208}
   - component: {fileID: 4831446966003190303}
   m_Layer: 6
   m_Name: Enemy A Base
@@ -175,6 +174,11 @@ MonoBehaviour:
   ViewAngle: 160
   UseAura: 1
   AuraRadius: 2.5
+  _useMetCheck: 1
+  _bulletMask:
+    serializedVersion: 2
+    m_Bits: 1073741824
+  _detectionRadius: 1
 --- !u!114 &2268807526479581694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,22 +197,6 @@ MonoBehaviour:
     m_Bits: 9
   Interaction: 1
   Range: 5
---- !u!114 &542815182992262208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6527510856999981178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccad58a5c9af5d549aad2e53995c5b19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletMask:
-    serializedVersion: 2
-    m_Bits: 1073741824
-  DetectionRadius: 0.9
 --- !u!114 &4831446966003190303
 MonoBehaviour:
   m_ObjectHideFlags: 0

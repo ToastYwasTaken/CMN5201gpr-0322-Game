@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2006684359}
   - component: {fileID: 3783511052913980729}
   - component: {fileID: 2337098219079942882}
-  - component: {fileID: 2890779244329303575}
   - component: {fileID: 449391542895350555}
   m_Layer: 8
   m_Name: Enemy B Boss
@@ -105,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5477e95af8c004db5e5d615b60244a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialState: {fileID: 11400000, guid: df37499c06cd6a64e9b3e6e67a4a911c, type: 2}
+  _initialState: {fileID: 11400000, guid: b1eee3bed035e2445999cddaf03db6e0, type: 2}
   _showDebugLogs: 1
   PlayerTag: Player
 --- !u!114 &2006684359
@@ -138,12 +137,17 @@ MonoBehaviour:
   TargetTag: Player
   TargetMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 9
   Interaction: 1
   ViewRadius: 15
   ViewAngle: 360
   UseAura: 0
   AuraRadius: 25
+  _useMetCheck: 1
+  _bulletMask:
+    serializedVersion: 2
+    m_Bits: 1073741824
+  _detectionRadius: 2
 --- !u!114 &2337098219079942882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,23 +165,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   Interaction: 1
-  Range: 5
---- !u!114 &2890779244329303575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7315260404001948518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccad58a5c9af5d549aad2e53995c5b19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletMask:
-    serializedVersion: 2
-    m_Bits: 1073741824
-  DetectionRadius: 2
+  Range: 3
 --- !u!114 &449391542895350555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5240821729038455247, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
       propertyPath: m_InstanceId
-      value: -2866138
+      value: -4158578
       objectReference: {fileID: 0}
     - target: {fileID: 5467307663945309435, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
       propertyPath: m_Name
@@ -334,6 +322,14 @@ PrefabInstance:
     - target: {fileID: 7881754927448467770, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
       propertyPath: _parentAngle
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959919431307565095, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
+      propertyPath: _range
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959919431307565095, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
+      propertyPath: _aimRange
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7982970949209904734, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
       propertyPath: _constrE

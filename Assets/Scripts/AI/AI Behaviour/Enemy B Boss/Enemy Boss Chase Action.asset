@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f6e8a619320d64db9cee46fc3d22e3, type: 3}
-  m_Name: Enemy B Random Patrol Action
+  m_Script: {fileID: 11500000, guid: a1bd3d43bd4c3fe45b4f8c50a9584c28, type: 3}
+  m_Name: Enemy Boss Chase Action
   m_EditorClassIdentifier: 
-  _aiConfiguration: {fileID: 11400000, guid: ba07298af6ec0b04498db37921448161, type: 2}
+  _aiConfiguration: {fileID: 11400000, guid: 28e70640b5d6e9447963ba59b27f43a2, type: 2}
   AiConfigFoldout: 1
-  OnHasReachedWaypoint: {fileID: 0}
-  _distanceToWaypoint: 7
-  _waypointDistance: 10
-  _maxDistance: 2
+  _lookToTarget: 1
+  _targetTag: Player
+  _fightDistanceToTarget: 10
+  _maxVelocity: 1
+  _seekForce: 0.005

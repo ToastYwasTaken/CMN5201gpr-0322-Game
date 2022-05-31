@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: AuraRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 833972284032722469, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: _detectionRadius
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2268807526479581694, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: Range
       value: 3
@@ -103,7 +107,8 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 542815182992262208, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
 --- !u!4 &6097602068026293908 stripped
 Transform:
@@ -151,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636275169142309667, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_InstanceId
-      value: -11704
+      value: -4164402
       objectReference: {fileID: 0}
     - target: {fileID: 2012279086826269495, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_LocalRotation.w

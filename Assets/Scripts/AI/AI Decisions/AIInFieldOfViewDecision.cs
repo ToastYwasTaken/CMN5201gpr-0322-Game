@@ -14,7 +14,7 @@ namespace AISystem
                 Debug.Log($"AI: {stateMachine.name} | Decision: {this.name}");
             _fieldOfView = stateMachine.GetComponent<AIFieldOfView>();
 
-            if (_fieldOfView) return _fieldOfView.InFieldOfView();
+            if (_fieldOfView) return _fieldOfView.InFieldOfView() || _fieldOfView.AmMet();
             Debug.LogError($"The Component \"AIFieldOfView\" is not found! " +
                            $"Please add this to the GameObject: {stateMachine.name}");
             return false;

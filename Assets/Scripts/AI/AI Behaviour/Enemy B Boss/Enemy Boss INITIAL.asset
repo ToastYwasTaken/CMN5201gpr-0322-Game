@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274681abde473d64ea61bc15db14d759, type: 3}
-  m_Name: Enemy Fat INITIAL
+  m_Name: Enemy Boss INITIAL
   m_EditorClassIdentifier: 
   AIActions:
-  - {fileID: 11400000, guid: 690e8cd0be5d03648b0e6246f5660788, type: 2}
+  - {fileID: 11400000, guid: 1b706fd249733084d81541c83b7b8241, type: 2}
   AITransitions:
-  - {fileID: 11400000, guid: 62e4c289575db98448d8a00ef1bae5dd, type: 2}
+  - {fileID: 11400000, guid: 426e2a6fc03d0d74cbb781d6b5932098, type: 2}

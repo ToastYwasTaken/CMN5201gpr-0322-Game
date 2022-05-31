@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.MapGeneration;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace AISystem
 {

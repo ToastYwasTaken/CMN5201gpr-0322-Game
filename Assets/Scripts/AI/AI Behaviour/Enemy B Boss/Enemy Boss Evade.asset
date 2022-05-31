@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274681abde473d64ea61bc15db14d759, type: 3}
-  m_Name: Enemy B Attack
+  m_Name: Enemy Boss Evade
   m_EditorClassIdentifier: 
   AIActions:
-  - {fileID: 11400000, guid: 8c24b2d567292a54c8f97b4935493c2d, type: 2}
+  - {fileID: 11400000, guid: 4ece9b438785d834d9443c13f9870d0e, type: 2}
   AITransitions:
-  - {fileID: 11400000, guid: 4f6b5eda14d54754cb068a67c0c20500, type: 2}
+  - {fileID: 11400000, guid: 426e2a6fc03d0d74cbb781d6b5932098, type: 2}

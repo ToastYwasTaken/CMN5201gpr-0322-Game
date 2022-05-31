@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90ddf53bc744baa49b63e12be96c48bb, type: 3}
-  m_Name: Enemy B Target In Range
+  m_Name: Enemy Boss Search Enemys Transition
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 6f0c07efc7793f949a3b320439510c3e, type: 2}
-  IsTrue: {fileID: 11400000, guid: 237f7d7ba9215d04ca74af2370b45eb1, type: 2}
-  IsFalse: {fileID: 11400000, guid: bd984a5a1b3353941989627d54b45291, type: 2}
+  Decision: {fileID: 11400000, guid: c11248513e79c90428410625a1ee5203, type: 2}
+  IsTrue: {fileID: 11400000, guid: 7f62aaf2ab65cc146b07cf0a73eda711, type: 2}
+  IsFalse: {fileID: 11400000, guid: b1eee3bed035e2445999cddaf03db6e0, type: 2}
   RemainInState: 0
