@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] _items;
     [SerializeField] int _spawnNum;
+    [SerializeField] GameObject _player;
     List<Transform> _motherRooms = new List<Transform>();
 
     List<Transform> _spawnPoints = new List<Transform>();
@@ -15,6 +17,8 @@ public class ItemSpawner : MonoBehaviour
         GetMotherRooms();
         GetSpawns();
         SpawnItems();
+
+        _player.GetComponent<PlayerController2>().SpawnPlayer();
     }
     void GetMotherRooms()
     {
@@ -31,7 +35,7 @@ public class ItemSpawner : MonoBehaviour
     {
         for (int i = 0; i < _motherRooms.Count; i++)
         {
-            int spawnNumTmp = 0;
+            int spawnNumTmp = 0 + Random.Range(0, _spawnNum);
             int tries = 50;
             while(spawnNumTmp < _spawnNum && tries > 0)
             {
@@ -40,6 +44,20 @@ public class ItemSpawner : MonoBehaviour
                 tries--;
             }
         }
+    }
+
+    public Transform GetPlayerSpawn()
+    {
+        int tries = 50;
+
+        while(tries-->0)
+        {
+            int r = Random.Range(0, _motherRooms[0].childCount);
+
+            if (_motherRooms[0].GetChild(r).name.Contains("Floor"))
+                return _motherRooms[0].GetChild(r).transform;
+        }
+        return null;
     }
 
     bool TryGetFloorTile(Transform room)

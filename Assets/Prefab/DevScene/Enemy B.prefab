@@ -177,7 +177,6 @@ MonoBehaviour:
   BulletMask:
     serializedVersion: 2
     m_Bits: 1073741824
-  Interaction: 1
   DetectionRadius: 1
 --- !u!114 &449391542895350555
 MonoBehaviour:
@@ -280,6 +279,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5240821729038455247, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
+      propertyPath: m_InstanceId
+      value: -20744698
+      objectReference: {fileID: 0}
     - target: {fileID: 5467307663945309435, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -371,6 +374,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5467307663945309435, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
   m_PrefabInstance: {fileID: 7937533964733037703}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3342887412177899449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4630715772413391678, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
+  m_PrefabInstance: {fileID: 7937533964733037703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6544994588487736750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342887412177899449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa41b6e1b1058ab4f9313a09faa96af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7398778050724221817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 615432365448982526, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}

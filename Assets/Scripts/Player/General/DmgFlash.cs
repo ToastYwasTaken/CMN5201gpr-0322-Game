@@ -18,8 +18,10 @@ public class DmgFlash : MonoBehaviour
 
     [SerializeField] EntityStats _entityStats;
 
-    delegate void RoutineDone();
-    event RoutineDone OnRoutineDone;
+    [SerializeField] bool _isDestroyOnDeath = true;
+
+    public delegate void RoutineDone();
+    public event RoutineDone OnRoutineDone;
 
     private void Awake()
     {
@@ -47,9 +49,12 @@ public class DmgFlash : MonoBehaviour
             }
         }
     }
-    void DeathFlash()
+    bool _isDeath;
+    public void DeathFlash()
     {
-        OnRoutineDone += DestroySelf;
+        _isDeath = true;
+        if(_isDestroyOnDeath)
+            OnRoutineDone += DestroySelf;
         StartCoroutine(Flash(_intervaMin, _intervaMax, 3f, false));
     }
     void DamageFlash(float foo, bool bar)
@@ -61,6 +66,10 @@ public class DmgFlash : MonoBehaviour
         Destroy(transform.root.gameObject);
     }
 
+    public void StartFlash()
+    {
+        StartCoroutine(Flash(_intervaMin, _intervaMax, _time, _finalState));
+    }
     public void StartFlash(bool finalState)
     {
         StartCoroutine(Flash(_intervaMin, _intervaMax, _time, finalState));
@@ -85,7 +94,7 @@ public class DmgFlash : MonoBehaviour
             foreach(DmgFlash sprite in mirrorSprites)
                 sprite.gameObject.SetActive(finalStatus);
 
-        OnRoutineDone?.Invoke();
+        if(_isDeath) OnRoutineDone?.Invoke();
         yield return null;
     }
     IEnumerator Move()

@@ -22,6 +22,8 @@ namespace AISystem
         [SerializeField] private GameObject _bossPrefab;
         [SerializeField] private int _spawnCount = 1;
 
+        [SerializeField] Transform _enemysParent;
+
         public void SpawnEnemies()
         {
             for (int i = 0; i < _enemyInfo.Length; i++)
@@ -44,6 +46,9 @@ namespace AISystem
             }
 
             var parentObject = new GameObject(prefab.name);
+
+            parentObject.transform.parent = _enemysParent;
+
             int enemyCount = 0;
             for (int i = 0; i < rooms.Count; i++)
             {
@@ -73,6 +78,9 @@ namespace AISystem
                 }
                 Debug.Log($"RoomInfo: Size: {roomSize} | Enemies: {spawnRate}");
 
+                GameObject roomParent = Instantiate(new GameObject($"Room{i}"));///////////////////////////
+                roomParent.transform.SetParent(parentObject.transform);
+
                 // Spawn Enemies
                 for (int j = 0; j < spawnRate; j++)
                 {
@@ -81,7 +89,7 @@ namespace AISystem
                     var center = new Vector3(x + offsetX, y + offsetY, 0f);
                     GameObject enemy = Instantiate(prefab, center, Quaternion.identity);
                     enemy.name = $"{prefab.name}-{enemyCount++}";
-                    enemy.transform.parent = parentObject.transform;
+                    enemy.transform.parent = roomParent.transform; ////////////////////////////////
                     enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
                 }
             }

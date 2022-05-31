@@ -15,19 +15,46 @@ namespace Assets.Scripts.Player
     public class PlayerController2 : MonoBehaviour
     {
         [SerializeField] Moveable _movable;
+        [SerializeField] ItemSpawner _spawner;
         [HideInInspector] Rotateable _rotateable;
         [HideInInspector] CameraController _cameraController;
         [SerializeField] Rotateable _leftWpn, _rightWpn;
+        [SerializeField] DmgFlash _flash;
+        [SerializeField] GameObject _menu;
         Inventory _inventory;
         public Inventory Inventory { get => _inventory; }
         private void Awake()
         {
+            Time.timeScale = 0;
+            GlobalValues.IsPlayerActive = false;
             RefLib.Player = gameObject;
             RefLib.sPlayerCtrl = this;
+            if (_flash == null) gameObject.GetComponentInChildren<DmgFlash>();
+            //if (_spawner == null) GameObject.Find("Spawner").GetComponent<ItemSpawner>();
             if (_movable == null)_movable = GetComponent<Moveable>();
             if (_rotateable == null) _rotateable = GetComponent<Rotateable>();
             if (_cameraController == null) _cameraController = GetComponent<CameraController>();
             //if (_inventory == null) _inventory = new Inventory(10, GetComponent<WeaponManager>());
+
+            
+        }
+
+        public void SpawnPlayer()
+        {
+            Transform spawn = _spawner.GetPlayerSpawn();
+            transform.position = spawn.position;
+            GlobalValues.IsPlayerActive = true;
+
+            GetComponent<EntityStats>().OnDeath += _flash.DeathFlash;
+            _flash.OnRoutineDone += SwitchRestartMenu;
+
+            Time.timeScale = 1;
+        }
+
+        public void SwitchRestartMenu()
+        {
+            Time.timeScale = 0;
+            _menu.SetActive(true);
         }
         private void Update()
         {
