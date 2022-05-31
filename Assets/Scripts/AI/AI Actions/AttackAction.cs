@@ -50,7 +50,7 @@ namespace AISystem
             {
                 //_navMeshAgent.updateRotation = false;
                 //_lookToEnemy.LookAt();
-                _lookToEnemy.LookAtInstance();    
+                _lookToEnemy.LookAtTarget();    
             }
             //else
             //{

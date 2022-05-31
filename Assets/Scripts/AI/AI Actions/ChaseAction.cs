@@ -41,12 +41,15 @@ namespace AISystem
             
             if (!_targetInRange.InRangeByDistance(_fightDistanceToTarget)) return;
           
+            // Vector3 point = CalculateSeekBehaviour();
+            // Debug.Log($"Point: {point}");
+
             _navMeshAgent.SetDestination(_targetInRange.Target.transform.position);
   
             // Verfolge das Ziel Viusel
             if (_lookToTarget)
-                _lookToEnemy.LookAtInstance();    
-            //_lookToEnemy.LookAt();
+                _lookToEnemy.LookAtTarget();    
+        
         }
 
         public override void Exit(AIFSMAgent stateMachine)
