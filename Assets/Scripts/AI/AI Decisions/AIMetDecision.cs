@@ -12,12 +12,14 @@ namespace AISystem
             if (_showDebugLogs)
                 Debug.Log($"AI: {stateMachine.name} | Decision: {this.name}");
             _met = stateMachine.GetComponent<AIMet>();
-           
+            
+
+            Debug.LogWarning($"Hit: {_met.AmMet()}");
             if (_met) return _met.AmMet();
             Debug.LogError($"The Component \"AIMet\" is not found! " +
                            $"Please add this to the GameObject: {stateMachine.name}");
             return false;
         }
-    } 
+    }
 }
 
