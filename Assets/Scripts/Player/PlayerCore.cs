@@ -25,7 +25,7 @@ public class PlayerCore : MonoBehaviour
         if (_weaponManager == null) _weaponManager = GetComponent<WeaponManager>();
         if (_overdriveManager == null) _overdriveManager = GetComponent<OverdriveManager>();
 
-        _audioManager = GameObject.Find("/AudioManager")?.GetComponent<AudioManager>();
+        if(_audioManager == null)_audioManager = GameObject.Find("/AudioManager")?.GetComponent<AudioManager>();
 
         _playerInformation.Heatmeter = _heatmeter;
         _playerInformation.WeaponManager = _weaponManager;
@@ -54,6 +54,6 @@ public class PlayerCore : MonoBehaviour
 
     public bool PlayerInBossRoom()
     {
-        return BSPMap.s_allRooms[BSPMap.s_allRooms.Count-1].X <= _posX && BSPMap.s_allRooms[BSPMap.s_allRooms.Count-1].Y <= _posY;
+        return GlobalValues.IsPlayerActive && BSPMap.s_allRooms[BSPMap.s_allRooms.Count-1].X <= _posX && BSPMap.s_allRooms[BSPMap.s_allRooms.Count-1].Y <= _posY;
     }
 }

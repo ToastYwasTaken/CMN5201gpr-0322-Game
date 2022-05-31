@@ -53,6 +53,7 @@ namespace Assets.Scripts.Player
 
         public void SwitchRestartMenu()
         {
+            GlobalValues.IsPlayerActive = false;
             Time.timeScale = 0;
             _menu.SetActive(true);
         }
