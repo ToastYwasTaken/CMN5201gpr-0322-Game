@@ -246,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4063642778645406484, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
       propertyPath: m_InstanceId
-      value: -17341858
+      value: -23897262
       objectReference: {fileID: 0}
     - target: {fileID: 4063642778645406484, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
       propertyPath: m_ShapePathHash
@@ -388,13 +388,49 @@ PrefabInstance:
       propertyPath: _turrets.Array.data[2]
       value: 
       objectReference: {fileID: 5037745012634608089}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8879270859821570630, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
 --- !u!4 &2012279086826269495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3836168725795605248, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
   m_PrefabInstance: {fileID: 3373690950134571063}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3785826071894501413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1898327486229874706, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
+  m_PrefabInstance: {fileID: 3373690950134571063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5745511447581307594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3785826071894501413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a706cace7ba3847837cc6277a62e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponItem:
+  - {fileID: 11400000, guid: b8a5597293cde334898cc8889fd53404, type: 2}
+  - {fileID: 11400000, guid: 7f0912f0e67ebb94f98ecf63eeaa9344, type: 2}
+  - {fileID: 11400000, guid: b8a5597293cde334898cc8889fd53404, type: 2}
+  _muzzles:
+  - {fileID: 1277577611755896315}
+  - {fileID: 6740559604526904892}
+  - {fileID: 8778913773530967033}
+  _enemyStats: {fileID: 8609176434900172349}
+  _parent: {fileID: 0}
+  _target: {fileID: 0}
+  _useRandomWeapons: 0
+  _randomWeapons: []
+  _turrets:
+  - {fileID: 3280735869035591643}
+  - {fileID: 7040844526304394268}
+  - {fileID: 5037745012634608089}
+  _audioManager: {fileID: 0}
 --- !u!1 &8072052824528279861 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6833213312776993026, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
@@ -420,6 +456,7 @@ MonoBehaviour:
   _movePos: {fileID: 0}
   _lerpSpeed: 0
   _entityStats: {fileID: 8609176434900172349}
+  _isDestroyOnDeath: 1
   test: 0
 --- !u!114 &8609176434900172349 stripped
 MonoBehaviour:
