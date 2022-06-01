@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5048791428105947207}
   - component: {fileID: 1492718062107210303}
   m_Layer: 0
-  m_Name: Obstacle2545
+  m_Name: Obstacle 4
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

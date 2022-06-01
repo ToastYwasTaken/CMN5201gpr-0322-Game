@@ -11,13 +11,12 @@ namespace Assets.Scripts.MapGeneration
 {
     public class NormalRoom : Room
     {
-        public NormalRoom(GameObject ground, GameObject obstacle1, GameObject obstacle2, GameObject wall, GameObject corner, int x, int y, int width, int height)
+        public NormalRoom(GameObject ground, GameObject[] obstacles, GameObject wall, GameObject corner, int x, int y, int width, int height)
         {
             X = x;
             Y = y;
             Ground = ground;
-            Obstacle1 = obstacle1;
-            Obstacle2 = obstacle2;
+            Obstacles = obstacles;
             Wall = wall;
             Corner = corner;
             Width = width;
@@ -28,7 +27,10 @@ namespace Assets.Scripts.MapGeneration
             //Sets new width / height
             RandomlyOffsetRoomSize();
             NormalizePrefabSize(Ground);
-            NormalizePrefabSize(Obstacle1);
+            foreach (var item in obstacles)
+            {
+                NormalizePrefabSize(item);
+            }
             NormalizePrefabSize(Wall);
             NormalizePrefabSize(Corner);
             //Create room

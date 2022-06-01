@@ -95,18 +95,18 @@ namespace Assets.Scripts.MapGeneration
         /// <summary>
         /// Create new rooms from prefabs for all rooms lowest partitions
         /// </summary>
-        public void CreateRooms(GameObject ground, GameObject obstacle1, GameObject obstacle2, GameObject wall, GameObject corner, GameObject door)
+        public void CreateRooms(GameObject ground, GameObject[] obstacles, GameObject wall, GameObject corner, GameObject door)
         {
             if (FirstMap != null || SecondMap != null)
             {
                 //Map has been split, checking lower partitions
                 if (FirstMap != null)
                 {
-                    FirstMap.CreateRooms(ground, obstacle1, obstacle2, wall, corner, door);
+                    FirstMap.CreateRooms(ground, obstacles, wall, corner, door);
                 }
                 if (SecondMap != null)
                 {
-                    SecondMap.CreateRooms(ground, obstacle1, obstacle2, wall, corner, door);
+                    SecondMap.CreateRooms(ground, obstacles, wall, corner, door);
                 }
                 if (FirstMap != null && SecondMap != null)
                 {
@@ -116,7 +116,7 @@ namespace Assets.Scripts.MapGeneration
             else
             //Lowest partition -> Create room here -> assign room to this partition
             {
-                _currentRoom = new NormalRoom(ground, obstacle1, obstacle2, wall, corner, X, Y, Width, Height);
+                _currentRoom = new NormalRoom(ground, obstacles, wall, corner, X, Y, Width, Height);
                 s_allRooms.Add(_currentRoom);
             }
         }

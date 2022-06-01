@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Only Unity dependent class for Map-Generation
@@ -32,20 +33,19 @@ namespace Assets.Scripts.MapGeneration
         [SerializeField]
         GameObject[] _groundPrefabs;
         [SerializeField]
-        GameObject _obstacle1Prefab;
-        [SerializeField]
-        GameObject _obstacle2Prefab;
+        GameObject[] _obstaclePrefabs;
         [SerializeField]
         GameObject _wallPrefab;
         [SerializeField]
         GameObject _cornerPrefab;
         [SerializeField]
-        GameObject _doorPrefab;
+        GameObject[] _doorPrefabs;
         [SerializeField]
         bool _turnOffHallWays;
 
         private System.Random _rdm;
-        private int _rdmInt;
+        private int _rdmIntGround;
+        private int _rdmIntDoor;
         private BSPMap _mapRoot;
         private float _elapsedTime;
         //containt all maps, the ones generated and their originals
@@ -70,12 +70,21 @@ namespace Assets.Scripts.MapGeneration
             CreateBSPMap();
             //Choose random Prefab for ground
             _rdm = new System.Random();
-            while (_groundPrefabs[_rdmInt] == null)
+            do
             {
-            _rdmInt = _rdm.Next(0, _groundPrefabs.Length);
-            }
+                _rdmIntGround = _rdm.Next(0, _groundPrefabs.Length);
+            } while (_groundPrefabs[_rdmIntGround] == null);
+            //Repeat for door
+            do
+            {
+                _rdmIntDoor = _rdm.Next(0, _doorPrefabs.Length);
+                Debug.Log(_rdmIntDoor);
+            } while (_doorPrefabs[_rdmIntDoor] == null);
+            //Removing null obcects if any in _ostaclePrefabs
+            _obstaclePrefabs = _obstaclePrefabs.Where(x => x != null).ToArray();
             //Level Generation only, no prefab instantiation
-            _mapRoot.CreateRooms(_groundPrefabs[_rdmInt], _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, _doorPrefab);
+            _mapRoot.CreateRooms(_groundPrefabs[_rdmIntGround], _obstaclePrefabs, _wallPrefab, _cornerPrefab, _doorPrefabs[_rdmIntDoor]);
+            //Now instantiating
             InstantiateRooms();
             
             Debug.Log($"successfully instantiated the Level [elapsed time: {Time.realtimeSinceStartup - _elapsedTime}]");
@@ -134,7 +143,7 @@ namespace Assets.Scripts.MapGeneration
             int lastRoomWidth = lastRoom.Width;
             int lastRoomHeight = lastRoom.Height;
             BSPMap.s_allRooms.Remove(lastRoom);
-            BSPMap.s_allRooms.Add(new BossRoom(_groundPrefabs[_rdmInt], _obstacle1Prefab, _obstacle2Prefab, _wallPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
+            BSPMap.s_allRooms.Add(new BossRoom(_groundPrefabs[_rdmIntGround], _obstaclePrefabs, _wallPrefab, _cornerPrefab, lastRoomX, lastRoomY, lastRoomWidth, lastRoomHeight));
             InstantiateNormalRooms();
             if (_turnOffHallWays == false)
             {

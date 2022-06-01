@@ -21,8 +21,7 @@ namespace Assets.Scripts.MapGeneration
         public int X, Y, Width, Height, WidthOffset, HeightOffset;
         #endregion
         protected GameObject Ground;
-        protected GameObject Obstacle1;
-        protected GameObject Obstacle2;
+        protected GameObject[] Obstacles;
         protected GameObject Wall;
         protected GameObject Corner;
         protected GameObject Door;
@@ -68,7 +67,7 @@ namespace Assets.Scripts.MapGeneration
             float perlinNoise;
             Tiles = new Tile[Width, Height];
             //rotation is changed to make prefabs face the correct way
-            Quaternion rotation = Quaternion.Euler(0,0,0);
+            Quaternion rotation = Quaternion.Euler(0, 0, 0);
             //create a random values between 'lower' and 'upper' bounds
             float perlinOffset = PerlinNoiseGenerator.RandomFloat(0.7f, 0.8f);
             float perlinScale = PerlinNoiseGenerator.RandomFloat(0.9f, 1.0f);
@@ -156,12 +155,8 @@ namespace Assets.Scripts.MapGeneration
                         }
                         else
                         {
-                            int rdmInt =_rdm.Next(1, 3);
-                            if(rdmInt == 1)
-                            {
-                            Tiles[x, y] = new Tile(Obstacle1, new Vector3(posX++, posY, 0), rotation);
-                            }
-                            else Tiles[x, y] = new Tile(Obstacle2, new Vector3(posX++, posY, 0), rotation);
+                            int rdmInt = _rdm.Next(0, Obstacles.Length);
+                            Tiles[x, y] = new Tile(Obstacles[rdmInt], new Vector3(posX++, posY, 0), rotation);
                         }
                     }
                 }
@@ -170,4 +165,5 @@ namespace Assets.Scripts.MapGeneration
             }
         }
     }
+
 }
