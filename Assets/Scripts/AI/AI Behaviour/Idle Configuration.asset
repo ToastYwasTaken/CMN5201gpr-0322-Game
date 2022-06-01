@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a331a6a841033248a6c3646befbee3d, type: 3}
   m_Name: Idle Configuration
   m_EditorClassIdentifier: 
-  speed: 3.5
-  angularSpeed: 120
-  acceleration: 0.5
-  stoppingDistance: 0.1
-  autoBraking: 1
+  Speed: 3.5
+  AngularSpeed: 120
+  Acceleration: 1
+  StoppingDistance: 1
+  AutoBraking: 1

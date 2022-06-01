@@ -28,7 +28,7 @@ namespace AISystem
                 _aiStateAction.OnUpdateSettings, 
                 ref _aiStateAction.AiConfigFoldout, 
                 ref _aiConfigurationEditor);
-
+            
             base.OnInspectorGUI();
         }
     }

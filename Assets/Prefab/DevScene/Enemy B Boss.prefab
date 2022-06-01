@@ -82,7 +82,7 @@ NavMeshAgent:
   m_Radius: 0.3
   m_Speed: 10
   m_Acceleration: 5
-  avoidancePriority: 4
+  avoidancePriority: 3
   m_AngularSpeed: 240
   m_StoppingDistance: 7
   m_AutoTraverseOffMeshLink: 1
@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77099b4a67bb8374eaff0c62d88111b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
   _rotatingObject: {fileID: 2735952495283642492}
   _lerpSpeed: 0.7
+  Target: {fileID: 0}
 --- !u!114 &3783511052913980729
 MonoBehaviour:
   m_ObjectHideFlags: 0

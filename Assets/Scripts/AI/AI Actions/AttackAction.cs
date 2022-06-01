@@ -93,7 +93,7 @@ namespace AISystem
             {
                 // EVENT: Call event for close attack
                 if (OnCloseAttack != null) OnCloseAttack.Raise();
-                    
+
                 Debug.Log($"{_owner.name}: execute close attack");
             }
         }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a331a6a841033248a6c3646befbee3d, type: 3}
   m_Name: Chase Boss Config
   m_EditorClassIdentifier: 
-  speed: 6
-  angularSpeed: 100
-  acceleration: 2
-  stoppingDistance: 5
-  autoBraking: 1
+  Speed: 5
+  AngularSpeed: 120
+  Acceleration: 2
+  StoppingDistance: 4
+  AutoBraking: 1
