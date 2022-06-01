@@ -3,11 +3,25 @@ using System.Collections.Generic;
 using Assets.Scripts.MapGeneration;
 using UnityEngine;
 
+/*****************************************************************************
+* Project: CMN5201GPR-0322-Game
+* File : AIEnemySpawner.cs
+* Date : 12.05.2022
+* Author : René Kraus (RK)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+******************************************************************************/
 namespace AISystem
 {
+    /// <summary>
+    /// Spawn enemies on the NavMesh in the rooms
+    /// </summary>
     public class AIEnemySpawner : MonoBehaviour
     {
-        // [SerializeField] private bool _spawnByStart = true;
         [Header("Enemies Info")]
         [SerializeField] private EnemyInfo[] _enemyInfo;
         [SerializeField] private float _rangeFromCenter = 10f;
@@ -24,6 +38,9 @@ namespace AISystem
         [SerializeField] private int _spawnSupporterCount = 0;
         [SerializeField] private Transform _enemiesParent;
 
+        /// <summary>
+        /// Spawn Enemies and the Boss Enemy
+        /// </summary>
         public void SpawnEnemies()
         {
             for (int i = 0; i < _enemyInfo.Length; i++)
@@ -35,8 +52,14 @@ namespace AISystem
             SpawnBoss();
         }
 
+        /// <summary>
+        /// Spawn Enemies
+        /// </summary>
+        /// <param name="prefab"></param>
+        /// <param name="count"></param>
         public void Spawn(GameObject prefab, int count)
         {
+            // Get all rooms
             List<Room> rooms = BSPMap.s_allRooms;
 
             if (rooms.Count == 0)
@@ -45,6 +68,7 @@ namespace AISystem
                 return;
             }
 
+            // Create parent GameObject for Enemies
             var parentObject = new GameObject(prefab.name);
 
             parentObject.transform.parent = _enemiesParent;
@@ -60,7 +84,7 @@ namespace AISystem
 
                 int spawnRate = count * _roomInfos[0].SpawnMultiplier;
 
-                // Calculate Spawn rate by Roomsize
+                // Calculate Spawn rate by roomsize
                 for (int r = 0; r < _roomInfos.Length; r++)
                 {
                     if (roomSize <= _roomInfos[r].Size)
@@ -72,7 +96,6 @@ namespace AISystem
                     if (roomSize >= _roomInfos[r].Size)
                     {
                         spawnRate = count * _roomInfos[r].SpawnMultiplier;
-                        //break;
                     }
 
                 }
@@ -95,6 +118,9 @@ namespace AISystem
             }
         }
 
+        /// <summary>
+        /// Spawn the Boss Enemy and the Boss supporter Enemies in the last room
+        /// </summary>
         public void SpawnBoss()
         {
             List<Room> rooms = BSPMap.s_allRooms;
@@ -127,13 +153,14 @@ namespace AISystem
                 enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
             }
 
+            // Spawn supporter enemies, when active
             if (_spawnEnemySupporter)
             {
                 for (int j = 0; j < _spawnSupporterCount; j++)
                 {
                     float offsetX = UnityEngine.Random.Range(-2.5f, 2.5f);
                     float offsetY = UnityEngine.Random.Range(-2.5f, 2.5f);
-                    
+
                     var center = new Vector3(x + offsetX, y + offsetY, 0f);
                     GameObject enemy = Instantiate(_enemySupporter, center, Quaternion.identity);
                     enemy.name = $"{_enemySupporter.name}-{enemyCount++}";

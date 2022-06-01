@@ -1,40 +1,70 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+/*****************************************************************************
+* Project: CMN5201GPR-0322-Game
+* File : IdleAction.cs
+* Date : 09.04.2022
+* Author : René Kraus (RK)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+******************************************************************************/
 namespace AISystem
 {
+    /// <summary>
+    /// Determines the action behavior idle
+    /// </summary>
     [CreateAssetMenu(menuName = "AI FSM/Actions/Idle")]
     public class IdleAction : AIStateAction
     {
         private NavMeshAgent _navMeshAgent;
 
+        /// <summary>
+        /// Initialize state
+        /// </summary>
+        /// <param name="stateMachine"></param>
         public override void Initialize(AIFSMAgent stateMachine)
         {
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
         }
 
+        /// <summary>
+        /// Execute state
+        /// </summary>
+        /// <param name="stateMachine"></param>
         public override void Execute(AIFSMAgent stateMachine)
         { 
             if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return;
             OnUpdateSettings();
             
+            // stopp all agent behaviour
             _navMeshAgent.isStopped = true;
         }
 
+        /// <summary>
+        /// Leave state
+        /// </summary>
+        /// <param name="stateMachine"></param>
         public override void Exit(AIFSMAgent stateMachine)
         {
             if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return;
+
+            // run all agent behaviour
             _navMeshAgent.isStopped = false;
         }
 
         public override void OnUpdateSettings()
         {
              if (_navMeshAgent == null) return;
-            _navMeshAgent.speed = AIConifg.speed;
-            _navMeshAgent.angularSpeed = AIConifg.angularSpeed;
-            _navMeshAgent.acceleration = AIConifg.acceleration;
-            _navMeshAgent.stoppingDistance = AIConifg.stoppingDistance;
-            _navMeshAgent.autoBraking = AIConifg.autoBraking;
+            _navMeshAgent.speed = AIConifg.Speed;
+            _navMeshAgent.angularSpeed = AIConifg.AngularSpeed;
+            _navMeshAgent.acceleration = AIConifg.Acceleration;
+            _navMeshAgent.stoppingDistance = AIConifg.StoppingDistance;
+            _navMeshAgent.autoBraking = AIConifg.AutoBraking;
 
         }
     }
