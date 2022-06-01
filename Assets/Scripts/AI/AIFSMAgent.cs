@@ -4,8 +4,24 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
+/*****************************************************************************
+* Project: CMN5201GPR-0322-Game
+* File : AIFSMAgent.cs
+* Date : 09.04.2022
+* Author : René Kraus (RK)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+******************************************************************************/
 namespace AISystem
 {
+    /// <summary>
+    /// Finite State Machine
+    /// Initialize and controls the AI states
+    /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public class AIFSMAgent : MonoBehaviour
     {
@@ -18,6 +34,9 @@ namespace AISystem
         #region Propertys
         public GameObject Owner => this.gameObject;
 
+        /// <summary>
+        /// Initialize the State by changing
+        /// </summary>
         private AIBaseState _currentState;
         public AIBaseState CurrentState
         {
@@ -33,6 +52,9 @@ namespace AISystem
 
         #endregion
 
+        /// <summary>
+        /// Initialize the first state
+        /// </summary>
         private void Awake()
         {
             _cachedComponents = new Dictionary<Type, Component>();
@@ -40,6 +62,9 @@ namespace AISystem
 
         }
 
+        /// <summary>
+        /// Execute the current state 
+        /// </summary>
         private void Update()
         {
             if (CurrentState != null)
@@ -48,6 +73,9 @@ namespace AISystem
                 Debug.Log($"AI: {gameObject.name} | Current State: {CurrentState.name}");
         }
 
+        /// <summary>
+        /// Initialize the state
+        /// </summary>
         private void InitializeState()
         {
             if (_showDebugLogs)
@@ -55,6 +83,10 @@ namespace AISystem
             CurrentState.Initialize(this);
         }
 
+        /// <summary>
+        /// Leave the state
+        /// </summary>
+        /// <param name="initialState"></param>
         private void ExitState(AIBaseState initialState)
         {
             if (initialState == CurrentState || CurrentState == null) return;
@@ -63,6 +95,11 @@ namespace AISystem
             CurrentState.Exit(this);
         }
 
+        /// <summary>
+        /// Returns the components of the parent GameObject
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>Component</returns>
         public new T GetComponent<T>() where T : Component
         {
             if (_cachedComponents.ContainsKey(typeof(T)))
@@ -80,7 +117,7 @@ namespace AISystem
         }
 
         /// <summary>
-        /// Setzt eine zufällige Position innerhalb des NavMesh
+        /// Sets a random position within the NavMesh
         /// </summary>
         /// <param name="range"></param>
         public void SetPositionRandomAtNavMesh(float range, float maxDistance)
@@ -96,10 +133,15 @@ namespace AISystem
             }
         }
 
+        /// <summary>
+        /// Returns whether the position is on the NavMesh
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="maxDistance"></param>
+        /// <param name="result"></param>
+        /// <returns>bool</returns>
         public bool PositionOnNavMesh(float range, float maxDistance, out Vector3 result)
         {
-            //var center = new Vector3(_navMeshCenter.x, _navMeshCenter.x, 0f);
-
             Vector3 center = transform.position;
             Vector3 rndPoint = center + (Random.insideUnitSphere * range);
 

@@ -1,9 +1,23 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
+/*****************************************************************************
+* Project: CMN5201GPR-0322-Game
+* File : AttackAction.cs
+* Date : 09.04.2022
+* Author : René Kraus (RK)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+******************************************************************************/
 namespace AISystem
 {
+    /// <summary>
+    /// Determines the action behavior attacking
+    /// </summary>
     [CreateAssetMenu(menuName = "AI FSM/Actions/Attack")]
     public class AttackAction : AIStateAction
     {
@@ -21,77 +35,77 @@ namespace AISystem
         private GameObject _owner;
         private AITargetInRange _targetDistance;
         private AILookToEnemy _lookToEnemy;
- 
 
+        /// <summary>
+        /// Initialize state
+        /// </summary>
+        /// <param name="stateMachine"></param>
         public override void Initialize(AIFSMAgent stateMachine)
         {
-         
             _owner = stateMachine.Owner;
             _navMeshAgent = stateMachine.GetComponent<NavMeshAgent>();
             _lookToEnemy = stateMachine.GetComponent<AILookToEnemy>();
             _targetDistance = stateMachine.GetComponent<AITargetInRange>();
 
+            // Search for GameObject passed tag
             if (_lookToEnemy)
                 _lookToEnemy.FindTargetWithTag(_targetTag);
         }
 
-
+        /// <summary>
+        /// Execute state
+        /// </summary>
+        /// <param name="stateMachine"></param>
         public override void Execute(AIFSMAgent stateMachine)
         {
-            
             if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return;
             OnUpdateSettings();
-            
-            // Attack
+
+            // call attack check
             Attack();
-  
-            // Verfolge das Ziel Viusel
+
+            // Track the target viusel
             if (_lookToTarget)
-            {
-                //_navMeshAgent.updateRotation = false;
-                //_lookToEnemy.LookAt();
-                _lookToEnemy.LookAtTarget();    
-            }
-            //else
-            //{
-            //    _lookToEnemy.ResetLookAt();
-            //    Debug.Log("Reset");
-            //}
-
+                _lookToEnemy.LookAtTarget();
         }
 
-        public override void Exit(AIFSMAgent stateMachine)
-        {
-            //if (_lookToEnemy && _lookToTarget)
-            //    _lookToEnemy.ResetLookAt();
-        }
+        /// <summary>
+        /// Leave state
+        /// </summary>
+        /// <param name="stateMachine"></param>
+        public override void Exit(AIFSMAgent stateMachine) { }
 
+        /// <summary>
+        /// Determines attack behavior between near and far combat
+        /// </summary>
         private void Attack()
         {
-            // Fernbereich
+            // far range
             if (_targetDistance.InRangeByDistance(_farAttackDistance) && _useFarAttack)
             {
-                if (OnFarAttack != null)
-                    OnFarAttack.Raise(); 
+                // EVENT: Call event for far attack
+                if (OnFarAttack != null) OnFarAttack.Raise();
+                    
                 Debug.Log($"{_owner.name}: execute far attack");
             }
-            // Nahbereich
+            // close range
             else if (_targetDistance.InRangeByDistance(_closeAttackDistance))
             {
-                if (OnCloseAttack != null)
-                    OnCloseAttack.Raise();
+                // EVENT: Call event for close attack
+                if (OnCloseAttack != null) OnCloseAttack.Raise();
+                    
                 Debug.Log($"{_owner.name}: execute close attack");
             }
         }
 
         public override void OnUpdateSettings()
         {
-             if (_navMeshAgent == null) return;
-            _navMeshAgent.speed = AIConifg.speed;
-            _navMeshAgent.angularSpeed = AIConifg.angularSpeed;
-            _navMeshAgent.acceleration = AIConifg.acceleration;
-            _navMeshAgent.stoppingDistance = AIConifg.stoppingDistance;
-            _navMeshAgent.autoBraking = AIConifg.autoBraking;
+            if (_navMeshAgent == null) return;
+            _navMeshAgent.speed = AIConifg.Speed;
+            _navMeshAgent.angularSpeed = AIConifg.AngularSpeed;
+            _navMeshAgent.acceleration = AIConifg.Acceleration;
+            _navMeshAgent.stoppingDistance = AIConifg.StoppingDistance;
+            _navMeshAgent.autoBraking = AIConifg.AutoBraking;
 
         }
     }

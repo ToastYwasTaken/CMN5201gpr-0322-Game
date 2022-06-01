@@ -53,5 +53,9 @@
         "temp/":true,
         "Temp/":true
     },
-    "npm.exclude": ""
+    "npm.exclude": "",
+    "omnisharp.enableRoslynAnalyzers": true,
+    "terminal.integrated.autoReplies": {
+    
+    }
 }
