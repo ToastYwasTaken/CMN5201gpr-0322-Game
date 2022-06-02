@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636275169142309667, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_InstanceId
-      value: -5182
+      value: -3568
       objectReference: {fileID: 0}
     - target: {fileID: 2012279086826269495, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -367,9 +367,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3906557741199473367, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
     - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _pickupTable
+      value: 
+      objectReference: {fileID: 11400000, guid: ee07657835e8230479bee7da87ffef1e, type: 2}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: _baseMaxArmor
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _pickupPrefab
+      value: 
+      objectReference: {fileID: 3906557741199473367, guid: b786982217be40140a43d81ed7262248, type: 3}
     - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: _baseMaxHealth
       value: 120

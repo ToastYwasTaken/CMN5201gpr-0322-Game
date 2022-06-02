@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lootArray:
   - _lootDrop: {fileID: 11400000, guid: e5e84046a33c06142857de03c491afeb, type: 2}
-    _dropChance: 15
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: 44317084cf3e9a643aef599c12d5fb07, type: 2}
-    _dropChance: 7
+    _dropChance: 2
   - _lootDrop: {fileID: 11400000, guid: 52d1d43ffa4a80046a01fda7cacadcb6, type: 2}
-    _dropChance: 15
-  - _lootDrop: {fileID: 0}
-    _dropChance: 7
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: 1245d106afb7f1344a9c331cbdbd49d7, type: 2}
-    _dropChance: 15
+    _dropChance: 2
+  - _lootDrop: {fileID: 11400000, guid: bb707205c29f58b4e90f5e0f7c7e986b, type: 2}
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: c7925136363051f41aac719d08240c93, type: 2}
-    _dropChance: 7
+    _dropChance: 2
   - _lootDrop: {fileID: 11400000, guid: c2a3d98e0463e7c45a7c24ac091e42f5, type: 2}
-    _dropChance: 15
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: d5f12f6d40e8e054192abf3955ce43ca, type: 2}
-    _dropChance: 7
+    _dropChance: 2
   - _lootDrop: {fileID: 11400000, guid: 1eac41aaeaef0d543b92bae1e56a624d, type: 2}
-    _dropChance: 15
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: 0ad9c74402b848a4bb885f2ded2d428f, type: 2}
-    _dropChance: 7
+    _dropChance: 2

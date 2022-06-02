@@ -21,4 +21,4 @@ MonoBehaviour:
   _itemSprite: {fileID: 21300000, guid: c0cba081909736d46acb6c2f42cfd8d0, type: 3}
   _pickpupAction: {fileID: 11400000, guid: 5f136a71f0466f946be52d6dae9f4cb8, type: 2}
   _pickupCheck: {fileID: 11400000, guid: 459ae90438ac88e4587fe22bb7248d77, type: 2}
-  _pickupColor: {r: 1, g: 0, b: 0, a: 0}
+  _pickupColor: {r: 1, g: 0, b: 0, a: 1}

@@ -16,4 +16,4 @@ MonoBehaviour:
   - _lootDrop: {fileID: 11400000, guid: 690c35ef3609ca24599783cb8d683167, type: 2}
     _dropChance: 20
   - _lootDrop: {fileID: 11400000, guid: 15dbf74a05dd5a548879bf2a688c5522, type: 2}
-    _dropChance: 20
+    _dropChance: 10

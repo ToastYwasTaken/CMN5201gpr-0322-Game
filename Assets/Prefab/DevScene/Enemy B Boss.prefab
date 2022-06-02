@@ -267,13 +267,21 @@ PrefabInstance:
       propertyPath: _itemPrefab
       value: 
       objectReference: {fileID: 3906557741199473367, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
+    - target: {fileID: 667410563674458542, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
+      propertyPath: _pickupTable
+      value: 
+      objectReference: {fileID: 11400000, guid: ee07657835e8230479bee7da87ffef1e, type: 2}
+    - target: {fileID: 667410563674458542, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
+      propertyPath: _pickupPrefab
+      value: 
+      objectReference: {fileID: 3906557741199473367, guid: b786982217be40140a43d81ed7262248, type: 3}
     - target: {fileID: 5240821729038455247, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5240821729038455247, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
       propertyPath: m_InstanceId
-      value: -355612
+      value: -6756
       objectReference: {fileID: 0}
     - target: {fileID: 5467307663945309435, guid: d0722692d4c4f6543828cfb4706bf244, type: 3}
       propertyPath: m_Name

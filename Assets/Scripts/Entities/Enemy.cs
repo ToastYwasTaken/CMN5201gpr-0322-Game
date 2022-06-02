@@ -27,23 +27,26 @@ public class Enemy : EntityStats
 
     GameObject CreateItem(Item item, GameObject itemPrefab, Transform position)
     {
-        GameObject newItem = Instantiate(itemPrefab, position);
+        GameObject newItem = Instantiate(itemPrefab, position.position, Quaternion.identity);
+        newItem.transform.SetParent(null);
+        newItem.transform.localScale = Vector3.one/4;
         newItem.GetComponent<ItemContainer>().SetupItem(item);
 
         return newItem;
     }
 
-    protected virtual void DropPickupables(LootTable pickupTable)
-    {
+    protected virtual void DropPickupables(LootTable pickupTable){
         if (_pickupTable == null) return;
 
         Item droppedLoot = _pickupTable.DetermineLoot();
-        if(droppedLoot != null) CreatePickup(droppedLoot, _itemPrefab, transform);
+        if(droppedLoot != null) CreatePickup(droppedLoot, _pickupPrefab, transform);
     }
 
     GameObject CreatePickup(Item item, GameObject itemPrefab, Transform position)
     {
-        GameObject newItem = Instantiate(itemPrefab, position);
+        GameObject newItem = Instantiate(itemPrefab, position.position, Quaternion.identity);
+        newItem.transform.SetParent(null);
+        newItem.transform.localScale = Vector3.one/4;
         newItem.GetComponent<PickupableContainer>().SetupPickupables((Pickupables)item);
 
         return newItem;

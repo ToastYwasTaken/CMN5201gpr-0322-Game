@@ -14,42 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lootArray:
   - _lootDrop: {fileID: 11400000, guid: e5e84046a33c06142857de03c491afeb, type: 2}
-    _dropChance: 10
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: 44317084cf3e9a643aef599c12d5fb07, type: 2}
-    _dropChance: 6
+    _dropChance: 3
   - _lootDrop: {fileID: 11400000, guid: 60eea452fe3ad414d89badebb9b6d544, type: 2}
-    _dropChance: 4
+    _dropChance: 1
   - _lootDrop: {fileID: 11400000, guid: 41cfd7125eb80784bb905c932f1705ed, type: 2}
-    _dropChance: 1
+    _dropChance: 0.5
   - _lootDrop: {fileID: 11400000, guid: 52d1d43ffa4a80046a01fda7cacadcb6, type: 2}
-    _dropChance: 10
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: 1245d106afb7f1344a9c331cbdbd49d7, type: 2}
-    _dropChance: 6
+    _dropChance: 3
   - _lootDrop: {fileID: 11400000, guid: c5ec88d2e115e4f4aa1267ee889f84ed, type: 2}
-    _dropChance: 3
+    _dropChance: 1
   - _lootDrop: {fileID: 11400000, guid: 9bb0f585ccaf14c4d86d58d15f2bd1fe, type: 2}
-    _dropChance: 1
+    _dropChance: 0.5
   - _lootDrop: {fileID: 11400000, guid: bb707205c29f58b4e90f5e0f7c7e986b, type: 2}
-    _dropChance: 10
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: c7925136363051f41aac719d08240c93, type: 2}
-    _dropChance: 6
+    _dropChance: 3
   - _lootDrop: {fileID: 11400000, guid: 95ce9eecc6341614089b2fcb99030ab8, type: 2}
-    _dropChance: 3
+    _dropChance: 1
   - _lootDrop: {fileID: 11400000, guid: fb6bcf90ba271264eb2d0b55d9cf8a06, type: 2}
-    _dropChance: 1
+    _dropChance: 0.5
   - _lootDrop: {fileID: 11400000, guid: c2a3d98e0463e7c45a7c24ac091e42f5, type: 2}
-    _dropChance: 10
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: d5f12f6d40e8e054192abf3955ce43ca, type: 2}
-    _dropChance: 6
+    _dropChance: 3
   - _lootDrop: {fileID: 11400000, guid: 9efa5a98196d70743bb2facbcbe54e20, type: 2}
-    _dropChance: 3
+    _dropChance: 1
   - _lootDrop: {fileID: 11400000, guid: 9c81b079dac8b034dade3c828329d4ac, type: 2}
-    _dropChance: 1
+    _dropChance: 0.5
   - _lootDrop: {fileID: 11400000, guid: 1eac41aaeaef0d543b92bae1e56a624d, type: 2}
-    _dropChance: 10
+    _dropChance: 5
   - _lootDrop: {fileID: 11400000, guid: 0ad9c74402b848a4bb885f2ded2d428f, type: 2}
-    _dropChance: 6
-  - _lootDrop: {fileID: 11400000, guid: 1242a5a9d4f2f0f4c87361cd31143772, type: 2}
     _dropChance: 3
-  - _lootDrop: {fileID: 11400000, guid: 965e6ad84ea43b3468f80e8623c2194e, type: 2}
+  - _lootDrop: {fileID: 11400000, guid: 1242a5a9d4f2f0f4c87361cd31143772, type: 2}
     _dropChance: 1
+  - _lootDrop: {fileID: 11400000, guid: 965e6ad84ea43b3468f80e8623c2194e, type: 2}
+    _dropChance: 0.5
