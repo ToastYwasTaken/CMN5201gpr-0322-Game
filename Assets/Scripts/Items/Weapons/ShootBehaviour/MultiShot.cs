@@ -8,12 +8,24 @@ public class MultiShot : ShotBehaviour
     [SerializeField] private float _angle;
     [SerializeField] private bool _randomAngle;
 
+    [SerializeField] private bool _randomBulletAmount = false;
+    [SerializeField] private float _maxRandomBulletAmount;
+
     public override void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent,
                               WeaponAudio weaponAudio, WeaponScreenshake weaponScreenshake)
     {
+        float bulletAmount = _amountOfBullets;
+
+        if (_randomBulletAmount)
+        {
+            if (_maxRandomBulletAmount < _amountOfBullets) return;
+            else bulletAmount = Random.Range(_amountOfBullets, _maxRandomBulletAmount);
+        }
+
+
         if (_randomAngle) 
         {
-            for (int i = 0; i < _amountOfBullets; i++)
+            for (int i = 0; i < bulletAmount; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
 
@@ -34,7 +46,7 @@ public class MultiShot : ShotBehaviour
         } 
         else
         {
-            for (int i = 0; i < _amountOfBullets; i++)
+            for (int i = 0; i < bulletAmount; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform);
                 PlaySound(weaponAudio);
@@ -42,7 +54,7 @@ public class MultiShot : ShotBehaviour
                 float facingRotation = newBullet.transform.rotation.z;
 
                 float startRoation = facingRotation + _angle /2f;
-                float angleIncrease = _angle / ((float)_amountOfBullets -1);
+                float angleIncrease = _angle / ((float)bulletAmount -1);
 
                 float tempRot = startRoation - angleIncrease * i;
 

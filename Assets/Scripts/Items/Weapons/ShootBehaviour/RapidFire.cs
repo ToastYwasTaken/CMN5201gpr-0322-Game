@@ -8,10 +8,21 @@ public class RapidFire : ShotBehaviour
     [SerializeField] private int _amountOfBullets;
     [SerializeField] private float _delayBetweenShots;
 
+    [SerializeField] private bool _randomBulletAmount = false;
+    [SerializeField] private float _maxRandomBulletAmount;
+
     public override async void Fire(ProjectileStats projectileStats, GameObject bulletPrefab, GameObject firePoint, Transform parent,
                                     WeaponAudio weaponAudio, WeaponScreenshake weaponScreenshake)
     {
-        for (int i = 0; i < _amountOfBullets; i++)
+        float bulletAmount = _amountOfBullets;
+
+        if (_randomBulletAmount)
+        {
+            if (_maxRandomBulletAmount < _amountOfBullets) return;
+            else bulletAmount = Random.Range(_amountOfBullets, _maxRandomBulletAmount);
+        }
+
+        for (int i = 0; i < bulletAmount; i++)
         {            
             GameObject newBullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
             PlaySound(weaponAudio);

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4b9ac6900ad9d4eac891c859965889, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  _iD: 1000
+  _name: Pistol
+  _description: The most basic weapon!
+  _isStackable: 0
+  _itemRarity: 0
+  _itemType: 0
+  _itemSprite: {fileID: 21300000, guid: 7fef5cb4bfecc5e48b3538c12dbba910, type: 3}
+  _fireRate: 1
+  _weaponPower: 15
+  _armorPenetration: 15
+  _bulletSpeed: 7
+  _heatmeterUsage: 20
+  _bulletPrefab: {fileID: 2912425703784977495, guid: cca58bb489a7e514b9370cbbb754af0d, type: 3}
+  _shootBehaviour: {fileID: 11400000, guid: ef40e77abd816464e958661699caf31d, type: 2}
+  _weaponShootSound: {fileID: 8300000, guid: f7a6dd2779870ef44b6868f1f458ef30, type: 3}
+  _weaponImpactSound: {fileID: 8300000, guid: e16d44ca1ebc3c64d85d9fd29deba17c, type: 3}
+  _useScreenshake: 1
+  _shakeData: {fileID: 11400000, guid: 87da8b78fa90af84ab3707d83e6554c3, type: 2}

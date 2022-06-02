@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4b9ac6900ad9d4eac891c859965889, type: 3}
+  m_Name: Howitzer
+  m_EditorClassIdentifier: 
+  _iD: 1011
+  _name: Heavy Gun
+  _description: Shots slow but hits like a truck!
+  _isStackable: 0
+  _itemRarity: 1
+  _itemType: 0
+  _itemSprite: {fileID: 21300000, guid: e6d5480c61d97a14aad8b20a882a92c2, type: 3}
+  _fireRate: 1.9
+  _weaponPower: 26
+  _armorPenetration: 42
+  _bulletSpeed: 8
+  _heatmeterUsage: 51
+  _bulletPrefab: {fileID: 2912425703784977495, guid: cb9aa57d3daf24b49baacb1d6cc539f5, type: 3}
+  _shootBehaviour: {fileID: 11400000, guid: 774b651ca7ea2814bb8ca566dd6079d7, type: 2}
+  _weaponShootSound: {fileID: 8300000, guid: 97fb65bf3b8eede4f83f45cd16844b28, type: 3}
+  _weaponImpactSound: {fileID: 8300000, guid: e16d44ca1ebc3c64d85d9fd29deba17c, type: 3}
+  _useScreenshake: 1
+  _shakeData: {fileID: 11400000, guid: bd15b40460d64d842b2b59171fc6f583, type: 2}

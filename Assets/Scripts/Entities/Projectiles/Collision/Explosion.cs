@@ -22,22 +22,31 @@ public class Explosion : MonoBehaviour
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         for (int i = 0; i < targets.Length; i++)
         {
-            IReturnEntityType hittedObjectIType = targets[i].GetComponent<IReturnEntityType>();
+            if (projectileStats.ProjectileOwnerType == eEntityType.Environment) DealDamage(projectileStats, targets, i);
+            else
+            {
+                IReturnEntityType hittedObjectIType = targets[i].GetComponent<IReturnEntityType>();
 
-            eEntityType hittedType;
-            if (hittedObjectIType != null) hittedType = hittedObjectIType.GetEntityType();
-            else continue;
+                eEntityType hittedType;
+                if (hittedObjectIType != null) hittedType = hittedObjectIType.GetEntityType();
+                else continue;
 
-            if (hittedType == projectileStats.ProjectileOwnerType) continue;
+                if (hittedType == projectileStats.ProjectileOwnerType) continue;
 
-            IDamageable damageable = targets[i].GetComponent<IDamageable>();
-            if (damageable != null) damageable.DealDamage(projectileStats.AttackPower, projectileStats.ArmorPenetration,
-                                                          projectileStats.CanCrit, projectileStats.CritChance);
-
+                DealDamage(projectileStats, targets, i);
+            }
         }
 
-        if(!_useParticales) Destroy(this.gameObject);
+        if (!_useParticales) Destroy(this.gameObject);
     }
+
+    private void DealDamage(ProjectileStats projectileStats, Collider2D[] targets, int i)
+    {
+        IDamageable damageable = targets[i].GetComponent<IDamageable>();
+        if (damageable != null) damageable.DealDamage(projectileStats.AttackPower, projectileStats.ArmorPenetration,
+                                                      projectileStats.CanCrit, projectileStats.CritChance);
+    }
+
 
     private void PlayExplosionSound(WeaponAudio weaponAudio)
     {

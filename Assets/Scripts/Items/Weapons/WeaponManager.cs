@@ -77,7 +77,7 @@ public class WeaponManager : MonoBehaviour, IShoot, IEquipWeapons
 
         for (int i = 0; i < _weaponsSlots.Length; i++)
         {
-            if (_weaponsSlots[i].WeaponItem == null) return;
+            if (_weaponsSlots[i].WeaponItem == null) continue;
             _weaponsSlots[i].Shoot(_heatmeter, true, _playerInformation.PlayerStats, _firePoints[i], _parent, _playerInformation.AudioManager);
         }
     }

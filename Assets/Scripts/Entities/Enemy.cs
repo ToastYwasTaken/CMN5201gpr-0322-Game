@@ -11,12 +11,20 @@ public class Enemy : EntityStats
     }
 
     [SerializeField] private LootTable _lootTable;
-
+    [SerializeField] private GameObject _itemPrefab;
     protected virtual void DropLoot(LootTable lootTable)
     {
         if (_lootTable == null) return;
 
-        GameObject droppedLoot = _lootTable.DetermineLoot();
-        if (droppedLoot != null) Instantiate(droppedLoot, transform.position, Quaternion.identity);
+        Item droppedLoot = _lootTable.DetermineLoot();
+        if (droppedLoot != null) CreateItem(droppedLoot, _itemPrefab, transform);
+    }
+
+    GameObject CreateItem(Item item, GameObject itemPrefab, Transform position)
+    {
+        GameObject newItem = Instantiate(itemPrefab, position);
+        newItem.GetComponent<ItemContainer>().SetupItem(item);
+
+        return newItem;
     }
 }

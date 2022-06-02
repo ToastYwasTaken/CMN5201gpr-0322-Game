@@ -7,6 +7,8 @@ public class DefaultProjectileCollision : ProjectileCollision
     {
         if (collision.CompareTag("Wall")) AfterCollisionEffects(projectileStats, projectile);
 
+        if(projectileStats.ProjectileOwnerType == eEntityType.Environment) CollisionDamage(collision, projectileStats, projectile);
+
         IReturnEntityType hittedObjectIType = collision.GetComponent<IReturnEntityType>();
 
         eEntityType hittedType;
@@ -14,7 +16,11 @@ public class DefaultProjectileCollision : ProjectileCollision
         else return;
 
         if (hittedType == projectileStats.ProjectileOwnerType) return;
+        CollisionDamage(collision, projectileStats, projectile);
+    }
 
+    private void CollisionDamage(Collider2D collision, ProjectileStats projectileStats, GameObject projectile)
+    {
         IDamageable damageable = collision.GetComponent<IDamageable>();
         if (damageable != null) damageable.DealDamage(projectileStats.AttackPower, projectileStats.ArmorPenetration,
                                                       projectileStats.CanCrit, projectileStats.CritChance);

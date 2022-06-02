@@ -29,7 +29,7 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     [Header("Defensive Stats")]
 
     //Health
-    [SerializeField] private float _baseMaxHealth;
+    [SerializeField, Tooltip("The base health without any modifiers")] private float _baseMaxHealth;
     private float BaseMaxHealth { get => _baseMaxHealth; }
     private float _maxHealthModifier;
 
@@ -69,8 +69,9 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     public float HealthPercentage { get => Health / MaxHealth; }
 
     // Armor
-    [SerializeField] private float _baseMaxArmor;
+    [SerializeField, Tooltip("The base armor without any modifiers")] private float _baseMaxArmor;
     public float BaseMaxArmor { get => _baseMaxArmor; }
+
     private float _armorModifier;
     public float ArmorModifier
     {
@@ -104,9 +105,7 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
 
             _armor = newArmor;
         }
-    }
-
-    
+    }    
 
     public float ArmorPercentage { get => (_armor / MaxArmor) * 100f; }
 
@@ -114,7 +113,8 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     public bool IsArmorBroken { get => _isArmorBroken; }
 
     // Damage Reduction
-    [SerializeField] private float _baseDamageReduction;
+    [SerializeField, Tooltip("The base armor penetration reduction without any modifiers")] 
+    private float _baseDamageReduction;
     public float BaseDamageReduction { get => _baseDamageReduction; }
     
     private float _damageReductionModifier;
@@ -127,41 +127,63 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     public float DamageReduction { get => _baseDamageReduction + DamageReductionModifier; }
 
     // Armor Penetration Reduction
-    [SerializeField] private float _baseArmorPenetrationReduction;
+    [SerializeField, Tooltip("The base armor penetration reduction without any modifiers")]
+    private float _baseArmorPenetrationReduction;
     public float BaseArmorPenetrationReduction { get => _baseArmorPenetation; }
+
     private float _armorPenetrationReductionModifier;
     public float ArmorPenetrationReductionModifier 
     {
         get => _armorPenetrationReductionModifier;
         set => _armorPenetrationReductionModifier = value;
     }
+
     public float ArmorPenetrionReducion { get => _baseArmorPenetrationReduction + ArmorPenetrationReductionModifier; }
 
     [Header("Offensive Stats")]
 
+    //attack power
     [SerializeField] private float _baseAttackPower;
     public float BaseAttackPower { get => _baseAttackPower; }
+
     private float _attackPowerModifier = 0f;
     public float AttackPowerModifier {get => _attackPowerModifier; set => _attackPowerModifier = value; }
+
     public float AttackPower { get => _baseAttackPower + AttackPowerModifier; }
 
-    [SerializeField]private float _baseArmorPenetation;
+    //armor penetration
+    [SerializeField, Tooltip ("The base armor penetration without any modifiers")]
+    private float _baseArmorPenetation;
     public float BaseArmorPenetration { get => _baseArmorPenetation; }
+
     private float _armorPenetrationModifier = 0f;
     public float ArmorPenetrationModifier { get => _armorPenetrationModifier; set => _armorPenetrationModifier = value; }
-    public float ArmorPenetration { get => _baseArmorPenetation + ArmorPenetrationModifier; }
 
-    [SerializeField] private bool _canCrit = true;
+    public float ArmorPenetration { get => BaseArmorPenetration + ArmorPenetrationModifier; }
+
+    //crit
+    [SerializeField, Tooltip("Determents if the entity is allowed to Crit")] 
+    private bool _canCrit = true;
     public bool CanCrit { get => _canCrit; }
 
-    [SerializeField, Range(0, 100)] private float _baseCritChance;
-    public float CritChanceNormalized { get => (_baseCritChance + CritChanceModifier)/ 100f; }
+    [SerializeField, Range(0, 100), Tooltip("Determents how high the base crit chance of the entity is")]
+    private float _baseCritChance;
+
+    public float CritChanceNormalized { get 
+    {
+        if ((_baseCritChance + CritChanceModifier) /100f > 1) return 1f;
+        else return (_baseCritChance + CritChanceModifier) / 100f; } 
+    }
+
     public float CritChance { get => _baseCritChance + CritChanceModifier; }
     private float _critChanceModifier = 0f;
+
     public float CritChanceModifier { get => _critChanceModifier; set => _critChanceModifier = value; }
 
+    
     [Header("Entity Types")]
-    [SerializeField] private eEntityType _entityType;
+    [SerializeField, Tooltip("Determents the type of the entity")] 
+    private eEntityType _entityType;
     public eEntityType EntityType { get => _entityType; }
 
 
@@ -174,12 +196,18 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
         OnHealthPercentageChanged?.Invoke(HealthPercentageNormalized);
     }
 
+    /// <summary>
+    /// Method is called when the enities healthpool falls to 0
+    /// </summary>
     protected virtual void Death()
     {
         OnDeath?.Invoke();
         //Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Method is called if the entity loses all his armor 
+    /// </summary>
     protected virtual void ArmorBroken()
     {
         if (_isArmorBroken) return;
@@ -187,6 +215,9 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
         OnArmorBreak?.Invoke();
     }
 
+    /// <summary>
+    /// Method is called if the entity restores his armor and now has an armor pool greater then 0
+    /// </summary>
     protected virtual void ArmorRestored()
     {
         if (!_isArmorBroken) return;
@@ -222,18 +253,26 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
 
         if (_isArmorBroken)
         {
-            damageToHealth = (attackPower - _baseDamageReduction) * critModifier;
+            //calculate damage to armor if DamageReduction is bigger then the attackPower, damage is set to 1
+            if (attackPower - DamageReduction < 1) damageToHealth = 1f;
+            //if DamageReduction isnt bigger then attackPower then calculate normal damage
+            else damageToHealth = (attackPower - DamageReduction) * critModifier;
         }
         else
         {
-            if (armorPenetration - _baseArmorPenetrationReduction < 1) damageToArmor = 0f;
-            else damageToArmor = (attackPower + (armorPenetration - _baseArmorPenetrationReduction)) * critModifier;
+            //calculate damage to armor if ArmorPenetrionReducion is bigger then the armorPenetration, damage is set to 1
+            if (armorPenetration - ArmorPenetrionReducion < 1) damageToArmor = 1f;
+            //if ArmorPenetrionReducion isnt bigger then armorPenetration then calculate normal damage
+            else damageToArmor = (attackPower + (armorPenetration - ArmorPenetrionReducion)) * critModifier;
 
-            if (damageToArmor > _armor) damageToHealth = damageToArmor - _armor;
+            //if the damage to the armor is bigger then the actual armor then leftover damage gets subtracted from the health
+            if (damageToArmor > Armor) damageToHealth = damageToArmor - Armor;
         }
-
+        //subtract damage to the armor and trigger event
         Armor -= damageToArmor;
         if(damageToArmor > 0) OnArmorDamageTaken?.Invoke(damageToArmor, didCrit);
+
+        //subtract damage to healt and trigger event
         Health -= damageToHealth;
         if (damageToHealth > 0) OnHealthDamageTaken?.Invoke(damageToHealth, didCrit);
     }

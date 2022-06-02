@@ -21,7 +21,9 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] _items;
+    [SerializeField] GameObject _itemPrefab;
+    [SerializeField] private LootTable _lootTable;
+
     [SerializeField] int _spawnNum;
     [SerializeField] GameObject _player;
     List<Transform> _motherRooms = new List<Transform>();
@@ -91,9 +93,23 @@ public class ItemSpawner : MonoBehaviour
     {
         foreach(Transform pos in _spawnPoints)
         {
-            GameObject newItem = Instantiate(_items[Random.Range(0, _items.Length)], pos);
+            GameObject newItem = CreateItem(DetermenItem(), _itemPrefab, pos);
             newItem.transform.SetParent(transform);
             newItem.transform.localScale = Vector3.one/4;
         }
+    }
+
+    private Item DetermenItem()
+    {
+        if (_lootTable == null) return null;
+        return _lootTable.DetermineLoot();
+    }
+
+    GameObject CreateItem(Item item, GameObject itemPrefab, Transform position)
+    {
+        GameObject newItem = Instantiate(itemPrefab, position);
+        newItem.GetComponent<ItemContainer>().SetupItem(item);
+
+        return newItem;
     }
 }
