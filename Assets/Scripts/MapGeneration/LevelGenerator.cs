@@ -78,7 +78,6 @@ namespace Assets.Scripts.MapGeneration
             do
             {
                 _rdmIntDoor = _rdm.Next(0, _doorPrefabs.Length);
-                Debug.Log(_rdmIntDoor);
             } while (_doorPrefabs[_rdmIntDoor] == null);
             //Removing null obcects if any in _ostaclePrefabs
             _obstaclePrefabs = _obstaclePrefabs.Where(x => x != null).ToArray();
@@ -86,7 +85,6 @@ namespace Assets.Scripts.MapGeneration
             _mapRoot.CreateRooms(_groundPrefabs[_rdmIntGround], _obstaclePrefabs, _wallPrefab, _cornerPrefab, _doorPrefabs[_rdmIntDoor]);
             //Now instantiating
             InstantiateRooms();
-            
             Debug.Log($"successfully instantiated the Level [elapsed time: {Time.realtimeSinceStartup - _elapsedTime}]");
         }
 

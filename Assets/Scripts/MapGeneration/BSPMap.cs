@@ -17,6 +17,7 @@ namespace Assets.Scripts.MapGeneration
         private Room _currentRoom;
         public static List<Room> s_allRooms = new List<Room>();
         public static List<Room> s_allHallWays = new List<Room>();
+        public static List<RoomDoorConnection> s_doorsBetweenRooms = new List<RoomDoorConnection>();    //Room1, Room2, posOfDoorRoom1, posOfDoorRoom2
         public BSPMap(int x, int y, int maxWidth, int maxHeight)
         {
             X = x;
@@ -132,7 +133,6 @@ namespace Assets.Scripts.MapGeneration
         {
             //Calculate possible connection location
             System.Random rdm = new System.Random();
-            int rdmInt = rdm.Next(0, 2);
             Room hallway1 = null;
 
             //Offsets to ignore borders
@@ -194,7 +194,7 @@ namespace Assets.Scripts.MapGeneration
                     return;
                 }
             }
-
+            s_doorsBetweenRooms.Add(new RoomDoorConnection(room1, room2, splitPointRoom1, splitPointRoom2));
             //Add hallways to list
             if (hallway1 != null)
             {
