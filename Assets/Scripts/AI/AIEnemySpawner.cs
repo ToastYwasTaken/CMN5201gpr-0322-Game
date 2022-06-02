@@ -62,7 +62,7 @@ namespace AISystem
         {
             // Get all rooms
             List<Room> rooms = BSPMap.s_allRooms;
-            RefLib.sEnemyCount.Count = new int[rooms.Count];
+            GetComponent<EnemyCount>().Count = new int[rooms.Count];
 
             if (rooms.Count == 0)
             {
@@ -102,7 +102,7 @@ namespace AISystem
 
                 }
                 Debug.Log($"RoomInfo: Size: {roomSize} | Enemies: {spawnRate}");
-                RefLib.sEnemyCount.Count[i] = spawnRate;
+                GetComponent<EnemyCount>().Count[i] = spawnRate;
 
                 // Spawn Enemies
                 for (int j = 0; j < spawnRate; j++)
