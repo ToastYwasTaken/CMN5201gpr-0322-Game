@@ -133,7 +133,7 @@
     <Compile Include="Assets\Scripts\Items\Upgrades\IEquipOverdriveChip.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\NavMeshPrefabInstance.cs" />
     <Compile Include="Assets\Scripts\UI\SettingsUI.cs" />
-    <Compile Include="Assets\Scripts\Items\Loottables\LootTable.cs" />
+    <Compile Include="Assets\Items\Loottables\LootTable.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\LocalNavMeshBuilder.cs" />
     <Compile Include="Assets\Scripts\UI\MainWindowUI.cs" />
     <Compile Include="Assets\Scripts\Behaviour\Player\PlayerController2.cs" />
@@ -253,6 +253,12 @@
     <Compile Include="Assets\Scripts\Behaviour\Level\ColorPalette.cs" />
     <Compile Include="Assets\Scripts\Behaviour\Level\LevelSettings.cs" />
     <Compile Include="Assets\Scripts\Behaviour\Level\EnvironmentSetColor.cs" />
+    <Compile Include="Assets\Scripts\MapGeneration\RoomDoorConnection.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\EnemyCountComponent.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\EnemyCount.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\DoorManager.cs" />
+    <Compile Include="Assets\Scripts\Entities\Map\ExplosiveBarrel\ExplosiveBarrel.cs" />
+    <Compile Include="Assets\Scripts\Entities\Pickupables\PickupablesEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

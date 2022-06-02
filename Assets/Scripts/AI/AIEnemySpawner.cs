@@ -38,6 +38,7 @@ namespace AISystem
         [SerializeField] private int _spawnSupporterCount = 0;
         [SerializeField] private Transform _enemiesParent;
 
+
         /// <summary>
         /// Spawn Enemies and the Boss Enemy
         /// </summary>
@@ -61,6 +62,7 @@ namespace AISystem
         {
             // Get all rooms
             List<Room> rooms = BSPMap.s_allRooms;
+            RefLib.sEnemyCount.Count = new int[rooms.Count];
 
             if (rooms.Count == 0)
             {
@@ -100,9 +102,7 @@ namespace AISystem
 
                 }
                 Debug.Log($"RoomInfo: Size: {roomSize} | Enemies: {spawnRate}");
-
-                GameObject roomParent = Instantiate(new GameObject($"Room{i}"));///////////////////////////
-                roomParent.transform.SetParent(parentObject.transform);
+                RefLib.sEnemyCount.Count[i] = spawnRate;
 
                 // Spawn Enemies
                 for (int j = 0; j < spawnRate; j++)
@@ -112,7 +112,7 @@ namespace AISystem
                     var center = new Vector3(x + offsetX, y + offsetY, 0f);
                     GameObject enemy = Instantiate(prefab, center, Quaternion.identity);
                     enemy.name = $"{prefab.name}-{enemyCount++}";
-                    enemy.transform.parent = roomParent.transform; ////////////////////////////////
+                    enemy.GetComponent<EnemyCountComponent>().roomNum = i;
                     enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
                 }
             }
