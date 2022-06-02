@@ -49,7 +49,7 @@ public class PlayerRoomPosition : MonoBehaviour
             if (currRoom > -1)
             {
                 _showRoom = currRoom;
-                GlobalValues.PlayerCurrRoom = currRoom;
+                GlobalValues.sPlayerCurrRoom = currRoom;
             }
             yield return new WaitForSeconds(seconds);
         }

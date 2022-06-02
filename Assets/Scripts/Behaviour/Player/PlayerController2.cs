@@ -40,40 +40,55 @@ namespace Assets.Scripts.Player
         private void Awake()
         {
             Time.timeScale = 0;
-            GlobalValues.IsPlayerActive = false;
+            GlobalValues.sIsPlayerActive = false;
             RefLib.sPlayer = gameObject;
             RefLib.sPlayerCtrl = this;
             if (_flash == null) gameObject.GetComponentInChildren<DmgFlash>();
-            //if (_spawner == null) GameObject.Find("Spawner").GetComponent<ItemSpawner>();
             if (_movable == null)_movable = GetComponent<Moveable>();
             if (_rotateable == null) _rotateable = GetComponent<Rotateable>();
             if (_cameraController == null) _cameraController = GetComponent<CameraController>();
             //if (_inventory == null) _inventory = new Inventory(10, GetComponent<WeaponManager>());
-
-            
+        }
+        private void Start()
+        {
+            Invoke("EnableEnemyAggro", 3f);
         }
 
         public void SpawnPlayer()
         {
             Transform spawn = _spawner.GetPlayerSpawn();
             transform.position = spawn.position;
-            GlobalValues.IsPlayerActive = true;
+            GlobalValues.sIsPlayerActive = true;
 
             GetComponent<EntityStats>().OnDeath += _flash.DeathFlash;
-            _flash.OnRoutineDone += SwitchRestartMenu;
+            //_flash.OnRoutineDone += SwitchVictoryMenu;
 
             Time.timeScale = 1;
+
+            Invoke("EnableEnemyAggro", 3f);
+        }
+        void EnableEnemyAggro()
+        {
+            GlobalValues.sIsPlayerActive = true;
         }
 
+        public void SwitchVictoryMenu()
+        {
+            GlobalValues.sCurrentLevel++;
+            GlobalValues.sIsPlayerActive = false;
+            Time.timeScale = 0;
+            _menu.SetActive(true);
+        }
         public void SwitchRestartMenu()
         {
-            GlobalValues.IsPlayerActive = false;
+            GlobalValues.sCurrentLevel++;
+            GlobalValues.sIsPlayerActive = false;
             Time.timeScale = 0;
             _menu.SetActive(true);
         }
         private void Update()
         {
-            if (!GlobalValues.IsPlayerActive) return;
+            if (!GlobalValues.sIsPlayerActive) return;
             _cameraController.DoCamera();
             //DoInput
             _movable.DoMovement();
@@ -81,7 +96,7 @@ namespace Assets.Scripts.Player
 
         private void FixedUpdate()
         {
-            if (!GlobalValues.IsPlayerActive) return;
+            if (!GlobalValues.sIsPlayerActive) return;
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _rotateable.RotateTowardsTargetV2(mousePos);
             _leftWpn.RotateTowardsTargetV2(mousePos);

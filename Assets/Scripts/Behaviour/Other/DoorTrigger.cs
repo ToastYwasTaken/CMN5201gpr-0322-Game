@@ -27,8 +27,8 @@ public class DoorTrigger : MonoBehaviour
     private void Awake()
     {
         _door = transform.root.GetComponent<IDoor>();
-        _doorNum = GlobalValues.doorTriggerNum;
-        GlobalValues.doorTriggerNum++;
+        _doorNum = GlobalValues.sDoorTriggerNum;
+        GlobalValues.sDoorTriggerNum++;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

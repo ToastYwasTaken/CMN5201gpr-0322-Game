@@ -41,7 +41,7 @@ public class EnvironmentSetColor : MonoBehaviour
         }
         foreach (SpriteRenderer renderer in _spriteRenderer)
         {
-            Color tmpColor = colors[_index];
+            Color tmpColor = colors[_index % colors.Length];
             tmpColor.a = renderer.color.a;
             renderer.color = tmpColor;
         }
