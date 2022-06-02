@@ -54,6 +54,6 @@ public class PlayerCore : MonoBehaviour
 
     public bool PlayerInBossRoom()
     {
-        return GlobalValues.IsPlayerActive && BSPMap.s_allRooms[BSPMap.s_allRooms.Count-1].X <= _posX && BSPMap.s_allRooms[BSPMap.s_allRooms.Count-1].Y <= _posY;
+        return GlobalValues.sIsPlayerActive && BSPMap.s_allRooms[BSPMap.s_allRooms.Count-1].X <= _posX && BSPMap.s_allRooms[BSPMap.s_allRooms.Count-1].Y <= _posY;
     }
 }

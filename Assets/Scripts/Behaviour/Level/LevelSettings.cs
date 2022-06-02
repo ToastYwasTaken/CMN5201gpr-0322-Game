@@ -5,8 +5,7 @@ using UnityEngine;
 public class LevelSettings : MonoBehaviour
 {
     [SerializeField] ColorPalette[] _palette;
-    [SerializeField] int _currentPalette = 0;
-    public int CurrentPalette { get { return _currentPalette; } set { _currentPalette = value; } }
+    public int CurrentPalette { get { return GlobalValues.sCurrentLevel % _palette.Length; }}
     public ColorPalette Palette { get { return GetCurrentPalette(); } }
 
     ColorPalette GetCurrentPalette()

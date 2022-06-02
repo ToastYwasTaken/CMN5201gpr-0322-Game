@@ -4,9 +4,10 @@ using UnityEngine;
 
 static public class GlobalValues
 {
-    static public int doorTriggerNum = 0;
-    static public int PlayerCurrRoom = 0;
-    static public bool[] doorsPassed;
+    static public int sDoorTriggerNum = 0;
+    static public int sPlayerCurrRoom = 0;
+    static public int sCurrentLevel = 0;
+    static public bool sIsEnemyAggro = false;
 
-    static public bool IsPlayerActive = true;
+    static public bool sIsPlayerActive = true;
 }

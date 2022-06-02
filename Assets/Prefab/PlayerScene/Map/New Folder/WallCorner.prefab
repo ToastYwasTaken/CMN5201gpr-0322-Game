@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5048791428105947207}
   - component: {fileID: 7260052246031109302}
-  - component: {fileID: 6324903800206711374}
+  - component: {fileID: -1166305161337981462}
   m_Layer: 0
   m_Name: WallCorner
   m_TagString: Wall
@@ -47,7 +47,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.2145815, y: 10.339803, z: 22.908875}
   m_Center: {x: 0.028266907, y: 0.026997924, z: -0.29390156}
---- !u!114 &6324903800206711374
+--- !u!114 &-1166305161337981462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

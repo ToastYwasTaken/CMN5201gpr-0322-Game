@@ -87,10 +87,10 @@
     <Compile Include="Assets\Scripts\MapGeneration\NormalRoom.cs" />
     <Compile Include="Assets\Scripts\MapGeneration\Room.cs" />
     <Compile Include="Assets\Scripts\AI\AI Actions\ChaseAction.cs" />
-    <Compile Include="Assets\Scripts\Behaviour\General\BackgroundSpawner.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\BackgroundSpawner.cs" />
     <Compile Include="Assets\Scripts\MapGeneration\PerlinNoiseGenerator.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\ClickToMove.cs" />
-    <Compile Include="Assets\Scripts\Behaviour\General\BossVictory.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\BossVictory.cs" />
     <Compile Include="Assets\Scripts\Items\Weapons\ShootBehaviour\RapidFire.cs" />
     <Compile Include="Assets\Scripts\Items\Upgrades\EquipEffects\OverdriveIncreaseCritChanceEquipEffect.cs" />
     <Compile Include="Assets\Scripts\UI\Animation\SelectableAnimationUI.cs" />
@@ -166,7 +166,7 @@
     <Compile Include="Assets\Scripts\Entities\Projectiles\Projectile.cs" />
     <Compile Include="Assets\Scripts\AI\AI Components\AIPatrolPoints.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DungeonManager.cs" />
-    <Compile Include="Assets\Scripts\Behaviour\General\RestartMenu.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\RestartMenu.cs" />
     <Compile Include="Assets\FirstGearGames\SmoothCameraShaker\Scripts\ShakeData.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\FirstGearGames\Utilities\DDOL.cs" />
@@ -209,7 +209,7 @@
     <Compile Include="Assets\FirstGearGames\SmoothCameraShaker\Scripts\ShakerInstance.cs" />
     <Compile Include="Assets\Scripts\AI\AIEvent.cs" />
     <Compile Include="Assets\Scripts\Entities\WeaponComp.cs" />
-    <Compile Include="Assets\Scripts\Behaviour\General\PlayerRoomPosition.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\PlayerRoomPosition.cs" />
     <Compile Include="Assets\Scripts\Behaviour\Other\DoorTrigger.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemDragDrop.cs" />
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\MeshTool.cs" />
@@ -250,9 +250,9 @@
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
     <Compile Include="Assets\Scripts\AI\AIController.cs" />
     <Compile Include="Assets\Scripts\Behaviour\General\TrajectoryPrediction.cs" />
-    <Compile Include="Assets\Scripts\Behaviour\General\ColorPalette.cs" />
-    <Compile Include="Assets\Scripts\Behaviour\General\LevelSettings.cs" />
-    <Compile Include="Assets\Scripts\Behaviour\General\EnvironmentSetColor.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\ColorPalette.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\LevelSettings.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Level\EnvironmentSetColor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
