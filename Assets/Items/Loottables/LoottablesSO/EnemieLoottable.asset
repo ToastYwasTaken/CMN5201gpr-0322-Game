@@ -13,19 +13,7 @@ MonoBehaviour:
   m_Name: EnemieLoottable
   m_EditorClassIdentifier: 
   _lootArray:
-  - _lootDrop: {fileID: 4282965906643959766, guid: 9cee37074a6ca25428548a77bf41f2a9, type: 3}
-    _dropChance: 15
-  - _lootDrop: {fileID: 4282965906643959766, guid: a0e219b8dc9627049a3e19e5defb2031, type: 3}
-    _dropChance: 15
-  - _lootDrop: {fileID: 4282965906643959766, guid: 944386bbb5674684e985e310290cb33d, type: 3}
-    _dropChance: 7
-  - _lootDrop: {fileID: 7873077240748273685, guid: b6a11ff4df2a199478d7945450857b4e, type: 3}
-    _dropChance: 5
-  - _lootDrop: {fileID: 2749341590060224486, guid: 4e931248f496cf64f9be5dcde9f8b81c, type: 3}
-    _dropChance: 5
-  - _lootDrop: {fileID: 2947727755377427281, guid: b65a1cda679a55e4d86d7d2e104852b9, type: 3}
-    _dropChance: 5
-  - _lootDrop: {fileID: 1189632027555421824, guid: 74fa51d191e33264c8f75150e467ba83, type: 3}
-    _dropChance: 5
-  - _lootDrop: {fileID: 1189632027555421824, guid: 092be3588e5b9bf4685ec0ef39654e94, type: 3}
-    _dropChance: 5
+  - _lootDrop: {fileID: 11400000, guid: 44317084cf3e9a643aef599c12d5fb07, type: 2}
+    _dropChance: 100
+  - _lootDrop: {fileID: 11400000, guid: fb6bcf90ba271264eb2d0b55d9cf8a06, type: 2}
+    _dropChance: 100

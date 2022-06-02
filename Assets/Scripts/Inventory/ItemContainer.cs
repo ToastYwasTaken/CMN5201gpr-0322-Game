@@ -74,8 +74,7 @@ public class ItemContainer : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    private void OnTriggerEnter2D(Collider2D collision)    {
         if (_item == null) return;
         PlayerController2 pContrl = collision.gameObject.GetComponent<PlayerController2>();
         if (pContrl != null)

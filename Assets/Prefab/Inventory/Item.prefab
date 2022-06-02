@@ -115,16 +115,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b97c7de30562b4895f103cb6e9c18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: ea69c0040aabb884b884e4729eeb4c66, type: 2}
-  _iconSpirteRenderer: {fileID: 0}
-  _backgroundSpriteRenderer: {fileID: 0}
-  _weaponColor: {r: 0, g: 0, b: 0, a: 0}
-  _overdriveColor: {r: 0, g: 0, b: 0, a: 0}
-  _allColor: {r: 0, g: 0, b: 0, a: 0}
-  _commonColor: {r: 0, g: 0, b: 0, a: 0}
-  _rareColor: {r: 0, g: 0, b: 0, a: 0}
-  _epicColor: {r: 0, g: 0, b: 0, a: 0}
-  _legendaryColor: {r: 0, g: 0, b: 0, a: 0}
+  _iconSpirteRenderer: {fileID: 3906557741199473370}
+  _backgroundSpriteRenderer: {fileID: 3385961297516932251}
+  _weaponColor: {r: 1, g: 0.12657723, b: 0, a: 1}
+  _overdriveColor: {r: 0, g: 0.52865434, b: 1, a: 1}
+  _allColor: {r: 1, g: 1, b: 1, a: 1}
+  _commonColor: {r: 0.309744, g: 0.5, b: 0.09198114, a: 0.5882353}
+  _rareColor: {r: 0, g: 0.74361134, b: 1, a: 0.5882353}
+  _epicColor: {r: 0.4340725, g: 0, b: 1, a: 0.5882353}
+  _legendaryColor: {r: 1, g: 0.51984924, b: 0, a: 0.5882353}
 --- !u!1 &8883174997448193349
 GameObject:
   m_ObjectHideFlags: 0

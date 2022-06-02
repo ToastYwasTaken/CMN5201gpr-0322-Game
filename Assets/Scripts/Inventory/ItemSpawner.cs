@@ -94,6 +94,7 @@ public class ItemSpawner : MonoBehaviour
         foreach(Transform pos in _spawnPoints)
         {
             GameObject newItem = CreateItem(DetermenItem(), _itemPrefab, pos);
+            if (newItem == null) continue;
             newItem.transform.SetParent(transform);
             newItem.transform.localScale = Vector3.one/4;
         }
@@ -107,6 +108,7 @@ public class ItemSpawner : MonoBehaviour
 
     GameObject CreateItem(Item item, GameObject itemPrefab, Transform position)
     {
+        if(item == null) return null;
         GameObject newItem = Instantiate(itemPrefab, position);
         newItem.GetComponent<ItemContainer>().SetupItem(item);
 

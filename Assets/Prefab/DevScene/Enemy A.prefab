@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77099b4a67bb8374eaff0c62d88111b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
   _rotatingObject: {fileID: 2735952495283642492}
   _lerpSpeed: 0.7
+  Target: {fileID: 0}
 --- !u!114 &3783511052913980729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +143,11 @@ MonoBehaviour:
   ViewAngle: 120
   UseAura: 1
   AuraRadius: 2.5
+  _useMetCheck: 0
+  _bulletMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _detectionRadius: 1
 --- !u!114 &2337098219079942882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818559283454854438, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_InstanceId
-      value: -7218
+      value: -355110
       objectReference: {fileID: 0}
     - target: {fileID: 1898327486229874706, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
       propertyPath: m_Name
@@ -446,6 +451,7 @@ MonoBehaviour:
   _testAttackPower: 0
   _testArmorPenetration: 0
   _lootTable: {fileID: 11400000, guid: 4a4323f0a8520474fb4b76a4e16b9ec9, type: 2}
+  _itemPrefab: {fileID: 3906557741199473367, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
 --- !u!1 &3613446757256253110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 974380780516402904, guid: 20c43ee3d00d69d46a2efd82dc3f7e5b, type: 3}
