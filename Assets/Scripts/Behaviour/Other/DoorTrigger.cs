@@ -11,24 +11,31 @@
 * written consent of the author.
 *
 * History:
-*   25.4.22 JA created 
+*   22.4.22 JA created 
 ******************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class InvBackground : MonoBehaviour, IDropHandler
+public class DoorTrigger : MonoBehaviour
 {
-    [SerializeField] private RectTransform _rectTransform;
-    public void OnDrop(PointerEventData eventData)
+    public bool IsOpen { private get; set; }
+    IDoor _door;
+    int _doorNum;
+
+    private void Awake()
     {
-        if (eventData != null)
+        _door = transform.root.GetComponent<IDoor>();
+        _doorNum = GlobalValues.doorTriggerNum;
+        GlobalValues.doorTriggerNum++;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<PlayerStats>() != null)
         {
-            ItemDragDrop item = eventData.pointerDrag.GetComponent<ItemDragDrop>();
-            if (item != null)
-                Destroy(item.gameObject);
+            if (IsOpen)
+                _door.OpenDoor();
         }
     }
 }

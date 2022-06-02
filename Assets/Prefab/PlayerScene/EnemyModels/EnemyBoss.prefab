@@ -177,6 +177,7 @@ MonoBehaviour:
   _movePos: {fileID: 0}
   _lerpSpeed: 0
   _entityStats: {fileID: 667410563674458542}
+  _isDestroyOnDeath: 1
   test: 0
 --- !u!1 &5312925218327945551
 GameObject:
@@ -315,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 615432365448982526}
-  _range: 70
+  _range: 150
   _aimRange: 60
 --- !u!114 &8405544169542104987
 MonoBehaviour:

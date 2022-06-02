@@ -34,7 +34,7 @@ namespace Assets.Scripts.Player
         [SerializeField] AnimationCurve _rotationCurve;
 
         [SerializeField][Range(0, 360)] private float _parentOffset;
-        [SerializeField] private float _constrS, _constrE, _ownAngle, _parentAngle;
+        private float _constrS, _constrE, _ownAngle, _parentAngle;
         private bool _isWideConstrain;
 
         private void OnValidate()
@@ -47,8 +47,6 @@ namespace Assets.Scripts.Player
             if (_rBody == null) _rBody = GetComponent<Rigidbody2D>();
 
             UpdateAngles();
-            //ownAngle = constrE;
-            //_rBody.rotation = constrE;
         }
 
         public void UpdateAngles()
@@ -87,6 +85,7 @@ namespace Assets.Scripts.Player
 
         private bool isIncludeZero;
 
+        //Returns angle or closest constrain angle if angle is inside constrain
         private float ConstrainAngle(float cStart, float cEnd, float angle)
         {
             if (cStart < cEnd) // no 0
@@ -116,6 +115,9 @@ namespace Assets.Scripts.Player
         float currAngle;
 
         [SerializeField] bool isShowLog = false;
+        //Lerp rotates towards target angle with cases for path to
+        //target angle including zero on 360 degree scale.
+        //Has a minor bug.
         public void RotateTowardsTargetV2(Vector2 target)
         {
             UpdateOwnAngle();
@@ -139,7 +141,8 @@ namespace Assets.Scripts.Player
 
             if (!_isWideConstrain || !_isConstrained)
             {
-                currAngle = Mathf.LerpAngle(_ownAngle, _currTargetAngle, LerpDist(angleDiff, 180, _turnSpeed, _rotationCurve));
+                currAngle = Mathf.LerpAngle(_ownAngle, _currTargetAngle, 
+                    LerpDist(angleDiff, 180, _turnSpeed, _rotationCurve));
             }
             else
             {
@@ -152,28 +155,20 @@ namespace Assets.Scripts.Player
                     if (tempOwnAngle <= _constrE) tempOwnAngle += 360;
                     if (tempTargetAngle <= _constrE) tempTargetAngle += 360;
                 }
-                //currAngle = AngleWrap(Mathf.Lerp(_ownAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
-                currAngle = AngleWrap(Mathf.Lerp(tempOwnAngle, tempTargetAngle, LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
+                currAngle = AngleWrap(Mathf.Lerp(tempOwnAngle, tempTargetAngle, 
+                    LerpDist(Mathf.Clamp(angleDiff, 0.01f, 180), 180, _turnSpeed, _rotationCurve)));
 
                 if (isShowLog)
                     print("ownangle:" + tempOwnAngle + " targewt:" + tempTargetAngle + " currangle:" + currAngle);
             }
             transform.eulerAngles = Vector3.forward * currAngle;
-            //_rBody.rotation = currAngle;
         }
-
-        private float LerpAngle(float currTarget, float newTarget)
-        {
-            float angleDiff = Mathf.Abs(Mathf.DeltaAngle(currTarget, newTarget));
-
-            return Mathf.LerpAngle(currTarget, newTarget, LerpDist(angleDiff, 180, _turnSpeed, _rotationCurve)); /////
-        }
-
+        //Normalizes lerp change by distance for the use of a curve instead
         private float LerpDist(float diff, float ratio, float speed, AnimationCurve curve)
         {
             diff = Mathf.Clamp(Mathf.Abs(diff), 0.01f, ratio); ////---
-            float distUnified = (ratio / diff) / ratio;
-            return Mathf.Clamp01(Mathf.Clamp(curve.Evaluate(diff / ratio), 0.01f, 1f) * distUnified * speed);
+            float distNormalized = (ratio / diff) / ratio;
+            return Mathf.Clamp01(Mathf.Clamp(curve.Evaluate(diff / ratio), 0.01f, 1f) * distNormalized * speed);
         }
 
         private float ClosestAngle(float angle, float targetA, float targetB)
@@ -198,12 +193,6 @@ namespace Assets.Scripts.Player
             return isAbsolut ? Mathf.Abs(angleDiff) : angleDiff;
         }
 
-        private float HalfAngle(float angle)
-        {
-            if (angle > 180) return angle - 360;
-            return angle;
-        }
-
         private float AngleWrap(float _angle)
         {
             return _angle < 0 ? 360 + _angle : 
@@ -222,7 +211,8 @@ namespace Assets.Scripts.Player
                 Gizmos.DrawLine(transform.position, DegreeToV3Relative(_parentAngle));
 
                 Handles.color = Color.Lerp(Color.red, Color.clear, 0.7f);
-                Handles.DrawSolidArc(transform.position, Vector3.forward, DegreeToV3Relative(ConstrStart + _parentAngle) - transform.position, Mathf.Abs(ConstrStart - ConstrEnd), 2.5f);
+                Handles.DrawSolidArc(transform.position, Vector3.forward, DegreeToV3Relative(ConstrStart + _parentAngle) 
+                    - transform.position, Mathf.Abs(ConstrStart - ConstrEnd), 2.5f);
             }
         }
 #endif

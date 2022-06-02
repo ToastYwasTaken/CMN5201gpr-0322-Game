@@ -16,19 +16,27 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.MapGeneration;
+using Assets.Scripts.Player;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class InvBackground : MonoBehaviour, IDropHandler
+public class RestartMenu : MonoBehaviour
 {
-    [SerializeField] private RectTransform _rectTransform;
-    public void OnDrop(PointerEventData eventData)
+    public void RestartGame()
     {
-        if (eventData != null)
-        {
-            ItemDragDrop item = eventData.pointerDrag.GetComponent<ItemDragDrop>();
-            if (item != null)
-                Destroy(item.gameObject);
-        }
+        ResetStuff();
+        SceneManager.LoadScene(1);
+    }
+    public void BackToMenu()
+    {
+        ResetStuff();
+        SceneManager.LoadScene(0);
+    }
+    void ResetStuff()
+    {
+        BSPMap.s_allRooms.Clear();
+        BSPMap.s_allHallWays.Clear();
+        Destroy(transform.root.Find("Enemys"));
     }
 }

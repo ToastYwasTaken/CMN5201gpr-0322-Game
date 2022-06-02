@@ -11,24 +11,20 @@
 * written consent of the author.
 *
 * History:
-*   25.4.22 JA created 
+*   22.4.22 JA created 
 ******************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class InvBackground : MonoBehaviour, IDropHandler
+public class InstantiateOnAwake : MonoBehaviour
 {
-    [SerializeField] private RectTransform _rectTransform;
-    public void OnDrop(PointerEventData eventData)
+    [SerializeField] GameObject _gameObject;
+    private void Awake()
     {
-        if (eventData != null)
-        {
-            ItemDragDrop item = eventData.pointerDrag.GetComponent<ItemDragDrop>();
-            if (item != null)
-                Destroy(item.gameObject);
-        }
+        GameObject go = Instantiate(_gameObject);
+        go.transform.position = transform.position;
+        go.transform.SetParent(transform.root);
     }
 }

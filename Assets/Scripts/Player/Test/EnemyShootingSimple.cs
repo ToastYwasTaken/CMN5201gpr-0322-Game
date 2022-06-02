@@ -1,3 +1,19 @@
+/*****************************************************************************
+* Project: CMN5201gpr-0322-Game
+* File   : Rotateable.cs
+* Date   : 17.04.22
+* Author : Jan Apsel (JA)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+*
+* History:
+*   22.4.22 JA created 
+******************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,19 +30,17 @@ namespace Assets.Scripts.Player
         [HideInInspector]IWeapon _weapon;
 
         private void Awake()
-        {
-            _target = GameObject.FindGameObjectWithTag("Player").transform;
+        {;
             _weapon = GetComponent<IWeapon>();
         }
-
-        //[SerializeField] bool isRange, isNotObst, IsAimAt;
+        private void Start()
+        {
+            _target = RefLib.Player.transform;
+        }
         private void FixedUpdate()
         {
             if (_target == null) return;
-            //isRange = IsInRange(_target);
-            //isNotObst = IsNotObstructed(_target);
-            //IsAimAt = IsAimingAt(_target);
-            if ( IsInRange(_target) && IsNotObstructed(_target) && IsAimingAt(_target))
+            if ( IsInRange(_target) && IsAimingAt(_target))
             {
                 _weapon.Fire();
             }
@@ -36,12 +50,14 @@ namespace Assets.Scripts.Player
             float sqrMag = (_parent.position.ToVector2() - target.position.ToVector2()).sqrMagnitude;
             return sqrMag < _range;
         }
+        //fires only at close distance. no idea.
         bool IsNotObstructed(Transform target)
         {
             RaycastHit hit;
-            Physics.Raycast(_parent.position, target.position -_parent.position, out hit);
+            Physics.Raycast(_parent.position, (target.position -_parent.position).normalized * 100, out hit);
             if (hit.collider != null)
             {
+                Debug.DrawRay(_parent.position, (target.position -_parent.position).normalized * 100, Color.white);
                 IEntity iEtt = hit.transform.gameObject.GetComponent<IEntity>();
                 if (iEtt != null)
                 {
@@ -57,11 +73,6 @@ namespace Assets.Scripts.Player
                 return true;
             return false;
         }
-        private void UpdateOwnAngle()
-        {
-            _ownAngle = _parent.localEulerAngles.z;
-        }
-
         public float AngleDifferenceToTarget(Transform target, bool isAbsolut)
         {
             float ownAngle = _parent.up.ToVector2().GetAngle();
@@ -71,11 +82,5 @@ namespace Assets.Scripts.Player
 
             return isAbsolut ? Mathf.Abs(angleDiff) : angleDiff;
         }
-
-        //private void OnDrawGizmosSelected()
-        //{
-        //    Gizmos.color = Color.green;
-        //    Gizmos.DrawLine(_parent.position, _target.position);
-        //}
     }
 }

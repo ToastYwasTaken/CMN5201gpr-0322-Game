@@ -1,4 +1,18 @@
-// 22.4.22 JA created 
+/*****************************************************************************
+* Project: CMN5201gpr-0322-Game
+* File   : Rotateable.cs
+* Date   : 17.04.22
+* Author : Jan Apsel (JA)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+*
+* History:
+*   22.4.22 JA created 
+******************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
@@ -67,6 +81,7 @@ namespace Assets.Scripts.Player
             _moveInput.Normalize();
         }
 
+        //Movement with acceleration and drag adjusted by curves 
         private void UpdateMovement()
         {
             float sqrMag = _velocity.sqrMagnitude;
@@ -75,7 +90,8 @@ namespace Assets.Scripts.Player
             if (_moveInput == Vector2.zero)
                 ApplyDrag(sqrMag);
             else
-                _velocity += _moveInput * Mathf.Lerp(0, MoveAccel, LerpDist(sqrMag, MoveSpeedMax, MoveAccel, AccelCurve)) * Time.deltaTime; //pMoveAccel * deltaT;
+                _velocity += _moveInput * Mathf.Lerp(0, MoveAccel, 
+                    LerpDist(sqrMag, MoveSpeedMax, MoveAccel, AccelCurve)) * Time.deltaTime;
 
             if (_velocity == Vector2.zero) return;
 
@@ -93,12 +109,12 @@ namespace Assets.Scripts.Player
                 return;
             _velocity = Vector2.Lerp(_velocity, Vector2.zero, LerpDist(sqrMag, MoveSpeedMax, MoveDrag, DragCurve));
         }
-
+        //See Rotateable.cs
         private float LerpDist(float diff, float ratio, float speed, AnimationCurve curve)
         {
             diff = Mathf.Abs(diff);
-            float distUnified = (ratio / diff) / ratio;
-            return Mathf.Clamp01(Mathf.Clamp(curve.Evaluate(diff / ratio), 0.01f, 1f) * distUnified * speed);
+            float distNormalized = (ratio / diff) / ratio;
+            return Mathf.Clamp01(Mathf.Clamp(curve.Evaluate(diff / ratio), 0.01f, 1f) * distNormalized * speed);
         }
     }
 }

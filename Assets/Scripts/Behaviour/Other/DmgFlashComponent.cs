@@ -11,24 +11,19 @@
 * written consent of the author.
 *
 * History:
-*   25.4.22 JA created 
+*   22.4.22 JA created 
 ******************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class InvBackground : MonoBehaviour, IDropHandler
+public class DmgFlashComponent : MonoBehaviour
 {
-    [SerializeField] private RectTransform _rectTransform;
-    public void OnDrop(PointerEventData eventData)
+    SpriteRenderer _spriteRenderer;
+    public SpriteRenderer spriteRenderer { get { return _spriteRenderer; } }
+    private void Awake()
     {
-        if (eventData != null)
-        {
-            ItemDragDrop item = eventData.pointerDrag.GetComponent<ItemDragDrop>();
-            if (item != null)
-                Destroy(item.gameObject);
-        }
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 }

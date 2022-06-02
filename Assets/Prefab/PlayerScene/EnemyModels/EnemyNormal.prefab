@@ -164,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4607359562863709390, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
       propertyPath: _range
-      value: 45
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4607359562863709390, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
       propertyPath: _aimRange
@@ -315,6 +315,7 @@ MonoBehaviour:
   _movePos: {fileID: 0}
   _lerpSpeed: 0
   _entityStats: {fileID: 5645402091423066401}
+  _isDestroyOnDeath: 1
   test: 0
 --- !u!114 &5645402091423066401 stripped
 MonoBehaviour:

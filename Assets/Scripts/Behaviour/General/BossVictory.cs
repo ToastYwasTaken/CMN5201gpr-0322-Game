@@ -17,18 +17,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class InvBackground : MonoBehaviour, IDropHandler
+public class BossVictory : MonoBehaviour
 {
-    [SerializeField] private RectTransform _rectTransform;
-    public void OnDrop(PointerEventData eventData)
+    private void Awake()
     {
-        if (eventData != null)
-        {
-            ItemDragDrop item = eventData.pointerDrag.GetComponent<ItemDragDrop>();
-            if (item != null)
-                Destroy(item.gameObject);
-        }
+        RefLib.Player.gameObject.GetComponent<EntityStats>().OnDeath += OnDeath;
+        gameObject.GetComponent<EntityStats>().OnDeath += OnDeath;
+    }
+    public void OnDeath()
+    {
+        Invoke("ResetScene", 3f);
+    }
+    void ResetScene()
+    {
+        RefLib.sPlayerCtrl.SwitchRestartMenu();
     }
 }

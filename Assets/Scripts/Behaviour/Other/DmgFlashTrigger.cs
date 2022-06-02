@@ -11,24 +11,23 @@
 * written consent of the author.
 *
 * History:
-*   25.4.22 JA created 
+*   22.4.22 JA created 
 ******************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class InvBackground : MonoBehaviour, IDropHandler
+public class DmgFlashTrigger : MonoBehaviour, IDamageable, IReturnEntityType
 {
-    [SerializeField] private RectTransform _rectTransform;
-    public void OnDrop(PointerEventData eventData)
+    [SerializeField] DmgFlash _dmgFlash;
+    public void DealDamage(float attackPower, float armorPenetration, bool canCrit, float critChance)
     {
-        if (eventData != null)
-        {
-            ItemDragDrop item = eventData.pointerDrag.GetComponent<ItemDragDrop>();
-            if (item != null)
-                Destroy(item.gameObject);
-        }
+        _dmgFlash.StartFlash(true);
+    }
+
+    public eEntityType GetEntityType()
+    {
+        return eEntityType.Environment;
     }
 }
