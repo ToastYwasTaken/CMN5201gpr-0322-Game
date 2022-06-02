@@ -26,21 +26,22 @@ namespace Assets.Scripts.Player
         private float _ownAngle;
         [SerializeField] float _range, _aimRange;
         Transform _target;
+        [SerializeField] bool IsRaycastActive;
 
         [HideInInspector]IWeapon _weapon;
 
         private void Awake()
-        {;
-            _weapon = GetComponent<IWeapon>();
+        {
+            if(_weapon == null) _weapon = GetComponent<IWeapon>();
         }
         private void Start()
         {
-            _target = RefLib.Player.transform;
+            _target = RefLib.sPlayer.transform;
         }
         private void FixedUpdate()
         {
             if (_target == null) return;
-            if ( IsInRange(_target) && IsAimingAt(_target))
+            if ( IsInRange(_target) && IsAimingAt(_target) && (IsRaycastActive ? IsNotObstructed(_target) : true))
             {
                 _weapon.Fire();
             }
@@ -50,14 +51,15 @@ namespace Assets.Scripts.Player
             float sqrMag = (_parent.position.ToVector2() - target.position.ToVector2()).sqrMagnitude;
             return sqrMag < _range;
         }
-        //fires only at close distance. no idea.
         bool IsNotObstructed(Transform target)
         {
+            Vector3 targetV3 = new Vector3(target.position.x, target.position.y, 0);
+            Vector3 selfV3 = new Vector3(_parent.position.x, _parent.position.y, 0);
             RaycastHit hit;
-            Physics.Raycast(_parent.position, (target.position -_parent.position).normalized * 100, out hit);
+            Physics.Raycast(selfV3, (targetV3 -selfV3).normalized * 100, out hit);
             if (hit.collider != null)
             {
-                Debug.DrawRay(_parent.position, (target.position -_parent.position).normalized * 100, Color.white);
+                Debug.DrawRay(selfV3, (targetV3 -selfV3).normalized * 100, Color.white);
                 IEntity iEtt = hit.transform.gameObject.GetComponent<IEntity>();
                 if (iEtt != null)
                 {

@@ -250,6 +250,9 @@
     <Compile Include="Assets\NavMeshComponents\Assets\Examples\Scripts\DestroyOnTrigger.cs" />
     <Compile Include="Assets\Scripts\AI\AIController.cs" />
     <Compile Include="Assets\Scripts\Behaviour\General\TrajectoryPrediction.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\General\ColorPalette.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\General\LevelSettings.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\General\EnvironmentSetColor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

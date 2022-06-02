@@ -23,7 +23,7 @@ public class BossVictory : MonoBehaviour
 {
     private void Awake()
     {
-        RefLib.Player.gameObject.GetComponent<EntityStats>().OnDeath += OnDeath;
+        RefLib.sPlayer.gameObject.GetComponent<EntityStats>().OnDeath += OnDeath;
         gameObject.GetComponent<EntityStats>().OnDeath += OnDeath;
     }
     public void OnDeath()

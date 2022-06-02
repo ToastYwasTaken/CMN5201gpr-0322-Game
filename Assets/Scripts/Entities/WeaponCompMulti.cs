@@ -34,16 +34,11 @@ public class WeaponCompMulti : MonoBehaviour, IWeapon
 
     private void Start()
     {
-        if (Target == null) Target = RefLib.Player.GetComponent<Transform>();
+        if (Target == null) Target = RefLib.sPlayer.GetComponent<Transform>();
 
         _weaponSlot = new WeaponSlot[_weaponItem.Length];
-
-        if (_weaponItem == null)
-        {
-            Debug.LogWarning("Enemy has no weapon equiped!");
-            return;
-        }
-        else for (int i = 0; i < _weaponSlot.Length; i++)
+        
+        for (int i = 0; i < _weaponSlot.Length; i++)
             {
                 _weaponSlot[i] = new WeaponSlot(PickWeapon(i));
             }
@@ -76,6 +71,7 @@ public class WeaponCompMulti : MonoBehaviour, IWeapon
 
     public void Fire()
     {
+        if(_weaponSlot == null) return;
         foreach (WeaponSlot wSlot in _weaponSlot)
         {
             if (wSlot.WeaponItem ==null) return;

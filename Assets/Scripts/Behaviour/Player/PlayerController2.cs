@@ -41,7 +41,7 @@ namespace Assets.Scripts.Player
         {
             Time.timeScale = 0;
             GlobalValues.IsPlayerActive = false;
-            RefLib.Player = gameObject;
+            RefLib.sPlayer = gameObject;
             RefLib.sPlayerCtrl = this;
             if (_flash == null) gameObject.GetComponentInChildren<DmgFlash>();
             //if (_spawner == null) GameObject.Find("Spawner").GetComponent<ItemSpawner>();

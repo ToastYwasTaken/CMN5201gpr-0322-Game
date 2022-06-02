@@ -12,7 +12,7 @@ public class PlayerStatsUI : MonoBehaviour
 
     private void Awake()
     {
-        if (_player == null) _player = RefLib.Player;
+        if (_player == null) _player = RefLib.sPlayer;
         if (_entityStats ==null) _entityStats = _player.GetComponent<EntityStats>();
     }
 

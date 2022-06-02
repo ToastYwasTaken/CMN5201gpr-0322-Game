@@ -5,6 +5,7 @@ using UnityEngine;
 static public class RefLib
 {
     static public PlayerController2 sPlayerCtrl;
-    static public GameObject Player;
+    static public GameObject sPlayer;
     static public Inventory sInventory;
+    static public LevelSettings sLevelSettings;
 }

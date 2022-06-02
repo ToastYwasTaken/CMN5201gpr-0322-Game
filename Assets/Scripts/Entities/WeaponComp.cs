@@ -33,7 +33,7 @@ public class WeaponComp : MonoBehaviour, IWeapon
 
     private void Start()
     {
-        if(Target == null) Target = RefLib.Player.GetComponent<Transform>();
+        if(Target == null) Target = RefLib.sPlayer.GetComponent<Transform>();
 
         if (_weaponItem == null) 
         {

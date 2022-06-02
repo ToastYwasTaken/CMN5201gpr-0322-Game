@@ -298,11 +298,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4607359562863709390, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
       propertyPath: _range
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4607359562863709390, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
       propertyPath: _aimRange
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607359562863709390, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
+      propertyPath: IsRaycastActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6416932283251555095, guid: ff9f3c984ce34fe41b1689c77da6fdc9, type: 3}
       propertyPath: m_RootOrder

@@ -12,7 +12,7 @@ public class HeatmeterUIBar : MonoBehaviour
 
     private void Awake()
     {
-        if (_player == null) _player = RefLib.Player;
+        if (_player == null) _player = RefLib.sPlayer;
         //if (_heatmeter == null) 
         _heatmeter = _player.GetComponent<Heatmeter>();
     }
