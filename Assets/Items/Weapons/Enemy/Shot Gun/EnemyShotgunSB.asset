@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a56a62afc21b244bbaffbc66fa8604b, type: 3}
   m_Name: EnemyShotgunSB
   m_EditorClassIdentifier: 
-  _amountOfBullets: 5
+  _amountOfBullets: 3
   _angle: 30
   _randomAngle: 1
+  _randomBulletAmount: 1
+  _maxRandomBulletAmount: 5

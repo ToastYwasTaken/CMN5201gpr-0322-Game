@@ -17,7 +17,7 @@ MonoBehaviour:
   _description: Kaaaaaaa BOOOOOOOOOOOMMMMMMM
   _isStackable: 0
   _itemRarity: 3
-  _itemType: 0
+  _itemType: 1
   _itemSprite: {fileID: 21300000, guid: 07ad6e3063905834e84565d516dafd3d, type: 3}
   _fireRate: 2.9
   _weaponPower: 40

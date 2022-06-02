@@ -17,7 +17,7 @@ MonoBehaviour:
   _description: The most basic weapon!
   _isStackable: 0
   _itemRarity: 2
-  _itemType: 0
+  _itemType: 1
   _itemSprite: {fileID: 21300000, guid: 7fef5cb4bfecc5e48b3538c12dbba910, type: 3}
   _fireRate: 1
   _weaponPower: 16

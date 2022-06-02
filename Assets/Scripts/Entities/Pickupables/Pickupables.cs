@@ -9,4 +9,7 @@ public class Pickupables : Item
 
     [SerializeField] private PickupCheck _pickupCheck;
     public PickupCheck PickupCheck { get => _pickupCheck; }
+
+    [SerializeField] private Color _pickupColor;
+    public Color PickupColor { get => _pickupColor; }
 }

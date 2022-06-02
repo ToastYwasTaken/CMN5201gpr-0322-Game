@@ -16,12 +16,17 @@ MonoBehaviour:
   _name: 
   _description: 
   _isStackable: 0
+  _itemRarity: 0
+  _itemType: 0
+  _itemSprite: {fileID: 0}
   _fireRate: 2
-  _bulletPrefab: {fileID: 2912425703784977495, guid: 47b48ca704a67e540b0e0ea5eecfb89b, type: 3}
-  _weaponPower: 7
-  _armorPenetration: 7
+  _weaponPower: 6
+  _armorPenetration: 6
   _bulletSpeed: 4
   _heatmeterUsage: 0
+  _bulletPrefab: {fileID: 2912425703784977495, guid: 47b48ca704a67e540b0e0ea5eecfb89b, type: 3}
   _shootBehaviour: {fileID: 11400000, guid: 78b2e0c0cf5e54a4ba35a1624b27b957, type: 2}
   _weaponShootSound: {fileID: 8300000, guid: e2317297782588343a0a7df424266515, type: 3}
   _weaponImpactSound: {fileID: 8300000, guid: e16d44ca1ebc3c64d85d9fd29deba17c, type: 3}
+  _useScreenshake: 0
+  _shakeData: {fileID: 0}

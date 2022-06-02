@@ -17,7 +17,7 @@ MonoBehaviour:
   _description: Shots slow but hits like a truck!
   _isStackable: 0
   _itemRarity: 0
-  _itemType: 0
+  _itemType: 1
   _itemSprite: {fileID: 21300000, guid: e6d5480c61d97a14aad8b20a882a92c2, type: 3}
   _fireRate: 2
   _weaponPower: 25

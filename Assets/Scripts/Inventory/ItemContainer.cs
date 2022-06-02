@@ -88,5 +88,6 @@ public enum eItemType
 {
     ALL,
     WEAPON,
-    CHIP
+    CHIP,
+    PICKUP
 }
