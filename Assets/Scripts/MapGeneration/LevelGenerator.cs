@@ -55,6 +55,7 @@ namespace Assets.Scripts.MapGeneration
 
         void Awake()
         {
+            GlobalValues.sDoorByPos = new Dictionary<Vector2, GameObject>();
             _elapsedTime = Time.realtimeSinceStartup;
             //Assign motherGO of Map
             if (_mapMotherGO == null)
@@ -233,15 +234,19 @@ namespace Assets.Scripts.MapGeneration
                 {
                     for (int j = 0; j < BSPMap.s_allHallWays[h].PTiles.GetLength(1); j++)
                     {
-
                         newRoomTile = Instantiate(BSPMap.s_allHallWays[h].PTiles[i, j].Prefab, BSPMap.s_allHallWays[h].PTiles[i, j].Position, BSPMap.s_allHallWays[h].PTiles[i, j].Rotation);
                         newRoomTile.transform.name = $"Hallway: {BSPMap.s_allHallWays[h].PTiles[i, j].Prefab.name} Tile [{BSPMap.s_allHallWays[h].PTiles[i, j].Position.x}|{BSPMap.s_allHallWays[h].PTiles[i, j].Position.y}]";
                         newRoomTile.transform.parent = motherOfRoom.transform;
+
+                        if (BSPMap.s_allHallWays[h].PTiles[i, j].Prefab.name.Contains("Door"))
+                            AddDoorsToDic(new Vector2(i, j), newRoomTile);
                     }
                 }
             }
         }
-
-
+        void AddDoorsToDic(Vector2 pos, GameObject door)
+        {
+            GlobalValues.sDoorByPos.Add(pos, door);
+        }
     }
 }
