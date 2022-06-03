@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,6 +22,9 @@ namespace AISystem
     [CreateAssetMenu(menuName = "AI FSM/Actions/Attack")]
     public class AttackAction : AIStateAction
     {
+        [SerializeField] private bool _showDebugLogs = false;
+
+        [Header("AI Events")]
         [SerializeField] private AIEvent OnCloseAttack;
         [SerializeField] private AIEvent OnFarAttack;
 
@@ -85,8 +89,8 @@ namespace AISystem
             {
                 // EVENT: Call event for far attack
                 if (OnFarAttack != null) OnFarAttack.Raise();
-                    
-                Debug.Log($"{_owner.name}: execute far attack");
+
+                if (_showDebugLogs) Debug.Log($"{_owner.name}: execute far attack");
             }
             // close range
             else if (_targetDistance.InRangeByDistance(_closeAttackDistance))
@@ -94,7 +98,7 @@ namespace AISystem
                 // EVENT: Call event for close attack
                 if (OnCloseAttack != null) OnCloseAttack.Raise();
 
-                Debug.Log($"{_owner.name}: execute close attack");
+                if (_showDebugLogs) Debug.Log($"{_owner.name}: execute close attack");
             }
         }
 

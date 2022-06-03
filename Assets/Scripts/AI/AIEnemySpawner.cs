@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.MapGeneration;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /*****************************************************************************
@@ -36,7 +37,12 @@ namespace AISystem
         [SerializeField] private bool _spawnEnemySupporter = false;
         [SerializeField] private GameObject _enemySupporter;
         [SerializeField] private int _spawnSupporterCount = 0;
-        [SerializeField] private Transform _enemiesParent;
+        private GameObject _enemiesParent;
+
+        private void Awake() 
+        {
+            _enemiesParent = new GameObject("Enemies");
+        }
 
 
         /// <summary>
@@ -73,7 +79,7 @@ namespace AISystem
             // Create parent GameObject for Enemies
             var parentObject = new GameObject(prefab.name);
 
-            parentObject.transform.parent = _enemiesParent;
+            parentObject.transform.SetParent(_enemiesParent.transform);
 
             int enemyCount = 0;
             for (int i = 0; i < rooms.Count; i++)
@@ -112,6 +118,7 @@ namespace AISystem
                     var center = new Vector3(x + offsetX, y + offsetY, 0f);
                     GameObject enemy = Instantiate(prefab, center, Quaternion.identity);
                     enemy.name = $"{prefab.name}-{enemyCount++}";
+                    enemy.transform.SetParent(parentObject.transform);
                     enemy.GetComponent<EnemyCountComponent>().roomNum = i;
                     enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
                 }
@@ -134,6 +141,8 @@ namespace AISystem
             var parentObject = new GameObject($"BOSS: {_bossPrefab.name}");
             int enemyCount = 0;
 
+            parentObject.transform.SetParent(_enemiesParent.transform);
+
             // Calculate the center of the Room in the World
             // The last Room in the list, is the Boss Room
             int lastRoomIdx = rooms.Count - 1;
@@ -149,13 +158,17 @@ namespace AISystem
                 var center = new Vector3(x + offsetX, y + offsetY, 0f);
                 GameObject enemy = Instantiate(_bossPrefab, center, rotation);
                 enemy.name = $"{_bossPrefab.name}-{enemyCount++}";
-                enemy.transform.parent = parentObject.transform;
+                enemy.transform.SetParent(parentObject.transform);
                 enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
             }
 
             // Spawn supporter enemies, when active
             if (_spawnEnemySupporter)
             {
+
+                var parentObjectSupport = new GameObject($"BOSS Supporter: {_enemySupporter.name}");
+                parentObjectSupport.transform.SetParent(_enemiesParent.transform);
+
                 for (int j = 0; j < _spawnSupporterCount; j++)
                 {
                     float offsetX = UnityEngine.Random.Range(-2.5f, 2.5f);
@@ -164,7 +177,7 @@ namespace AISystem
                     var center = new Vector3(x + offsetX, y + offsetY, 0f);
                     GameObject enemy = Instantiate(_enemySupporter, center, Quaternion.identity);
                     enemy.name = $"{_enemySupporter.name}-{enemyCount++}";
-                    enemy.transform.parent = parentObject.transform;
+                    enemy.transform.SetParent(parentObjectSupport.transform);
                     enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
                 }
             }
