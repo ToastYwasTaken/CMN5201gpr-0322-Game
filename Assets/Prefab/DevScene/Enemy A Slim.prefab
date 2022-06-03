@@ -97,11 +97,11 @@ PrefabInstance:
       objectReference: {fileID: 6066062864918340542}
     - target: {fileID: 2607396427720349428, guid: 97a78450324acf84d83a6fdb88f97673, type: 3}
       propertyPath: _offset.x
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2607396427720349428, guid: 97a78450324acf84d83a6fdb88f97673, type: 3}
       propertyPath: _offset.y
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2607396427720349428, guid: 97a78450324acf84d83a6fdb88f97673, type: 3}
       propertyPath: _itemPrefab
@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5036030432236448746, guid: 97a78450324acf84d83a6fdb88f97673, type: 3}
       propertyPath: m_InstanceId
-      value: -847674
+      value: -1932148
       objectReference: {fileID: 0}
     - target: {fileID: 7484790884365009132, guid: 97a78450324acf84d83a6fdb88f97673, type: 3}
       propertyPath: m_Name

@@ -151,15 +151,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428568114229580863, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_InstanceId
-      value: -846856
+      value: -1931366
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _offset.x
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _offset.y
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _itemPrefab
