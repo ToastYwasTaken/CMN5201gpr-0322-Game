@@ -204,7 +204,7 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     public eEntityType EntityType { get => _entityType; }
 
 
-    private void Start()
+    protected virtual void Start()
     {
         Health = MaxHealth;
         Armor = MaxArmor;

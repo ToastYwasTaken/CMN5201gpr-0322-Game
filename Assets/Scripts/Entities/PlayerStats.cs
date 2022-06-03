@@ -22,10 +22,12 @@ public class PlayerStats : EntityStats, IRestoreHealth, IRestoreArmor
     [SerializeField] private Item _startWeapon;
     private int _amountOfWeaponSpawns = 2;
 
-    private void Start()
+    protected override void Start()
     {
-        if(_itemPrefab == null) return;
-        if(_startWeapon == null) return;
+        base.Start();
+
+        if (_itemPrefab == null) return;
+        if (_startWeapon == null) return;
 
         for (int i = 0; i < _amountOfWeaponSpawns; i++)
         {
