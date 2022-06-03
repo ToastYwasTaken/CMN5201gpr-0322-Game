@@ -1,6 +1,6 @@
 ﻿/*****************************************************************************
 * Project: CMN5201gpr-0322-Game
-* File   : HeatlevelTrigger.cs
+* File   : Loot.cs
 * Date   : 03.06.2022
 * Author : Alexander Sigmund (AS)
 *
@@ -15,11 +15,11 @@
 ******************************************************************************/
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Trigger", menuName = "Items/Overdrive_Chips/Trigger/Float/Heatlevel", order = 100)]
-public class HeatlevelTrigger : OverdriveFloatTrigger
+[System.Serializable]
+public class Loot
 {
-    public override bool CheckTriggerCondition(PlayerInformation playerInformation)
-    {
-        return CheckTriggers(playerInformation.Heatmeter.CurrentHeatlevel, checkValue, checkOperator);
-    }
+    [SerializeField] private Item _lootDrop;
+    public Item LootDrop { get => _lootDrop; }
+    [SerializeField] private float _dropChance;
+    public float DropChance { get => _dropChance; }
 }
