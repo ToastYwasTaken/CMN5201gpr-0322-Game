@@ -56,29 +56,7 @@ namespace Assets.Scripts.MapGeneration
         void Awake()
         {
             _elapsedTime = Time.realtimeSinceStartup;
-            //Clear map mother
-            foreach (Transform child in _mapMotherGO.transform)
-            {
-                Debug.Log(child.name);
-                if (child.name != "NavMesh" && child.name != "NavMesh (Boss)")
-                {
-                    Destroy(child.gameObject);
-                }
-            }
-            //Clear all lists
-            if (_allMaps.Count != 0)
-            {
-                _allMaps.Clear();
-            }
-            if (_onlySmallestPartitions.Count != 0)
-            {
-                _onlySmallestPartitions.Clear();
-            }
-
-            BSPMap.s_allRooms.Clear();
-            BSPMap.s_allHallWays.Clear();
-            BSPMap.s_doorsBetweenRooms.Clear();
-
+            ClearLevel();
             //create original map root
             _mapRoot = new BSPMap(0, 0, _mapWidth, _mapHeight);
             //add original map
@@ -256,6 +234,25 @@ namespace Assets.Scripts.MapGeneration
                     }
                 }
             }
+        }
+
+        public void ClearLevel()
+        {
+            //Clear map mother
+            foreach (Transform child in _mapMotherGO.transform)
+            {
+                Debug.Log(child.name);
+                if (child.name != "NavMesh" && child.name != "NavMesh (Boss)")
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+            _allMaps.Clear();
+            _onlySmallestPartitions.Clear();
+            BSPMap.s_allRooms.Clear();
+            BSPMap.s_allHallWays.Clear();
+            BSPMap.s_doorsBetweenRooms.Clear();
+
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.MapGeneration;
 
 namespace Dennis.UI
 {
@@ -21,6 +22,7 @@ namespace Dennis.UI
         [SerializeField]
         private LoadingScreenUI loadingScreen;
 
+        private LevelGenerator _levelGenerator;
         private void Start()
         {
             RestartButton.onClick.AddListener(Restart);
@@ -64,7 +66,8 @@ namespace Dennis.UI
         void ExitToMainMenu()
         {
             SetTimeScale(1f);
-
+            _levelGenerator = GameObject.Find("/LevelGenerator").GetComponent<LevelGenerator>();
+            _levelGenerator.ClearLevel();
             loadingScreen.LoadScene(0);
         }
     }

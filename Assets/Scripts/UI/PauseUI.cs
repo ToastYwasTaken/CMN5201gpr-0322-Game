@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Scripts.MapGeneration;
 
 namespace Dennis.UI
 {
@@ -35,6 +36,8 @@ namespace Dennis.UI
 
         private AudioManager _audioManager;
         public bool IsPaused = false;
+
+        private LevelGenerator _levelGenerator;
 
         private WindowController WindowController { get { return WindowController.s_Instance; } }
 
@@ -118,7 +121,8 @@ namespace Dennis.UI
         {
             IsPaused = false;
             SetTimeScale(1f);
-
+            _levelGenerator = GameObject.Find("/LevelGenerator").GetComponent<LevelGenerator>();
+            _levelGenerator.ClearLevel();
             loadingScreen.LoadScene(0);
         }
     }
