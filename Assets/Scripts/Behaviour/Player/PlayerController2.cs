@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Dennis.UI;
 
 namespace Assets.Scripts.Player
 {
@@ -34,7 +35,13 @@ namespace Assets.Scripts.Player
         [HideInInspector] CameraController _cameraController;
         [SerializeField] Rotateable _leftWpn, _rightWpn;
         [SerializeField] DmgFlash _flash;
-        [SerializeField] GameObject _menu;
+
+        [Header("Windows")]
+        [SerializeField]
+        private VictoryWindowUI _victoryWindowUI;
+        [SerializeField]
+        private DefeatWindowUI _defeatWindowUI;
+
         Inventory _inventory;
         public Inventory Inventory { get => _inventory; }
         private void Awake()
@@ -74,17 +81,11 @@ namespace Assets.Scripts.Player
 
         public void SwitchVictoryMenu()
         {
-            GlobalValues.sCurrentLevel++;
-            GlobalValues.sIsPlayerActive = false;
-            Time.timeScale = 0;
-            _menu.SetActive(true);
+            _victoryWindowUI.ShowVictoryWindow();
         }
         public void SwitchRestartMenu()
         {
-            GlobalValues.sCurrentLevel++;
-            GlobalValues.sIsPlayerActive = false;
-            Time.timeScale = 0;
-            _menu.SetActive(true);
+            _defeatWindowUI.ShowDefeatWindow();
         }
         private void Update()
         {
