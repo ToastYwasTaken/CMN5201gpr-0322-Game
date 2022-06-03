@@ -22,6 +22,10 @@ public class RestoreArmorPickupAction : PickpupAction
 
     public override bool PerformAction(Collider2D collision)
     {
+        EntityStats entityStats = collision.GetComponent<EntityStats>();
+        if (entityStats == null) return false;
+        if (entityStats.Armor >= entityStats.MaxArmor) return false;
+
         IRestoreArmor restoreArmor = collision.GetComponent<IRestoreArmor>();
         if (restoreArmor != null)
         {

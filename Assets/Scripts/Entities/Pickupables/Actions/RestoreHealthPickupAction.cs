@@ -22,7 +22,11 @@ public class RestoreHealthPickupAction : PickpupAction
 
     public override bool PerformAction(Collider2D collision) 
     {
-       IRestoreHealth restoreHealth = collision.GetComponent<IRestoreHealth>();
+        EntityStats entityStats = collision.GetComponent<EntityStats>();
+        if (entityStats == null) return false;
+        if (entityStats.Health >= entityStats.MaxHealth) return false;
+
+        IRestoreHealth restoreHealth = collision.GetComponent<IRestoreHealth>();
         if (restoreHealth != null)
         {
             restoreHealth.RestoreHealth(_restoreHealthAmount);
