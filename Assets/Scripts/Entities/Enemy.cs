@@ -15,10 +15,17 @@ public class Enemy : EntityStats
     [SerializeField] private Vector3 _offset = Vector3.zero;
     [SerializeField] private Vector3 _randomizeIntesnity = new Vector3(0.5f, 0f, 0f);
 
+    private bool _droppedLoot = false;
+
     protected override void Death()
     {
-        DropLoot(_lootTable);
-        DropPickupables(_pickupTable);
+        if (!_droppedLoot) 
+        {
+            DropLoot(_lootTable);
+            DropPickupables(_pickupTable);
+
+            _droppedLoot = true;
+        }
         Destroy(transform.parent.parent.parent.gameObject);
     }
 
