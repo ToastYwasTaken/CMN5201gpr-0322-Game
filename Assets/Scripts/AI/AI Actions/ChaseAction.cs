@@ -68,11 +68,11 @@ namespace AISystem
             if (!_targetInRange.InRangeByDistance(_fightDistanceToTarget)) return;
 
             // Seek value
-            Vector3 point = CalculateSeekBehaviour();
-            // Debug.Log($"Point: {point}");
+            Vector3 seekValue = CalculateSeekBehaviour();
+            Debug.Log($"Seek: {seekValue}");
 
             // Set agent destination 
-            _=_navMeshAgent.SetDestination(_targetInRange.Target.transform.position + point);
+            _=_navMeshAgent.SetDestination(_targetInRange.Target.transform.position + seekValue);
 
             // Track the target viusel
             if (_lookToTarget)
