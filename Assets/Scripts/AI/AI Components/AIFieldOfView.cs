@@ -84,7 +84,7 @@ namespace AISystem
 
             // Check Aura
             bool inAura = (hit.distance <= AuraRadius) && UseAura;
-            Debug.Log($"Target in Aura: {inAura}");
+            // Debug.Log($"Target in Aura: {inAura}");
 
             return angle < ViewAngle * 0.5f || inAura;
         }

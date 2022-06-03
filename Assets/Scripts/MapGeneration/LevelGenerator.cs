@@ -241,7 +241,7 @@ namespace Assets.Scripts.MapGeneration
             //Clear map mother
             foreach (Transform child in _mapMotherGO.transform)
             {
-                Debug.Log(child.name);
+                // Debug.Log(child.name);
                 if (child.name != "NavMesh" && child.name != "NavMesh (Boss)")
                 {
                     Destroy(child.gameObject);

@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f3bae0b7-d229-45ef-a601-042806e41f23" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CMN5201gpr-0322-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Fat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Fat.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Slim.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DevScene/Enemy A Slim.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Met.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Met.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Patrol FoV Decision.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Patrol FoV Decision.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Remain in State.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AI Behaviour/Enemy A/Enemy A Remain in State.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
