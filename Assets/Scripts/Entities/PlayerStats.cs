@@ -14,8 +14,37 @@
 *
 ******************************************************************************/
 
+using UnityEngine;
+
 public class PlayerStats : EntityStats, IRestoreHealth, IRestoreArmor
 {
+    [SerializeField] private GameObject _itemPrefab;
+    [SerializeField] private Item _startWeapon;
+    private int _amountOfWeaponSpawns = 2;
+
+    private void Start()
+    {
+        if(_itemPrefab == null) return;
+        if(_startWeapon == null) return;
+
+        for (int i = 0; i < _amountOfWeaponSpawns; i++)
+        {
+            CreateItem(_startWeapon, _itemPrefab, gameObject.transform);
+        }
+    }
+
+    GameObject CreateItem(Item item, GameObject itemPrefab, Transform position)
+    {
+        GameObject newItem = Instantiate(itemPrefab, position.position, Quaternion.identity);
+
+        newItem.transform.SetParent(null);
+        newItem.transform.localScale = Vector3.one/4;
+
+        newItem.GetComponent<ItemContainer>().SetupItem(item);
+
+        return newItem;
+    }
+
     public void RestoreArmor(float amountToRestore)
     {
         if (amountToRestore > 0) Armor += amountToRestore;

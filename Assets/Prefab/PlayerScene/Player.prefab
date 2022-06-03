@@ -956,8 +956,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccfd5793b9d5de42964dbdd5d284e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movable: {fileID: 0}
+  _spawner: {fileID: 0}
   _leftWpn: {fileID: 8399961244614726606}
   _rightWpn: {fileID: 6662697466810602797}
+  _flash: {fileID: 0}
+  _startWeapon: {fileID: 0}
+  _victoryWindowUI: {fileID: 0}
+  _defeatWindowUI: {fileID: 0}
 --- !u!114 &4096101623133359713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1018,6 +1024,8 @@ MonoBehaviour:
   _entityType: 0
   _testAttackPower: 0
   _testArmorPenetration: 0
+  _itemPrefab: {fileID: 3906557741199473367, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
+  _startWeapon: {fileID: 11400000, guid: bb707205c29f58b4e90f5e0f7c7e986b, type: 2}
 --- !u!114 &4874678111844051749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1100,10 +1108,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _parentOffset: 0
-  _constrS: 180
-  _constrE: 180
-  _ownAngle: 279.79102
-  _parentAngle: 180
   isShowLog: 0
 --- !u!114 &3518353601495219296
 MonoBehaviour:
@@ -1253,6 +1257,7 @@ MonoBehaviour:
   _canvas: {fileID: 0}
   _itemDDpFab: {fileID: 5378705166886364565, guid: 7d4d9b6aba3a7b54fa71f44607b5ff65, type: 3}
   _itemSlots: []
+  _isActive: 0
   isColorize: 1
 --- !u!1 &7576545269882444202
 GameObject:
@@ -1441,10 +1446,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _parentOffset: 0
-  _constrS: 263.60052
-  _constrE: 294.07672
-  _ownAngle: 279.79102
-  _parentAngle: 99.791016
   isShowLog: 0
 --- !u!1 &7576545270106876275
 GameObject:
@@ -1564,7 +1565,7 @@ MonoBehaviour:
   - {x: 1.520346, y: -3.28927, z: -1.1694168e-10}
   m_ShapePathHash: 1545545261
   m_Mesh: {fileID: 0}
-  m_InstanceId: 46450
+  m_InstanceId: 38108
 --- !u!65 &1271893723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1655,10 +1656,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _parentOffset: 0
-  _constrS: 263.60052
-  _constrE: 294.07672
-  _ownAngle: 279.79102
-  _parentAngle: 99.791016
   isShowLog: 0
 --- !u!1 &9088219006787790356
 GameObject:
