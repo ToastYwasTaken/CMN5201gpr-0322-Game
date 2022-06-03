@@ -9,4 +9,5 @@ static public class RefLib
     static public Inventory sInventory;
     static public LevelSettings sLevelSettings;
     static public EnemyCount sEnemyCount;
+    static public DoorManager sDoorManager;
 }

@@ -38,11 +38,16 @@ public class Door : MonoBehaviour, IDoor
     {
         _flash.StartFlash(false);
         _doorCollider.enabled = false;
+        _isOpenByTrigger = false;
     }
     public void CloseDoor()
     {
         _doorCollider.enabled = true;
         _flash.StartFlash(true);
+    }
+    public void UnlockDoor()
+    {
+        _doorTrigger.IsOpen = true;
     }
 }
 
@@ -50,4 +55,5 @@ public interface IDoor
 {
     public void OpenDoor();
     public void CloseDoor();
+    public void UnlockDoor();
 }

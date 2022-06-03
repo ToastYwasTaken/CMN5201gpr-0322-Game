@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4425634305348693963}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Wall
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _doorGO: {fileID: 7432932657229289506}
   _doorTrigger: {fileID: 8754597750797050541}
-  _isOpenByTrigger: 1
+  _isOpenByTrigger: 0
 --- !u!114 &4426008439004642128
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,5 +17,6 @@ public class EnemyCountComponent : MonoBehaviour
     void DecreaseCounter()
     {
         RefLib.sEnemyCount.Count[_roomNum]--;
+        RefLib.sEnemyCount.CheckCount(_roomNum);
     }
 }
