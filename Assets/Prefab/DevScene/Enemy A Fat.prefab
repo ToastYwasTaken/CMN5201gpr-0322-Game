@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6527510856999981183, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
+      propertyPath: avoidancePriority
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8039573752300742718, guid: 4aa602a7eb25bd3419cc0d36fc36b95c, type: 3}
       propertyPath: m_Mass
       value: 1.5
@@ -160,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636275169142309667, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_InstanceId
-      value: -1930282
+      value: -119632
       objectReference: {fileID: 0}
     - target: {fileID: 2012279086826269495, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_LocalRotation.w

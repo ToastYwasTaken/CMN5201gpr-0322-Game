@@ -69,7 +69,7 @@ namespace AISystem
 
             // Seek value
             Vector3 seekValue = CalculateSeekBehaviour();
-            Debug.Log($"Seek: {seekValue}");
+            // Debug.Log($"Seek: {seekValue}");
 
             // Set agent destination 
             _=_navMeshAgent.SetDestination(_targetInRange.Target.transform.position + seekValue);
