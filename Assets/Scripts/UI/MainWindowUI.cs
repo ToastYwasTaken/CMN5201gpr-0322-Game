@@ -1,3 +1,17 @@
+/*****************************************************************************
+* Project: TANKPATROL
+* File   : MainWindowUI.cs
+* Date   : 11.04.2022
+* Author : Dennis Braunmueller (DB)
+*
+* MainMenu logic.
+*
+* History:
+*	11.04.2022	    DB	    Created
+*   13.04.2022      DB      Edited
+*   24.05.2022      DB      Edited
+*   03.06.2022      DB      Edited
+******************************************************************************/
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -32,7 +46,7 @@ namespace Dennis.UI
         [SerializeField]
         private TMP_Text _versionText;
         [SerializeField]
-        private LoadingScreenUI loadingScreen;
+        private LoadingScreenUI _loadingScreen;
 
         private AudioManager _audioManager;
 
@@ -51,21 +65,33 @@ namespace Dennis.UI
             base.Awake();
         }
 
+        /// <summary>
+        /// Play the game.
+        /// </summary>
         private void Play()
         {
-            loadingScreen.LoadScene(1);
+            _loadingScreen.LoadScene(1);
         }
 
+        /// <summary>
+        /// Switch to settings window.
+        /// </summary>
         private void Settings()
         {
             WindowController.s_Instance.OpenWindow(_settingsWindow);
         }
 
+        /// <summary>
+        /// Switch to credits window.
+        /// </summary>
         private void Credits()
         {
             WindowController.s_Instance.OpenWindow(_creditsWindow);
         }
 
+        /// <summary>
+        /// Quit the game.
+        /// </summary>
         private void Quit()
         {
             #if UNITY_EDITOR

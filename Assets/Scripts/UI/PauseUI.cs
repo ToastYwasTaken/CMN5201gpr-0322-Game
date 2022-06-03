@@ -1,3 +1,17 @@
+/*****************************************************************************
+* Project: TANKPATROL
+* File   : PauseUI.cs
+* Date   : 09.05.2022
+* Author : Dennis Braunmueller (DB)
+*
+* Handles the pause mechanic of the game.
+*
+* History:
+*	09.05.2022	    DB	    Created
+*	15.05.2022      DB      Edited
+*	24.05.2022      DB      Edited
+*	02.06.2022      DB      Edited
+******************************************************************************/
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -14,25 +28,25 @@ namespace Dennis.UI
     {
         [Header("Windows")]
         [SerializeField]
-        private Window PauseWindow;
+        private Window _pauseWindow;
         [SerializeField]
-        private Window SettingsWindow;
+        private Window _settingsWindow;
         [SerializeField]
-        private GameObject PlayerUI;
+        private GameObject _playerUI;
 
         [Header("Buttons")]
         [SerializeField]
-        private Button ResumeButton;
+        private Button _resumeButton;
         [SerializeField]
-        private Button SettingsButton;
+        private Button _settingsButton;
         [SerializeField]
-        private Button ExitButton;
+        private Button _exitButton;
 
         [Header("Misc")]
         [SerializeField]
-        private TMP_Text versionText;
+        private TMP_Text _versionText;
         [SerializeField]
-        private LoadingScreenUI loadingScreen;
+        private LoadingScreenUI _loadingScreen;
 
         private AudioManager _audioManager;
         public bool IsPaused = false;
@@ -49,18 +63,18 @@ namespace Dennis.UI
             _audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
             }else _audioManager = new AudioManager();
 
-            versionText.text = string.Format("VERSION: {0}", Application.version);
+            _versionText.text = string.Format("VERSION: {0}", Application.version);
 
-            ResumeButton.onClick.AddListener(() => WindowController.OnBack());
-            SettingsButton.onClick.AddListener(OpenSettingsWindow);
-            ExitButton.onClick.AddListener(ExitToMainMenu);
-            PauseWindow.OnDisableAction += OnDisablePauseWindow;
+            _resumeButton.onClick.AddListener(() => WindowController.OnBack());
+            _settingsButton.onClick.AddListener(OpenSettingsWindow);
+            _exitButton.onClick.AddListener(ExitToMainMenu);
+            _pauseWindow.OnDisableAction += OnDisablePauseWindow;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (WindowController.CurrentWindow == null && !PauseWindow.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
+            if (WindowController.CurrentWindow == null && !_pauseWindow.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
             {
                 if (!IsPaused)
                 {
@@ -75,23 +89,32 @@ namespace Dennis.UI
         void OnDestroy()
         {
             StopAllCoroutines();
-            PauseWindow.OnDisableAction -= OnDisablePauseWindow;
+            _pauseWindow.OnDisableAction -= OnDisablePauseWindow;
         }
 
+        /// <summary>
+        /// Set the time scale.
+        /// </summary>
         void SetTimeScale(float scale)
         {
             Time.timeScale = scale;
         }
 
+        /// <summary>
+        /// Show the window.
+        /// </summary>
         void Show()
         {
-            WindowController.OpenWindow(PauseWindow);
+            WindowController.OpenWindow(_pauseWindow);
 
-            PlayerUI.SetActive(false);
+            _playerUI.SetActive(false);
 
             SetTimeScale(0f);
         }
 
+        /// <summary>
+        /// Disable the window.
+        /// </summary>
         void OnDisablePauseWindow()
         {
             if (WindowController.HasWindowHistory)
@@ -107,23 +130,29 @@ namespace Dennis.UI
                 IsPaused = false;
             }
 
-            PlayerUI.SetActive(true);
+            _playerUI.SetActive(true);
 
             SetTimeScale(1f);
         }
 
+        /// <summary>
+        /// Open the settings window.
+        /// </summary>
         void OpenSettingsWindow()
         {
-            WindowController.OpenWindow(SettingsWindow);
+            WindowController.OpenWindow(_settingsWindow);
         }
 
+        /// <summary>
+        /// Exit to main menu.
+        /// </summary>
         void ExitToMainMenu()
         {
             IsPaused = false;
             SetTimeScale(1f);
             _levelGenerator = GameObject.Find("/LevelGenerator").GetComponent<LevelGenerator>();
             _levelGenerator.ClearLevel();
-            loadingScreen.LoadScene(0);
+            _loadingScreen.LoadScene(0);
         }
     }
 }

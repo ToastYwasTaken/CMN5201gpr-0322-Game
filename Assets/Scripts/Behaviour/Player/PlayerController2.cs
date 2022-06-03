@@ -11,7 +11,8 @@
 * written consent of the author.
 *
 * History:
-*   22.4.22 JA created 
+*   22.04.2022      JA      created
+*   03.06.2022      DB      Edited
 ******************************************************************************/
 
 using System;

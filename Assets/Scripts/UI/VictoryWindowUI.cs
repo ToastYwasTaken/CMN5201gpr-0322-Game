@@ -1,5 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+/*****************************************************************************
+* Project: TANKPATROL
+* File   : VictoryWindowUI.cs
+* Date   : 01.05.2022
+* Author : Dennis Braunmueller (DB)
+*
+* Victory window if the player wins.
+*
+* History:
+*	01.05.2022	    DB	    Created
+*	24.05.2022      DB      Edited
+******************************************************************************/
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.MapGeneration;
@@ -10,24 +20,24 @@ namespace Dennis.UI
     {
         [Header("Window")]
         [SerializeField]
-        private GameObject VictoryWindow;
+        private GameObject _victoryWindow;
 
         [Header("Button")]
         [SerializeField]
-        private Button RestartButton;
+        private Button _restartButton;
         [SerializeField]
-        private Button ExitButton;
+        private Button _exitButton;
 
         [Header("Misc")]
         [SerializeField]
-        private LoadingScreenUI loadingScreen;
+        private LoadingScreenUI _loadingScreen;
 
         private LevelGenerator _levelGenerator;
 
         private void Start()
         {
-            RestartButton.onClick.AddListener(Restart);
-            ExitButton.onClick.AddListener(ExitToMainMenu);
+            _restartButton.onClick.AddListener(Restart);
+            _exitButton.onClick.AddListener(ExitToMainMenu);
         }
 
         /// <summary>
@@ -40,7 +50,7 @@ namespace Dennis.UI
             GlobalValues.sCurrentLevel++;
             GlobalValues.sIsPlayerActive = false;
 
-            VictoryWindow.SetActive(true);
+            _victoryWindow.SetActive(true);
         }
 
         /// <summary>
@@ -58,7 +68,7 @@ namespace Dennis.UI
         {
             SetTimeScale(1f);
 
-            loadingScreen.LoadScene(1);
+            _loadingScreen.LoadScene(1);
         }
 
         /// <summary>
@@ -69,7 +79,7 @@ namespace Dennis.UI
             SetTimeScale(1f);
             _levelGenerator = GameObject.Find("/LevelGenerator").GetComponent<LevelGenerator>();
             _levelGenerator.ClearLevel();
-            loadingScreen.LoadScene(0);
+            _loadingScreen.LoadScene(0);
         }
     }
 }

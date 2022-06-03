@@ -1,3 +1,18 @@
+/*****************************************************************************
+* Project: TANKPATROL
+* File   : SettingsUI.cs
+* Date   : 02.05.2022
+* Author : Dennis Braunmueller (DB)
+*
+* Handles all the settings, available in the game.
+*
+* History:
+*	02.05.2022	    DB	    Created
+*	03.05.2022      DB      Edited
+*	05.05.2022      DB      Edited
+*	23.05.2022      DB      Edited
+*	02.06.2022      DB      Edited
+******************************************************************************/
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
@@ -9,52 +24,55 @@ namespace Dennis.UI
     {
         [Header("Fullscreen")]
         [SerializeField]
-        private Toggle fullscreenToggle;
+        private Toggle _fullscreenToggle;
 
         [Header("V-Sync")]
         [SerializeField]
-        private Toggle vSyncToggle;
+        private Toggle _vSyncToggle;
 
         [Header("Quality")]
         [SerializeField]
-        private TMP_Dropdown qualityDropdown;
+        private TMP_Dropdown _qualityDropdown;
 
         [Header("AudioMixer")]
         [SerializeField]
-        private AudioMixer masterMixer;
+        private AudioMixer _masterMixer;
 
         [Header("Master Volume")]
         [SerializeField]
-        private Slider masterVolumeSlider;
+        private Slider _masterVolumeSlider;
         [SerializeField]
-        private TMP_Text masterPercentText;
+        private TMP_Text _masterPercentText;
 
         [Header("UI Volume")]
         [SerializeField]
-        private Slider uiVolumeSlider;
+        private Slider _uiVolumeSlider;
         [SerializeField]
-        private TMP_Text uiPercentText;
+        private TMP_Text _uiPercentText;
 
         [Header("SFX Volume")]
         [SerializeField]
-        private Slider sfxVolumeSlider;
+        private Slider _sfxVolumeSlider;
         [SerializeField]
-        private TMP_Text sfxPercentText;
+        private TMP_Text _sfxPercentText;
 
         [Header("Music Volume")]
         [SerializeField]
-        private Slider musicVolumeSlider;
+        private Slider _musicVolumeSlider;
         [SerializeField]
-        private TMP_Text musicPercentText;
+        private TMP_Text _musicPercentText;
 
         private void Start()
         {
             LoadValues();
         }
 
+        /// <summary>
+        /// Set fullscreen.
+        /// </summary>
         public void SetFullscreen()
         {
-            if(fullscreenToggle.isOn)
+            if(_fullscreenToggle.isOn)
             {
                 Screen.fullScreen = true;
             }
@@ -64,9 +82,12 @@ namespace Dennis.UI
             }
         }
 
+        /// <summary>
+        /// Set V-Sync.
+        /// </summary>
         public void SetVSync()
         {
-            if(vSyncToggle.isOn)
+            if(_vSyncToggle.isOn)
             {
                 QualitySettings.vSyncCount = 1;
             }
@@ -76,59 +97,77 @@ namespace Dennis.UI
             }
         }
 
+        /// <summary>
+        /// Set the quality level of the game.
+        /// </summary>
         public void SetQuality(int qualityIndex)
         {
             QualitySettings.SetQualityLevel(qualityIndex);
             PlayerPrefs.SetInt("QualityIndex", qualityIndex);
         }
 
+        /// <summary>
+        /// Set the master volume of the game.
+        /// </summary>
         public void SetMasterVolume(float sliderValue)
         {
-            masterMixer.SetFloat("MasterVolume", Mathf.Log(sliderValue) * 20);
-            PlayerPrefs.SetFloat("MasterVolume", masterVolumeSlider.value);
-            masterPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
+            _masterMixer.SetFloat("MasterVolume", Mathf.Log(sliderValue) * 20);
+            PlayerPrefs.SetFloat("MasterVolume", _masterVolumeSlider.value);
+            _masterPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
         }
 
+        /// <summary>
+        /// Set the ui volume of the game.
+        /// </summary>
         public void SetUIVolume(float sliderValue)
         {
-            masterMixer.SetFloat("UIVolume", Mathf.Log(sliderValue) * 20);
-            PlayerPrefs.SetFloat("UIVolume", uiVolumeSlider.value);
-            uiPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
+            _masterMixer.SetFloat("UIVolume", Mathf.Log(sliderValue) * 20);
+            PlayerPrefs.SetFloat("UIVolume", _uiVolumeSlider.value);
+            _uiPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
         }
-
+        
+        /// <summary>
+        /// Set the sfx volume of the game.
+        /// </summary>
         public void SetSFXVolume(float sliderValue)
         {
-            masterMixer.SetFloat("SFXVolume", Mathf.Log(sliderValue) * 20);
-            PlayerPrefs.SetFloat("SFXVolume", sfxVolumeSlider.value);
-            sfxPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
+            _masterMixer.SetFloat("SFXVolume", Mathf.Log(sliderValue) * 20);
+            PlayerPrefs.SetFloat("SFXVolume", _sfxVolumeSlider.value);
+            _sfxPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
         }
 
+        /// <summary>
+        /// Set the music volume of the game.
+        /// </summary>
         public void SetMusicVolume(float sliderValue)
         {
-            masterMixer.SetFloat("MusicVolume", Mathf.Log(sliderValue) * 20);
-            PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
-            musicPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
+            _masterMixer.SetFloat("MusicVolume", Mathf.Log(sliderValue) * 20);
+            PlayerPrefs.SetFloat("MusicVolume", _musicVolumeSlider.value);
+            _musicPercentText.text = Mathf.RoundToInt(sliderValue * 100) + "%";
         }
 
+        /// <summary>
+        /// Load all variables.
+        /// </summary>
         private void LoadValues()
         {
-            fullscreenToggle.isOn = Screen.fullScreen;
+            _fullscreenToggle.isOn = Screen.fullScreen;
 
             if(QualitySettings.vSyncCount == 0)
             {
-                vSyncToggle.isOn = false;
+                _vSyncToggle.isOn = false;
             }
             else
             {
-                vSyncToggle.isOn = true;
+                _vSyncToggle.isOn = true;
             }
 
-            qualityDropdown.value = PlayerPrefs.GetInt("QualityIndex", 5);
+            _qualityDropdown.value = PlayerPrefs.GetInt("QualityIndex", 5);
 
-            masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 1);
-            uiVolumeSlider.value = PlayerPrefs.GetFloat("UIVolume", 1);
-            sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1);
-            musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
+            _masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 1);
+            _uiVolumeSlider.value = PlayerPrefs.GetFloat("UIVolume", 1);
+            _sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1);
+            _musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
         }
     }
 }

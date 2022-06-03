@@ -1,3 +1,17 @@
+/*****************************************************************************
+* Project: TANKPATROL
+* File   : WindowController.cs
+* Date   : 11.04.2022
+* Author : Dennis Braunmueller (DB)
+*
+* Handles all windows with a window history.
+*
+* History:
+*	11.04.2022	    DB	    Created
+*	13.04.2022      DB      Edited
+*   24.05.2022      DB      Edited
+*   03.06.2022      DB      Edited
+******************************************************************************/
 using System.Collections.Generic;
 using UnityEngine;
 using Dennis.UI.Extensions;
@@ -50,6 +64,9 @@ namespace Dennis.UI
             _backButton.SetActive(HasWindowHistory);
         }
 
+        /// <summary>
+        /// Open a window.
+        /// </summary>
         public void OpenWindow(Window window)
         {
             if(CurrentWindow == window)
@@ -65,6 +82,9 @@ namespace Dennis.UI
             _hasNewWindowInFrame = true;
         }
 
+        /// <summary>
+        /// On back call.
+        /// </summary>
         public void OnBack()
         {
             if(_windowHistory.Count > 0)
@@ -89,6 +109,9 @@ namespace Dennis.UI
             }
         }
 
+        /// <summary>
+        /// Close the current window.
+        /// </summary>
         private void CloseCurrent()
         {
             if(CurrentWindow != null)

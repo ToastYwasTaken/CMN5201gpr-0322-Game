@@ -4863,8 +4863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4747109462d68fb479cce9faef5afc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveModifier: 0.25
-  time: 5
+  _moveModifier: 0
+  _time: 0
 --- !u!1 &1121737103
 GameObject:
   m_ObjectHideFlags: 0
@@ -7992,18 +7992,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe624a0f6caecb44a3b3d0ac884d53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullscreenToggle: {fileID: 1060361070}
-  vSyncToggle: {fileID: 916983848}
-  qualityDropdown: {fileID: 2022390935}
-  masterMixer: {fileID: 24100000, guid: f8a65183ff805b44b8036fec7fd10d0b, type: 2}
-  masterVolumeSlider: {fileID: 6727647627064573903}
-  masterPercentText: {fileID: 1051563610}
-  uiVolumeSlider: {fileID: 641331666}
-  uiPercentText: {fileID: 1254589746}
-  sfxVolumeSlider: {fileID: 1379548883}
-  sfxPercentText: {fileID: 1223272223}
-  musicVolumeSlider: {fileID: 1638289499}
-  musicPercentText: {fileID: 796198971}
+  _fullscreenToggle: {fileID: 1060361070}
+  _vSyncToggle: {fileID: 916983848}
+  _qualityDropdown: {fileID: 2022390935}
+  _masterMixer: {fileID: 24100000, guid: f8a65183ff805b44b8036fec7fd10d0b, type: 2}
+  _masterVolumeSlider: {fileID: 6727647627064573903}
+  _masterPercentText: {fileID: 1051563610}
+  _uiVolumeSlider: {fileID: 641331666}
+  _uiPercentText: {fileID: 1254589746}
+  _sfxVolumeSlider: {fileID: 1379548883}
+  _sfxPercentText: {fileID: 1223272223}
+  _musicVolumeSlider: {fileID: 1638289499}
+  _musicPercentText: {fileID: 796198971}
 --- !u!114 &2000350978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8016,9 +8016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8fe09cbfe2f7994c91d1a9b55a39871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 1073549599}
-  loadingBar: {fileID: 855951980}
-  loadingText: {fileID: 608519090}
+  _loadingScreen: {fileID: 1073549599}
+  _loadingBar: {fileID: 855951980}
+  _loadingText: {fileID: 608519090}
 --- !u!1 &2006084954
 GameObject:
   m_ObjectHideFlags: 0
@@ -9744,6 +9744,10 @@ PrefabInstance:
       propertyPath: _creditsWindow
       value: 
       objectReference: {fileID: 399355742}
+    - target: {fileID: 4324523612615127333, guid: 01aede0772903bd44b89e6080499da9d, type: 3}
+      propertyPath: _loadingScreen
+      value: 
+      objectReference: {fileID: 2000350978}
     - target: {fileID: 4324523612615127333, guid: 01aede0772903bd44b89e6080499da9d, type: 3}
       propertyPath: _settingsWindow
       value: 
