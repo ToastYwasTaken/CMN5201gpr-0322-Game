@@ -35,8 +35,6 @@ public class RestartMenu : MonoBehaviour
     }
     void ResetStuff()
     {
-        BSPMap.s_allRooms.Clear();
-        BSPMap.s_allHallWays.Clear();
-        Destroy(transform.root.Find("Enemys"));
+        //Destroy(transform.root.Find("Enemies"));
     }
 }

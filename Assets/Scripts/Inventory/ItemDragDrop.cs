@@ -26,11 +26,12 @@ public class ItemDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
     [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Item _item;
-    [SerializeField] private Image _image;
+    [SerializeField] private Image _image, _image1;
 
     public CanvasGroup CanvasGroup { get { return _canvasGroup; } }
     public Canvas Canvas { set { _canvas = value; } }
     public Image Image { get { return _image; } set { _image = value; } }
+    public Image Image1 { get { return _image1; } set { _image1 = value; } }
     public Item Item { get { return _item; } set { _item = value; } }
     public InvSlot _currentSlot { get; set; }
     public bool IsDropSuccessful { private get; set; }

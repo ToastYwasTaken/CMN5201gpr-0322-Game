@@ -55,7 +55,6 @@ namespace Assets.Scripts.MapGeneration
 
         void Awake()
         {
-            GlobalValues.sDoorByPos = new Dictionary<Vector2, GameObject>();
             _elapsedTime = Time.realtimeSinceStartup;
             //Assign motherGO of Map
             if (_mapMotherGO == null)

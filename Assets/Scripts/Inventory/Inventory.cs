@@ -80,6 +80,8 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && !_isMenu)
         {
             _isOpen = !_isOpen;
+            if (_isOpen == true) Time.timeScale = 0; 
+            else Time.timeScale = 1;
             SwitchShowInv();
         }
         if (_isOpen && _isMenu)
@@ -162,7 +164,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public bool PickupItem(Item item, Sprite sprite, Color color, eItemType type)
+    public bool PickupItem(Item item, Sprite sprite, Color color, Sprite sprite1, Color color1, eItemType type)
     {
         int slot = 0;
 
@@ -195,6 +197,10 @@ public class Inventory : MonoBehaviour
         itemDD.Item = item;
         itemDD.Image.sprite = sprite;
         itemDD.Image.color = color;
+
+        itemDD.Image1.sprite = sprite1;
+        itemDD.Image1.color = color1;
+
         itemDD.Canvas = _canvasComp;
         itemDD._currentSlot = _itemSlots[slot].SlotData;
         itemDD.RectTransform.anchoredPosition = 
@@ -205,8 +211,11 @@ public class Inventory : MonoBehaviour
         itemDD._itemType = type;
         _itemSlots[slot].ItemDD = itemDD;
 
-        _allImages.Add(newItemDD.GetComponent<Image>());
-        newItemDD.GetComponent<Image>().enabled = _showAllImages;
+        foreach(Image img in newItemDD.GetComponentsInChildren<Image>())
+        {
+            _allImages.Add(img);
+            img.enabled = _showAllImages;
+        }
 
         if (_itemSlots[slot].SlotData.SlotType != eItemType.ALL)
             EquipItem(itemDD, slot);

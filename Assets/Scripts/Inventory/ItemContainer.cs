@@ -78,7 +78,7 @@ public class ItemContainer : MonoBehaviour
         if (_item == null) return;
         PlayerController2 pContrl = collision.gameObject.GetComponent<PlayerController2>();
         if (pContrl != null)
-            if(RefLib.sInventory.PickupItem(_item, _item.ItemSprite, ItemColor(_item.ItemType), _item.ItemType))
+            if(RefLib.sInventory.PickupItem(_item, _item.ItemSprite, ItemColor(_item.ItemType), _backgroundSpriteRenderer.sprite, _backgroundSpriteRenderer.color, _item.ItemType))
                 Destroy(gameObject);
         //if usable > pContrl.stats.Changestats()
     }
