@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4068c0472a0f50243a6e53b8909252ea, type: 3}
-  m_Name: Overheated
+  m_Script: {fileID: 11500000, guid: c4a8cf3a7557ef04d9b8dc28697bb716, type: 3}
+  m_Name: LRHealtthPerT
   m_EditorClassIdentifier: 
   intervetd: 0
-  checkOperator: 4
-  checkValue: 0
+  checkOperator: 3
+  checkValue: 30

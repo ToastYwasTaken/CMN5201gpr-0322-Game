@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636275169142309667, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_InstanceId
-      value: -3568
+      value: -845962
       objectReference: {fileID: 0}
     - target: {fileID: 2012279086826269495, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -363,6 +363,18 @@ PrefabInstance:
       value: -0.07274778
       objectReference: {fileID: 0}
     - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _offset.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _offset.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: _itemPrefab
       value: 
       objectReference: {fileID: 3906557741199473367, guid: 4053b1005ae067c428c94a16089e0e36, type: 3}
@@ -372,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: ee07657835e8230479bee7da87ffef1e, type: 2}
     - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: _baseMaxArmor
-      value: 250
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: _pickupPrefab
@@ -393,6 +405,14 @@ PrefabInstance:
     - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: _baseDamageReduction
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _randomizeIntesnity.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
+      propertyPath: _randomizeIntesnity.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8609176434900172349, guid: fecd1c47e5408dd4690cd52a8c2214e5, type: 3}
       propertyPath: _baseArmorPenetrationReduction

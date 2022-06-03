@@ -151,7 +151,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428568114229580863, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: m_InstanceId
-      value: -4616
+      value: -846856
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _offset.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _offset.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _itemPrefab
@@ -163,7 +171,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: ee07657835e8230479bee7da87ffef1e, type: 2}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _baseMaxArmor
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _pickupPrefab
@@ -184,6 +192,14 @@ PrefabInstance:
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _baseDamageReduction
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _randomizeIntesnity.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
+      propertyPath: _randomizeIntesnity.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5645402091423066401, guid: 477bbf201bab93848b6408c767ac8099, type: 3}
       propertyPath: _baseArmorPenetrationReduction

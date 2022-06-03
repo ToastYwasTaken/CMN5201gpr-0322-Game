@@ -8,6 +8,10 @@ public class HealPlayerODBehaviour : OverdriveBehaviour
 
     public override void UseOverdriveEffect(PlayerInformation playerInformation)
     {
-        playerInformation.PlayerStats.Health += _amountToHeal;
+        IRestoreHealth restoreHealth = playerInformation.WeaponManager.gameObject.GetComponent<IRestoreHealth>();
+        if (restoreHealth != null)
+        {
+            restoreHealth.RestoreHealth(_amountToHeal);            
+        }
     }
 }

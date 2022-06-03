@@ -30,8 +30,8 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
 
     //Health
     [SerializeField, Tooltip("The base health without any modifiers")] private float _baseMaxHealth;
-    private float BaseMaxHealth { get => _baseMaxHealth; }
-    private float _maxHealthModifier;
+    protected float BaseMaxHealth { get => _baseMaxHealth; }
+    protected float _maxHealthModifier;
 
     public float MaxHealthModifier
     {
@@ -45,7 +45,7 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
 
     public float MaxHealth { get => BaseMaxHealth + MaxHealthModifier; }
 
-    private float _health;
+    protected float _health;
     public float Health
     {
         get => _health;
@@ -56,12 +56,15 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
             if (newHealth < 0) newHealth = 0;
             if (newHealth > MaxHealth) newHealth = MaxHealth;
 
+            _health = newHealth;
+            if (newHealth == 0)
+            {
+                Death();
+                OnDeath?.Invoke();
+            }
+
             OnHealthChanged?.Invoke(newHealth);
             OnHealthPercentageChanged?.Invoke(HealthPercentageNormalized);
-
-            if (newHealth == 0) Death();
-
-            _health = newHealth;
         }
     }
 
@@ -72,7 +75,7 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     [SerializeField, Tooltip("The base armor without any modifiers")] private float _baseMaxArmor;
     public float BaseMaxArmor { get => _baseMaxArmor; }
 
-    private float _armorModifier;
+    protected float _armorModifier;
     public float ArmorModifier
     {
         get => _armorModifier;
@@ -85,7 +88,7 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
 
     public float MaxArmor { get => BaseMaxArmor + ArmorModifier; }
 
-    private float _armor;
+    protected float _armor;
     public float Armor
     {
         get => _armor;
@@ -98,23 +101,22 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
 
             if (_isArmorBroken && newArmor > 0) ArmorRestored();
 
-            OnArmorChanged?.Invoke(newArmor);
-            OnArmorPercentageChanged?.Invoke(ArmorPercentage);
-
+            _armor = newArmor;
             if (newArmor == 0) ArmorBroken();
 
-            _armor = newArmor;
+            OnArmorChanged?.Invoke(newArmor);
+            OnArmorPercentageChanged?.Invoke(ArmorPercentage);
         }
     }    
 
     public float ArmorPercentage { get => (_armor / MaxArmor) * 100f; }
 
-    private bool _isArmorBroken = false;
+    protected bool _isArmorBroken = false;
     public bool IsArmorBroken { get => _isArmorBroken; }
 
     // Damage Reduction
-    [SerializeField, Tooltip("The base armor penetration reduction without any modifiers")] 
-    private float _baseDamageReduction;
+    [SerializeField, Tooltip("The base armor penetration reduction without any modifiers")]
+    protected float _baseDamageReduction;
     public float BaseDamageReduction { get => _baseDamageReduction; }
     
     private float _damageReductionModifier;
@@ -128,10 +130,10 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
 
     // Armor Penetration Reduction
     [SerializeField, Tooltip("The base armor penetration reduction without any modifiers")]
-    private float _baseArmorPenetrationReduction;
+    protected float _baseArmorPenetrationReduction;
     public float BaseArmorPenetrationReduction { get => _baseArmorPenetation; }
 
-    private float _armorPenetrationReductionModifier;
+    protected float _armorPenetrationReductionModifier;
     public float ArmorPenetrationReductionModifier 
     {
         get => _armorPenetrationReductionModifier;
@@ -146,17 +148,17 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     [SerializeField] private float _baseAttackPower;
     public float BaseAttackPower { get => _baseAttackPower; }
 
-    private float _attackPowerModifier = 0f;
+    protected float _attackPowerModifier = 0f;
     public float AttackPowerModifier {get => _attackPowerModifier; set => _attackPowerModifier = value; }
 
     public float AttackPower { get => _baseAttackPower + AttackPowerModifier; }
 
     //armor penetration
     [SerializeField, Tooltip ("The base armor penetration without any modifiers")]
-    private float _baseArmorPenetation;
+    protected float _baseArmorPenetation;
     public float BaseArmorPenetration { get => _baseArmorPenetation; }
 
-    private float _armorPenetrationModifier = 0f;
+    protected float _armorPenetrationModifier = 0f;
     public float ArmorPenetrationModifier { get => _armorPenetrationModifier; set => _armorPenetrationModifier = value; }
 
     public float ArmorPenetration { get => BaseArmorPenetration + ArmorPenetrationModifier; }
@@ -201,7 +203,6 @@ public class EntityStats : MonoBehaviour, IDamageable, IReturnEntityType
     /// </summary>
     protected virtual void Death()
     {
-        OnDeath?.Invoke();
         //Destroy(this.gameObject);
     }
 

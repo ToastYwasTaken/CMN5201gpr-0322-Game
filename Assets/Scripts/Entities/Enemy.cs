@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Enemy : EntityStats
 {
+
+    [Header("Spawn Loot")]
     [SerializeField] private LootTable _lootTable;
     [SerializeField] private GameObject _itemPrefab;
 
     [SerializeField] private LootTable _pickupTable;
     [SerializeField] private GameObject _pickupPrefab;
+
+    [SerializeField] private Vector3 _offset = Vector3.zero;
+    [SerializeField] private Vector3 _randomizeIntesnity = new Vector3(0.5f, 0f, 0f);
 
     protected override void Death()
     {
@@ -28,8 +33,11 @@ public class Enemy : EntityStats
     GameObject CreateItem(Item item, GameObject itemPrefab, Transform position)
     {
         GameObject newItem = Instantiate(itemPrefab, position.position, Quaternion.identity);
+
         newItem.transform.SetParent(null);
         newItem.transform.localScale = Vector3.one/4;
+        newItem.transform.position = SpawnPositionOffset(newItem.transform.position, _offset, _randomizeIntesnity);
+
         newItem.GetComponent<ItemContainer>().SetupItem(item);
 
         return newItem;
@@ -45,10 +53,24 @@ public class Enemy : EntityStats
     GameObject CreatePickup(Item item, GameObject itemPrefab, Transform position)
     {
         GameObject newItem = Instantiate(itemPrefab, position.position, Quaternion.identity);
+
         newItem.transform.SetParent(null);
         newItem.transform.localScale = Vector3.one/4;
+        newItem.transform.position = SpawnPositionOffset(newItem.transform.position, _offset, _randomizeIntesnity);
+
         newItem.GetComponent<PickupableContainer>().SetupPickupables((Pickupables)item);
 
         return newItem;
     }
+
+    private Vector3 SpawnPositionOffset(Vector3 startPosition, Vector3 offset, Vector3 randomizeIntesnity)
+    {
+        startPosition += _offset;
+        startPosition += new Vector3(Random.Range(-_randomizeIntesnity.x, _randomizeIntesnity.x),
+                                               Random.Range(-_randomizeIntesnity.y, _randomizeIntesnity.y),
+                                               Random.Range(-_randomizeIntesnity.z, _randomizeIntesnity.z));
+
+        return startPosition;
+    }
+
 }

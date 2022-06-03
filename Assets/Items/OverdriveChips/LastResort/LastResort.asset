@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 293afeeb9a89ab04383c0adaf8eb7c2f, type: 3}
-  m_Name: HeatUnload
+  m_Name: LastResort
   m_EditorClassIdentifier: 
-  _iD: 0
+  _iD: 2001
   _name: 
   _description: 
   _isStackable: 0
   _itemRarity: 1
   _itemType: 2
-  _itemSprite: {fileID: 21300000, guid: 34c0d746e9f416e4ebba7d6c2eb78b4c, type: 3}
-  _cooldown: 4
+  _itemSprite: {fileID: 21300000, guid: feecf7f110c3fc1448c98ee37aeeb3a7, type: 3}
+  _cooldown: 30
   _overdriveBehaviours:
-  - {fileID: 11400000, guid: 797cf990625ac724281254aa95345a3d, type: 2}
-  - {fileID: 11400000, guid: a4459e2db1bcd5a47a0b8c6dec9a75e4, type: 2}
+  - {fileID: 11400000, guid: 7368e91f0b9371b4b9316db96db6d0b8, type: 2}
+  - {fileID: 11400000, guid: 0457c26dd7a53b046be0e54f597ba9d3, type: 2}
   _overdriveTriggers:
-  - {fileID: 11400000, guid: 00be66bc8bc05eb42934e836b9c23077, type: 2}
-  - {fileID: 11400000, guid: 70bfc3f9211d117409e7ea2a34cf464b, type: 2}
+  - {fileID: 11400000, guid: 1ecdc6a725df73f4294a9070b7b86d83, type: 2}
+  - {fileID: 11400000, guid: 0f42923d82113824c86e743689132378, type: 2}
   _overdriveEffects: []
   _overdriveEquipEffects: []
