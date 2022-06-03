@@ -12,15 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293afeeb9a89ab04383c0adaf8eb7c2f, type: 3}
   m_Name: ProtectionTrade
   m_EditorClassIdentifier: 
-  _iD: 0
+  _iD: 2003
   _name: 
   _description: 
   _isStackable: 0
-  _itemRarity: 0
-  _itemType: 0
-  _itemSprite: {fileID: 0}
-  _cooldown: 0
-  _overdriveBehaviours: []
-  _overdriveTriggers: []
+  _itemRarity: 1
+  _itemType: 2
+  _itemSprite: {fileID: 21300000, guid: 7e5193b55e4773347a8e3afa9b18d19e, type: 3}
+  _cooldown: 5
+  _overdriveBehaviours:
+  - {fileID: 11400000, guid: 9f869df077a5baf469263619ab7b0ca9, type: 2}
+  - {fileID: 11400000, guid: 7ec0d991455deae4a8d1d9fa4f5db98d, type: 2}
+  _overdriveTriggers:
+  - {fileID: 11400000, guid: 8b5fc2b008ce5064ba39e10e42bde45a, type: 2}
+  - {fileID: 11400000, guid: b4752fbb874d22b4c95194bacea2cb39, type: 2}
   _overdriveEffects: []
-  _overdriveEquipEffects: []
+  _overdriveEquipEffects:
+  - {fileID: 11400000, guid: 46d87ea2a7a100643b2f3718348bfd29, type: 2}
+  - {fileID: 11400000, guid: 28cf3bd80fdb2b148b620fe625e49d03, type: 2}

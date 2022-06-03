@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PTHealthT
   m_EditorClassIdentifier: 
   intervetd: 0
-  checkOperator: 4
-  checkValue: 0
+  checkOperator: 2
+  checkValue: 100

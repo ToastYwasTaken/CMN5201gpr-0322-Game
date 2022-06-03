@@ -54,6 +54,8 @@ MonoBehaviour:
   - _lootDrop: {fileID: 11400000, guid: 965e6ad84ea43b3468f80e8623c2194e, type: 2}
     _dropChance: 0.5
   - _lootDrop: {fileID: 11400000, guid: 215f4bb91c23ce14e8352bf6afe1985e, type: 2}
-    _dropChance: 10
+    _dropChance: 7
   - _lootDrop: {fileID: 11400000, guid: 0b185f46254bf7740becc351859114ff, type: 2}
-    _dropChance: 10
+    _dropChance: 7
+  - _lootDrop: {fileID: 11400000, guid: fb44160556a388d409c2993df697345c, type: 2}
+    _dropChance: 7

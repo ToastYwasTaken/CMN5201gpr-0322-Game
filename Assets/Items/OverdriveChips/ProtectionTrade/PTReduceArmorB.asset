@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc63f2ddd5943b74d90ad5300e41929d, type: 3}
   m_Name: PTReduceArmorB
   m_EditorClassIdentifier: 
-  amountToReduce: 0
+  amountToReduce: 200

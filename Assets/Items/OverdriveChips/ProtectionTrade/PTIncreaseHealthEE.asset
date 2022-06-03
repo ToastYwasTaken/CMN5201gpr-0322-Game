@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d4d293309b7264fa7c15cc353c1880, type: 3}
   m_Name: PTIncreaseHealthEE
   m_EditorClassIdentifier: 
-  _increaseHealth: 0
+  _increaseHealth: 75

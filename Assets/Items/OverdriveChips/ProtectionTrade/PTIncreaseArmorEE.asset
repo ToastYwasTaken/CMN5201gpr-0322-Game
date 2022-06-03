@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50422acaa7759214fb0e23b83bcc8f8e, type: 3}
   m_Name: PTIncreaseArmorEE
   m_EditorClassIdentifier: 
-  _increaseArmor: 0
+  _increaseArmor: 250

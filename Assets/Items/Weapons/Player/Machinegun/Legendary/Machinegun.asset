@@ -19,7 +19,7 @@ MonoBehaviour:
   _isStackable: 0
   _itemRarity: 3
   _itemType: 1
-  _itemSprite: {fileID: 21300000, guid: e6d5480c61d97a14aad8b20a882a92c2, type: 3}
+  _itemSprite: {fileID: 21300000, guid: e43cdb40b34bab848aeb7c7efd63ffae, type: 3}
   _fireRate: 0.45
   _weaponPower: 9
   _armorPenetration: 13

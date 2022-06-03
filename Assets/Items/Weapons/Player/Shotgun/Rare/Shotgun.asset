@@ -16,7 +16,7 @@ MonoBehaviour:
   _name: 
   _description: 
   _isStackable: 0
-  _itemRarity: 2
+  _itemRarity: 1
   _itemType: 1
   _itemSprite: {fileID: 21300000, guid: ba0c5f13c26422748bb6d5b5378df013, type: 3}
   _fireRate: 1.9
