@@ -30,12 +30,12 @@ public class BossVictory : MonoBehaviour
     public void OnDeath()
     {
         GlobalValues.sIsEnemyAggro = false;
-        Invoke("ResetScene", 3f);
+        Invoke("ResetScene", 0f);
     }
     public void OnVictory()
     {
         GlobalValues.sIsEnemyAggro = false;
-        Invoke("Victory", 3f);
+        Invoke("Victory", 1f);
     }
     void ResetScene()
     {

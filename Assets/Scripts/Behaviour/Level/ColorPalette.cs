@@ -11,6 +11,8 @@ public class ColorPalette : ScriptableObject
     [SerializeField] Color[] colorsDoor;
     [SerializeField] Color[] colorsEnemy;
     [SerializeField] Color[] colorsBarrel;
+    [SerializeField] GameObject[] _floors;
+    [SerializeField] GameObject[] _obstacles;
 
     public Color[] ColorsFloor { get { return colorsFloor; } }
     public Color[] ColorsObstacle { get { return colorsObstacle; } }
@@ -18,4 +20,6 @@ public class ColorPalette : ScriptableObject
     public Color[] ColorsDoor { get { return colorsDoor; } }
     public Color[] ColorsEnemy { get { return colorsEnemy; } }
     public Color[] ColorsBarrel { get { return colorsBarrel; } }
+    public GameObject[] Floors { get { return _floors; } }
+    public GameObject[] Obstacles { get { return _obstacles; } }
 }

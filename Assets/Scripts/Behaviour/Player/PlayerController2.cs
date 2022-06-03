@@ -60,6 +60,7 @@ namespace Assets.Scripts.Player
         }
         private void Start()
         {
+            GlobalValues.sCurrentLevel = UnityEngine.Random.Range(0, 5);
             if(_startWeapon != null)
             {
                 Instantiate(_startWeapon);

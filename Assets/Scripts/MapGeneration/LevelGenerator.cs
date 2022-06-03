@@ -41,7 +41,7 @@ namespace Assets.Scripts.MapGeneration
         [SerializeField]
         GameObject[] _doorPrefabs;
         [SerializeField]
-        bool _turnOffHallWays;
+        bool _turnOffHallWays, _switchPrefabsWithSettings;
 
         private System.Random _rdm;
         private int _rdmIntGround;
@@ -55,6 +55,13 @@ namespace Assets.Scripts.MapGeneration
 
         void Awake()
         {
+            if(_switchPrefabsWithSettings)
+            {
+                _obstaclePrefabs = RefLib.sLevelSettings.Palette.Obstacles;
+                _groundPrefabs = RefLib.sLevelSettings.Palette.Floors;
+
+            }
+
             _elapsedTime = Time.realtimeSinceStartup;
             ClearLevel();
             //create original map root
