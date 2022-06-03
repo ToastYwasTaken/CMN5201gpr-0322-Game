@@ -74,10 +74,11 @@ namespace Assets.Scripts.MapGeneration
             {
                 _onlySmallestPartitions.Clear();
             }
-            if (GlobalValues.sDoorByPos.Count != 0)
-            {
-                GlobalValues.sDoorByPos.Clear();
-            }
+
+            BSPMap.s_allRooms.Clear();
+            BSPMap.s_allHallWays.Clear();
+            BSPMap.s_doorsBetweenRooms.Clear();
+
             //create original map root
             _mapRoot = new BSPMap(0, 0, _mapWidth, _mapHeight);
             //add original map
