@@ -91,7 +91,7 @@ namespace Assets.Scripts.Player
             if (!GlobalValues.sIsPlayerActive) return;
             _cameraController.DoCamera();
             //DoInput
-            _movable.DoMovement();
+            
         }
 
         private void FixedUpdate()
@@ -103,6 +103,7 @@ namespace Assets.Scripts.Player
             _rightWpn.RotateTowardsTargetV2(mousePos);
             
             DoWeapons();
+            _movable.DoMovement();
         }
 
         private IShoot _shoot;
