@@ -56,11 +56,27 @@ namespace Assets.Scripts.MapGeneration
         void Awake()
         {
             _elapsedTime = Time.realtimeSinceStartup;
-            //Assign motherGO of Map
-            if (_mapMotherGO == null)
+            //Clear map mother
+            foreach (Transform child in _mapMotherGO.transform)
             {
-                _mapMotherGO = new GameObject("Map");
-                _mapMotherGO.transform.position = new Vector3(0, 0, 0);
+                Debug.Log(child.name);
+                if (child.name != "NavMesh" && child.name != "NavMesh (Boss)")
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+            //Clear all lists
+            if (_allMaps.Count != 0)
+            {
+                _allMaps.Clear();
+            }
+            if (_onlySmallestPartitions.Count != 0)
+            {
+                _onlySmallestPartitions.Clear();
+            }
+            if (GlobalValues.sDoorByPos.Count != 0)
+            {
+                GlobalValues.sDoorByPos.Clear();
             }
             //create original map root
             _mapRoot = new BSPMap(0, 0, _mapWidth, _mapHeight);
