@@ -25,7 +25,7 @@ public class BossVictory : MonoBehaviour
     private void Awake()
     {
         RefLib.sPlayer.gameObject.GetComponent<EntityStats>().OnDeath += OnDeath;
-        gameObject.GetComponent<EntityStats>().OnDeath += OnDeath;
+        gameObject.GetComponent<EntityStats>().OnDeath += OnVictory;
     }
     public void OnDeath()
     {

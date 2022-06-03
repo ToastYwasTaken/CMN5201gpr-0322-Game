@@ -28,7 +28,7 @@ public class ExplosiveBarrel : EntityStats
     {
         if (!_isActive) return;
         _isActive = false;
-        Invoke("SetActive", 7f);
+        Invoke("SetActive", 3f);
         ProjectileStats projectileStats = SetupProjectileStats(this, _audioManager);
         SpawnExplosion(projectileStats, this.gameObject);
     }
