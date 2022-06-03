@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aeed1c75eac0fa47814f775b65f329f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _index: 0
+  _index: 2
   _envType: 1
   _spriteRenderer:
   - {fileID: 1136908733531556330}
@@ -199,6 +199,7 @@ MonoBehaviour:
   _lerpSpeed: 0
   _entityStats: {fileID: 0}
   _isDestroyOnDeath: 1
+  _canBeKilled: 1
   test: 0
 --- !u!114 &7284103532828161159
 MonoBehaviour:

@@ -35,6 +35,7 @@ public class DmgFlash : MonoBehaviour
     [SerializeField] EntityStats _entityStats;
 
     [SerializeField] bool _isDestroyOnDeath = true;
+    [SerializeField] bool _canBeKilled = true;
 
     public delegate void RoutineDone();
     public event RoutineDone OnRoutineDone;
@@ -46,7 +47,8 @@ public class DmgFlash : MonoBehaviour
         {
             _entityStats.OnHealthDamageTaken += DamageFlash;
             _entityStats.OnArmorDamageTaken += DamageFlash;
-            _entityStats.OnDeath += DeathFlash;
+            if(_canBeKilled)
+                _entityStats.OnDeath += DeathFlash;
         }
             
     }

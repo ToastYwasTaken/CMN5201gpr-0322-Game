@@ -108,7 +108,7 @@ namespace AISystem
 
                 }
                 Debug.Log($"RoomInfo: Size: {roomSize} | Enemies: {spawnRate}");
-                GetComponent<EnemyCount>().Count[i] = spawnRate;
+                //GetComponent<EnemyCount>().Count[i] = spawnRate;
 
                 // Spawn Enemies
                 for (int j = 0; j < spawnRate; j++)
@@ -119,7 +119,7 @@ namespace AISystem
                     GameObject enemy = Instantiate(prefab, center, Quaternion.identity);
                     enemy.name = $"{prefab.name}-{enemyCount++}";
                     enemy.transform.SetParent(parentObject.transform);
-                    enemy.GetComponent<EnemyCountComponent>().roomNum = i;
+                    //enemy.GetComponent<EnemyCountComponent>().roomNum = i;
                     enemy.GetComponent<AIFSMAgent>().SetPositionRandomAtNavMesh(_rangeFromCenter, _maxDistance);
                 }
             }

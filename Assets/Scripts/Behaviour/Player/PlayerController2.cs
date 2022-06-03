@@ -36,6 +36,7 @@ namespace Assets.Scripts.Player
         [HideInInspector] CameraController _cameraController;
         [SerializeField] Rotateable _leftWpn, _rightWpn;
         [SerializeField] DmgFlash _flash;
+        [SerializeField] GameObject _startWeapon;
 
         [Header("Windows")]
         [SerializeField]
@@ -59,6 +60,11 @@ namespace Assets.Scripts.Player
         }
         private void Start()
         {
+            if(_startWeapon != null)
+            {
+                Instantiate(_startWeapon);
+                Instantiate(_startWeapon);
+            }
             Invoke("EnableEnemyAggro", 3f);
         }
 

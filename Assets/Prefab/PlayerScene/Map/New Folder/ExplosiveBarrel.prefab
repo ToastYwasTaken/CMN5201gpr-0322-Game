@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: afaefd57b74f9fe4b8e8a474d83247ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5bae08f3a164044ea5cf7d296c7db32, type: 3}
   m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5048791428105947207}
   - component: {fileID: 1492718062107210303}
+  - component: {fileID: 5512809267024455477}
   m_Layer: 0
   m_Name: ExplosiveBarrel
   m_TagString: Wall
@@ -130,6 +131,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.2145815, y: 10.339803, z: 22.908875}
   m_Center: {x: 0.028266907, y: 0.026997924, z: -0.29390156}
+--- !u!114 &5512809267024455477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893981490883008340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aeed1c75eac0fa47814f775b65f329f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _index: 0
+  _envType: 5
+  _spriteRenderer:
+  - {fileID: 1136908733531556330}
+  - {fileID: 7430819118533613538}
 --- !u!1 &7432932657229289506
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +208,8 @@ MonoBehaviour:
   _entityType: 2
   _testAttackPower: 0
   _testArmorPenetration: 0
-  _explosionRadius: 5
-  _explosionObject: {fileID: 5359275510537264858, guid: 7a4087d515ad1644bacb7b5e86de4674, type: 3}
+  _explosionRadius: 3
+  _explosionObject: {fileID: 537525999518899585, guid: 03956fe489329894486313d961d21cb4, type: 3}
 --- !u!212 &1136908733531556330
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -233,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: afaefd57b74f9fe4b8e8a474d83247ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5bae08f3a164044ea5cf7d296c7db32, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -263,8 +281,9 @@ MonoBehaviour:
   _finalState: 1
   _movePos: {fileID: 0}
   _lerpSpeed: 0
-  _entityStats: {fileID: 0}
-  _isDestroyOnDeath: 1
+  _entityStats: {fileID: 4046724161768144760}
+  _isDestroyOnDeath: 0
+  _canBeKilled: 0
   test: 0
 --- !u!114 &7765791954598354688
 MonoBehaviour:

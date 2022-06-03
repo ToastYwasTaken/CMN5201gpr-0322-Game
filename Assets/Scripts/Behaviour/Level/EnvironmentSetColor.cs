@@ -38,6 +38,9 @@ public class EnvironmentSetColor : MonoBehaviour
             case eEnvType.ENEMY:
                 colors = _settings.Palette.ColorsEnemy;
                 break;
+            case eEnvType.BARREL:
+                colors = _settings.Palette.ColorsBarrel;
+                break;
         }
         foreach (SpriteRenderer renderer in _spriteRenderer)
         {
@@ -49,5 +52,5 @@ public class EnvironmentSetColor : MonoBehaviour
 }
 enum eEnvType
     {
-        FLOOR, OBSTACLE, WALL, DOOR, ENEMY
+        FLOOR, OBSTACLE, WALL, DOOR, ENEMY, BARREL
     }

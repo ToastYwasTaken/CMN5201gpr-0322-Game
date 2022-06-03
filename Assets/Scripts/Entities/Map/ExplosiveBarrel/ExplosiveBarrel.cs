@@ -7,16 +7,28 @@ public class ExplosiveBarrel : EntityStats
     [Header("Explosion Effect")]
     [SerializeField] private float _explosionRadius;
     [SerializeField] private GameObject _explosionObject;
+    bool _isActive = true;
     
     private AudioManager _audioManager;
 
     private void Awake()
     {
         if (_audioManager == null) _audioManager = GameObject.Find("/AudioManager")?.GetComponent<AudioManager>();
+        OnHealthDamageTaken += Explode;
+        OnArmorDamageTaken += Explode;
     }
 
     protected override void Death()
     {
+        //ProjectileStats projectileStats = SetupProjectileStats(this, _audioManager);
+        //SpawnExplosion(projectileStats, this.gameObject);
+    }
+
+    void Explode(float a = 0f, bool b = false)
+    {
+        if (!_isActive) return;
+        _isActive = false;
+        Invoke("SetActive", 7f);
         ProjectileStats projectileStats = SetupProjectileStats(this, _audioManager);
         SpawnExplosion(projectileStats, this.gameObject);
     }
@@ -33,7 +45,7 @@ public class ExplosiveBarrel : EntityStats
         explosion.ProjectileStats = projectileStats;
         explosion.ExplosionRadius = _explosionRadius;
 
-        Destroy(projectile);
+        //Destroy(projectile);
     }
 
     private ProjectileStats SetupProjectileStats(EntityStats playerStats, AudioManager audioManager)
@@ -66,5 +78,10 @@ public class ExplosiveBarrel : EntityStats
             AudioManager = audioManager,
         };
         return weaponAudio;
+    }
+
+    void SetActive()
+    {
+        _isActive = true;
     }
 }

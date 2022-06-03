@@ -10,10 +10,12 @@ public class ColorPalette : ScriptableObject
     [SerializeField] Color[] colorsWall;
     [SerializeField] Color[] colorsDoor;
     [SerializeField] Color[] colorsEnemy;
+    [SerializeField] Color[] colorsBarrel;
 
     public Color[] ColorsFloor { get { return colorsFloor; } }
     public Color[] ColorsObstacle { get { return colorsObstacle; } }
     public Color[] ColorsWall { get { return colorsWall; } }
     public Color[] ColorsDoor { get { return colorsDoor; } }
     public Color[] ColorsEnemy { get { return colorsEnemy; } }
+    public Color[] ColorsBarrel { get { return colorsBarrel; } }
 }

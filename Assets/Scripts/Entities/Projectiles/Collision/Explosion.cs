@@ -37,8 +37,8 @@ public class Explosion : MonoBehaviour
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         for (int i = 0; i < targets.Length; i++)
         {
-            if (projectileStats.ProjectileOwnerType == eEntityType.Environment) DealDamage(projectileStats, targets, i);
-            else
+            //if (projectileStats.ProjectileOwnerType == eEntityType.Environment) DealDamage(projectileStats, targets, i);
+            //else
             {
                 IReturnEntityType hittedObjectIType = targets[i].GetComponent<IReturnEntityType>();
 

@@ -16,6 +16,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.MapGeneration;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,10 +39,19 @@ public class BossVictory : MonoBehaviour
     }
     void ResetScene()
     {
+        ResetStuff();
         RefLib.sPlayerCtrl.SwitchRestartMenu();
     }
     void Victory()
     {
+        ResetStuff();
         RefLib.sPlayerCtrl.SwitchVictoryMenu();
+    }
+
+    public static void ResetStuff()
+    {
+        BSPMap.s_allRooms.Clear();
+        BSPMap.s_allHallWays.Clear();
+        BSPMap.s_doorsBetweenRooms.Clear();
     }
 }
