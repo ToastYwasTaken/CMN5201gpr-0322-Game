@@ -15,7 +15,7 @@ using UnityEngine;
 namespace AISystem
 {
     /// <summary>
-    /// aAllows checking if the target is in range
+    /// Allows checking if the target is in range
     /// </summary>
     public class AITargetInRange : MonoBehaviour
     {

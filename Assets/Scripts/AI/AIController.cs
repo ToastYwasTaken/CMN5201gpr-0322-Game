@@ -47,6 +47,7 @@ namespace AISystem
             {
                 _agent.enabled =true;
                 _aIFSM.enabled = true;
+                
             }
             else
             {
