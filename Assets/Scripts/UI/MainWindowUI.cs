@@ -23,6 +23,7 @@ namespace Dennis.UI
      /// Changelog:
      /// -------------------------
      /// Franz: added Music pausing / unpausing
+     /// Deactivated Quit
      /// </summary>
     public class MainWindowUI : WindowWithAnimator
     {
@@ -60,7 +61,7 @@ namespace Dennis.UI
             _playButton.onClick.AddListener(Play);
             _settingsButton.onClick.AddListener(Settings);
             _creditsButton.onClick.AddListener(Credits);
-            _quitButton.onClick.AddListener(Quit);
+            //_quitButton.onClick.AddListener(Quit);
 
             base.Awake();
         }
