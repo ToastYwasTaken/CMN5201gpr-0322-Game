@@ -92,9 +92,9 @@ namespace Dennis.UI
                 }
                 Show();
             }
+            //Dev access to settings menu
             if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.F5))
             {
-                Debug.Log("pressed");
                 OpenSettingsWindow();
             }
         }
