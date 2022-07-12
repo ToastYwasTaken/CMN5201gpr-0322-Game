@@ -22,13 +22,17 @@ using UnityEngine.EventSystems;
 public class InvBackground : MonoBehaviour, IDropHandler
 {
     [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] Inventory _inventory;
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData != null)
         {
             ItemDragDrop item = eventData.pointerDrag.GetComponent<ItemDragDrop>();
             if (item != null)
-                Destroy(item.gameObject);
+            {
+                //item.IsDropSuccessful = true;
+                //_inventory.DiscardItem(item._currentSlot);
+            }
         }
     }
 }

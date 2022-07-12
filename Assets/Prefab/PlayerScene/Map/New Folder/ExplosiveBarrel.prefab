@@ -277,14 +277,14 @@ MonoBehaviour:
   mirrorSprites: []
   _intervaMin: 0.02
   _intervaMax: 0.04
-  _time: 0.3
+  _time: 0.5
   _finalState: 1
   _movePos: {fileID: 0}
   _lerpSpeed: 0
   _entityStats: {fileID: 4046724161768144760}
   _isDestroyOnDeath: 0
   _canBeKilled: 0
-  test: 0
+  test: 1
 --- !u!114 &7765791954598354688
 MonoBehaviour:
   m_ObjectHideFlags: 0

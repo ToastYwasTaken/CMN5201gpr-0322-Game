@@ -67,6 +67,7 @@ namespace Dennis.UI
         {
             SetTimeScale(1f);
 
+            BossVictory.ResetStuff();
             _loadingScreen.LoadScene(1);
         }
 

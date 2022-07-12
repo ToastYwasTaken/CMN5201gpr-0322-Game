@@ -38,4 +38,12 @@ public class DoorTrigger : MonoBehaviour
                 _door.OpenDoor();
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerStats>() != null)
+        {
+            if (IsOpen)
+                _door.CloseDoor();
+        }
+    }
 }

@@ -92,6 +92,10 @@ public class DmgFlash : MonoBehaviour
     {
         StartCoroutine(Flash(_intervaMin, _intervaMax, _time, finalState));
     }
+    public void StartFlash(bool finalState, float time)
+    {
+        StartCoroutine(Flash(_intervaMin, _intervaMax, time, finalState));
+    }
 
     IEnumerator Flash(float intervalMin, float intervalMax, float time, bool finalStatus)
     {

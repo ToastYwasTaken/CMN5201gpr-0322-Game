@@ -30,21 +30,22 @@ public class BossVictory : MonoBehaviour
     public void OnDeath()
     {
         GlobalValues.sIsEnemyAggro = false;
-        Invoke("ResetScene", 0f);
+        ResetScene();
     }
     public void OnVictory()
     {
         GlobalValues.sIsEnemyAggro = false;
-        Invoke("Victory", 1f);
+        //Invoke("Victory", 1f);
+        Victory();
     }
     void ResetScene()
     {
-        ResetStuff();
+        //ResetStuff();
         RefLib.sPlayerCtrl.SwitchRestartMenu();
     }
     void Victory()
     {
-        ResetStuff();
+        //ResetStuff();
         RefLib.sPlayerCtrl.SwitchVictoryMenu();
     }
 

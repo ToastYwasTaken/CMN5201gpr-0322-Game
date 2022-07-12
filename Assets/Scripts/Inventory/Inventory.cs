@@ -80,8 +80,8 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && !_isMenu)
         {
             _isOpen = !_isOpen;
-            if (_isOpen == true) Time.timeScale = 0.5f; 
-            else Time.timeScale = 1;
+            if (_isOpen == true) Time.timeScale = 0f; 
+            else Time.timeScale = 1f;
             SwitchShowInv();
         }
         if (_isOpen && _isMenu)
