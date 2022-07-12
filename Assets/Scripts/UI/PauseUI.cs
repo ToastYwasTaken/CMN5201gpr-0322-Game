@@ -11,6 +11,9 @@
 *	15.05.2022      DB      Edited
 *	24.05.2022      DB      Edited
 *	02.06.2022      DB      Edited
+*	~07.06.2022     FM      added Music pausing / unpausing in menu
+*   11.07.2022      FM      deactivated exit button and settings button
+*                           added credits button
 ******************************************************************************/
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +25,7 @@ namespace Dennis.UI
     /// <summary>
     /// Changelog:
     /// -------------------------
-    /// Franz: added Music pausing / unpausing in menu
+    /// 
     /// </summary>
     public class PauseUI : MonoBehaviour
     {
@@ -38,7 +41,9 @@ namespace Dennis.UI
         [SerializeField]
         private Button _resumeButton;
         [SerializeField]
-        private Button _settingsButton;
+        private Button _settingsButton;        
+        [SerializeField]
+        private Button _creditsButton;
         [SerializeField]
         private Button _exitButton;
 
@@ -47,6 +52,8 @@ namespace Dennis.UI
         private TMP_Text _versionText;
         [SerializeField]
         private LoadingScreenUI _loadingScreen;
+        [SerializeField]
+        private Window _creditsWindow;
 
         private AudioManager _audioManager;
         public bool IsPaused = false;
@@ -66,8 +73,9 @@ namespace Dennis.UI
             _versionText.text = string.Format("VERSION: {0}", Application.version);
 
             _resumeButton.onClick.AddListener(() => WindowController.OnBack());
-            _settingsButton.onClick.AddListener(OpenSettingsWindow);
-            _exitButton.onClick.AddListener(ExitToMainMenu);
+            //_settingsButton.onClick.AddListener(OpenSettingsWindow);
+            //_exitButton.onClick.AddListener(ExitToMainMenu);
+            _creditsButton.onClick.AddListener(PlayCredits);
             _pauseWindow.OnDisableAction += OnDisablePauseWindow;
         }
 
@@ -76,13 +84,18 @@ namespace Dennis.UI
         {
             if (WindowController.CurrentWindow == null && !_pauseWindow.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
             {
-                if (!IsPaused)
+                if (!IsPaused && _audioManager != null)
                 {
                     //Pause Audio when opening Pause menu
                     _audioManager.PauseMelody();
                     IsPaused = true;
                 }
                 Show();
+            }
+            if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.F5))
+            {
+                Debug.Log("pressed");
+                OpenSettingsWindow();
             }
         }
 
@@ -153,6 +166,11 @@ namespace Dennis.UI
             _levelGenerator = GameObject.Find("/LevelGenerator").GetComponent<LevelGenerator>();
             _levelGenerator.ClearLevel();
             _loadingScreen.LoadScene(0);
+        }
+
+        void PlayCredits()
+        {
+            WindowController.s_Instance.OpenWindow(_creditsWindow);
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Dennis.UI
             _playButton.onClick.AddListener(Play);
             _settingsButton.onClick.AddListener(Settings);
             _creditsButton.onClick.AddListener(Credits);
-            //_quitButton.onClick.AddListener(Quit);
+            _quitButton.onClick.AddListener(Quit);
 
             base.Awake();
         }
