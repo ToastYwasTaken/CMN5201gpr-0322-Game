@@ -73,8 +73,8 @@ namespace Dennis.UI
             _versionText.text = string.Format("VERSION: {0}", Application.version);
 
             _resumeButton.onClick.AddListener(() => WindowController.OnBack());
-            //_settingsButton.onClick.AddListener(OpenSettingsWindow);
-            //_exitButton.onClick.AddListener(ExitToMainMenu);
+            _settingsButton.onClick.AddListener(OpenSettingsWindow);
+            _exitButton.onClick.AddListener(ExitToMainMenu);
             _creditsButton.onClick.AddListener(PlayCredits);
             _pauseWindow.OnDisableAction += OnDisablePauseWindow;
         }

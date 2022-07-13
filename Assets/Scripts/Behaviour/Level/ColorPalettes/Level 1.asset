@@ -15,9 +15,8 @@ MonoBehaviour:
   colorsFloor:
   - {r: 0.1354051, g: 0.1509434, b: 0, a: 1}
   colorsObstacle:
-  - {r: 1, g: 0.22772029, b: 0, a: 1}
+  - {r: 0.161767, g: 1, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.6593509, a: 0}
-  - {r: 0, g: 0.6218538, b: 1, a: 0}
   colorsWall:
   - {r: 1, g: 0.59836286, b: 0, a: 0}
   colorsDoor:

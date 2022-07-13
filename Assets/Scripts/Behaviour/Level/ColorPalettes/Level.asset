@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorsFloor:
   - {r: 0.0028034835, g: 0.18907107, b: 0.1981132, a: 1}
+  - {r: 1, g: 0.0047169924, b: 0.03456383, a: 1}
   colorsObstacle:
   - {r: 0.5680938, g: 0, b: 1, a: 1}
   - {r: 0.2139678, g: 0, b: 1, a: 0}
-  - {r: 1, g: 0.4189905, b: 0, a: 0}
   colorsWall:
   - {r: 1, g: 1, b: 1, a: 0}
   colorsDoor:
-  - {r: 0.29166353, g: 1, b: 0, a: 0}
-  - {r: 1, g: 0.9082564, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0.42802, a: 0}
+  - {r: 0, g: 0.72313213, b: 1, a: 0}
+  - {r: 0, g: 0.35876274, b: 1, a: 0}
+  - {r: 0, g: 0.4139843, b: 1, a: 0}
   colorsEnemy:
   - {r: 1, g: 0, b: 0, a: 1}
   colorsBarrel:

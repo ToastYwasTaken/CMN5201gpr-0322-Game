@@ -67,7 +67,8 @@ namespace Dennis.UI
         {
             SetTimeScale(1f);
 
-            BossVictory.ResetStuff();
+            _levelGenerator = GameObject.Find("/LevelGenerator").GetComponent<LevelGenerator>();
+            _levelGenerator.ClearLevel();
             _loadingScreen.LoadScene(1);
         }
 

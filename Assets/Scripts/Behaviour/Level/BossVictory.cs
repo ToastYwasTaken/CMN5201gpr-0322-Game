@@ -40,19 +40,20 @@ public class BossVictory : MonoBehaviour
     }
     void ResetScene()
     {
-        //ResetStuff();
+        ResetStuff();
         RefLib.sPlayerCtrl.SwitchRestartMenu();
     }
     void Victory()
     {
-        //ResetStuff();
+        ResetStuff();
         RefLib.sPlayerCtrl.SwitchVictoryMenu();
     }
 
     public static void ResetStuff()
     {
-        BSPMap.s_allRooms.Clear();
-        BSPMap.s_allHallWays.Clear();
-        BSPMap.s_doorsBetweenRooms.Clear();
+        GameObject.Find("/LevelGenerator").GetComponent<LevelGenerator>().ClearLevel();
+        //BSPMap.s_allRooms.Clear();
+        //BSPMap.s_allHallWays.Clear();
+        //BSPMap.s_doorsBetweenRooms.Clear();
     }
 }
