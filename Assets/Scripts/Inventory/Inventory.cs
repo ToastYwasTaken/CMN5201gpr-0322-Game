@@ -41,6 +41,8 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
+        _isMenu = false;
+
         if (!_isActive) return;
 
         RefLib.sInventory = this;
@@ -73,7 +75,8 @@ public class Inventory : MonoBehaviour
         SwitchShowInv();
     }
 
-    bool _isMenu = false, _isOpen = false;
+    static public bool _isMenu = false;
+    bool _isOpen = false;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) _isMenu = !_isMenu;

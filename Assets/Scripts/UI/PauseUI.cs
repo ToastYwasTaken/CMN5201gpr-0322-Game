@@ -144,6 +144,7 @@ namespace Dennis.UI
             }
 
             _playerUI.SetActive(true);
+            Inventory._isMenu = false;
 
             SetTimeScale(1f);
         }
